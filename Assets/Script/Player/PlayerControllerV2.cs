@@ -47,7 +47,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Door")
-        {
+        { 
             if (Input.GetKeyDown(KeyCode.W))
             {
                 _animator.SetTrigger("Enter");
