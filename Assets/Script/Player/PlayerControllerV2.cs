@@ -30,9 +30,13 @@ public class PlayerControllerV2 : MonoBehaviour
     public Transform pica;
     public Transform vacio;
     private GameObject _target;
-public float minX;
+    public float minX;
     public float maxX;
     public float waitingTime = 2f;
+    private bool pushing;
+    private bool pushingAnimation;
+    private bool isGrounded;
+    private bool enableKey;
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -44,6 +48,9 @@ public float minX;
         veces=0;
         colPicas=0;
         UpdateTarget();
+        pushing=false;
+        pushingAnimation=false;
+        enableKey=true;
         //var picas = Instantiate(pica) as Transform;
         //var vacioDie = Instantiate(vacio) as Transform;
     }
@@ -72,41 +79,49 @@ public float minX;
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        if (!atacking)
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+        
+        if((horizontalInput>0f || horizontalInput<0f)&&enableKey==true){
+            if(pushing==true){
+                pushingAnimation=true;
+               
+            }
+            else{
+                pushingAnimation=false;
+               
+            }
+        }
+        if (!atacking&&enableKey==true)
         {
             _movement = new Vector2(horizontalInput, 0f);
         }
-
-        if (horizontalInput < 0f && facingRight == true)
+        if (horizontalInput < 0f && facingRight == true&&enableKey==true)
         {
             flip();
         }
-        else if (horizontalInput > 0f && facingRight == false)
+        else if (horizontalInput > 0f && facingRight == false&&enableKey==true)
         {
             flip();
         }
 
-         //_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
-        
+         
         //Esta saltando?
-        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true){
+        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
-            _isGrounded=false;
             
         }
 
-        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true){
+        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
-           _isGrounded=false;
         }
         if( veces==jumpsWanted){
             veces=0;
             isJumping=false;
         }    
-        if (_movement == Vector2.zero && !atacking)
+        if (_movement == Vector2.zero && !atacking&&enableKey==true)
         {
             counter += 1 * Time.deltaTime;
         }
@@ -115,11 +130,10 @@ public float minX;
             counter = 0;
         }
         
-        //_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
-        
-        if(transform.position.x>65){
-            //Debug.Log("llego a 75");
-            StartCoroutine("PatrolToTarget");
+       
+        if(transform.position.x>68){
+            enableKey=false;
+           StartCoroutine("PatrolToTarget");
         }
     }
     private void FixedUpdate()
@@ -129,10 +143,9 @@ public float minX;
     }
     private void LateUpdate()
     {
-        //_animator.SetBool("Idle", _movement == Vector2.zero);
         _animator.SetBool("isGrounded", _isGrounded);
+        _animator.SetBool("isPushing", pushingAnimation);
         if(_isGrounded==false){
-            Debug.Log("IsGrounded es faslo");
             _animator.SetBool("Idle", false);
         }
         else{
@@ -151,12 +164,9 @@ public float minX;
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
-        if(collisionInfo.collider.gameObject.layer==6 || collisionInfo.collider.gameObject.layer==9){
-            //Debug.Log("nombre "+collisionInfo.collider.gameObject.layer);
-            _isGrounded=true;
-        }
-        else{
-            _isGrounded=false;
+        
+        if(collisionInfo.collider.gameObject.layer==9){
+            pushing=true;
         }
         
        if(collisionInfo.collider.tag=="Die"){
@@ -169,6 +179,13 @@ public float minX;
         FindObjectOfType<GameManager>().endGame();
         }
     }
+    void OnCollisionExit2D(Collision2D collisionInfo)
+    {
+        if(collisionInfo.collider.gameObject.layer==9){
+            pushing=false;
+        }
+        
+    }
 private IEnumerator PatrolToTarget()
     {
         while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)
@@ -177,7 +194,7 @@ private IEnumerator PatrolToTarget()
             Vector2 direction = _target.transform.position - transform.position;
             float xDirection = direction.x;
 
-            transform.Translate(direction.normalized * 0.01f * Time.deltaTime);
+            transform.Translate(direction.normalized * 0.005f * Time.deltaTime);
             _animator.SetBool("isGrounded", _isGrounded);
             yield return null;
         }
