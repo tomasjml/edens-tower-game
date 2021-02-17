@@ -7,19 +7,27 @@ public class Book : MonoBehaviour
 {
     [SerializeField] private string nextlevel;
     // Start is called before the first frame update
+    public GameObject fakeLuke;
     void Start()
     {
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerControllerV2>().enabled = false;
+            fakeLuke.SetActive(true);
+            Destroy(other.gameObject);
             //other.gameObject.GetComponent<Animator>().SetBool("Idle", true);
-            other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
             new WaitForSeconds(10);
+            //SceneManager.LoadScene(nextlevel);
+        }
+
+        if (other.CompareTag("Bot"))
+        {
+            new WaitForSeconds(10);
+            other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
             //SceneManager.LoadScene(nextlevel);
         }
     }
