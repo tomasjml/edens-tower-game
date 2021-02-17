@@ -29,7 +29,10 @@ public class PlayerControllerV2 : MonoBehaviour
 
     public Transform pica;
     public Transform vacio;
-
+    private GameObject _target;
+public float minX;
+    public float maxX;
+    public float waitingTime = 2f;
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -40,10 +43,19 @@ public class PlayerControllerV2 : MonoBehaviour
     {
         veces=0;
         colPicas=0;
-        var picas = Instantiate(pica) as Transform;
-        var vacioDie = Instantiate(vacio) as Transform;
+        UpdateTarget();
+        //var picas = Instantiate(pica) as Transform;
+        //var vacioDie = Instantiate(vacio) as Transform;
     }
-
+    private void UpdateTarget()
+    {
+        if (_target == null)
+        {
+            _target = new GameObject("Target");
+            _target.transform.position = new Vector2(maxX, transform.position.y);
+            return;
+        }
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.tag == "Door")
@@ -100,6 +112,11 @@ public class PlayerControllerV2 : MonoBehaviour
         {
             counter = 0;
         }
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+        if(transform.position.x>65){
+            //Debug.Log("llego a 75");
+            StartCoroutine("PatrolToTarget");
+        }
     }
     private void FixedUpdate()
     {
@@ -124,7 +141,7 @@ public class PlayerControllerV2 : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
         
-        if(collisionInfo.collider.tag=="Die"){
+       if(collisionInfo.collider.tag=="Die"){
             colPicas++;
         }
         if(colPicas==1){
@@ -133,5 +150,22 @@ public class PlayerControllerV2 : MonoBehaviour
           colPicas=0;
         FindObjectOfType<GameManager>().endGame();
         }
+    }
+private IEnumerator PatrolToTarget()
+    {
+        while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)
+        {
+            _animator.SetBool("Idle", false);
+            Vector2 direction = _target.transform.position - transform.position;
+            float xDirection = direction.x;
+
+            transform.Translate(direction.normalized * 0.01f * Time.deltaTime);
+            _animator.SetBool("isGrounded", _isGrounded);
+            yield return null;
+        }
+        transform.position = new Vector2(_target.transform.position.x, transform.position.y);
+        _animator.SetBool("Idle", true);
+        yield return new WaitForSeconds(waitingTime);
+
     }
 }
