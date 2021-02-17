@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64563da6a79a9f43a4eae2dc0ca2131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
   jumpForce: 2.5
   groundCheck: {fileID: 1536549878}
   groundedLayers:
@@ -148,6 +148,9 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckBaridus: 0.025
   _isGrounded: 1
+  jumpsWanted: 1
+  pica: {fileID: 0}
+  vacio: {fileID: 0}
 --- !u!1 &495704808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,11 +4001,11 @@ PrefabInstance:
       objectReference: {fileID: 656347349}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.731962
+      value: -12.16168
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52956975
+      value: -0.5292026
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcfe363f90917154f8d88527590c2243, type: 3}
