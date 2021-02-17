@@ -10978,6 +10978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1729022144}
   - component: {fileID: 1729022143}
+  - component: {fileID: 1729022145}
   m_Layer: 6
   m_Name: plx-1
   m_TagString: Untagged
@@ -11053,6 +11054,28 @@ Transform:
   m_Father: {fileID: 1169303726}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1729022145
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729022142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.6321163, y: -1.5768334}
+  - {x: -0.62974966, y: 1.0722468}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1734249110
 GameObject:
   m_ObjectHideFlags: 0
@@ -11312,7 +11335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: minX
-      value: 65
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: pica
@@ -11328,7 +11351,7 @@ PrefabInstance:
       objectReference: {fileID: 1446735803}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: jumpForce
-      value: 5.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: jumpsWanted
@@ -11356,7 +11379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11461,7 +11484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133448, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.030000329
+      value: 5.59
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133451, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_Follow
@@ -11473,11 +11496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.639114
+      value: -5.499765
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8003148
+      value: 4.5101233
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: orthographic size
