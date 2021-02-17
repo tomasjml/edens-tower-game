@@ -86,19 +86,21 @@ public float minX;
             flip();
         }
 
-         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+         //_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
         
         //Esta saltando?
         if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
+            _isGrounded=false;
             
         }
 
         else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
+           _isGrounded=false;
         }
         if( veces==jumpsWanted){
             veces=0;
@@ -112,7 +114,9 @@ public float minX;
         {
             counter = 0;
         }
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+        
+        //_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+        
         if(transform.position.x>65){
             //Debug.Log("llego a 75");
             StartCoroutine("PatrolToTarget");
@@ -125,8 +129,15 @@ public float minX;
     }
     private void LateUpdate()
     {
-        _animator.SetBool("Idle", _movement == Vector2.zero);
+        //_animator.SetBool("Idle", _movement == Vector2.zero);
         _animator.SetBool("isGrounded", _isGrounded);
+        if(_isGrounded==false){
+            Debug.Log("IsGrounded es faslo");
+            _animator.SetBool("Idle", false);
+        }
+        else{
+            _animator.SetBool("Idle", _movement == Vector2.zero);
+        }
         _animator.SetFloat("VerticalVelocity",_body.velocity.y);
     }
 
@@ -140,6 +151,13 @@ public float minX;
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
+        if(collisionInfo.collider.gameObject.layer==6 || collisionInfo.collider.gameObject.layer==9){
+            //Debug.Log("nombre "+collisionInfo.collider.gameObject.layer);
+            _isGrounded=true;
+        }
+        else{
+            _isGrounded=false;
+        }
         
        if(collisionInfo.collider.tag=="Die"){
             colPicas++;
