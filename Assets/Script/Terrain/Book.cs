@@ -6,6 +6,7 @@ using UnityEngine;
 public class Book : MonoBehaviour
 {
     [SerializeField] private string nextlevel;
+    public GameObject fakeLuke;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,16 @@ public class Book : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerControllerV2>().enabled = false;
+            fakeLuke.SetActive(true);
+            Destroy(other.gameObject);
             //other.gameObject.GetComponent<Animator>().SetBool("Idle", true);
-            other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
             new WaitForSeconds(10);
             //SceneManager.LoadScene(nextlevel);
+        }
+
+        if (other.CompareTag("Bot"))
+        {
+
         }
     }
 
