@@ -17,9 +17,10 @@ public class Book : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerControllerV2>().enabled = false;
-            other.gameObject.GetComponent<Animator>().SetBool("Idle", true);
+            //other.gameObject.GetComponent<Animator>().SetBool("Idle", true);
+            other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
             new WaitForSeconds(10);
-            SceneManager.LoadScene(nextlevel);
+            //SceneManager.LoadScene(nextlevel);
         }
     }
 
