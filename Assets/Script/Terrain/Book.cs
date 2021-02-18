@@ -19,9 +19,7 @@ public class Book : MonoBehaviour
         {
             fakeLuke.SetActive(true);
             Destroy(other.gameObject);
-            //other.gameObject.GetComponent<Animator>().SetBool("Idle", true);
             new WaitForSeconds(10);
-            //SceneManager.LoadScene(nextlevel);
         }
 
         if (other.CompareTag("Bot"))
