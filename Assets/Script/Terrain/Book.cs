@@ -7,8 +7,6 @@ public class Book : MonoBehaviour
 {
     [SerializeField] private string nextlevel;
     public GameObject fakeLuke;
-    // Start is called before the first frame update
-    public GameObject fakeLuke;
     public float time;
     void Start()
     {
