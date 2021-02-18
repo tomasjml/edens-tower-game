@@ -134,6 +134,9 @@ public class PlayerControllerV2 : MonoBehaviour
         if(transform.position.x>68){
             enableKey=false;
            StartCoroutine("PatrolToTarget");
+           if(transform.position.x>85){
+               SceneManager.LoadScene("Sala");
+           }
         }
     }
     private void FixedUpdate()
@@ -203,4 +206,5 @@ private IEnumerator PatrolToTarget()
         yield return new WaitForSeconds(waitingTime);
 
     }
+   
 }
