@@ -8,11 +8,12 @@ public class Book : MonoBehaviour
     [SerializeField] private string nextlevel;
     // Start is called before the first frame update
     public GameObject fakeLuke;
+    public float time;
     void Start()
     {
         
     }
-
+    
      private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -26,9 +27,10 @@ public class Book : MonoBehaviour
 
         if (other.CompareTag("Bot"))
         {
-            new WaitForSeconds(10);
+            
             other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
-            //SceneManager.LoadScene(nextlevel);
+            Invoke("changeScene",time);
+            
         }
     }
 
@@ -36,5 +38,10 @@ public class Book : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void changeScene()
+    {
+        SceneManager.LoadScene(nextlevel);
     }
 }
