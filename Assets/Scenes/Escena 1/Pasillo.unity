@@ -2919,6 +2919,9 @@ MonoBehaviour:
   jumpsWanted: 1
   pica: {fileID: 0}
   vacio: {fileID: 0}
+  minX: 0
+  maxX: 0
+  waitingTime: 2
 --- !u!4 &1901765752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9132203323589162045, guid: 755c0932623817d47b9f6f3c1a44bcf7, type: 3}
@@ -3022,6 +3025,10 @@ PrefabInstance:
     - target: {fileID: 4956114471618583097, guid: eff25217e6a32c94992d41fea6e2a64c, type: 3}
       propertyPath: m_Name
       value: Door Room
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956114471618583097, guid: eff25217e6a32c94992d41fea6e2a64c, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 4956114471618583100, guid: eff25217e6a32c94992d41fea6e2a64c, type: 3}
       propertyPath: nextLevel

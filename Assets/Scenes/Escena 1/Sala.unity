@@ -151,6 +151,9 @@ MonoBehaviour:
   jumpsWanted: 1
   pica: {fileID: 0}
   vacio: {fileID: 0}
+  minX: 0
+  maxX: 0
+  waitingTime: 2
 --- !u!1 &495704808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4009,6 +4012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4956114471618583097, guid: eff25217e6a32c94992d41fea6e2a64c, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 4956114471618583100, guid: eff25217e6a32c94992d41fea6e2a64c, type: 3}
       propertyPath: nextLevel
       value: Pasillo
@@ -4120,11 +4127,11 @@ PrefabInstance:
       objectReference: {fileID: 656347349}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.337509
+      value: -13.398796
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52947795
+      value: -0.5294918
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcfe363f90917154f8d88527590c2243, type: 3}
