@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class LisaText : MonoBehaviour
 {
-    string[] messages = { "Me pregunto si me queda algo por leer", "Que libro tan raro, ¿Por qué está ahí?", "¡¿Qué está pasando?!"};
     public GameObject prefab;
     public Transform point;
     public float livingTime;
@@ -25,24 +23,23 @@ public class LisaText : MonoBehaviour
 
     public void Instantiate(int trigger)
     {
+        GameObject instantiatedObject = null;
         switch (trigger)
         {
             case 0:
-                prefab.GetComponent<TextMeshProUGUI>().SetText(messages[0]);
+                instantiatedObject = Instantiate(prefab, point.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Lisa").transform) as GameObject;
                 break;
             case 1:
-                prefab.GetComponent<TextMeshProUGUI>().SetText(messages[1]);
-                break;
-            case 2:
-                prefab.GetComponent<TextMeshProUGUI>().SetText(messages[2]);
+                instantiatedObject = Instantiate(prefab, point.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Player").transform) as GameObject;
+                float scalex = instantiatedObject.transform.localScale.x * -1;
+                instantiatedObject.transform.localScale = new Vector3(scalex, instantiatedObject.transform.localScale.y, instantiatedObject.transform.localScale.z);
                 break;
         }
-
-        GameObject instantiatedObject = Instantiate(prefab, point.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform) as GameObject;
-
+        
         if (livingTime > 0f)
         {
             Destroy(instantiatedObject, livingTime);
+            
         }
     }
 
@@ -50,19 +47,17 @@ public class LisaText : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Lisa"))
         {
-            if (name.Equals("Trigger1"))
-            {
-                Instantiate(0);
-            }
-            if (name.Equals("Trigger2"))
-            {
-                Instantiate(1);
-            }
-            if (name.Equals("Trigger3"))
-            {
-                Instantiate(2);
-            }
+            Instantiate(0);
+            Destroy(this.gameObject);
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Instantiate(1);
+            Destroy(this.gameObject);
+        }
+ 
+
+        
     }
 
 

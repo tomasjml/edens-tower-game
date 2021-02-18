@@ -14,12 +14,16 @@ public class LisaController : MonoBehaviour
     private Animator _a;
 
     private bool idle = true;
+    private bool enter = false;
     private GameObject _target;
 
+    private void Awake()
+    {
+        _a = GetComponent<Animator>();        
+    }
     // Start is called before the first frame update
     void Start()
     {
-        _a = GetComponent<Animator>();
         UpdateTarget();
         StartCoroutine("PatrolToTarget");
     }
@@ -46,23 +50,12 @@ public class LisaController : MonoBehaviour
 
             yield return null;
         }
-
-        transform.position = new Vector2(_target.transform.position.x, transform.position.y);
+        enter = true;
         idle = true;
-        new WaitForSeconds(waitingTime);
-        StartCoroutine("ToJungle");
+        yield return null;
 
     }
 
-    private IEnumerator ToJungle()
-    {
-        _a.applyRootMotion = false;
-        _a.SetTrigger("Book");
-        new WaitForSeconds(waitingTime);
-
-        yield return new WaitForSeconds(waitingTime);
-
-    }
 
 
     // Update is called once per frame
@@ -73,14 +66,18 @@ public class LisaController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (idle)
+        _a.SetBool("Idle", idle == true);
+        if(enter)
         {
-            _a.SetBool("Idle", true);
-
+            transform.position = new Vector2(0.4676723f, -3.027581f);
+            _a.applyRootMotion = false;
+            _a.SetTrigger("Book");
         }
-        else
-        {
-            _a.SetBool("Idle", false);
-        }
+    }
+    void desactivate()
+    {
+        new WaitForSeconds(10);
+        this.gameObject.SetActive(false);
+        SceneManager.LoadScene("Sala");
     }
 }

@@ -21,7 +21,10 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        _animator.SetBool("IsOpened", true);
+        if (CompareTag("Door"))
+        {
+            _animator.SetBool("IsOpened", true);
+        }
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -35,7 +38,10 @@ public class Door : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        _animator.SetBool("IsOpened", false);
+        if (CompareTag("Door"))
+        {
+            _animator.SetBool("IsOpened", false);
+        }
     }
     // Update is called once per frame
     void Update()
