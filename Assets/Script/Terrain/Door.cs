@@ -47,9 +47,8 @@ public class Door : MonoBehaviour
         if (CompareTag("Door"))
         {
             _animator.SetBool("IsOpened", false);
-            Destroy(instantiatedObject);
-
-            
+            instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+            Invoke("DestroyO", 1);
         }
     }
     // Update is called once per frame
@@ -58,9 +57,10 @@ public class Door : MonoBehaviour
         
     }
 
-    void LateUpdate()
+    void DestroyO()
     {
-        
+        DestroyImmediate(instantiatedObject, true);
     }
 
 }
+

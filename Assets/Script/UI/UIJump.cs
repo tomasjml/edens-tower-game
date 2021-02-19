@@ -10,6 +10,9 @@ public class UIJump : MonoBehaviour
     private GameObject instantiatedObject;
     private bool jump = false;
 
+    private void Awake()
+    {
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,10 @@ public class UIJump : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            if (instantiatedObject)
+            {
+                instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+            }
             Invoke("DestroyO", 1);
         }
     }
