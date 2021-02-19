@@ -12,7 +12,7 @@ public class HUD : MonoBehaviour
     private GameObject instantiatedObject;
 
     private void Awake()
-    {
+    { 
     }
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,9 @@ public class HUD : MonoBehaviour
             }
             Invoke("DestroyO", 1);
         }
+
     }
+
     void DestroyO()
     {
         DestroyImmediate(instantiatedObject, true);
