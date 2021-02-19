@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HUD : MonoBehaviour
+public class Instruction : MonoBehaviour
 {
     public GameObject player;
     public GameObject first;
@@ -25,7 +25,6 @@ public class HUD : MonoBehaviour
         }
         else
         {
-            if
             instantiatedObject = Instantiate(third, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
         }
         
