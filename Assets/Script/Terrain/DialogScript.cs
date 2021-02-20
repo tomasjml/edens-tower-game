@@ -1,0 +1,42 @@
+using UnityEngine;
+
+
+public class DialogScript : MonoBehaviour
+{
+    public GameObject _Prefab;
+    public Transform _Position;
+
+    public float livingTime;
+
+    private GameObject prefabInstantiate;
+    // Start is called before the first frame update
+
+    void Awake()
+    {
+        
+    }  
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+    }
+
+    void OnTriggerEnter2D(Collision other)
+    {
+        prefabInstantiate = Instantiate(_Prefab, _Position.position, Quaternion.identity, GameObject.FindWithTag("HUD").transform) as GameObject;
+    }
+
+    void OnTriggerExit2D(Collision other)
+    {
+        Destroy(prefabInstantiate,livingTime);
+    }
+
+
+
+     
+}

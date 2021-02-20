@@ -12,6 +12,9 @@ public class UIJump : MonoBehaviour
     private GameObject instantiatedObject;
     private bool jump = false;
 
+    [SerializeField] public string nextLevel;
+    private int veces;
+
     private void Awake()
     {
     }
@@ -45,6 +48,24 @@ public class UIJump : MonoBehaviour
                 Invoke("DestroyO", 1);
             }
         }
+        }else if(nextLevel == "Jungle")
+        {
+            if(Input.GetButtonDown("Jump"))
+            {
+                veces++;
+                if(veces == 2)
+                {
+                    if (instantiatedObject)
+                     {
+                         instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                     }
+                     Invoke("DestroyO", 1);
+                }
+                
+            }
+
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
