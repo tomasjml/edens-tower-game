@@ -17,12 +17,14 @@ public class NPCCoontroller : MonoBehaviour
     private DialogManager dialogManag;
     public Transform dialogueManagerObject;
     private int veces=0;
+    private Animator _animator;
     public Transform textBoxSprite;
     private SpriteRenderer orderLayerTextboxSprite;
     void Awake()
     {
+       _animator=GetComponent<Animator>();
        mySpriteRenderer = GetComponent<SpriteRenderer>();
-         orderLayerTextboxSprite=textBoxSprite.gameObject.GetComponent<SpriteRenderer>();
+        orderLayerTextboxSprite=textBoxSprite.gameObject.GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -52,6 +54,7 @@ public class NPCCoontroller : MonoBehaviour
             playerScript.enableKeys(false);
         }
         if(transform.position.x<=startDialoguePosition.transform.position.x && veces==0){
+            _animator.SetBool("Iddle",true);
             orderLayerTextboxSprite.sortingOrder=0;
             dialogueTrigger.TriggerDialogue();
             veces++;
@@ -60,7 +63,8 @@ public class NPCCoontroller : MonoBehaviour
             dialogManag.DisplayNextSentence();
         }
         if(dialogManag.isDialogueialogueFinished()==true){
-            mySpriteRenderer.sortingOrder=-1;
+            mySpriteRenderer.sortingOrder=1;
+            orderLayerTextboxSprite.sortingOrder=-2;
             playerScript.enableKeys(true);
             Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
