@@ -36,7 +36,7 @@ public class DialogManager : MonoBehaviour
     }
     public void DisplayNextSentence(){
         dialogText.gameObject.SetActive(true);
-        if(sentences.Count==0){
+        if(sentences.Count==0 && dialogueFinished==false){
             EndDialogue();
 
             return;
@@ -74,6 +74,9 @@ public class DialogManager : MonoBehaviour
     }
     public bool isDialogueialogueFinished(){
         return dialogueFinished;
+    }
+    public void setDialogueFinished(bool setDialogue){
+        dialogueFinished=setDialogue;
     }
     
 }

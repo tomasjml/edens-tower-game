@@ -48,7 +48,7 @@ public class NPCCoontroller : MonoBehaviour
     void Update()
     {
         
-        if(player.transform.position.x>0.293){
+        if(player.transform.position.x>0.293&& veces==0){
             StartCoroutine("PatrolToTarget");
             mySpriteRenderer.sortingOrder=0;
             playerScript.enableKeys(false);
@@ -65,8 +65,10 @@ public class NPCCoontroller : MonoBehaviour
         if(dialogManag.isDialogueialogueFinished()==true){
             mySpriteRenderer.sortingOrder=1;
             orderLayerTextboxSprite.sortingOrder=-2;
+            Debug.Log("aqui");
             playerScript.enableKeys(true);
             Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            dialogManag.setDialogueFinished(false);
         }
         
     }
@@ -83,7 +85,7 @@ public class NPCCoontroller : MonoBehaviour
             Vector2 direction = _target.transform.position - transform.position;
             float xDirection = direction.x;
 
-            transform.Translate(direction.normalized * 0.002f * Time.deltaTime);
+            transform.Translate(direction.normalized * 0.004f * Time.deltaTime);
             //_animator.SetBool("isGrounded", _isGrounded);
             yield return null;
         }

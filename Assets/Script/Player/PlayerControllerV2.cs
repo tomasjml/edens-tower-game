@@ -78,6 +78,7 @@ public class PlayerControllerV2 : MonoBehaviour
         enableKey=enable;
         if(enable==false){
             _movement = Vector3.zero;
+            //Debug.Log("hola");
         }
         
     }
@@ -175,6 +176,7 @@ public class PlayerControllerV2 : MonoBehaviour
         
        if(collisionInfo.collider.tag=="Die"){
             colPicas++;
+            _movement = Vector3.zero;
         }
         if(colPicas==1){
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
