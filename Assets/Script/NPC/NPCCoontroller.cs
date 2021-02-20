@@ -21,9 +21,7 @@ public class NPCCoontroller : MonoBehaviour
     private SpriteRenderer orderLayerTextboxSprite;
     void Awake()
     {
-       // _body = GetComponent<Rigidbody2D>();
-       // _animator = GetComponent<Animator>();
-         mySpriteRenderer = GetComponent<SpriteRenderer>();
+       mySpriteRenderer = GetComponent<SpriteRenderer>();
          orderLayerTextboxSprite=textBoxSprite.gameObject.GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
@@ -48,7 +46,6 @@ public class NPCCoontroller : MonoBehaviour
     void Update()
     {
         
-        //StartCoroutine("PatrolToTarget");
         if(player.transform.position.x>0.293){
             StartCoroutine("PatrolToTarget");
             mySpriteRenderer.sortingOrder=0;
@@ -61,6 +58,11 @@ public class NPCCoontroller : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.W)){
             dialogManag.DisplayNextSentence();
+        }
+        if(dialogManag.isDialogueialogueFinished()==true){
+            mySpriteRenderer.sortingOrder=-1;
+            playerScript.enableKeys(true);
+            Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
         
     }

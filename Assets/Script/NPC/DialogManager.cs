@@ -12,7 +12,9 @@ public class DialogManager : MonoBehaviour
     public Text dialogText;
     public Text dialogPlayerText;
     public Transform dialoguePlayer;
+    public Transform dialogueNPC;
     private SpriteRenderer orderLayerTextboxSprite;
+    public bool dialogueFinished;
     void Awake(){
         orderLayerTextboxSprite=dialoguePlayer.gameObject.GetComponent<SpriteRenderer>();
     }
@@ -21,6 +23,7 @@ public class DialogManager : MonoBehaviour
         sentences=new Queue<string>();
         dialogText.gameObject.SetActive(false);
         dialogPlayerText.gameObject.SetActive(false);
+        dialogueFinished=false;
     }
     public void StartDialog(ObjectDialog dialogue){
         //Debug.Log("start dialogue");
@@ -35,6 +38,7 @@ public class DialogManager : MonoBehaviour
         dialogText.gameObject.SetActive(true);
         if(sentences.Count==0){
             EndDialogue();
+
             return;
         }
          
@@ -44,17 +48,32 @@ public class DialogManager : MonoBehaviour
         }
         
         if(sentences.Count==7|| sentences.Count==8 || sentences.Count==5){ 
-            string sentence=sentences.Dequeue();    
-            dialogPlayerText.text=sentence;
-            Debug.Log(sentence);
+            string sentence=sentences.Dequeue();   
+            dialoguePlayer.gameObject.SetActive(true); 
+            dialogText.text="";
+            dialogueNPC.gameObject.SetActive(false);
+             dialogPlayerText.text=sentence;
+            
         }
         else{   
             string sentence=sentences.Dequeue();
-            dialogText.text=sentence;}
+            dialoguePlayer.gameObject.SetActive(false); 
+            dialogPlayerText.text="";
+            dialogueNPC.gameObject.SetActive(true);
+            dialogText.text=sentence;
+        }
 
     }
     void EndDialogue(){
         Debug.Log("end of conversation");
+        dialogPlayerText.text="";
+        dialogText.text="";
+        dialoguePlayer.gameObject.SetActive(false); 
+        dialogueNPC.gameObject.SetActive(false);
+        dialogueFinished=true;
+    }
+    public bool isDialogueialogueFinished(){
+        return dialogueFinished;
     }
     
 }
