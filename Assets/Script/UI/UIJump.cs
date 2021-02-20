@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class UIJump : MonoBehaviour
 {
     public GameObject instruction;
     public Transform position;
+    public Animator _animator;
 
     private GameObject instantiatedObject;
     private bool jump = false;
@@ -22,13 +24,26 @@ public class UIJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (instantiatedObject)
+        if (SceneManager.GetActiveScene().name.Equals("Jungla")){
+            if (Input.GetButtonDown("Jump") && !_animator.GetBool("isGrounded"))
             {
-                instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                if (instantiatedObject)
+                {
+                    instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                }
+                Invoke("DestroyO", 1);
             }
-            Invoke("DestroyO", 1);
+        }
+        else
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (instantiatedObject)
+                {
+                    instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                }
+                Invoke("DestroyO", 1);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

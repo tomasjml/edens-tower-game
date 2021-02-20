@@ -3876,6 +3876,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &442344762 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9132203323589162043, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
+  m_PrefabInstance: {fileID: 1794999561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461313367
 GameObject:
   m_ObjectHideFlags: 0
@@ -8676,6 +8681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instruction: {fileID: 6388417354018850277, guid: c60df000cc7d9d247957f58f9eb87a0b, type: 3}
   position: {fileID: 674714846}
+  _animator: {fileID: 442344762}
 --- !u!61 &1327801545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11570,7 +11576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162042, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_Name
-      value: Play3r
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162043, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_Controller
