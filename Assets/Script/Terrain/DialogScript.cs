@@ -26,14 +26,23 @@ public class DialogScript : MonoBehaviour
        
     }
 
-    void OnTriggerEnter2D(Collision other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        prefabInstantiate = Instantiate(_Prefab, _Position.position, Quaternion.identity, GameObject.FindWithTag("HUD").transform) as GameObject;
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Probando");
+            prefabInstantiate = Instantiate(_Prefab, _Position.position, Quaternion.identity, GameObject.FindWithTag("HUD").transform) as GameObject;
+        }
+        
     }
 
-    void OnTriggerExit2D(Collision other)
+    void OnTriggerExit2D(Collider2D other)
     {
-        Destroy(prefabInstantiate,livingTime);
+        if(other.CompareTag("Player"))
+        {
+            Destroy(prefabInstantiate,livingTime);
+        }
+        
     }
 
 
