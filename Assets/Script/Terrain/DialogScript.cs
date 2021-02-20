@@ -9,6 +9,9 @@ public class DialogScript : MonoBehaviour
     public float livingTime;
 
     private GameObject prefabInstantiate;
+
+
+    public GameObject[] _pr;
     // Start is called before the first frame update
 
     void Awake()
@@ -23,14 +26,13 @@ public class DialogScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Probando");
             prefabInstantiate = Instantiate(_Prefab, _Position.position, Quaternion.identity, GameObject.FindWithTag("HUD").transform) as GameObject;
         }
         
