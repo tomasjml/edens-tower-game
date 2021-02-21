@@ -8,6 +8,8 @@ public class Book : MonoBehaviour
     [SerializeField] private string nextlevel;
     public GameObject fakeLuke;
     public float time;
+    public Animator _animator;
+
     void Start()
     {
         
@@ -27,6 +29,9 @@ public class Book : MonoBehaviour
         {
             
             other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
+            
+            _animator.GetComponent<Animator>().SetTrigger("Flotando");
+            _animator.GetComponent<Animator>().SetTrigger("Closing");
             Invoke("changeScene",time);
             
         }
@@ -41,5 +46,10 @@ public class Book : MonoBehaviour
     void changeScene()
     {
         SceneManager.LoadScene(nextlevel);
+    }
+
+    void emptySc()
+    {
+
     }
 }

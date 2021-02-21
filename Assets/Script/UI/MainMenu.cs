@@ -7,17 +7,42 @@ public class MainMenu : MonoBehaviour
     public GameObject Main_Menu;
     public GameObject CreditsMenu;
     public GameObject SettingsMenu;
+    public GameObject LoadButtons;
+    public GameObject LoadMenu;
+    public GameObject MenuButtons;
+    public GameObject Background;
 
     // Start is called before the first frame update
     void Start()
     {
         MainMenuButton();
+        MenuButtons.SetActive(true);
+        LoadButtons.SetActive(false);
     }
 
-    public void Play()
+    public void MainToLoadButton()
     {
-        // Play Now Button has been pressed, here you can initialize your game (For example Load a Scene called GameLevel etc.)
+        MenuButtons.SetActive(false);
+        LoadButtons.SetActive(true);
+        
+    }
+
+    public void LoadToMainButton()
+    {
+        MenuButtons.SetActive(true);
+        LoadButtons.SetActive(false);
+    }
+
+    public void NewGame()
+    {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Dormitorio Lisa");
+    }
+
+    public void LoadMenuButton()
+    {
+        Main_Menu.SetActive(false);
+        LoadMenu.SetActive(true);
+        
     }
 
     public void MainMenuButton()
@@ -26,6 +51,7 @@ public class MainMenu : MonoBehaviour
         Main_Menu.SetActive(true);
         CreditsMenu.SetActive(false);
         SettingsMenu.SetActive(false);
+        LoadMenu.SetActive(false);
     }
 
     public void CreditsButton()
