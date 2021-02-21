@@ -179,7 +179,7 @@ public class PlayerControllerV2 : MonoBehaviour
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           colPicas=0;
-        FindObjectOfType<GameManager>().endGame();
+          GameManager.instance.endGame();
         }
     }
     void OnCollisionExit2D(Collision2D collisionInfo)
