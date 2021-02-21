@@ -27,8 +27,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public int jumpsWanted;
     private bool isJumping=false;
 
-    public Transform pica;
-    public Transform vacio;
+    //public Transform pica;
+    //public Transform vacio;
 
     void Awake()
     {
@@ -40,8 +40,8 @@ public class PlayerControllerV2 : MonoBehaviour
     {
         veces=0;
         colPicas=0;
-        var picas = Instantiate(pica) as Transform;
-        var vacioDie = Instantiate(vacio) as Transform;
+        //var picas = Instantiate(pica) as Transform;
+       // var vacioDie = Instantiate(vacio) as Transform;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -122,7 +122,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     }
     
-    void OnCollisionEnter2D(Collision2D collisionInfo){
+    /*void OnCollisionEnter2D(Collision2D collisionInfo){
         
         if(collisionInfo.collider.tag=="Die"){
             colPicas++;
@@ -133,5 +133,5 @@ public class PlayerControllerV2 : MonoBehaviour
           colPicas=0;
         FindObjectOfType<GameManager>().endGame();
         }
-    }
+    }*/
 }

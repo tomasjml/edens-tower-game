@@ -5,63 +5,86 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public float speed = 2f;
-    public bool hasTarget = false;
-    public GameObject target; 
+    Transform target;
+    Transform enemyTransform;
+    public float speed = 3f;
+    private bool facingRight;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidbody;
+    Animator _animator;
 
-    //Movement
-    private bool facingLeft;
-    private Vector2 movement;
 
-    void Awake()
+    private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        enemyTransform = this.GetComponent<Transform>();
+        _animator = this.GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
-
-    // Start is called before the first frame update
     void Start()
-    {
+    {   
+        _animator.SetBool("Idle", true);
         if (transform.localScale.x < 0f)
         {
-            facingLeft = true;
+            facingRight = false;
         }
         else if (transform.localScale.x > 0f)
         {
-            facingLeft = false;
+            facingRight = true;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        Vector2 direction = Vector2.left;
 
-        if (facingLeft == false)
+        target = GameObject.FindWithTag("Player").transform;
+        float distance = target.transform.position.x - transform.position.x;
+        if(distance < 0)
         {
-            direction = Vector2.right;
+            distance = distance * -1f;
+        }
+
+        if (distance < 1f)
+        {
+            Vector3 targetHeading = target.position - transform.position;
+            Vector3 targetDirection = targetHeading.normalized;
+
+            //rotate to look at the player
+
+            if (facingRight == false)
+            {
+                if(target.transform.position.x > transform.position.x)
+                {
+                    flip();
+                }
+            }
+            if (facingRight == true)
+            {
+                if (target.transform.position.x < transform.position.x)
+                {
+                    flip();
+                }
+            }
+
+            float horizontalVelocity = speed;
+
+            if (facingRight == false)
+            {
+                horizontalVelocity = horizontalVelocity * -1f;
+            }
+
+            _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y);
+
         }
     }
 
-    void FixedUpdate()
+    private void LateUpdate()
     {
-        
+        _animator.SetBool("Idle", _rigidbody.velocity == Vector2.zero);
     }
 
-    void LateUpdate()
+    public void flip()
     {
-        
-    }
-
-    private void Flip()
-    {
-        facingLeft = !facingLeft;
+        facingRight = !facingRight;
         float localScaleX = transform.localScale.x;
         localScaleX = localScaleX * -1f;
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
