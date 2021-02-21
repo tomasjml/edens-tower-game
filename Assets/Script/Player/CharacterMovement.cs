@@ -90,6 +90,13 @@ public class CharacterMovement : MonoBehaviour
             counter = 0f;
 
         }
+
+        // Find out Time 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log("T pressed");
+            Debug.Log(GameManager.instance.GetTimePlayingStr());
+        }
     }
 
     private void FixedUpdate()

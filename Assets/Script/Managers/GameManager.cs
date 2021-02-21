@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     // Timer Attributes
-    private TimeSpan timePlaying;
-    private bool timerGoing;
-    private float elapsedTime;
-    private string timePlayingStr;
-    private Text timeCounter;
+    private static TimeSpan timePlaying;
+    private static bool timerGoing;
+    private static float elapsedTime;
+    private static string timePlayingStr;
+    private static Text timeCounter;
 
     // Game over Attributes
     public float restartDelay=2.5f;
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(UpdateTimer());
     }
 
-    IEnumerator UpdateTimer()
+    public IEnumerator UpdateTimer()
     {
         while (timerGoing)
         {
@@ -70,12 +70,14 @@ public class GameManager : MonoBehaviour
             timePlayingStr = "Time playing: " + timePlaying.ToString("hh':'mm':'ss");
             timeCounter.text = timePlayingStr;
             yield return null;
+            Debug.Log(elapsedTime);
         }
     }
 
     public void NewGame()
     {
         BeginGameManager();
+        timerGoing = true;
         SceneManager.LoadScene("Dormitorio Lisa");
     }
 
@@ -96,5 +98,10 @@ public class GameManager : MonoBehaviour
 
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public String GetTimePlayingStr()
+    {
+        return timePlayingStr;
     }
 }
