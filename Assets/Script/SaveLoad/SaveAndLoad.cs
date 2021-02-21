@@ -76,7 +76,14 @@ public class SaveAndLoad : MonoBehaviour
         string loadDataJson = gamedata["saveData"];
         SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
 
+        Scene scene = loadData.playerData.scene;
         position = loadData.playerData.position;
+
+        if (SceneManager.GetActiveScene() != scene)
+        {
+            SceneManager.LoadScene(scene.name);
+        }
+
         player.transform.position = position;
 
     }
