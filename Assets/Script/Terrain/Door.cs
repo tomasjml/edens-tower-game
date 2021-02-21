@@ -8,6 +8,10 @@ public class Door : MonoBehaviour
     [SerializeField] private string nextLevel;
     private BoxCollider2D _collider;
     private Animator _animator;
+    public GameObject _ImagePress;
+    public Transform _ImagePosition;
+
+    private GameObject instantiatedObject;
 
     void Awake()
     {
@@ -24,6 +28,8 @@ public class Door : MonoBehaviour
         if (CompareTag("Door"))
         {
             _animator.SetBool("IsOpened", true);
+            instantiatedObject = Instantiate(_ImagePress,_ImagePosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
+
         }
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -41,6 +47,8 @@ public class Door : MonoBehaviour
         if (CompareTag("Door"))
         {
             _animator.SetBool("IsOpened", false);
+            instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+            Invoke("DestroyO", 1);
         }
     }
     // Update is called once per frame
@@ -49,9 +57,10 @@ public class Door : MonoBehaviour
         
     }
 
-    void LateUpdate()
+    void DestroyO()
     {
-        
+        DestroyImmediate(instantiatedObject, true);
     }
 
 }
+
