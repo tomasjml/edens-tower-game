@@ -37,6 +37,8 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool pushingAnimation;
     private bool isGrounded;
     private bool enableKey;
+    Scene currentScene;
+    string sceneName;
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -130,8 +132,10 @@ public class PlayerControllerV2 : MonoBehaviour
         else{
             counter = 0;
         }
-       
-        if(transform.position.x>minX ){
+        currentScene = SceneManager.GetActiveScene ();
+ 
+          sceneName = currentScene.name;
+        if(transform.position.x>minX && sceneName=="Jungla"){
             enableKey=false;
             StartCoroutine("PatrolToTarget");
            if(transform.position.x>maxX){
