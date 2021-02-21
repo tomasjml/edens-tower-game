@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236398229}
   - component: {fileID: 236398230}
+  - component: {fileID: 236398231}
   m_Layer: 5
   m_Name: StartTask
   m_TagString: Untagged
@@ -262,7 +263,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.6747017, y: 1.2614422}
@@ -278,6 +279,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 99.50863, y: 95.63632}
   m_EdgeRadius: 0
+--- !u!114 &236398231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236398228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29eec486a5f2eeb44a802daed9b937d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks:
+  - {fileID: 5241358509310649237, guid: ce3bcdd55fe91dc4597eaed1c4545835, type: 3}
+  - {fileID: 5220720032188676238, guid: c5f2e54139bbbc84bbbbb2412307559e, type: 3}
+  position: {fileID: 2068279392}
 --- !u!20 &404514991 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
@@ -4102,10 +4119,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1858234890}
-  - component: {fileID: 1858234891}
   m_Layer: 5
   m_Name: Task Menu
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4131,22 +4147,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1858234891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858234889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80bb12d27ac06704d856d4c4ea27c287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks:
-  - {fileID: 7042994729334196023, guid: fb26d08a41df2b04dbd786139b4105f6, type: 3}
-  - {fileID: 5241358509310649237, guid: ce3bcdd55fe91dc4597eaed1c4545835, type: 3}
-  - {fileID: 5220720032188676238, guid: c5f2e54139bbbc84bbbbb2412307559e, type: 3}
 --- !u!1 &1881244600
 GameObject:
   m_ObjectHideFlags: 0
