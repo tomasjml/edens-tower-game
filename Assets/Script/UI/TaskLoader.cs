@@ -5,9 +5,12 @@ using UnityEngine;
 public class TaskLoader : MonoBehaviour
 {
     public GameObject[] tasks;
-    public Transform position;
-
-    private GameObject instantiatedObject;
+    public Transform position1;
+    public Transform position2;
+    public Transform position0;
+    private GameObject instantiatedObject0 = null;
+    private GameObject instantiatedObject1 = null;
+    private GameObject instantiatedObject2 = null;
 
     // Start is called before the first frame update
     void Start()
@@ -25,12 +28,13 @@ public class TaskLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            foreach(GameObject o in tasks)
+            if (!instantiatedObject0)
             {
-                instantiatedObject = Instantiate(o, position.position+new Vector3(0,2,1), Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                
+                instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
             }
-
+            
         }
     }
 }
