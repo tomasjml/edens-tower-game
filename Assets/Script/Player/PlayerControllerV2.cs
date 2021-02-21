@@ -172,7 +172,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     }
     
-    /*void OnCollisionEnter2D(Collision2D collisionInfo){
+    void OnCollisionEnter2D(Collision2D collisionInfo){
         
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=true;
