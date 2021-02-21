@@ -15,6 +15,7 @@ public class Dialogue_Manager : MonoBehaviour
     AudioSource myAudio;
     public AudioClip speakSound;
     public GameObject dialoguePanel;
+    public GameObject _Trigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +75,7 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-            if(Input.GetKeyDown(KeyCode.W))
+            if(Input.GetKeyDown(KeyCode.W) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
                 
                 DisplayNextSentence();
@@ -86,8 +87,13 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-                dialoguePanel.SetActive(false);
-                
+            dialoguePanel.SetActive(false);    
+            _Trigger.SetActive(false);
+        }
+
+        if(other.CompareTag("Trigger"))
+        {
+            
         }
     }
 }
