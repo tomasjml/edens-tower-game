@@ -181,6 +181,7 @@ public class PlayerControllerV2 : MonoBehaviour
        if(collisionInfo.collider.tag=="Die"){
             colPicas++;
             _movement = Vector3.zero;
+            enableKeys(false);
         }
         if(colPicas==1){
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
