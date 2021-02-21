@@ -15,10 +15,12 @@ public class FindingTiaraAndSword : MonoBehaviour
     
     public Transform textPlayerBoxSword;
     public Text dialogPlayerTextSword;
+    private Animation _animation;
     
     void Start()
     {
         playerMainScript=gameObject.GetComponent<PlayerControllerV2>();
+        _animation=gameObject.GetComponent<Animation>();
         veces=0;
         textPlayerBox.gameObject.SetActive(false);
         textPlayerBoxSword.gameObject.SetActive(false);
@@ -50,13 +52,17 @@ public class FindingTiaraAndSword : MonoBehaviour
             veces++;
         }
         if(Input.GetKeyDown(KeyCode.W) && veces==3){
+            
             playerMainScript.enableKeys(true);
             textPlayerBoxSword.gameObject.SetActive(false);
             dialogPlayerTextSword.text="";
             veces++;
         }
         if(Input.GetKeyDown(KeyCode.W) && veces==4){
+
             sword.gameObject.SetActive(false);
+            _animation["PickinUpTiara"].wrapMode = WrapMode.Once;
+            _animation.Play("PickinUpTiara");
         }
     }
 }
