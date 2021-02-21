@@ -16,6 +16,16 @@ public class Dialogue_Manager : MonoBehaviour
     public AudioClip speakSound;
     public GameObject dialoguePanel;
     public GameObject _Trigger;
+    public PlayerControllerV2 _Player;
+    public GameObject _InstructionPressE;
+    public Transform _PositionPreesE;
+
+    private GameObject instantiatedObject;
+
+    void Awake()
+    {
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +52,6 @@ public class Dialogue_Manager : MonoBehaviour
             displayText.text = activeSentence;
             return;
         }
-
         activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
         displayText.text = activeSentence;
 
@@ -66,20 +75,41 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
+            
             dialoguePanel.SetActive(true);
             StartDialogue();
+            _Player.enableKeys(false);
+            _InstructionPressE.SetActive(true);
+            
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if( other.CompareTag("Player") )
         {
-            if(Input.GetKeyDown(KeyCode.W) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            {
+                DisplayNextSentence();
+                
+            }
+
+
+            if(sentences.Count == 0)
             {
                 
-                DisplayNextSentence();
+                
+                Debug.Log("Presione E para terminar.");
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    _Player.enableKeys(true);
+                    Destroy(_Trigger,0);
+                    _InstructionPressE.SetActive(false);
+                }
+                 
             }
+           
         }
     }
 
@@ -89,10 +119,6 @@ public class Dialogue_Manager : MonoBehaviour
         {
             dialoguePanel.SetActive(false);    
             _Trigger.SetActive(false);
-        }
-
-        if(other.CompareTag("Trigger"))
-        {
             
         }
     }
