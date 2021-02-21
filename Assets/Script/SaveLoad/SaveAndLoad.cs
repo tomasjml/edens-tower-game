@@ -10,9 +10,13 @@ using SimpleJSON;
 public class SaveAndLoad : MonoBehaviour
 {
 
+    public enum Slot {One, Two, Three, Four};
+
     public Vector2 position;
     private readonly string serviceURL = "http://161.35.251.140:8086/";
     public GameObject player;
+    public string username;
+    public Slot slot;
 
 
 
@@ -44,9 +48,16 @@ public class SaveAndLoad : MonoBehaviour
         StartCoroutine(GetRequest());
     }
 
+    public void DeleteGame()
+    {
+        StartCoroutine(DeleteRequest());
+    }
+
+
+    //Load
     IEnumerator GetRequest()
     {
-        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/game?slot=One&username=robdom01");
+        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/game?slot="+ slot.ToString() + "&username=" + username);
         yield return GETRequest.SendWebRequest();
 
         if (GETRequest.result == UnityWebRequest.Result.ProtocolError || GETRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -54,9 +65,13 @@ public class SaveAndLoad : MonoBehaviour
             Debug.Log(GETRequest.error);
             yield break;
         }
+        else
+        {
+            Debug.Log("Data Loaded");
+        }
 
 
-        JSONNode gamedata = JSON.Parse(GETRequest.downloadHandler.text);
+            JSONNode gamedata = JSON.Parse(GETRequest.downloadHandler.text);
 
         string loadDataJson = gamedata["saveData"];
         SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
@@ -66,6 +81,7 @@ public class SaveAndLoad : MonoBehaviour
 
     }
 
+    //Save
     IEnumerator postRequest(string jsonSaveData)
     {
         WWWForm form = new WWWForm();
@@ -80,14 +96,14 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("musicEnabled", "true");
         form.AddField("musicLvl", 100);
         form.AddField("saveData", jsonSaveData);
-        form.AddField("saveSlotstr", "One");
+        form.AddField("saveSlotstr", slot.ToString());
         form.AddField("sfxEnabled", "true");
         form.AddField("sfxLvl", 100);
         form.AddField("speed", 0);
         form.AddField("strength", 0);
         form.AddField("totalDeaths", 0);
         form.AddField("totalKills", 0);
-        form.AddField("username", "robdom01");
+        form.AddField("username", username);
         form.AddField("vitality", 0);
 
         UnityWebRequest POSTRequest = UnityWebRequest.Post(serviceURL + "games/game", form);
@@ -103,6 +119,23 @@ public class SaveAndLoad : MonoBehaviour
         }
 
 
+    }
+
+    //Delete
+    IEnumerator DeleteRequest()
+    {
+        UnityWebRequest DELRequest = UnityWebRequest.Delete(serviceURL + "games/game?saveSlotstr=" + slot.ToString() + "&username=" + username);
+        yield return DELRequest.SendWebRequest();
+
+        if (DELRequest.result == UnityWebRequest.Result.ProtocolError || DELRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.Log(DELRequest.error);
+            yield break;
+        }
+        else
+        {
+            Debug.Log("Game Deleted");
+        }
     }
 
 
