@@ -51,14 +51,15 @@ public class PlayerControllerV2 : MonoBehaviour
         pushing=false;
         pushingAnimation=false;
         enableKey=true;
-        //var picas = Instantiate(pica) as Transform;
-        //var vacioDie = Instantiate(vacio) as Transform;
+        
+        
     }
     private void UpdateTarget()
     {
-        if (_target == null)
+        if (_target == null )
         {
             _target = new GameObject("Target");
+            Debug.Log("leave");
             _target.transform.position = new Vector2(maxX, transform.position.y);
             return;
         }
@@ -73,6 +74,14 @@ public class PlayerControllerV2 : MonoBehaviour
             }
         }
     }
+    public void enableKeys(bool enable){
+        enableKey=enable;
+        if(enable==false){
+            _movement = Vector3.zero;
+            //Debug.Log("hola");
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -81,7 +90,7 @@ public class PlayerControllerV2 : MonoBehaviour
         
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
         
-        if((horizontalInput>0f || horizontalInput<0f)&&enableKey==true){
+        if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
             if(pushing==true){
                 pushingAnimation=true;
                
@@ -91,20 +100,15 @@ public class PlayerControllerV2 : MonoBehaviour
                
             }
         }
-        if (!atacking&&enableKey==true)
-        {
+        if (!atacking&&enableKey==true){
             _movement = new Vector2(horizontalInput, 0f);
         }
-        if (horizontalInput < 0f && facingRight == true&&enableKey==true)
-        {
+        if (horizontalInput < 0f && facingRight == true&&enableKey==true) {
             flip();
         }
-        else if (horizontalInput > 0f && facingRight == false&&enableKey==true)
-        {
+        else if (horizontalInput > 0f && facingRight == false&&enableKey==true) {
             flip();
         }
-
-         
         //Esta saltando?
         if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
@@ -112,7 +116,6 @@ public class PlayerControllerV2 : MonoBehaviour
             veces++;
             
         }
-
         else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
@@ -121,28 +124,27 @@ public class PlayerControllerV2 : MonoBehaviour
             veces=0;
             isJumping=false;
         }    
-        if (_movement == Vector2.zero && !atacking&&enableKey==true)
-        {
+        if (_movement == Vector2.zero && !atacking&&enableKey==true){
             counter += 1 * Time.deltaTime;
         }
-        else
-        {
+        else{
             counter = 0;
         }
-        
        
-        if(transform.position.x>68){
+        if(transform.position.x>minX ){
             enableKey=false;
-           StartCoroutine("PatrolToTarget");
-           if(transform.position.x>85){
+            StartCoroutine("PatrolToTarget");
+           if(transform.position.x>maxX){
                SceneManager.LoadScene("Castillo");
            }
         }
     }
     private void FixedUpdate()
     {
-        float horizontalVelocity = _movement.normalized.x * speed;
+        float horizontalVelocity;
+        horizontalVelocity = _movement.normalized.x * speed;
         _body.velocity = new Vector2(horizontalVelocity, _body.velocity.y);
+        
     }
     private void LateUpdate()
     {
@@ -174,6 +176,7 @@ public class PlayerControllerV2 : MonoBehaviour
         
        if(collisionInfo.collider.tag=="Die"){
             colPicas++;
+            _movement = Vector3.zero;
         }
         if(colPicas==1){
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
