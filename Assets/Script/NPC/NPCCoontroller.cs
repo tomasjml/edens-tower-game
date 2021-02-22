@@ -65,7 +65,6 @@ public class NPCCoontroller : MonoBehaviour
         if(dialogManag.isDialogueialogueFinished()==true){
             mySpriteRenderer.sortingOrder=1;
             orderLayerTextboxSprite.sortingOrder=-2;
-            Debug.Log("aqui");
             playerScript.enableKeys(true);
             Physics2D.IgnoreCollision(player.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             dialogManag.setDialogueFinished(false);

@@ -39,7 +39,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool enableKey;
     private Scene currentScene;
     private string sceneName;
-    private bool pickup;
+    
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -52,18 +52,14 @@ public class PlayerControllerV2 : MonoBehaviour
         colPicas=0;
         UpdateTarget();
         pushing=false;
-        pickup=true;
         pushingAnimation=false;
-        enableKey=true;
-        
-        
+        enableKey=true;     
     }
     private void UpdateTarget()
     {
         if (_target == null )
         {
             _target = new GameObject("Target");
-            Debug.Log("leave");
             _target.transform.position = new Vector2(maxX, transform.position.y);
             return;
         }
@@ -82,11 +78,9 @@ public class PlayerControllerV2 : MonoBehaviour
         enableKey=enable;
         if(enable==false){
             _movement = Vector3.zero;
-            //Debug.Log("hola");
         }
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -164,15 +158,8 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetBool("Idle", _movement == Vector2.zero);
         }
         _animator.SetFloat("VerticalVelocity",_body.velocity.y);
-        if(pickup==true){
-            _animator.SetBool("pickUpTiara", true);
-        }
         
     }
-    
-        
-   
-
     private void flip()
     {
         facingRight = !facingRight;
