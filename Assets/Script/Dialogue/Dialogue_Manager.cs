@@ -47,7 +47,7 @@ public class Dialogue_Manager : MonoBehaviour
 
     void DisplayNextSentence()
     {
-        if(sentences.Count <= 0)
+        if(sentences.Count == 0)
         {
             displayText.text = activeSentence;
             return;
@@ -91,15 +91,12 @@ public class Dialogue_Manager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
-                DisplayNextSentence();
-                
+                DisplayNextSentence();  
             }
 
 
             if(sentences.Count == 0)
             {
-                
-                
                 Debug.Log("Presione E para terminar.");
                 if(Input.GetKeyDown(KeyCode.E))
                 {
@@ -122,4 +119,6 @@ public class Dialogue_Manager : MonoBehaviour
             
         }
     }
+
+   
 }
