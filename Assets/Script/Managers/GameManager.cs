@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    protected GameManager() { }
+
     void InitGame()
     {
 
