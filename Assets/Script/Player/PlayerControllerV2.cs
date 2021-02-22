@@ -37,8 +37,9 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool pushingAnimation;
     private bool isGrounded;
     private bool enableKey;
-    Scene currentScene;
-    string sceneName;
+    private Scene currentScene;
+    private string sceneName;
+    private bool pickup;
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -51,6 +52,7 @@ public class PlayerControllerV2 : MonoBehaviour
         colPicas=0;
         UpdateTarget();
         pushing=false;
+        pickup=true;
         pushingAnimation=false;
         enableKey=true;
         
@@ -156,12 +158,20 @@ public class PlayerControllerV2 : MonoBehaviour
         _animator.SetBool("isPushing", pushingAnimation);
         if(_isGrounded==false){
             _animator.SetBool("Idle", false);
+            
         }
         else{
             _animator.SetBool("Idle", _movement == Vector2.zero);
         }
         _animator.SetFloat("VerticalVelocity",_body.velocity.y);
+        if(pickup==true){
+            _animator.SetBool("pickUpTiara", true);
+        }
+        
     }
+    
+        
+   
 
     private void flip()
     {
