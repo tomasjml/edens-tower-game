@@ -34,7 +34,19 @@ public class TaskLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!scene.Equals("Dormitorio Luke") && !scene.Equals("Pasillo"))
+        {
+            if (instantiatedObject0)
+            {
+                instantiatedObject1.GetComponent<Animator>().SetBool("Appear", true);
+                instantiatedObject2.GetComponent<Animator>().SetBool("Appear", true);
+                instantiatedObject0.GetComponent<Animator>().SetBool("Appear", true);
+            }
+        }
+        if (complete == true)
+        {
+            instantiatedObject1.GetComponent<Animator>().SetTrigger("Complete");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,18 +64,6 @@ public class TaskLoader : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!scene.Equals("Dormitorio Luke") && !scene.Equals("Pasillo"))
-        {
-            if (instantiatedObject0)
-            {
-                instantiatedObject1.GetComponent<Animator>().SetBool("Appear", true);
-                instantiatedObject2.GetComponent<Animator>().SetBool("Appear", true);
-                instantiatedObject0.GetComponent<Animator>().SetBool("Appear", true);
-            }
-        }
-        if (complete == true)
-        {
-            instantiatedObject1.GetComponent<Animator>().SetTrigger("Complete");
-        }
+        
     }
 }

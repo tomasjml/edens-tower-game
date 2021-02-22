@@ -79,7 +79,7 @@ public class Dialogue_Manager : MonoBehaviour
             dialoguePanel.SetActive(true);
             StartDialogue();
             _Player.enableKeys(false);
-            _InstructionPressE.SetActive(true);
+            instantiatedObject = Instantiate(_InstructionPressE,_PositionPreesE.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
             
         }
         
@@ -105,7 +105,7 @@ public class Dialogue_Manager : MonoBehaviour
                 {
                     _Player.enableKeys(true);
                     Destroy(_Trigger,0);
-                    _InstructionPressE.SetActive(false);
+                    instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 }
                  
             }
