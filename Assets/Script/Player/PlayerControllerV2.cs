@@ -43,6 +43,8 @@ public class PlayerControllerV2 : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
     }
     // Start is called before the first frame update
     void Start()
@@ -112,13 +114,14 @@ public class PlayerControllerV2 : MonoBehaviour
             flip();
         }
         //Esta saltando?
-        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true){
+        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
             
         }
-        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true){
+        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
+        {
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
         }
@@ -132,9 +135,6 @@ public class PlayerControllerV2 : MonoBehaviour
         else{
             counter = 0;
         }
-        currentScene = SceneManager.GetActiveScene ();
- 
-          sceneName = currentScene.name;
         if(transform.position.x>minX && sceneName=="Jungla"){
             enableKey=false;
             StartCoroutine("PatrolToTarget");
