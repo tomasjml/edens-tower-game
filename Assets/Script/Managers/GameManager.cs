@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public float restartDelay=2.5f;
     public bool gameEnded=false;
 
+    // Player Stats 
+
     void Awake()
     {
         //Check if instance already exists
@@ -97,8 +99,8 @@ public class GameManager : MonoBehaviour
         timerGoing = false;
     }
 
-    public void EndGame(){
-        if(gameEnded==false){
+    public void EndGame() {
+        if(gameEnded == false) {
             gameEnded=true;
             Debug.Log("GAME OVER !");
             Debug.Log(timePlayingStr);
