@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     public float restartDelay=2.5f;
     public bool gameEnded=false;
 
-    // Player Stats 
+    // Player Stats
+    public SaveData saveData;
 
     void Awake()
     {
@@ -90,6 +91,13 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
+        // Initial Stats 
+        saveData.playerData.strength = 1;
+        saveData.playerData.luck = 1;
+        saveData.playerData.speed = 1;
+        saveData.playerData.vitality = 1;
+        saveData.playerData.defense = 1;
+
         BeginGameManager();
         SceneManager.LoadScene("Dormitorio Lisa");
     }
