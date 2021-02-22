@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6133838004604272038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776513456229024861}
+  - component: {fileID: 1685243425973699781}
+  m_Layer: 7
+  m_Name: HurtBox
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776513456229024861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133838004604272038}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.008844614, y: -0.119074345, z: -0.17300014}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6899407320601493299}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1685243425973699781
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6133838004604272038}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.019791484, y: 0.020942122}
+  m_Size: {x: 0.10101247, y: 0.11019033}
+  m_Direction: 0
 --- !u!1 &6679731038934590221
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,6 +62,8 @@ GameObject:
   - component: {fileID: 4272001810794643126}
   - component: {fileID: 3650243108809328679}
   - component: {fileID: 8633251471348153718}
+  - component: {fileID: 1014078032718329204}
+  - component: {fileID: 5802518981338300382}
   m_Layer: 0
   m_Name: FirstEnemy
   m_TagString: Untagged
@@ -34,6 +83,7 @@ Transform:
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 442870574309396471}
+  - {fileID: 1776513456229024861}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,7 +126,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 22
+  m_SortingOrder: 2333
   m_Sprite: {fileID: -1596999484918499234, guid: 3490c772786cd5c43ab1bcbcc27f574a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,7 +225,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010357976, y: -0.103189096}
+  m_Offset: {x: 0.051974416, y: -0.103189096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -186,8 +236,34 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27137017, y: 0.1136218}
+  m_Size: {x: 0.1881373, y: 0.1136218}
   m_EdgeRadius: 0
+--- !u!114 &1014078032718329204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679731038934590221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc82c383145728543a89c97d9c36c524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!114 &5802518981338300382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6679731038934590221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce13e722482083c438c6c4d9b039fab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 3
 --- !u!1 &8910874361468770578
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,9 +274,9 @@ GameObject:
   m_Component:
   - component: {fileID: 442870574309396471}
   - component: {fileID: 3763220774567662211}
-  m_Layer: 0
-  m_Name: PlayerNear
-  m_TagString: Untagged
+  m_Layer: 8
+  m_Name: AttackBox
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

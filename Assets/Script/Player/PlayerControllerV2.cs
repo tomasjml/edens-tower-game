@@ -39,6 +39,11 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool enableKey;
     Scene currentScene;
     string sceneName;
+
+    //Attack
+    private bool isAttacking;
+
+
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -142,19 +147,42 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
+
+        // Wanna Attack?
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false)
+        {
+            _movement = Vector2.zero;
+            _body.velocity = Vector2.zero;
+            _animator.SetBool("Idle", false);
+            _animator.SetTrigger("Attack");
+        }
     }
     private void FixedUpdate()
     {
-        float horizontalVelocity;
-        horizontalVelocity = _movement.normalized.x * speed;
-        _body.velocity = new Vector2(horizontalVelocity, _body.velocity.y);
+        if (isAttacking == false)
+        {
+            float horizontalVelocity;
+            horizontalVelocity = _movement.normalized.x * speed;
+            _body.velocity = new Vector2(horizontalVelocity, _body.velocity.y);
+        }
         
     }
     private void LateUpdate()
     {
         _animator.SetBool("isGrounded", _isGrounded);
         _animator.SetBool("isPushing", pushingAnimation);
-        if(_isGrounded==false){
+
+        // Animator
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack1"))
+        {
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
+        }
+
+        if (_isGrounded==false){
             _animator.SetBool("Idle", false);
         }
         else{

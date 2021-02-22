@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     Transform target;
     Transform enemyTransform;
-    public float speed = 2f;
+    public float speed = 1f;
     private bool facingRight;
     public float followingDistance = 1f;
     public float attackingDistance = 0.2f;
