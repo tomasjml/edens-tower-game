@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class SaveData 
 {
-    public PlayerSaveData playerData = new PlayerSaveData();
+    public PlayerStats playerData = new PlayerStats();
 
 }

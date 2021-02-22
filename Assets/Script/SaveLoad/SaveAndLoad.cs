@@ -25,20 +25,11 @@ public class SaveAndLoad : MonoBehaviour
         position = player.transform.position;
     }
 
-    public SaveData CreateSaveData()
-    {
-        SaveData save = new SaveData();
-
-        save.playerData.position = position;
-        save.playerData.scene = SceneManager.GetActiveScene();
-
-        return save;
-    }
-
     public void SaveGame()
     {
-        SaveData saveData = CreateSaveData();
-        string jsonSaveData = JsonUtility.ToJson(saveData);
+        GameManager.instance.saveData.playerData.position = position;
+        GameManager.instance.saveData.playerData.scene = SceneManager.GetActiveScene();
+        string jsonSaveData = JsonUtility.ToJson(GameManager.instance.saveData);
 
         StartCoroutine(postRequest(jsonSaveData));
     }
@@ -94,24 +85,24 @@ public class SaveAndLoad : MonoBehaviour
         WWWForm form = new WWWForm();
 
         form.AddField("autoSave", "true");
-        form.AddField("defense", 0);
         form.AddField("difficulty", "Easy");
         form.AddField("fullScreen", "true");
-        form.AddField("gameTimeInSeconds", 0);
+        form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);
-        form.AddField("luck", 0);
         form.AddField("musicEnabled", "true");
         form.AddField("musicLvl", 100);
         form.AddField("saveData", jsonSaveData);
         form.AddField("saveSlotstr", slot.ToString());
         form.AddField("sfxEnabled", "true");
         form.AddField("sfxLvl", 100);
-        form.AddField("speed", 0);
-        form.AddField("strength", 0);
+        form.AddField("defense", (int) GameManager.instance.saveData.playerData.defense);
+        form.AddField("speed", (int) GameManager.instance.saveData.playerData.speed);
+        form.AddField("strength", (int) GameManager.instance.saveData.playerData.strength);
+        form.AddField("luck", (int) GameManager.instance.saveData.playerData.luck);
+        form.AddField("vitality", (int)GameManager.instance.saveData.playerData.vitality);
         form.AddField("totalDeaths", 0);
         form.AddField("totalKills", 0);
         form.AddField("username", username);
-        form.AddField("vitality", 0);
 
         UnityWebRequest POSTRequest = UnityWebRequest.Post(serviceURL + "games/game", form);
         yield return POSTRequest.SendWebRequest();

@@ -142,6 +142,15 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
+        // Find out Time 
+        if (GameManager.instance.timerRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("T pressed");
+                Debug.Log(GameManager.instance.elapsedTime);
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -187,7 +196,8 @@ public class PlayerControllerV2 : MonoBehaviour
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           colPicas=0;
-          GameManager.instance.endGame();
+          //FindObjectOfType<GameManager>().endGame();
+          GameManager.instance.EndGame();
         }
     }
     void OnCollisionExit2D(Collision2D collisionInfo)

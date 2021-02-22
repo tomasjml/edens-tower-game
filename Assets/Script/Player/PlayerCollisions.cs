@@ -10,7 +10,8 @@ public class PlayerCollisions : MonoBehaviour
         Debug.Log("Entro a un collider");
         if(collisionInfo.collider.tag=="Die"){
             Debug.Log("Entro");
-            FindObjectOfType<GameManager>().endGame();
+            // FindObjectOfType<GameManager>().endGame();
+            GameManager.instance.EndGame();
         }
     }
 }
