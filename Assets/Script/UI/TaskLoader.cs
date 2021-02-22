@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 using UnityEngine;
 
 public class TaskLoader : MonoBehaviour
@@ -25,9 +26,17 @@ public class TaskLoader : MonoBehaviour
         }
         if (scene.Equals("Dormitorio Luke") || scene.Equals("Pasillo"))
         {
-            instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-            instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-            instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+            try
+            {
+                instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+            }
+            catch (NullReferenceException)
+            {
+
+            }
+
         }
     }
 
@@ -38,9 +47,16 @@ public class TaskLoader : MonoBehaviour
         {
             if (instantiatedObject0)
             {
-                instantiatedObject1.GetComponent<Animator>().SetBool("Appear", true);
-                instantiatedObject2.GetComponent<Animator>().SetBool("Appear", true);
-                instantiatedObject0.GetComponent<Animator>().SetBool("Appear", true);
+                try
+                {
+                    instantiatedObject1.GetComponent<Animator>().SetBool("Appear", true);
+                    instantiatedObject2.GetComponent<Animator>().SetBool("Appear", true);
+                    instantiatedObject0.GetComponent<Animator>().SetBool("Appear", true);
+                }
+                catch (NullReferenceException)
+                {
+
+                }
             }
         }
         if (complete == true)
@@ -55,15 +71,18 @@ public class TaskLoader : MonoBehaviour
         {
             if (!instantiatedObject0)
             {
-                instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                try
+                {
+                    instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                    instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                    instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                }
+                catch (IndexOutOfRangeException)
+                {
+
+                }
             }
         }
     }
 
-    private void LateUpdate()
-    {
-        
-    }
 }
