@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     // Timer Attributes
-    private static TimeSpan timePlaying;
-    private static bool timerGoing;
-    private static float elapsedTime;
-    private static string timePlayingStr;
-    private static Text timeCounter;
+    private TimeSpan timePlaying;
+    private bool timerGoing;
+    public float elapsedTime;
+    private string timePlayingStr;
+    private Text timeCounter;
+    public bool timerRunning;
 
     // Game over Attributes
     public float restartDelay=2.5f;
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Start()
+    private void Start()
     {
         timeCounter.text = "Time playing: 00:00.00";
         timerGoing = false;
@@ -59,25 +60,33 @@ public class GameManager : MonoBehaviour
         elapsedTime = 0f;
 
         StartCoroutine(UpdateTimer());
+        Debug.Log("Start Coroutine Update Timer Started!");
     }
 
-    public IEnumerator UpdateTimer()
+
+    private void Update()
     {
+        StartCoroutine(UpdateTimer());
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        timerRunning = true;
         while (timerGoing)
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            timePlayingStr = "Time playing: " + timePlaying.ToString("hh':'mm':'ss");
+            timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
             timeCounter.text = timePlayingStr;
+
             yield return null;
-            Debug.Log(elapsedTime);
         }
+        timerRunning = false;
     }
 
     public void NewGame()
     {
         BeginGameManager();
-        timerGoing = true;
         SceneManager.LoadScene("Dormitorio Lisa");
     }
 
@@ -98,10 +107,5 @@ public class GameManager : MonoBehaviour
 
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public String GetTimePlayingStr()
-    {
-        return timePlayingStr;
     }
 }

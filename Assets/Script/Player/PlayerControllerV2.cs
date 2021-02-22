@@ -142,6 +142,15 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
+        // Find out Time 
+        if (GameManager.instance.timerRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("T pressed");
+                Debug.Log(GameManager.instance.elapsedTime);
+            }
+        }
     }
     private void FixedUpdate()
     {

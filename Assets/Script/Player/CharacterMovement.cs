@@ -91,12 +91,6 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-        // Find out Time 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("T pressed");
-            Debug.Log(GameManager.instance.GetTimePlayingStr());
-        }
     }
 
     private void FixedUpdate()
