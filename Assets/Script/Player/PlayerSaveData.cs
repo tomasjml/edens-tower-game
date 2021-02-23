@@ -12,5 +12,5 @@ public class PlayerStats
     public int luck;
     public int defense;
     public Vector2 position;
-    public Scene scene;
+    public string sceneName;
 }

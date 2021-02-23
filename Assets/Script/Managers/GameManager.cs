@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class GameManager : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
     {
         timerGoing = true;
 
-        elapsedTime = 0f;
+        //elapsedTime = 0f;
 
         StartCoroutine(UpdateTimer());
         Debug.Log("Start Coroutine Update Timer Started!");
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
-            timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
+            //timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
             timeCounter.text = timePlayingStr;
 
             yield return null;
@@ -97,9 +98,35 @@ public class GameManager : MonoBehaviour
         saveData.playerData.speed = 1;
         saveData.playerData.vitality = 1;
         saveData.playerData.defense = 1;
+        elapsedTime = 0f;
 
         BeginGameManager();
         SceneManager.LoadScene("Dormitorio Lisa");
+    }
+
+    public void LoadGame(JSONNode game)
+    {
+        string loadDataJson = game["saveData"];
+        SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
+
+        string sceneName = loadData.playerData.sceneName;
+        Vector2 position = loadData.playerData.position;
+
+        elapsedTime = (float)game["gameTimeInSeconds"];
+        //Debug.Log(TimeSpan.FromSeconds(elapsedTime).ToString("HH ':'mm':'ss"));
+
+        saveData.playerData.defense = loadData.playerData.defense;
+        saveData.playerData.speed = loadData.playerData.speed;
+        saveData.playerData.strength = loadData.playerData.strength;
+        saveData.playerData.luck = loadData.playerData.luck;
+        saveData.playerData.vitality = loadData.playerData.vitality;
+
+        
+        SceneManager.LoadSceneAsync(sceneName);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        player.transform.position = position;
     }
 
     public void EndTimer()

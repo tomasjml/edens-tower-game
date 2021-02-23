@@ -14,6 +14,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public float groundCheckBaridus;
     private Rigidbody2D _body;
     private Animator _animator;
+
     
     private Vector2 _movement;
     private bool facingRight = true;
@@ -151,6 +152,7 @@ public class PlayerControllerV2 : MonoBehaviour
                 Debug.Log(GameManager.instance.elapsedTime);
             }
         }
+
     }
     private void FixedUpdate()
     {
