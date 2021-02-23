@@ -38,8 +38,9 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool pushingAnimation;
     private bool isGrounded;
     private bool enableKey;
-    Scene currentScene;
-    string sceneName;
+    private Scene currentScene;
+    private string sceneName;
+    
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -55,16 +56,13 @@ public class PlayerControllerV2 : MonoBehaviour
         UpdateTarget();
         pushing=false;
         pushingAnimation=false;
-        enableKey=true;
-        
-        
+        enableKey=true;     
     }
     private void UpdateTarget()
     {
         if (_target == null )
         {
             _target = new GameObject("Target");
-            Debug.Log("leave");
             _target.transform.position = new Vector2(maxX, transform.position.y);
             return;
         }
@@ -83,11 +81,9 @@ public class PlayerControllerV2 : MonoBehaviour
         enableKey=enable;
         if(enable==false){
             _movement = Vector3.zero;
-            //Debug.Log("hola");
         }
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -167,13 +163,14 @@ public class PlayerControllerV2 : MonoBehaviour
         _animator.SetBool("isPushing", pushingAnimation);
         if(_isGrounded==false){
             _animator.SetBool("Idle", false);
+            
         }
         else{
             _animator.SetBool("Idle", _movement == Vector2.zero);
         }
         _animator.SetFloat("VerticalVelocity",_body.velocity.y);
+        
     }
-
     private void flip()
     {
         facingRight = !facingRight;
