@@ -154,6 +154,7 @@ MonoBehaviour:
   minX: 0
   maxX: 0
   waitingTime: 2
+  espada: {fileID: 0}
 --- !u!1 &236398228
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   dialogue:
     name: Luke
     sentenceList:
-    - " Let's go see how \n my princess it's \n doing."
+    - " Let's go see how \n my princess is \n doing."
   displayText: {fileID: 1547755938}
   typingString: 0.05
   speakSound: {fileID: 0}
@@ -4847,11 +4848,11 @@ PrefabInstance:
       objectReference: {fileID: 656347349}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.297359
+      value: -13.398815
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4639846
+      value: -0.4639796
       objectReference: {fileID: 0}
     - target: {fileID: 8807763096269822967, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_DeadZoneHeight
@@ -4877,6 +4878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
+  saveAndLoad: {fileID: 0}
 --- !u!1001 &9132203324009047272
 PrefabInstance:
   m_ObjectHideFlags: 0
