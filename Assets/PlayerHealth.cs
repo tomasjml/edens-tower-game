@@ -10,10 +10,13 @@ public class PlayerHealth : MonoBehaviour
 
 	private SpriteRenderer _renderer;
 
+	private Animator _animator;
+
 
 	private void Awake()
 	{
 		_renderer = GetComponent<SpriteRenderer>();
+		_animator = GetComponent<Animator>();
 	}
 
 	void Start()
@@ -32,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
 		if (health <= 0)
 		{
 			health = 0;
+			StartCoroutine("IsDead");
 		}
 
 		Debug.Log("Player got damaged. His current health is " + health);
@@ -57,5 +61,14 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(0.1f);
 
 		_renderer.color = Color.white;
+	}
+
+	private IEnumerator IsDead()
+    {
+		_animator.SetTrigger("IsDead");
+
+		yield return new WaitForSeconds(1f);
+
+		gameObject.SetActive(false);
 	}
 }
