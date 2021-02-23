@@ -24,25 +24,25 @@ public class SaveAndLoad : MonoBehaviour
     public Button slot3;
     public Button slot4;
 
-    public static SaveAndLoad instance = null;
+    public static SaveAndLoad instance ;
 
 
 
-    void Awake()
-    {
-        if (instance == null)
+    //void Awake()
+    //{
+      //  if (instance == null)
 
-            instance = this;
+     //       instance = this;
 
-        else if (instance != this)
+     //   else if (instance != this)
 
-            Destroy(gameObject);
+     //       Destroy(gameObject);
 
-        DontDestroyOnLoad(gameObject);
+     //   DontDestroyOnLoad(gameObject);
 
         
-        //DontDestroyOnLoad(player);
-    }
+     //   //DontDestroyOnLoad(player);
+    //}
 
 
     public void LoadGame()
