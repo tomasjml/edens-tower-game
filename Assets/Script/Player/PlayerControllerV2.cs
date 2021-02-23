@@ -14,6 +14,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public float groundCheckBaridus;
     private Rigidbody2D _body;
     private Animator _animator;
+
     
     private Vector2 _movement;
     private bool facingRight = true;
@@ -152,6 +153,16 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
         }
+        // Find out Time 
+        if (GameManager.instance.timerRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                Debug.Log("T pressed");
+                Debug.Log(GameManager.instance.elapsedTime);
+            }
+        }
+
     }
     private void FixedUpdate()
     {
@@ -212,7 +223,8 @@ public class PlayerControllerV2 : MonoBehaviour
           Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           colPicas=0;
-        FindObjectOfType<GameManager>().endGame();
+          //FindObjectOfType<GameManager>().endGame();
+          GameManager.instance.EndGame();
         }
     }
     void OnCollisionExit2D(Collision2D collisionInfo)
