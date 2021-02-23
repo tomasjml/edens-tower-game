@@ -28,12 +28,12 @@ public class EnemyHit : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (_isAttacking == true)
+		if (_isAttacking)
 		{
-			if (collision.CompareTag("Player"))
+			if (collision.gameObject.tag == "Player")
 			{
+				Debug.Log("Se dio");
 				collision.SendMessageUpwards("AddDamage", damage);
-				Debug.Log("Is being damaged");
 			}
 
 		}

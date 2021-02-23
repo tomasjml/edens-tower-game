@@ -173,7 +173,7 @@ public class PlayerControllerV2 : MonoBehaviour
         _animator.SetBool("isPushing", pushingAnimation);
 
         // Animator
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack1"))
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
             isAttacking = true;
         }

@@ -10,7 +10,6 @@ public class EnemyHealth : MonoBehaviour
 
 	private SpriteRenderer _renderer;
 	private Animator _animator;
-	private bool died = false;
 
 
 	private void Awake()
@@ -24,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
 		health = totalHealth;
 	}
 
-	public void AddDamage(int amount)
+	public void AddDamageEnemy(int amount)
 	{
 		health = health - amount;
 
@@ -35,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
 		if (health <= 0)
 		{
 			health = 0;
-			died = true;
+			Died();
 		}
 
 		Debug.Log("Enemy got damaged. His current health is " + health);
@@ -43,9 +42,15 @@ public class EnemyHealth : MonoBehaviour
 
 	private IEnumerator VisualFeedback()
 	{
-		_animator.SetTrigger("Damaged");
+		_animator.SetTrigger("isDamaged");
 
 		yield return new WaitForSeconds(0.1f);
 	}
+
+	private void Died()
+    {
+		_animator.SetTrigger("Died");
+		gameObject.SetActive(false);
+    }
 }
 

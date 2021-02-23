@@ -28,11 +28,11 @@ public class PlayerAttack : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (_isAttacking == true)
+		if (_isAttacking)
 		{
 			if (collision.CompareTag("Enemy"))
 			{
-				collision.SendMessageUpwards("AddDamage", strength);
+				collision.SendMessageUpwards("AddDamageEnemy", strength);
 			}
 
 		}

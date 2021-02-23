@@ -41,22 +41,15 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        target = GameObject.FindWithTag("Player").transform;
-        float distance = target.transform.position.x - transform.position.x;
+        target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
+        float distance = target.transform.position.x - transform.position.x; //Gets their distance
 
         if(shouldAttack == false)
         {
             moving(distance);
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-            if (shouldAttack == false && collision.CompareTag("Player")) //If the enemy is not attacking and the player is in the trigger
-            {
-                StartCoroutine(Attack()); //Attack
-            }
- 
-    }
+
     private void LateUpdate() 
     {
         _animator.SetBool("Idle", _rigidbody.velocity == Vector2.zero);
@@ -97,6 +90,11 @@ public class Enemy : MonoBehaviour
             if (facingRight == false) //If the enemy is facing left we have to change the speed to face left
             {
                 horizontalVelocity = horizontalVelocity * -1f;
+            }
+
+            if (shouldAttack == false && distance <= attackingDistance) //If the enemy is not attacking and the player is in the trigger
+            {
+                StartCoroutine(Attack()); //Attack
             }
 
             _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y); //The enemy moves.
