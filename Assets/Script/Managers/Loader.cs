@@ -5,6 +5,7 @@ using UnityEngine;
 public class Loader : MonoBehaviour
 {
     public GameObject gameManager;
+    public SaveAndLoad saveAndLoad;
 
     // Start is called before the first frame update
     void Awake()
@@ -12,6 +13,11 @@ public class Loader : MonoBehaviour
         if(GameManager.instance == null)
         {
             Instantiate(gameManager);
+        }
+
+        if(SaveAndLoad.instance == null)
+        {
+            Instantiate(saveAndLoad);
         }
     }
 }
