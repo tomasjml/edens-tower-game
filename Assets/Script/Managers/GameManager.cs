@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private bool timerGoing;
     public float elapsedTime;
     private string timePlayingStr;
-    private Text timeCounter;
+    //private Text timeCounter;
     public bool timerRunning;
 
     // Game over Attributes
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        timeCounter.text = "Time playing: 00:00.00";
+        //timeCounter.text = "Time playing: 00:00.00";
         timerGoing = false;
     }
 
@@ -77,13 +77,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
+        float initialTime = 0f;
         timerRunning = true;
-        while (timerGoing)
+        if (timerGoing)
         {
-            elapsedTime += Time.deltaTime;
+            initialTime = Time.deltaTime;
+            elapsedTime += initialTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             //timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
-            timeCounter.text = timePlayingStr;
+            //timeCounter.text = timePlayingStr;
 
             yield return null;
         }
@@ -121,7 +123,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
 
-        
+        BeginGameManager();
         SceneManager.LoadSceneAsync(sceneName);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
