@@ -29,12 +29,13 @@ public class EnemyHealth : MonoBehaviour
 
 		// Visual Feedback
 		StartCoroutine("VisualFeedback");
+		Debug.Log("Se esta recibiendo");
 
 		// Game  Over
 		if (health <= 0)
 		{
 			health = 0;
-			Died();
+			StartCoroutine("Died");
 		}
 
 		Debug.Log("Enemy got damaged. His current health is " + health);
@@ -44,12 +45,15 @@ public class EnemyHealth : MonoBehaviour
 	{
 		_animator.SetTrigger("isDamaged");
 
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.5f);
 	}
 
-	private void Died()
+	private IEnumerator Died()
     {
 		_animator.SetTrigger("Died");
+
+		yield return new WaitForSeconds(0.5f);
+
 		gameObject.SetActive(false);
     }
 }

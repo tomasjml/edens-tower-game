@@ -42,6 +42,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     //Attack
     private bool isAttacking;
+    public GameObject espada;
 
 
     void Awake()
@@ -149,7 +150,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
             _body.velocity = Vector2.zero;

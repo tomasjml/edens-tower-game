@@ -33,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 			if (collision.CompareTag("Enemy"))
 			{
 				collision.SendMessageUpwards("AddDamageEnemy", strength);
+				Debug.Log("Se esta enviando");
 			}
 
 		}
