@@ -24,7 +24,7 @@ public class SaveAndLoad : MonoBehaviour
     public Button slot3;
     public Button slot4;
 
-    public static SaveAndLoad instance ;
+    public static SaveAndLoad instance;
 
 
 

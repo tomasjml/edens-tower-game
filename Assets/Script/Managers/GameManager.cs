@@ -131,9 +131,9 @@ public class GameManager : MonoBehaviour
         //player.transform.position = position;
     }
 
-    public void SaveGame(SaveAndLoad.Slot slot)
+    public void SaveGame(String slot)
     {
-        SaveAndLoad.instance.SaveGame(slot.ToString());
+        SaveAndLoad.instance.SaveGame(slot);
     }
 
     public void EndTimer()

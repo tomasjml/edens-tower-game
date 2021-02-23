@@ -75,11 +75,11 @@ public class PauseMenu : MonoBehaviour
         slot3.onClick.RemoveAllListeners();
         slot4.onClick.RemoveAllListeners();
 
-
-        slot1.onClick.AddListener(() => {GameManager.instance.SaveGame(SaveAndLoad.Slot.One); SaveAndLoad.instance.LoadUserGame();});
-        slot2.onClick.AddListener(() => {GameManager.instance.SaveGame(SaveAndLoad.Slot.Two); SaveAndLoad.instance.LoadUserGame();});
-        slot3.onClick.AddListener(() => {GameManager.instance.SaveGame(SaveAndLoad.Slot.Three); SaveAndLoad.instance.LoadUserGame();});
-        slot4.onClick.AddListener(() => {GameManager.instance.SaveGame(SaveAndLoad.Slot.Four); SaveAndLoad.instance.LoadUserGame();});
+        SaveAndLoad temp;
+        slot1.onClick.AddListener(() => {GameManager.instance.SaveGame("One"); SaveAndLoad.instance.LoadUserGame();});
+        slot2.onClick.AddListener(() => {GameManager.instance.SaveGame("Two"); SaveAndLoad.instance.LoadUserGame();});
+        slot3.onClick.AddListener(() => {GameManager.instance.SaveGame("Three"); SaveAndLoad.instance.LoadUserGame();});
+        slot4.onClick.AddListener(() => {GameManager.instance.SaveGame("Four"); SaveAndLoad.instance.LoadUserGame();});
 
 
     }
