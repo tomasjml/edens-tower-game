@@ -126,9 +126,14 @@ public class GameManager : MonoBehaviour
         BeginGameManager();
         SceneManager.LoadSceneAsync(sceneName);
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+       // GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        player.transform.position = position;
+        //player.transform.position = position;
+    }
+
+    public void SaveGame(SaveAndLoad.Slot slot)
+    {
+        SaveAndLoad.instance.SaveGame(slot.ToString());
     }
 
     public void EndTimer()

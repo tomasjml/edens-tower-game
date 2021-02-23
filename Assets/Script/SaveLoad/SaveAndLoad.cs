@@ -24,11 +24,26 @@ public class SaveAndLoad : MonoBehaviour
     public Button slot3;
     public Button slot4;
 
+    public static SaveAndLoad instance = null;
 
-    private void Update()
+
+
+    void Awake()
     {
-        //position = player.transform.position;
+        if (instance == null)
+
+            instance = this;
+
+        else if (instance != this)
+
+            Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+
+        
+        //DontDestroyOnLoad(player);
     }
+
 
     public void LoadGame()
     {
@@ -40,14 +55,16 @@ public class SaveAndLoad : MonoBehaviour
         StartCoroutine(GetGamesRequest());
     }
 
-    public void SaveGame()
+
+    public void SaveGame(string slot)
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         position = player.transform.position;
         GameManager.instance.saveData.playerData.position = position;
         GameManager.instance.saveData.playerData.sceneName = SceneManager.GetActiveScene().name;
         string jsonSaveData = JsonUtility.ToJson(GameManager.instance.saveData);
 
-        StartCoroutine(postRequest(jsonSaveData));
+        StartCoroutine(postRequest(jsonSaveData, slot));
     }
 
 
@@ -97,7 +114,7 @@ public class SaveAndLoad : MonoBehaviour
             SceneManager.LoadScene(sceneName);
         }
 
-        player.transform.position = position;
+        //player.transform.position = position;
 
     }
 
@@ -226,7 +243,7 @@ public class SaveAndLoad : MonoBehaviour
     }
 
     //Save
-    IEnumerator postRequest(string jsonSaveData)
+    IEnumerator postRequest(string jsonSaveData, string slot)
     {
         WWWForm form = new WWWForm();
 
@@ -238,7 +255,7 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("musicEnabled", "true");
         form.AddField("musicLvl", 100);
         form.AddField("saveData", jsonSaveData);
-        form.AddField("saveSlotstr", slot.ToString());
+        form.AddField("saveSlotstr", slot);
         form.AddField("sfxEnabled", "true");
         form.AddField("sfxLvl", 100);
         form.AddField("defense", (int) GameManager.instance.saveData.playerData.defense);
