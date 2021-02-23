@@ -24,8 +24,7 @@ public class SaveAndLoad : MonoBehaviour
     public Button slot3;
     public Button slot4;
 
-    public static SaveAndLoad instance = null;
-    protected SaveAndLoad() { }
+    public static SaveAndLoad instance;
 
 
     //void Awake()
