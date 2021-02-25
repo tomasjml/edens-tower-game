@@ -154,14 +154,14 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetTrigger("Attack");
         }
         // Find out Time 
-        if (GameManager.instance.timerRunning)
+/*        if (GameManager.instance.timerRunning)
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
                 Debug.Log("T pressed");
                 Debug.Log(GameManager.instance.elapsedTime);
             }
-        }
+        }*/
 
     }
     private void FixedUpdate()
