@@ -7491,7 +7491,7 @@ RectTransform:
   m_LocalScale: {x: 0.40837494, y: 0.40837494, z: 0.40837494}
   m_Children: []
   m_Father: {fileID: 2053029014}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9313,6 +9313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446735803}
   - component: {fileID: 1446735802}
+  - component: {fileID: 1446735804}
   m_Layer: 0
   m_Name: DieFall
   m_TagString: Die
@@ -9356,6 +9357,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1446735804
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446735801}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: d0070dd76b38e384b8d30044fe0a7a76, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -39.095253, y: -1.2446055}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.539154, y: 1.7321205}
+  m_EdgeRadius: 0
 --- !u!1 &1454974348
 GameObject:
   m_ObjectHideFlags: 0
@@ -10163,7 +10190,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1543047533}
   - component: {fileID: 1543047534}
-  - component: {fileID: 1543047535}
   m_Layer: 0
   m_Name: Dungeon_27 (1)
   m_TagString: Die
@@ -10236,32 +10262,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1543047535
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1543047532}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: d0070dd76b38e384b8d30044fe0a7a76, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15758193, y: -0.010101378}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.6351641, y: 0.29979724}
-  m_EdgeRadius: 0
 --- !u!1 &1547483381
 GameObject:
   m_ObjectHideFlags: 0
@@ -11755,6 +11755,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
+      propertyPath: traps
+      value: 
+      objectReference: {fileID: 1446735803}
+    - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: vacio
       value: 
       objectReference: {fileID: 1446735803}
@@ -11909,11 +11913,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4035172
+      value: -7.197511
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.51126
+      value: 4.512258
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: orthographic size
@@ -11987,6 +11991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
+  saveAndLoad: {fileID: 0}
 --- !u!1 &1853317570
 GameObject:
   m_ObjectHideFlags: 0
@@ -12766,8 +12771,6 @@ RectTransform:
   - {fileID: 674714846}
   - {fileID: 1117155874}
   - {fileID: 1735033344}
-  - {fileID: 2134887572}
-  - {fileID: 2094789125}
   - {fileID: 1073565895}
   m_Father: {fileID: 767018307}
   m_RootOrder: 0

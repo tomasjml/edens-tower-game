@@ -28,8 +28,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public int jumpsWanted;
     private bool isJumping=false;
 
-    public Transform pica;
-    public Transform vacio;
+    public Transform traps;
+    
     private GameObject _target;
     public float minX;
     public float maxX;
@@ -220,8 +220,9 @@ public class PlayerControllerV2 : MonoBehaviour
             enableKeys(false);
         }
         if(colPicas==1){
-          Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-          Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            foreach(Collider2D c in GetComponents<Collider2D> ()) {
+                c.enabled = false;
+        }
           colPicas=0;
           //FindObjectOfType<GameManager>().endGame();
           GameManager.instance.EndGame();
