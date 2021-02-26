@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
         elapsedTime = 0f;
 
         BeginGameManager();
-        SceneManager.LoadScene("Dormitorio Lisa");
+        SceneManager.LoadScene("Context");
     }
 
     public void LoadGame(JSONNode game)
