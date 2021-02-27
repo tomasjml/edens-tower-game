@@ -33,39 +33,35 @@ public class ItemManagement : MonoBehaviour
         {
             // All Items have Type
             //  Currency Items stats: Value
-            new Item(0, "Magic Stone", "MagicWorld Currency",
+            new Item(0, "Magic Stone",Item.Type.Currency, "MagicWorld Currency",
             new Dictionary<string, int>
             {
-                {"Value",  1},
-                {"Type", 0 }
+                {"Value",  1}
             }),
             // Quest items stats: 
-            new Item(1, "Tiara", "Lisa's Tiara which fell up front of the Tower",
+            new Item(1, "Tiara", Item.Type.Quest, "Lisa's Tiara which fell up front of the Tower",
             new Dictionary<string, int>
             {
-                {"Type", 1 }
+                {"Value", - 1 }
             }),
             // Weapon Items stats: Attack, Value, Category and Evolution
             // Weapon Categories: Ranged = 2, Meele = 1
-            new Item(2, "Basic Sword", "The Sword picked up in Front of the Tower",
+            new Item(2, "Basic Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower",
             new Dictionary<string, int>
             {
                 {"Value",  15},
-                {"Type", 2 },
                 {"Attact", 10 },
                 {"Category", 1 },
                 {"Evolution", 1 }
             }),
-            new Item(2, "Basic Bow", "The Bow first sold in the Market",
+            new Item(2, "Basic Bow", Item.Type.Weapon, "The Bow first sold in the Market",
             new Dictionary<string, int>
             {
                 {"Value",  15},
-                {"Type", 2 },
                 {"Attact", 5 },
                 {"Category", 1 },
                 {"Evolution", 1 }
-            }),
+            })
         };
-    };
     }
 }
