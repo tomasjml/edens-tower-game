@@ -13,10 +13,11 @@ public class GameManager : MonoBehaviour
     // Timer Attributes
     private TimeSpan timePlaying;
     private bool timerGoing;
-    public float elapsedTime;
     private string timePlayingStr;
     //private Text timeCounter;
     public bool timerRunning;
+    public float elapsedTime;
+
 
     // Game over Attributes
     public float restartDelay=2.5f;
@@ -24,6 +25,9 @@ public class GameManager : MonoBehaviour
 
     // Player Stats
     public SaveData saveData;
+
+    // Item Management
+    public ItemManagement itemManagement;
 
     void Awake()
     {
@@ -41,6 +45,9 @@ public class GameManager : MonoBehaviour
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+
+        // Item initiation
+        itemManagement = new ItemManagement();
 
         //Call the InitGame function to initialize the first level 
         InitGame();
