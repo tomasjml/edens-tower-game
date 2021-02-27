@@ -7,10 +7,10 @@ public class Item
     public enum Type
     {
         // Types are:
-        Currency, // 0: Currency
-        Quest, // 1: Quest
-        Weapon, // 2: Weapons
-        Consumables// 3: Consumables
+        Currency,       // 0
+        Quest,          // 1
+        Weapon,         // 2
+        Consumables     // 3
 
     }
     public int id;

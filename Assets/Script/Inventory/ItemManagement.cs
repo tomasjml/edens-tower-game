@@ -24,11 +24,6 @@ public class ItemManagement : MonoBehaviour
 
     void BuildItems()
     {
-        // 0: Currency
-        // Types are:
-        // 1: Quest
-        // 2: Weapons
-        // 3: Consumables
         items = new List<Item>
         {
             // All Items have Type
