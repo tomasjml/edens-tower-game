@@ -24,7 +24,7 @@ public class SaveAndLoad : MonoBehaviour
     public Button slot3;
     public Button slot4;
 
-    public static SaveAndLoad instance;
+    //public static SaveAndLoad instance;
 
 
     //void Awake()
@@ -44,9 +44,9 @@ public class SaveAndLoad : MonoBehaviour
     //}
 
 
-    public void LoadGame()
+    public void LoadGame(string slot)
     {
-        StartCoroutine(GetRequest());
+        StartCoroutine(GetRequest(slot));
     }
 
     public void LoadUserGame()
@@ -74,9 +74,9 @@ public class SaveAndLoad : MonoBehaviour
 
 
     //Load
-    IEnumerator GetRequest()
+    IEnumerator GetRequest(string slot)
     {
-        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/game?slot="+ slot.ToString() + "&username=" + username);
+        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/game?slot="+ slot + "&username=" + username);
         yield return GETRequest.SendWebRequest();
 
         if (GETRequest.result == UnityWebRequest.Result.ProtocolError || GETRequest.result == UnityWebRequest.Result.ConnectionError)
@@ -92,6 +92,9 @@ public class SaveAndLoad : MonoBehaviour
 
         JSONNode gamedata = JSON.Parse(GETRequest.downloadHandler.text);
 
+        GameManager.instance.LoadGame(gamedata);
+
+        /*
         string loadDataJson = gamedata["saveData"];
         SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
 
@@ -114,7 +117,7 @@ public class SaveAndLoad : MonoBehaviour
         }
 
         //player.transform.position = position;
-
+        */
     }
 
     //Load User Games
@@ -162,7 +165,7 @@ public class SaveAndLoad : MonoBehaviour
                 Text textDifficulty = GameObject.Find("Slot1/Difficulty").GetComponent<Text>();
                 textDifficulty.text = game["difficulty"];
 
-                slot1.onClick.AddListener(() => GameManager.instance.LoadGame(game));
+                //slot1.onClick.AddListener(() => GameManager.instance.LoadGame(game));
 
                 Debug.Log("Save slot 1");
 
@@ -186,7 +189,7 @@ public class SaveAndLoad : MonoBehaviour
                 Text textDifficulty = GameObject.Find("Slot2/Difficulty").GetComponent<Text>();
                 textDifficulty.text = game["difficulty"];
 
-                slot2.onClick.AddListener(() => GameManager.instance.LoadGame(game));
+                //slot2.onClick.AddListener(() => GameManager.instance.LoadGame(game));
 
                 Debug.Log("Save slot 2");
             }
@@ -209,7 +212,7 @@ public class SaveAndLoad : MonoBehaviour
                 Text textDifficulty = GameObject.Find("Slot3/Difficulty").GetComponent<Text>();
                 textDifficulty.text = game["difficulty"];
 
-                slot3.onClick.AddListener(() => GameManager.instance.LoadGame(game));
+                //slot3.onClick.AddListener(() => GameManager.instance.LoadGame(game));
 
                 Debug.Log("Save slot 3");
             }
@@ -232,7 +235,7 @@ public class SaveAndLoad : MonoBehaviour
                 Text textDifficulty = GameObject.Find("Slot4/Difficulty").GetComponent<Text>();
                 textDifficulty.text = game["difficulty"];
 
-                slot4.onClick.AddListener(() => GameManager.instance.LoadGame(game));
+                //slot4.onClick.AddListener(() => GameManager.instance.LoadGame(game));
 
                 Debug.Log("Save slot 4");
             }

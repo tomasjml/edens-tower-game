@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     private Button slot2;
     private Button slot3;
     private Button slot4;
+    private SaveAndLoad saveObject = null;
 
     void Awake()
     {
@@ -69,19 +70,26 @@ public class PauseMenu : MonoBehaviour
 
     public void AddSaveListeners()
     {
+        if (saveObject == null)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        }
 
-        slot1.onClick.RemoveAllListeners();
-        slot2.onClick.RemoveAllListeners();
-        slot3.onClick.RemoveAllListeners();
-        slot4.onClick.RemoveAllListeners();
-
-        SaveAndLoad temp;
-        slot1.onClick.AddListener(() => {GameManager.instance.SaveGame("One"); SaveAndLoad.instance.LoadUserGame();});
-        slot2.onClick.AddListener(() => {GameManager.instance.SaveGame("Two"); SaveAndLoad.instance.LoadUserGame();});
-        slot3.onClick.AddListener(() => {GameManager.instance.SaveGame("Three"); SaveAndLoad.instance.LoadUserGame();});
-        slot4.onClick.AddListener(() => {GameManager.instance.SaveGame("Four"); SaveAndLoad.instance.LoadUserGame();});
+        slot1.onClick.AddListener(() => {GameManager.instance.SaveGame("One"); saveObject.LoadUserGame(); });
+        slot2.onClick.AddListener(() => {GameManager.instance.SaveGame("Two"); saveObject.LoadUserGame(); });
+        slot3.onClick.AddListener(() => {GameManager.instance.SaveGame("Three"); saveObject.LoadUserGame(); });
+        slot4.onClick.AddListener(() => {GameManager.instance.SaveGame("Four"); saveObject.LoadUserGame(); });
 
 
+    }
+
+    public void AddLoadListeners()
+    {
+        slot1.onClick.AddListener(() => { GameManager.instance.LoadGame("One");});
+        slot2.onClick.AddListener(() => { GameManager.instance.LoadGame("Two");});
+        slot3.onClick.AddListener(() => { GameManager.instance.LoadGame("Three");});
+        slot4.onClick.AddListener(() => { GameManager.instance.LoadGame("Four");});
     }
 
     public void AppQuit()
