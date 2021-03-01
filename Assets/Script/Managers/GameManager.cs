@@ -137,9 +137,10 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = loadData.playerData.vitality;
 
         BeginGameManager();
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
 
-       // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         //player.transform.position = position;
     }
