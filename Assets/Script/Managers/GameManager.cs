@@ -151,7 +151,8 @@ public class GameManager : MonoBehaviour
         timerGoing = false;
     }
 
-    public void EndGame() {
+    public void EndGame() 
+    {
         if(gameEnded == false) {
             gameEnded=true;
             Debug.Log("GAME OVER !");
@@ -161,7 +162,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Restart(){
+    public void Restart()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // ======= Market Functions
+    public void MarketBuyItem(string title, int quantity)
+    {
+        Item itemPurchased = itemManagement.GetItemByTitle(title);
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["value"] * quantity;
+        if (saveData.playerData.inventory.ContainsKey(itemPurchased))
+        {
+            saveData.playerData.inventory[itemPurchased] = quantity;
+        } 
+        else
+        {
+            saveData.playerData.inventory.Add(itemPurchased, quantity);
+        }
     }
 }
