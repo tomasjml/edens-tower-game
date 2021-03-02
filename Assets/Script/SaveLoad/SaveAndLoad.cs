@@ -138,11 +138,7 @@ public class SaveAndLoad : MonoBehaviour
 
         //Debug.Log(GETRequest.downloadHandler.text);
 
-
-
         JSONArray arrayGame = (JSONArray)JSON.Parse(GETRequest.downloadHandler.text);
-
-
 
         foreach(JSONNode game in arrayGame)
         {

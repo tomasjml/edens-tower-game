@@ -7,6 +7,5 @@ using UnityEngine.SceneManagement;
 public class SaveData 
 {
     public PlayerStats playerData = new PlayerStats();
-    public Dictionary<Item, int> dictMarketItems;
-
+    public ItemInventory dictMarketItems;
 }

@@ -13,7 +13,7 @@ public class PlayerStats
     public int defense;
     public Vector2 position;
     public string sceneName;
-    public Dictionary<Item, int> inventory = new Dictionary<Item, int>();
+    public ItemInventory inventory = new ItemInventory();
 
     public void AddItemToInventory(Item item)
     {

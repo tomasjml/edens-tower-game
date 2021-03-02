@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
 public class Item
 {
     public enum Type
@@ -18,8 +20,8 @@ public class Item
     public Type type;
     public string description;
     public Sprite icon;
-    public Dictionary<string, int> stats = new Dictionary<string, int>();
-    public Item(int id, string title, Type type, string description, Dictionary<string, int> stats)
+    public ItemStats stats = new ItemStats();
+    public Item(int id, string title, Type type, string description, ItemStats stats)
     {
         this.id = id;
         this.title = title;
