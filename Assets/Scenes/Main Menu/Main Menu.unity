@@ -2423,9 +2423,10 @@ GameObject:
   - component: {fileID: 810959772}
   - component: {fileID: 810959776}
   - component: {fileID: 810959777}
+  - component: {fileID: 810959778}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Pause
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2550,6 +2551,25 @@ MonoBehaviour:
   player: {fileID: 1495125766}
   username: robdom01
   slot: 0
+  slot1: {fileID: 563967068}
+  slot2: {fileID: 259433440}
+  slot3: {fileID: 189014492}
+  slot4: {fileID: 1330943627}
+--- !u!114 &810959778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810959771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fcf8aca6043d2440b8586ac8b00d1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  pauseBtns: {fileID: 0}
+  slotsBtns: {fileID: 0}
   slot1: {fileID: 563967068}
   slot2: {fileID: 259433440}
   slot3: {fileID: 189014492}
@@ -3845,6 +3865,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 810959778}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: AddLoadListeners
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1311137705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4899,6 +4931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
+  saveAndLoad: {fileID: 0}
 --- !u!1 &1902274469
 GameObject:
   m_ObjectHideFlags: 0
