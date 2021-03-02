@@ -13,4 +13,28 @@ public class PlayerStats
     public int defense;
     public Vector2 position;
     public string sceneName;
-}
+    public Dictionary<Item, int> inventory = new Dictionary<Item, int>();
+
+    public void AddItemToInventory(Item item)
+    {
+        if (inventory.ContainsKey(item))
+        {
+            inventory[item] += 1;
+        } else
+        {
+            inventory.Add(item, 1);
+        }
+    }
+
+    public void DeleteItemToInventory(Item item)
+    {
+        if (inventory.ContainsKey(item))
+        {
+            inventory.Remove(item);
+        } else
+        {
+            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+        }
+    }
+
+  }

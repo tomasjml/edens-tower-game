@@ -46,8 +46,9 @@ public class GameManager : MonoBehaviour
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
 
-        // Item initiation
-        itemManagement = new ItemManagement();
+        // item build
+        Instantiate(itemManagement);
+        DontDestroyOnLoad(itemManagement);
 
         //Call the InitGame function to initialize the first level 
         InitGame();
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
 
     public void BeginGameManager()
     {
+        itemManagement.BuildItems();
+
         timerGoing = true;
 
         //elapsedTime = 0f;
