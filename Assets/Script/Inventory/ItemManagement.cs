@@ -6,11 +6,13 @@ using System.Linq;
 public class ItemManagement : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
+    public List<Item> itemsMarket = new List<Item>();
     // Start is called before the first frame update
 
     private void Awake()
     {
         BuildItems();
+        BuildMarket();
     }
 
     public Item GetItem(int id)
@@ -55,14 +57,30 @@ public class ItemManagement : MonoBehaviour
                 {"Category", 1 },
                 {"Evolution", 1 }
             }),
-            new Item(2, "Basic Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new Item(3, "Basic Bow", Item.Type.Weapon, "The Bow first sold in the Market",
             new Dictionary<string, int>
             {
                 {"Value",  15},
                 {"Attact", 5 },
                 {"Category", 1 },
                 {"Evolution", 1 }
+            }),
+            // Consumables items stats: 
+            // Type: Category = 
+            new Item(4, "Basic Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new Dictionary<string, int>
+            {
+                {"Value",  30},
+                {"Recovery", 10}
             })
+        };
+    }
+
+    public void BuildMarket()
+    {
+        itemsMarket = new List<Item>
+        {
+            GetItemByTitle("Basic Potion")
         };
     }
 }
