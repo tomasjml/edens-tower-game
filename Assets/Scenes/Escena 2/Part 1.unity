@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41275510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.8505, y: 0.1, z: 0}
+  m_LocalPosition: {x: 56.8505, y: -0.1, z: 0}
   m_LocalScale: {x: 0.73343, y: 0.73343, z: 0.73343}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5671,7 +5671,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.22767448}
+  m_Offset: {x: 0.056908607, y: -0.22767448}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5680,9 +5680,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 1
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 0.79465103}
+  m_Size: {x: 44.24015, y: 0.79465103}
   m_EdgeRadius: 0
 --- !u!212 &544908670
 SpriteRenderer:
@@ -11157,7 +11157,6 @@ GameObject:
   - component: {fileID: 1148505877}
   - component: {fileID: 1148505879}
   - component: {fileID: 1148505878}
-  - component: {fileID: 1148505882}
   - component: {fileID: 1148505881}
   - component: {fileID: 1148505880}
   - component: {fileID: 1148505884}
@@ -11267,9 +11266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3995e7a685d9b4db3c445504036a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isAttacking: 0
-  _animator: {fileID: 0}
-  damage: 1
 --- !u!114 &1148505881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11282,28 +11278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7adbda6f380b8a4ebfd575b56116b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 3
-  health: 0
-  _renderer: {fileID: 0}
-  _animator: {fileID: 0}
---- !u!114 &1148505882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148505876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a48c610be35ca4585911f044a8bd73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.7
-  followingDistance: 0.5
-  attackingDistance: 0.2
-  shouldAttack: 0
-  aimingTime: 0.2
-  attackTime: 1.3
 --- !u!114 &1148505883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11316,7 +11290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e977adf58a530974583bffb6d5fa5820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Velocidad_Enemy: 0
+  _Velocidad_Enemy: 2
 --- !u!50 &1148505884
 Rigidbody2D:
   serializedVersion: 4
