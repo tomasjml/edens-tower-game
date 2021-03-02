@@ -26,7 +26,19 @@ public class PlayerStats
         }
     }
 
-    public void DeleteItemToInventory(Item item)
+    public void AddItemToInventory(Item item, int quantity)
+    {
+        if (inventory.ContainsKey(item))
+        {
+            inventory[item] += quantity;
+        }
+        else
+        {
+            inventory.Add(item, quantity);
+        }
+    }
+
+    public void RemoveItemToInventory(Item item)
     {
         if (inventory.ContainsKey(item))
         {
@@ -37,4 +49,24 @@ public class PlayerStats
         }
     }
 
-  }
+    public void RemoveItemToInventory(Item item, int quantity)
+    {
+        int removal = inventory[item] - quantity;
+        if (inventory.ContainsKey(item))
+        {
+            if(removal <= 0)
+            {
+                inventory.Remove(item);
+            }
+            else
+            {
+                inventory[item] -= quantity;
+            }
+        }
+        else
+        {
+            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+        }
+    }
+
+}

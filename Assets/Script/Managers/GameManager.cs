@@ -172,13 +172,13 @@ public class GameManager : MonoBehaviour
     {
         Item itemPurchased = itemManagement.GetItemByTitle(title);
         saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["value"] * quantity;
-        if (saveData.playerData.inventory.ContainsKey(itemPurchased))
-        {
-            saveData.playerData.inventory[itemPurchased] = quantity;
-        } 
-        else
-        {
-            saveData.playerData.inventory.Add(itemPurchased, quantity);
-        }
+        saveData.playerData.AddItemToInventory(itemPurchased, quantity);
+    }
+
+    public void MarketSellItem(string title, int quantity)
+    {
+        Item itemSold = itemManagement.GetItemByTitle(title);
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["value"] * quantity;
+        saveData.playerData.RemoveItemToInventory(itemSold, quantity);
     }
 }
