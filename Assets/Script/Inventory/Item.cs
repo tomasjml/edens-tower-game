@@ -37,5 +37,10 @@ public class Item
         this.icon = Resources.Load<Sprite>("Sprites/Items/" + title);
         this.stats = item.stats;
     }
+    
+    public string toString()
+    {
+        return (title + " " + id.ToString());
+    }
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ItemManagement : MonoBehaviour
 {
@@ -22,7 +23,12 @@ public class ItemManagement : MonoBehaviour
         return items.Find(item => item.title == itemName);
     }
 
-    void BuildItems()
+    public List<string> GetTitlesOfItems()
+    {
+        return items.Select(item => item.title).ToList();
+    }
+
+    public void BuildItems()
     {
         items = new List<Item>
         {

@@ -163,6 +163,16 @@ public class PlayerControllerV2 : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("I pressed");
+            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
+        }
+
     }
     private void FixedUpdate()
     {
