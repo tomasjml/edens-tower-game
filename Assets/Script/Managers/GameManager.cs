@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     // Player Stats
     public SaveData saveData;
+    private SaveAndLoad saveObject = null;
+    
 
     // Item Management
     public ItemManagement itemManagement;
@@ -116,6 +118,17 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Context");
     }
 
+    public void LoadRequest(string slot)
+    {
+
+        if (saveObject == null)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        }
+        saveObject.LoadGame(slot);
+    }
+
     public void LoadGame(JSONNode game)
     {
         string loadDataJson = game["saveData"];
@@ -134,16 +147,22 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = loadData.playerData.vitality;
 
         BeginGameManager();
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
 
-       // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         //player.transform.position = position;
     }
 
     public void SaveGame(String slot)
     {
-        SaveAndLoad.instance.SaveGame(slot);
+        if(saveObject == null)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        }
+        saveObject.SaveGame(slot);
     }
 
     public void EndTimer()

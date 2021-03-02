@@ -15,9 +15,9 @@ public class Loader : MonoBehaviour
             Instantiate(gameManager);
         }
 
-        if(SaveAndLoad.instance == null)
-        {
-            Instantiate(saveAndLoad);
-        }
+        //if(SaveAndLoad.instance == null)
+        //{
+          //  Instantiate(saveAndLoad);
+        //}
     }
 }
