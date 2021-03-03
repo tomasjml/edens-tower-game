@@ -18,7 +18,7 @@ public class En_Script : MonoBehaviour
 
     float enPersecusion = 6f; // entrada a la zona de persecusion
     float salPersecusion = 8f; // el enemigo deja de seguirnos
-    float zonaAtaque = 1.36f;
+    float zonaAtaque = 1f;
 
     public Transform _Player;
 
@@ -98,8 +98,7 @@ public class En_Script : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player") && comp == comportamientoEnemy.ataque)
         {
-            Destroy(collision.gameObject,.5f);
-            comp = comportamientoEnemy.pasivo;
+            _Player.GetComponent<HealthPlayer>().Hit();
         }
     }
 }
