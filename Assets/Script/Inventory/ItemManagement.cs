@@ -35,7 +35,7 @@ public class ItemManagement : MonoBehaviour
         items = new List<Item>
         {
             // All Items have Type
-            //  Currency Items stats: Value
+            // Currency Items stats: Value
             new Item(0, "Magic Stone",Item.Type.Currency, "MagicWorld Currency",
             new ItemStats
             {
@@ -62,7 +62,7 @@ public class ItemManagement : MonoBehaviour
             {
                 {"Value",  15},
                 {"Attact", 5 },
-                {"Category", 1 },
+                {"Category", 2 },
                 {"Evolution", 1 }
             }),
             // Consumables items stats: 
