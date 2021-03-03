@@ -36,7 +36,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public float waitingTime = 2f;
     private bool pushing;
     private bool pushingAnimation;
-    private bool isGrounded;
+    private bool isGrounded=true;
     private bool enableKey;
     Scene currentScene;
     string sceneName;
@@ -61,7 +61,8 @@ public class PlayerControllerV2 : MonoBehaviour
         UpdateTarget();
         pushing=false;
         pushingAnimation=false;
-        enableKey=true;     
+        enableKey=true;
+        espada.SetActive(false);     
     }
     private void UpdateTarget()
     {
@@ -94,7 +95,7 @@ public class PlayerControllerV2 : MonoBehaviour
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
+        //_isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
         
         if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
             if(pushing==true){
@@ -120,12 +121,16 @@ public class PlayerControllerV2 : MonoBehaviour
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
-            
+            _isGrounded=false;
+           
         }
         else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
         {
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
+        }
+        if(_isGrounded==true){
+            veces=0;
         }
         if( veces==jumpsWanted){
             veces=0;
@@ -137,11 +142,11 @@ public class PlayerControllerV2 : MonoBehaviour
         else{
             counter = 0;
         }
-        if(transform.position.x>minX && sceneName=="Jungla"){
+        if(transform.position.x>minX && sceneName=="Scene 1"){
             enableKey=false;
             StartCoroutine("PatrolToTarget");
            if(transform.position.x>maxX){
-               SceneManager.LoadScene("Castillo");
+               SceneManager.LoadScene("Horda de Enemigos");
            }
         }
 
@@ -189,8 +194,9 @@ public class PlayerControllerV2 : MonoBehaviour
             isAttacking = false;
         }
 
-        if (_isGrounded==false){
+        if (_isGrounded==false &&pushingAnimation==false){
             _animator.SetBool("Idle", false);
+            //Debug.Log("es falso groundes");
             
         }
         else{
@@ -209,7 +215,13 @@ public class PlayerControllerV2 : MonoBehaviour
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
-        
+        //Debug.Log("nombre collision "+collisionInfo.gameObject.layer);
+        if(collisionInfo.gameObject.layer==6){
+            _isGrounded=true;
+        }
+        else{
+            _isGrounded=false;
+        }
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=true;
         }
@@ -218,10 +230,12 @@ public class PlayerControllerV2 : MonoBehaviour
             colPicas++;
             _movement = Vector3.zero;
             enableKeys(false);
+            //Debug.Log("DIE");
         }
         if(colPicas==1){
             foreach(Collider2D c in GetComponents<Collider2D> ()) {
                 c.enabled = false;
+                //Debug.Log("si");
         }
           colPicas=0;
           //FindObjectOfType<GameManager>().endGame();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    Transform target;
+    public Transform target;
     Transform enemyTransform;
     public float speed = 1f;
     private bool facingRight;
@@ -41,13 +41,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
+        //target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
-
+        //Debug.Log(distance);
         if(shouldAttack == false)
         {
             moving(distance);
         }
+       
     }
 
     private void LateUpdate() 

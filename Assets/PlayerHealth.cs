@@ -70,5 +70,6 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		gameObject.SetActive(false);
+		GameManager.instance.EndGame();
 	}
 }
