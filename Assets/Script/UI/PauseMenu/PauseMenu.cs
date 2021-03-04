@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
     public Button slot2;
     public Button slot3;
     public Button slot4;
-    private SaveAndLoad saveObject = null;
+    //private SaveAndLoad saveObject = null;
 
 
     // Update is called once per frame
@@ -63,11 +63,11 @@ public class PauseMenu : MonoBehaviour
 
     public void AddSaveListeners()
     {
-        if (saveObject == null)
-        {
-            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
-            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
-        }
+      //  if (saveObject == null)
+      //  {
+        //    GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+       //     saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        //}
 
         slot1.onClick.AddListener(() => {GameManager.instance.SaveGame("One");});
         slot2.onClick.AddListener(() => {GameManager.instance.SaveGame("Two");});
