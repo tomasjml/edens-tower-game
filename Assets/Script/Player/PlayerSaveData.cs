@@ -17,7 +17,7 @@ public class PlayerStats
 
     public void AddItemToInventory(Item item)
     {
-        if (inventory.ContainsKey(item))
+        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon)
         {
             inventory[item] += 1;
         } else
