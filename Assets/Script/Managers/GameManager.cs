@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = 1;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
+        saveData.difficulty = SaveData.Difficulty.Easy;
 
         BeginGameManager();
         SceneManager.LoadScene("Context");
@@ -145,6 +146,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
+        
 
         BeginGameManager();
         SceneManager.LoadScene(sceneName);
