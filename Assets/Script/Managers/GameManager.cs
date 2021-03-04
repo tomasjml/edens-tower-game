@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
             saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
         }
         saveObject.SaveGame(slot);
+        saveObject.LoadUserGame();
     }
 
     public void EndTimer()
