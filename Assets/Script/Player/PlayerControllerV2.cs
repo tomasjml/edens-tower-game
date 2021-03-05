@@ -14,7 +14,6 @@ public class PlayerControllerV2 : MonoBehaviour
     public float groundCheckBaridus;
     private Rigidbody2D _body;
     private Animator _animator;
-
     
     private Vector2 _movement;
     private bool facingRight = true;
@@ -28,8 +27,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public int jumpsWanted;
     private bool isJumping=false;
 
-    public Transform traps;
-    
+    public Transform pica;
+    public Transform vacio;
     private GameObject _target;
     public float minX;
     public float maxX;
@@ -38,14 +37,9 @@ public class PlayerControllerV2 : MonoBehaviour
     private bool pushingAnimation;
     private bool isGrounded;
     private bool enableKey;
-    Scene currentScene;
-    string sceneName;
-
-    //Attack
-    private bool isAttacking;
-    public GameObject espada;
-
-
+    private Scene currentScene;
+    private string sceneName;
+    
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
@@ -144,52 +138,19 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
-
-        // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
-        {
-            _movement = Vector2.zero;
-            _body.velocity = Vector2.zero;
-            _animator.SetBool("Idle", false);
-            _animator.SetTrigger("Attack");
-        }
-        // Find out Time 
-/*        if (GameManager.instance.timerRunning)
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Debug.Log("T pressed");
-                Debug.Log(GameManager.instance.elapsedTime);
-            }
-        }*/
-
     }
     private void FixedUpdate()
     {
-        if (isAttacking == false)
-        {
-            float horizontalVelocity;
-            horizontalVelocity = _movement.normalized.x * speed;
-            _body.velocity = new Vector2(horizontalVelocity, _body.velocity.y);
-        }
+        float horizontalVelocity;
+        horizontalVelocity = _movement.normalized.x * speed;
+        _body.velocity = new Vector2(horizontalVelocity, _body.velocity.y);
         
     }
     private void LateUpdate()
     {
         _animator.SetBool("isGrounded", _isGrounded);
         _animator.SetBool("isPushing", pushingAnimation);
-
-        // Animator
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
-        {
-            isAttacking = true;
-        }
-        else
-        {
-            isAttacking = false;
-        }
-
-        if (_isGrounded==false){
+        if(_isGrounded==false){
             _animator.SetBool("Idle", false);
             
         }
@@ -210,7 +171,7 @@ public class PlayerControllerV2 : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
         
-        if(collisionInfo.gameObject.tag == "Push"){
+        if(collisionInfo.collider.gameObject.layer==9){
             pushing=true;
         }
         
@@ -220,12 +181,10 @@ public class PlayerControllerV2 : MonoBehaviour
             enableKeys(false);
         }
         if(colPicas==1){
-            foreach(Collider2D c in GetComponents<Collider2D> ()) {
-                c.enabled = false;
-        }
+          Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+          Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
           colPicas=0;
-          //FindObjectOfType<GameManager>().endGame();
-          GameManager.instance.EndGame();
+        FindObjectOfType<GameManager>().endGame();
         }
     }
     void OnCollisionExit2D(Collision2D collisionInfo)

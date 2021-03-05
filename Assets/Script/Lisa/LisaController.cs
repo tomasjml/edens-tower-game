@@ -79,6 +79,6 @@ public class LisaController : MonoBehaviour
 
         new WaitForSeconds(10);
         this.gameObject.SetActive(false);
-        SceneManager.LoadScene("Context 2");
+        SceneManager.LoadScene("Sala");
     }
 }

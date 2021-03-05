@@ -90,7 +90,6 @@ public class CharacterMovement : MonoBehaviour
             counter = 0f;
 
         }
-
     }
 
     private void FixedUpdate()

@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.instance.NewGame();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Dormitorio Lisa");
     }
 
     public void LoadMenuButton()
