@@ -25,9 +25,14 @@ public class EnemyHit : MonoBehaviour
 			_isAttacking = false;
 		}
 	}
+	private void OnCollisionEnter2D(Collision2D collision){
+		Debug.Log("sip "+collision.gameObject.gameObject.tag);
+		
+	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
+		Debug.Log("VEREMOS "+collision.gameObject.gameObject.tag);
 		if (_isAttacking)
 		{
 			if (collision.gameObject.tag == "Player")
