@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         //timeCounter.text = "Time playing: 00:00.00";
         timerGoing = false;
+        
     }
 
     public void BeginGameManager()
@@ -84,14 +85,16 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(UpdateTimer());
+        
+        
     }
 
     private IEnumerator UpdateTimer()
     {
+        timerGoing = true;
         float initialTime = 0f;
         timerRunning = true;
-        if (timerGoing)
+        while (timerGoing)
         {
             initialTime = Time.deltaTime;
             elapsedTime += initialTime;
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
         saveData.difficulty = SaveData.Difficulty.Easy;
-
+        StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");
     }
@@ -155,6 +158,7 @@ public class GameManager : MonoBehaviour
         //GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         //player.transform.position = position;
+        StartCoroutine(UpdateTimer());
     }
 
     public void SaveGame(String slot)

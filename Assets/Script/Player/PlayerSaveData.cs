@@ -69,4 +69,17 @@ public class PlayerStats
         }
     }
 
+    public int getItemQuantity(string title)
+    {
+        Item found = GameManager.instance.itemManagement.GetItemByTitle(title);
+        if (inventory.ContainsKey(found))
+        {
+            return inventory[found];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
 }
