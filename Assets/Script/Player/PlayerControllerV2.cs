@@ -172,6 +172,12 @@ public class PlayerControllerV2 : MonoBehaviour
         {
             Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
         }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
+            Debug.Log("Le di 2 monedas");
+        }
 
     }
     private void FixedUpdate()

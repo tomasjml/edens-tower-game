@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 using SimpleJSON;
 
 public class GameManager : MonoBehaviour
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        UpdateHUD();
         
         
     }
@@ -101,7 +103,6 @@ public class GameManager : MonoBehaviour
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             //timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
             //timeCounter.text = timePlayingStr;
-
             yield return null;
         }
         timerRunning = false;
@@ -206,5 +207,15 @@ public class GameManager : MonoBehaviour
         Item itemSold = itemManagement.GetItemByTitle(title);
         saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["value"] * quantity;
         saveData.playerData.RemoveItemToInventory(itemSold, quantity);
+    }
+
+    private void UpdateHUD()
+    {
+        GameObject c = GameObject.Find("Amount");
+        if (c != null)
+        {
+            c.GetComponent<TextMeshProUGUI>().SetText(saveData.playerData.getItemQuantity("Magic Stone").ToString());
+        }
+           
     }
 }

@@ -43,3 +43,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003841a81a4438a4b9c2bddd03d4b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items:
+  - id: 0
+    title: Magic Stone
+    type: 0
+    description: MagicWorld Currency
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      valueData: 01000000
+  - id: 1
+    title: Tiara
+    type: 1
+    description: Lisa's Tiara which fell up front of the Tower
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      valueData: ffffffff
+  - id: 2
+    title: Basic Sword
+    type: 2
+    description: The Sword picked up in Front of the Tower
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Attact
+      - Category
+      - Evolution
+      valueData: 0f0000000a0000000100000001000000
+  - id: 3
+    title: Basic Bow
+    type: 2
+    description: The Bow first sold in the Market
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Attact
+      - Category
+      - Evolution
+      valueData: 0f000000050000000200000001000000
+  - id: 4
+    title: Basic Potion
+    type: 3
+    description: The "Go to " option for Cheap recovery
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Recovery
+      valueData: 1e0000000a000000
+  itemsMarket: []
