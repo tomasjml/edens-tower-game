@@ -225,6 +225,11 @@ public class PlayerControllerV2 : MonoBehaviour
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
+
+        if (collisionInfo.collider.CompareTag("Chest"))
+        {
+            enableKeys(false);
+        }
         
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=true;
@@ -243,13 +248,15 @@ public class PlayerControllerV2 : MonoBehaviour
           GameManager.instance.EndGame();
         }
     }
+
     void OnCollisionExit2D(Collision2D collisionInfo)
     {
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=false;
         }
-        
     }
+
+ 
 private IEnumerator PatrolToTarget()
     {
         while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)

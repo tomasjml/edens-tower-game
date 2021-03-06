@@ -7,14 +7,19 @@ public class NPCSimple : MonoBehaviour
     public float speed = 1f;
     private GameObject _target;
     public float minX;
-    public float maxX;
     private Animator _animator;
     private bool idle = true;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateTarget();
+        StartCoroutine("PatrolToTarget");
     }
 
     // Update is called once per frame
@@ -44,13 +49,10 @@ public class NPCSimple : MonoBehaviour
         if (_target == null)
         {
             _target = new GameObject("Target");
-            _target.transform.position = new Vector2(maxX, transform.position.y);
+            _target.transform.position = new Vector2(minX, transform.position.y);
             return;
-            
         }
     }
-
-    
 
     void LateUpdate()
     {
