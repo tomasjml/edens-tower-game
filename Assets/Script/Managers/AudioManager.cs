@@ -6,6 +6,9 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
 
+    // AudioClips
+    public AudioClip audioClipMainMenu;
+
     void Awake()
     {
         //Check if instance already exists
@@ -26,7 +29,12 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        GetComponent<AudioSource>().Play();
+        // audio = GetComponent<AudioSource>();
+        // GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayBackgroundMainMenu()
+    {
+        audioClipMainMenu.Play();
     }
 }
