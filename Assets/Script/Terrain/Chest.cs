@@ -29,7 +29,7 @@ public class Chest : MonoBehaviour
             NPC.GetComponent<NPCSimple>().enabled = true;
             other.GetComponent<PlayerControllerV2>().enableKeys(false);
             _a.SetBool("Idle", true);
-            Invoke("update", 10);
+            Invoke("update", 10221212);
         }
 
     }

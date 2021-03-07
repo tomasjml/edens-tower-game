@@ -33,12 +33,14 @@ public class NPCSimple : MonoBehaviour
     {
         while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)
         {
+            idle = false;
             Vector2 direction = _target.transform.position - transform.position;
             float xDirection = direction.x;
             transform.Translate(direction.normalized * speed * Time.deltaTime);
             yield return null;
         }
 
+        idle = true;
         transform.position = new Vector2(_target.transform.position.x, transform.position.y);
         yield return null;
 
