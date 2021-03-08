@@ -19,7 +19,11 @@ public class DialogManagerV2 : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject dialoguePanel2;
     public GameObject _Trigger;
+    public GameObject[] TriggersDestroy;
+
     public PlayerControllerV2 _Player;
+    public GameObject _bot;
+    public GameObject NPC;
     public GameObject _InstructionPressE;
     public Transform _PositionPreesE;
 
@@ -114,7 +118,6 @@ public class DialogManagerV2 : MonoBehaviour
             dialoguePanel.SetActive(true);
             StartDialogue();
             _Player.enableKeys(false);
-            instantiatedObject = Instantiate(_InstructionPressE, _PositionPreesE.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
         }
 
     }
@@ -148,9 +151,14 @@ public class DialogManagerV2 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                _bot.SetActive(true);
+                Destroy(NPC);
                 _Player.enableKeys(true);
-                Destroy(_Trigger, 0);
-                instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                foreach (GameObject c in TriggersDestroy){
+                    Destroy(c, 0);
+                }
+                Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+                GameManager.instance.saveData.playerData.AddItemToInventory(coin, 30);
             }
         }
     }

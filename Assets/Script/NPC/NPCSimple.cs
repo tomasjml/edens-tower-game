@@ -8,12 +8,15 @@ public class NPCSimple : MonoBehaviour
     private GameObject _target;
     public float minX;
     private Animator _animator;
+    private Rigidbody2D _body;
     private bool idle = true;
     public bool finished = false;
+    public bool transparent = false;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _body = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
@@ -26,7 +29,6 @@ public class NPCSimple : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private IEnumerator PatrolToTarget()
@@ -64,5 +66,10 @@ public class NPCSimple : MonoBehaviour
     void LateUpdate()
     {
         _animator.SetBool("Idle", idle);
+    }
+
+    public void sleep()
+    {
+        _body.Sleep();
     }
 }
