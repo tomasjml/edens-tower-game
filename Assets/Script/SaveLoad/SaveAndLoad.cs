@@ -16,7 +16,7 @@ public class SaveAndLoad : MonoBehaviour
     public Vector2 position;
     private readonly string serviceURL = "http://161.35.251.140:8086/";
     public GameObject player;
-    public string username;
+    private string username = "";
     public Slot slot;
 
     public Button slot1;
@@ -27,30 +27,16 @@ public class SaveAndLoad : MonoBehaviour
     //public static SaveAndLoad instance;
 
 
-    //void Awake()
-    //{
-      //if (instance == null)
-
-           //instance = this;
-
-      //else if (instance != this)
-
-          //Destroy(gameObject);
-
-      // DontDestroyOnLoad(gameObject);
-
-
-      // DontDestroyOnLoad(player);
-    //}
-
 
     public void LoadGame(string slot)
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetRequest(slot));
     }
 
     public void LoadUserGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetGamesRequest());
     }
 
@@ -62,6 +48,8 @@ public class SaveAndLoad : MonoBehaviour
         GameManager.instance.saveData.playerData.position = position;
         GameManager.instance.saveData.playerData.sceneName = SceneManager.GetActiveScene().name;
         string jsonSaveData = JsonUtility.ToJson(GameManager.instance.saveData);
+        username = GameManager.instance.user;
+
 
         StartCoroutine(postRequest(jsonSaveData, slot));
     }
@@ -69,6 +57,7 @@ public class SaveAndLoad : MonoBehaviour
 
     public void DeleteGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(DeleteRequest());
     }
 
@@ -123,6 +112,7 @@ public class SaveAndLoad : MonoBehaviour
     //Load User Games
     IEnumerator GetGamesRequest()
     {
+        Debug.Log("UsernameGames " + GameManager.instance.user);
         UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/username?username=" + username);
         yield return GETRequest.SendWebRequest();
 

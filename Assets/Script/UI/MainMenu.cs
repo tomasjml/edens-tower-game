@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject LoadButtons;
     public GameObject LoadMenu;
     public GameObject MenuButtons;
+    public GameObject LoginMenu;
     public GameObject Background;
 
     // Start is called before the first frame update
@@ -24,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         MenuButtons.SetActive(false);
         LoadButtons.SetActive(true);
+        LoginMenu.SetActive(false);
         
     }
 
@@ -32,6 +34,20 @@ public class MainMenu : MonoBehaviour
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
     }
+
+    public void LoginMenuActive()
+    {
+        LoginMenu.SetActive(true);
+        LoadButtons.SetActive(false);
+        MenuButtons.SetActive(false);
+    }
+
+    public void LoginMenuBack()
+    {
+        LoginMenu.SetActive(false);
+        MenuButtons.SetActive(true);
+    }
+
 
     public void NewGame()
     {

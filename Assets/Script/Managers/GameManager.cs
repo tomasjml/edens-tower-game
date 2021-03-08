@@ -9,6 +9,7 @@ using SimpleJSON;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public string user;
 
     // Timer Attributes
     private TimeSpan timePlaying;
