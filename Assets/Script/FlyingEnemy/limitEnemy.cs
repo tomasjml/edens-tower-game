@@ -7,8 +7,6 @@ public class limitEnemy : MonoBehaviour
     // Start is called before the first frame update
     //public GameObject limit;
     public GameObject enemy;
-    public GameObject enemy2;
-
     private FlyingEnemyHealth enemyHealth;
     void Start()
     {
@@ -18,7 +16,7 @@ public class limitEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy.gameObject.activeSelf==true &&enemy2.gameObject.activeSelf==true){
+        if(enemy.gameObject.activeSelf==true ){
             //Debug.Log("es true el primer enemigo");
             transform.gameObject.SetActive(true);
         }

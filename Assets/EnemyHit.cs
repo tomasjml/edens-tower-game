@@ -26,7 +26,7 @@ public class EnemyHit : MonoBehaviour
 		}
 	}
 	private void OnCollisionEnter2D(Collision2D collision){
-		Debug.Log("sip "+collision.gameObject.gameObject.tag);
+		//Debug.Log("sip "+collision.gameObject.gameObject.tag);
 		
 	}
 
