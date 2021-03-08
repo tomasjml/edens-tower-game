@@ -6,8 +6,6 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
 
-    // AudioClips
-    public AudioClip audioClipMainMenu;
 
     void Awake()
     {
@@ -29,12 +27,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        // audio = GetComponent<AudioSource>();
-        // GetComponent<AudioSource>().Play();
+
     }
 
-    public void PlayBackgroundMainMenu()
-    {
-        audioClipMainMenu.Play();
-    }
 }
