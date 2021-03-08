@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
 		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
 		{
 			_isAttacking = true;
+			
 		}
 		else
 		{
@@ -32,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
 		{
 			if (collision.CompareTag("Enemy"))
 			{
+				
 				collision.SendMessageUpwards("AddDamageEnemy", strength);
 				Debug.Log("Se esta enviando");
 			}

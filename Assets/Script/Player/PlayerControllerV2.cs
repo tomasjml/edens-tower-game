@@ -149,6 +149,7 @@ public class PlayerControllerV2 : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
+            Debug.Log("entro");
             _body.velocity = Vector2.zero;
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");

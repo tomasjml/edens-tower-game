@@ -23,11 +23,12 @@ public class FlyingEnemyHit : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("hey "+ collision.gameObject.tag);
+		
         if (_isAttacking)
 		{
 			if (collision.gameObject.tag == "Player")
 			{
+                Debug.Log(collision.gameObject.layer);
 				transform.position=new Vector3(10 * Time.deltaTime , 0, 0);
 				collision.SendMessageUpwards("AddDamage", damage);
 			}
