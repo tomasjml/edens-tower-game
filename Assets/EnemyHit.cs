@@ -32,7 +32,6 @@ public class EnemyHit : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("VEREMOS "+collision.gameObject.gameObject.tag);
 		if (_isAttacking)
 		{
 			if (collision.gameObject.tag == "Player")
