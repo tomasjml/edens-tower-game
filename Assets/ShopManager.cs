@@ -8,12 +8,15 @@ using System.Linq;
 public class ShopManager : MonoBehaviour
 {
     private int gems;
-    private Image image;
     public Text gemText;
     public int skill_Price;
+    public Text vitalityText;
+    public Text strengthText;
+    public Text speedText;
+
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
     }
@@ -26,13 +29,15 @@ public class ShopManager : MonoBehaviour
 
     public void Buy()
     {
-        GameObject ButtonRef = GameObject.FindGameObjectWithTag("Button").GetComponent<EventSystem>().currentSelectedGameObject;
+        GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.name);
-        int price = GameManager.instance.saveData.playerData.ItemQuantityInInventory(ButtonRef.name);
+        
+        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+        int price = GameManager.instance.itemManagement.GetItemByTitle(item.title).stats["Value"];
         if (gems >= price)
         {
-            GameManager.instance.MarketBuyItem(ButtonRef.name, 1);
-
+            GameManager.instance.MarketBuyItem(item.title, 1);
+            Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
             gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
             gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
         }

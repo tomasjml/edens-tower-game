@@ -83,6 +83,6 @@ public class ItemManagement : MonoBehaviour
             GetItemByTitle("Basic Potion"),
             GetItemByTitle("Basic Bow")
 
-    };
+        };
     }
 }

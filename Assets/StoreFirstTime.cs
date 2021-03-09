@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class StoreFirstTime : MonoBehaviour
 {
     public Canvas canvas;
+    private Animator _animator;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
