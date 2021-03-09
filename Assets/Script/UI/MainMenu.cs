@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
         MainMenuButton();
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
-        AudioManager.instance.PlayBackgroundMainMenu();
+        AudioManager.instance.PlayBackgroundMusic();
     }
 
     public void MainToLoadButton()
