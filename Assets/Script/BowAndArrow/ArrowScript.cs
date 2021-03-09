@@ -25,7 +25,8 @@ public class ArrowScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collisionInfo){
         if(collisionInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground")){
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +37,7 @@ public class ArrowScript : MonoBehaviour
 				
 				collision.SendMessageUpwards("AddDamageEnemy", 1);
 				Debug.Log("Se esta enviando");
+                Destroy(gameObject);
 			}
 
 		
