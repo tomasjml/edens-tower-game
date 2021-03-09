@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int totalHealth = 3;
+	public int totalHealth = 5;
 
 	private int health;
 
