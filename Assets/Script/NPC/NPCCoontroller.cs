@@ -59,7 +59,7 @@ public class NPCCoontroller : MonoBehaviour
             dialogueTrigger.TriggerDialogue();
             veces++;
         }
-        if(Input.GetKeyDown(KeyCode.W)){
+        if(Input.GetKeyDown(KeyCode.E)){
             dialogManag.DisplayNextSentence();
         }
         if(dialogManag.isDialogueialogueFinished()==true){
