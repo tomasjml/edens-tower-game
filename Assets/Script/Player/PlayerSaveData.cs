@@ -45,7 +45,7 @@ public class PlayerStats
             inventory.Remove(item);
         } else
         {
-            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+            Debug.LogError("ï¿½tem " + item.title + " not in Inventory");
         }
     }
 
@@ -65,21 +65,20 @@ public class PlayerStats
         }
         else
         {
-            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+            Debug.LogError("ï¿½tem " + item.title + " not in Inventory");
         }
     }
 
-    public int getItemQuantity(string title)
+    public int ItemQuantityInInventory(string title)
     {
-        Item found = GameManager.instance.itemManagement.GetItemByTitle(title);
-        if (inventory.ContainsKey(found))
+        Item itemFound = GameManager.instance.itemManagement.GetItemByTitle(title);
+        if (inventory.ContainsKey(itemFound))
         {
-            return inventory[found];
+            return inventory[itemFound];
         }
         else
         {
             return 0;
         }
     }
-
 }

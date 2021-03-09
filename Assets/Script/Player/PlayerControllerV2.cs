@@ -155,20 +155,13 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
         }
-        // Find out Time 
-/*        if (GameManager.instance.timerRunning)
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Debug.Log("T pressed");
-                Debug.Log(GameManager.instance.elapsedTime);
-            }
-        }*/
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("I pressed");
             Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+            GameObject inventoryCanvas = GameObject.Find("InventoryCanvas");
+            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
+            inventory.ViewInventory();
         }
         if (Input.GetKeyDown(KeyCode.U))
         {

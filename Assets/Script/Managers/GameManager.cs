@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = 1;
         saveData.playerData.luck = 1;
         saveData.playerData.speed = 1;
-        saveData.playerData.vitality = 1;
+        saveData.playerData.vitality = 10;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
         saveData.difficulty = SaveData.Difficulty.Easy;
@@ -199,14 +199,14 @@ public class GameManager : MonoBehaviour
     public void MarketBuyItem(string title, int quantity)
     {
         Item itemPurchased = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["Value"] * quantity;
         saveData.playerData.AddItemToInventory(itemPurchased, quantity);
     }
 
     public void MarketSellItem(string title, int quantity)
     {
         Item itemSold = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["Value"] * quantity;
         saveData.playerData.RemoveItemToInventory(itemSold, quantity);
     }
 
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
         GameObject c = GameObject.Find("Amount");
         if (c != null)
         {
-            c.GetComponent<TextMeshProUGUI>().SetText(saveData.playerData.getItemQuantity("Magic Stone").ToString());
+            c.GetComponent<TextMeshProUGUI>().SetText(saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString());
         }
            
     }
