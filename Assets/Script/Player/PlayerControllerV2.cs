@@ -146,7 +146,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false && PauseMenu.gameIsPaused != true)
         {
             _movement = Vector2.zero;
             _body.velocity = Vector2.zero;
@@ -167,6 +167,9 @@ public class PlayerControllerV2 : MonoBehaviour
         {
             Debug.Log("I pressed");
             Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+            GameObject inventoryCanvas = GameObject.Find("Canvas/InventoryCanvas");
+            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
+            inventory.ViewInventory();
         }
         if (Input.GetKeyDown(KeyCode.U))
         {

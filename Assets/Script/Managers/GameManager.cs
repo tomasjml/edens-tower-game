@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = 1;
         saveData.playerData.luck = 1;
         saveData.playerData.speed = 1;
-        saveData.playerData.vitality = 1;
+        saveData.playerData.vitality = 10;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
         saveData.difficulty = SaveData.Difficulty.Easy;
