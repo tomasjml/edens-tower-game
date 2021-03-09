@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
     public GameObject LoadMenu;
     public GameObject MenuButtons;
     public GameObject LoginMenu;
-    public GameObject Background;
 
     // Start is called before the first frame update
     void Start()
