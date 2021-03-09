@@ -163,6 +163,22 @@ public class PlayerControllerV2 : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("I pressed");
+            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
+            Debug.Log("Le di 2 monedas");
+        }
+
     }
     private void FixedUpdate()
     {
@@ -209,6 +225,11 @@ public class PlayerControllerV2 : MonoBehaviour
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
+
+        if (collisionInfo.collider.CompareTag("Chest"))
+        {
+            enableKeys(false);
+        }
         
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=true;
@@ -227,13 +248,15 @@ public class PlayerControllerV2 : MonoBehaviour
           GameManager.instance.EndGame();
         }
     }
+
     void OnCollisionExit2D(Collision2D collisionInfo)
     {
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=false;
         }
-        
     }
+
+ 
 private IEnumerator PatrolToTarget()
     {
         while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)

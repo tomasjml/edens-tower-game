@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 using SimpleJSON;
 
 public class GameManager : MonoBehaviour
@@ -13,10 +14,11 @@ public class GameManager : MonoBehaviour
     // Timer Attributes
     private TimeSpan timePlaying;
     private bool timerGoing;
-    public float elapsedTime;
     private string timePlayingStr;
     //private Text timeCounter;
     public bool timerRunning;
+    public float elapsedTime;
+
 
     // Game over Attributes
     public float restartDelay=2.5f;
@@ -24,6 +26,11 @@ public class GameManager : MonoBehaviour
 
     // Player Stats
     public SaveData saveData;
+    private SaveAndLoad saveObject = null;
+    
+
+    // Item Management
+    public ItemManagement itemManagement;
 
     void Awake()
     {
@@ -42,6 +49,10 @@ public class GameManager : MonoBehaviour
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
 
+        // item build
+        Instantiate(itemManagement);
+        DontDestroyOnLoad(itemManagement);
+
         //Call the InitGame function to initialize the first level 
         InitGame();
     }
@@ -57,10 +68,13 @@ public class GameManager : MonoBehaviour
     {
         //timeCounter.text = "Time playing: 00:00.00";
         timerGoing = false;
+        
     }
 
     public void BeginGameManager()
     {
+        itemManagement.BuildItems();
+
         timerGoing = true;
 
         //elapsedTime = 0f;
@@ -72,21 +86,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        StartCoroutine(UpdateTimer());
+        UpdateHUD();
+        
+        
     }
 
     private IEnumerator UpdateTimer()
     {
+        timerGoing = true;
         float initialTime = 0f;
         timerRunning = true;
-        if (timerGoing)
+        while (timerGoing)
         {
             initialTime = Time.deltaTime;
             elapsedTime += initialTime;
             timePlaying = TimeSpan.FromSeconds(elapsedTime);
             //timePlayingStr = "Time playing: " + timePlaying.ToString("HH ':'mm':'ss");
             //timeCounter.text = timePlayingStr;
-
             yield return null;
         }
         timerRunning = false;
@@ -101,9 +117,21 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = 1;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
-
+        saveData.difficulty = SaveData.Difficulty.Easy;
+        StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");
+    }
+
+    public void LoadRequest(string slot)
+    {
+
+        if (saveObject == null)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        }
+        saveObject.LoadGame(slot);
     }
 
     public void LoadGame(JSONNode game)
@@ -122,18 +150,27 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
+        
 
         BeginGameManager();
-        SceneManager.LoadSceneAsync(sceneName);
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
 
-       // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         //player.transform.position = position;
+        StartCoroutine(UpdateTimer());
     }
 
     public void SaveGame(String slot)
     {
-        SaveAndLoad.instance.SaveGame(slot);
+        if(saveObject == null)
+        {
+            GameObject gameObject = GameObject.FindGameObjectWithTag("Pause");
+            saveObject = (SaveAndLoad)gameObject.GetComponent(typeof(SaveAndLoad));
+        }
+        saveObject.SaveGame(slot);
+        saveObject.LoadUserGame();
     }
 
     public void EndTimer()
@@ -141,7 +178,8 @@ public class GameManager : MonoBehaviour
         timerGoing = false;
     }
 
-    public void EndGame() {
+    public void EndGame() 
+    {
         if(gameEnded == false) {
             gameEnded=true;
             Debug.Log("GAME OVER !");
@@ -151,7 +189,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Restart(){
+    public void Restart()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // ======= Market Functions
+    public void MarketBuyItem(string title, int quantity)
+    {
+        Item itemPurchased = itemManagement.GetItemByTitle(title);
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["value"] * quantity;
+        saveData.playerData.AddItemToInventory(itemPurchased, quantity);
+    }
+
+    public void MarketSellItem(string title, int quantity)
+    {
+        Item itemSold = itemManagement.GetItemByTitle(title);
+        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["value"] * quantity;
+        saveData.playerData.RemoveItemToInventory(itemSold, quantity);
+    }
+
+    private void UpdateHUD()
+    {
+        GameObject c = GameObject.Find("Amount");
+        if (c != null)
+        {
+            c.GetComponent<TextMeshProUGUI>().SetText(saveData.playerData.getItemQuantity("Magic Stone").ToString());
+        }
+           
     }
 }

@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3453233959189298989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1087149064884813217}
+  - component: {fileID: 5455547064278160170}
+  m_Layer: 0
+  m_Name: ItemManagement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1087149064884813217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453233959189298989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5455547064278160170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453233959189298989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003841a81a4438a4b9c2bddd03d4b69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - id: 0
+    title: Magic Stone
+    type: 0
+    description: MagicWorld Currency
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      valueData: 01000000
+  - id: 1
+    title: Tiara
+    type: 1
+    description: Lisa's Tiara which fell up front of the Tower
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      valueData: ffffffff
+  - id: 2
+    title: Basic Sword
+    type: 2
+    description: The Sword picked up in Front of the Tower
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Attact
+      - Category
+      - Evolution
+      valueData: 0f0000000a0000000100000001000000
+  - id: 3
+    title: Basic Bow
+    type: 2
+    description: The Bow first sold in the Market
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Attact
+      - Category
+      - Evolution
+      valueData: 0f000000050000000200000001000000
+  - id: 4
+    title: Basic Potion
+    type: 3
+    description: The "Go to " option for Cheap recovery
+    icon: {fileID: 0}
+    stats:
+      keyData:
+      - Value
+      - Recovery
+      valueData: 1e0000000a000000
+  itemsMarket: []
