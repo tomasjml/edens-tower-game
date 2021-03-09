@@ -26,8 +26,8 @@ public class DialogManagerV2 : MonoBehaviour
     public GameObject NPC;
     public GameObject _InstructionPressE;
     public Transform _PositionPreesE;
+    public Animator Chest;
 
-    private GameObject instantiatedObject;
     private bool onSite = false;
 
     void Awake()
@@ -116,6 +116,7 @@ public class DialogManagerV2 : MonoBehaviour
         {
             onSite = true;
             dialoguePanel.SetActive(true);
+            Chest.SetTrigger("Open");
             StartDialogue();
             _Player.enableKeys(false);
         }
