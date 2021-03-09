@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LoadS : MonoBehaviour
 {
+
+    public string _Scene;
     
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,7 @@ public class LoadS : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Part 2");
+            SceneManager.LoadScene(_Scene);
         }
     }
 }

@@ -55,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 
 		gameObject.SetActive(false);
+		//Destroy(gameObject,2f);
     }
 }
 

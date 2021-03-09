@@ -6,6 +6,7 @@ public class OpenChest : MonoBehaviour
 {
     public Transform _PositionPressE;
     public GameObject _InstructionPressE;
+    public GameObject _Magic_Stone;
 
     Animator animator;
 
@@ -23,6 +24,8 @@ public class OpenChest : MonoBehaviour
             Debug.Log("Ha entrado");
             if(animator.GetBool("OpenChest") == false)
             instantiatedObject = Instantiate(_InstructionPressE,_PositionPressE.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
+
+
         }
     }
 
@@ -34,6 +37,8 @@ public class OpenChest : MonoBehaviour
             {
                 animator.SetTrigger("OpenChest");
                 instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                _Magic_Stone.SetActive(true);
+                _Magic_Stone.GetComponent<Animator>().SetTrigger("isOpen");
             }            
         }
     }
