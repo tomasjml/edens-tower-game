@@ -146,21 +146,12 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false && PauseMenu.gameIsPaused != true)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false && PauseMenu.gameIsPaused != true && Time.timeScale > 0f)
         {
             _movement = Vector2.zero;
             _body.velocity = Vector2.zero;
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
-        }
-        // Find out Time 
-        if (GameManager.instance.timerRunning)
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Debug.Log("T pressed");
-                Debug.Log(GameManager.instance.elapsedTime);
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.I))

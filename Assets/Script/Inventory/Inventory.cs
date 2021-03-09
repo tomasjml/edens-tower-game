@@ -26,6 +26,9 @@ public class Inventory : MonoBehaviour
     // Text
     public Text textCurrency;
 
+    // Current Item Selected
+    private Item selectedItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,31 +55,59 @@ public class Inventory : MonoBehaviour
 
     void UpdateSlots()
     {
-        itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Potion") > 0)
+        {
+            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+            itemConsumables1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemConsumables1.transform.Find("Text").GetComponent<Text>().enabled = false;
+
+        }
+        else
+        {
+            itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled = false;
+            itemConsumables1.transform.Find("Text").GetComponent<Text>().enabled = true;
+        }
         itemConsumables2.transform.Find("Image").GetComponent<Image>().enabled = false;
         itemConsumables3.transform.Find("Image").GetComponent<Image>().enabled = false;
 
-        itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = false;
-        itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") > 0)
+        {
+            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Sword");
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
+
+        }
+        else
+        {
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = false;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
+
+        }
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") > 0)
+        {
+            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+
+        }
+        else
+        {
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
+
+        }
         itemWeapon3.transform.Find("Image").GetComponent<Image>().enabled = false;
 
         if(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Tiara") > 0)
         {
             Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
-            if (tiara.icon != null)
-            {
-                Debug.Log("Tiara Sprite is present");
-            }
-            else
-            {
-                Debug.LogError("Tiara Sprite is not present!");
-            }
             itemStory1.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
             itemStory1.transform.Find("Text").GetComponent<Text>().enabled = false;
         }
         else
         {
             itemStory1.transform.Find("Image").GetComponent<Image>().enabled = false;
+            itemStory1.transform.Find("Text").GetComponent<Text>().enabled = true;
         }
         itemStory2.transform.Find("Image").GetComponent<Image>().enabled = false;
         itemStory3.transform.Find("Image").GetComponent<Image>().enabled = false;

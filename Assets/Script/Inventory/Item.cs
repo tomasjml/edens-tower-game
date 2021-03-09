@@ -41,10 +41,4 @@ public class Item
         icon = Resources.Load<Sprite>(ItemsRoute + title);
         stats = item.stats;
     }
-    
-    public string ToString()
-    {
-        return (title + " " + id.ToString());
-    }
-
 }
