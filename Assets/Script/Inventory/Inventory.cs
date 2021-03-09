@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
             }
             else
             {
@@ -71,7 +71,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
             }
             else
             {
@@ -90,7 +90,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
             }
             else
             {
@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicSword.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicSword.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicSword.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicSword.title).ToString();
             }
             else
             {
@@ -128,7 +128,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicBow.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicBow.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
             }
             else
             {
@@ -148,7 +148,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicBow.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicBow.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
             }
             else
             {
@@ -167,7 +167,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
             }
             else
             {
@@ -186,7 +186,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
             }
             else
             {
@@ -205,7 +205,7 @@ public class Inventory : MonoBehaviour
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
-                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
             }
             else
             {
