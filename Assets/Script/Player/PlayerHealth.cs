@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
+	public string _Actual_Scene;
 
 	private void Awake()
 	{
@@ -71,6 +73,8 @@ public class PlayerHealth : MonoBehaviour
 
 		gameObject.SetActive(false);
 		GameManager.instance.EndGame();
+		if(_Actual_Scene != "")
+		SceneManager.LoadScene(_Actual_Scene);
 	}
 	public int getCurrentHealth(){
 		return health;
