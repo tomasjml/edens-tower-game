@@ -28,13 +28,11 @@ public class FlyingEnemyHit : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		
-        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")==false)
+        if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
 		{
 			if (collision.gameObject.tag == "Player")
 			{
-                Debug.Log(collision.gameObject.layer);
-				var pos = transform.position;
+                var pos = transform.position;
      			pos.x += 3;
      			transform.position = pos;
 				//transform.position=new Vector3(10 * Time.deltaTime , 0, 0);
