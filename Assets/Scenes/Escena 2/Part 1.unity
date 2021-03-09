@@ -14805,7 +14805,7 @@ PrefabInstance:
     - target: {fileID: 2105172048382982410, guid: 342aab055d019dc45a258820ca81004a, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1906505269}
     - target: {fileID: 2497433432883357851, guid: 342aab055d019dc45a258820ca81004a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -14873,7 +14873,7 @@ PrefabInstance:
     - target: {fileID: 5444737086977379019, guid: 342aab055d019dc45a258820ca81004a, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1548245703}
     - target: {fileID: 5444737086977379019, guid: 342aab055d019dc45a258820ca81004a, type: 3}
       propertyPath: m_RenderMode
       value: 1
@@ -18690,13 +18690,14 @@ GameObject:
   - component: {fileID: 1831219216}
   - component: {fileID: 1831219215}
   - component: {fileID: 1831219217}
+  - component: {fileID: 1831219218}
   m_Layer: 0
   m_Name: Magic Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1831219214
 Transform:
   m_ObjectHideFlags: 0
@@ -18791,7 +18792,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0063972473, y: 0}
@@ -18807,6 +18808,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.371315, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &1831219218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831219213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db5335d3131b8248bcc0d8603dee9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Magic_Stone: {fileID: 1831219213}
 --- !u!1 &1836141960
 GameObject:
   m_ObjectHideFlags: 0
