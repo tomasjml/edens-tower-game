@@ -28,8 +28,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public int jumpsWanted;
     private bool isJumping=false;
 
-    public Transform pica;
-    public Transform vacio;
+    public Transform traps;
+    
     private GameObject _target;
     public float minX;
     public float maxX;
@@ -149,19 +149,20 @@ public class PlayerControllerV2 : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
+            
             _body.velocity = Vector2.zero;
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
         }
         // Find out Time 
-        if (GameManager.instance.timerRunning)
+/*        if (GameManager.instance.timerRunning)
         {
             if (Input.GetKeyDown(KeyCode.T))
             {
                 Debug.Log("T pressed");
                 Debug.Log(GameManager.instance.elapsedTime);
             }
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -231,7 +232,7 @@ public class PlayerControllerV2 : MonoBehaviour
             enableKeys(false);
         }
         
-        if(collisionInfo.collider.gameObject.layer==9){
+        if(collisionInfo.gameObject.tag == "Push"){
             pushing=true;
         }
         
@@ -241,8 +242,9 @@ public class PlayerControllerV2 : MonoBehaviour
             enableKeys(false);
         }
         if(colPicas==1){
-          Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-          Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            foreach(Collider2D c in GetComponents<Collider2D> ()) {
+                c.enabled = false;
+        }
           colPicas=0;
           //FindObjectOfType<GameManager>().endGame();
           GameManager.instance.EndGame();

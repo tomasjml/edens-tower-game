@@ -70,5 +70,12 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		gameObject.SetActive(false);
+		GameManager.instance.EndGame();
+	}
+	public int getCurrentHealth(){
+		return health;
+	}
+	public int getOriginalHealth(){
+		return totalHealth;
 	}
 }
