@@ -44,6 +44,7 @@ public class PlayerControllerV2 : MonoBehaviour
     //Attack
     private bool isAttacking;
     public GameObject espada;
+    public GameObject bow;
 
 
     void Awake()
@@ -116,13 +117,13 @@ public class PlayerControllerV2 : MonoBehaviour
             flip();
         }
         //Esta saltando?
-        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
+        if(Input.GetKeyDown(KeyCode.Space) &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
             
         }
-        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
+        else if(Input.GetKeyDown(KeyCode.Space) && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
         {
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
@@ -146,7 +147,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
             
@@ -234,6 +235,9 @@ public class PlayerControllerV2 : MonoBehaviour
         
         if(collisionInfo.gameObject.tag == "Push"){
             pushing=true;
+        }
+        else{
+            pushing=false;
         }
         
        if(collisionInfo.collider.tag=="Die"){
