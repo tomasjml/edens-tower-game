@@ -235,6 +235,7 @@ public class Inventory : MonoBehaviour
         {
             Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
             itemConsumables1.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
+            itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemConsumables1.transform.Find("Text").GetComponent<Text>().enabled = false;
         }
         else
@@ -249,6 +250,7 @@ public class Inventory : MonoBehaviour
         {
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Sword");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
 
         }
@@ -262,6 +264,7 @@ public class Inventory : MonoBehaviour
         {
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
 
         }
@@ -277,6 +280,7 @@ public class Inventory : MonoBehaviour
         {
             Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
             itemStory1.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
+            itemStory1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemStory1.transform.Find("Text").GetComponent<Text>().enabled = false;
         }
         else

@@ -36,6 +36,7 @@ public class ShopManager : MonoBehaviour
         int price = GameManager.instance.itemManagement.GetItemByTitle(item.title).stats["Value"];
         if (gems >= price)
         {
+            Debug.Log(item.title);
             GameManager.instance.MarketBuyItem(item.title, 1);
             Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
             gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
