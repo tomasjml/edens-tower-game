@@ -23,6 +23,9 @@ public class Inventory : MonoBehaviour
     public Button itemWeapon2;
     public Button itemWeapon3;
 
+    // Text
+    public Text textCurrency;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,11 @@ public class Inventory : MonoBehaviour
         {
             CloseInventory();
         });
+        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Magic Stone"), 100);
+        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Tiara"), 1);
+        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"), 1);
+        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Potion"), 1);
+
         UpdateSlots();
 
     }
@@ -52,9 +60,28 @@ public class Inventory : MonoBehaviour
         itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
         itemWeapon3.transform.Find("Image").GetComponent<Image>().enabled = false;
 
-        itemStory1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        if(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Tiara") > 0)
+        {
+            Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
+            if (tiara.icon != null)
+            {
+                Debug.Log("Tiara Sprite is present");
+            }
+            else
+            {
+                Debug.LogError("Tiara Sprite is not present!");
+            }
+            itemStory1.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
+            itemStory1.transform.Find("Text").GetComponent<Text>().enabled = false;
+        }
+        else
+        {
+            itemStory1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        }
         itemStory2.transform.Find("Image").GetComponent<Image>().enabled = false;
         itemStory3.transform.Find("Image").GetComponent<Image>().enabled = false;
+
+        textCurrency.text = "Currency: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
     }
 
     public void ViewInventory()

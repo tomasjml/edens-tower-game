@@ -15,6 +15,8 @@ public class Item
         Consumables     // 3
 
     }
+
+    private const string ItemsRoute = "Sprites/Items/";
     public int id;
     public string title;
     public Type type;
@@ -27,20 +29,20 @@ public class Item
         this.title = title;
         this.type = type;
         this.description = description;
-        this.icon = Resources.Load<Sprite>("Sprites/Items/" + title);
+        icon = Resources.Load<Sprite>(ItemsRoute + title);
         this.stats = stats;
     }
 
     public Item(Item item)
     {
-        this.id = item.id;
-        this.title = item.title;
-        this.description = item.description;
-        this.icon = Resources.Load<Sprite>("Sprites/Items/" + title);
-        this.stats = item.stats;
+        id = item.id;
+        title = item.title;
+        description = item.description;
+        icon = Resources.Load<Sprite>(ItemsRoute + title);
+        stats = item.stats;
     }
     
-    public string toString()
+    public string ToString()
     {
         return (title + " " + id.ToString());
     }
