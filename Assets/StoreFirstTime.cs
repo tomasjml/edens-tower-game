@@ -17,7 +17,7 @@ public class StoreFirstTime : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         canvas.gameObject.SetActive(true);
-        player.SendMessageUpwards("enableKeys", false);
+        //player.SendMessageUpwards("enableKeys", false);
     }
     // Update is called once per frame
     void Update()

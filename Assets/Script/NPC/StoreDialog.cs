@@ -43,7 +43,7 @@ public class StoreDialog : MonoBehaviour
             textDisplay.text = "";
             canvas.gameObject.SetActive(false);
             store.gameObject.SetActive(true);
-            player.SendMessageUpwards("enableKeys", true);
+            //player.SendMessageUpwards("enableKeys", true);
         }
     }
 }
