@@ -7,16 +7,33 @@ public class Inventory : MonoBehaviour
 {
     public GameObject inventoryChilds;
 
+    // Buttons
+    // Consumables
+    public Button itemConsumables1;
+    public Button itemConsumables2;
+    public Button itemConsumables3;
+
+    // Story
+    public Button itemStory1;
+    public Button itemStory2;
+    public Button itemStory3;
+
+    // Weapons
+    public Button itemWeapon1;
+    public Button itemWeapon2;
+    public Button itemWeapon3;
+
     // Start is called before the first frame update
     void Start()
     {
         inventoryChilds.SetActive(false);
-        Button button = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
-        button.onClick.AddListener(() =>
+        Button closeButton = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
+        closeButton.onClick.AddListener(() =>
         {
-            Debug.Log(button.name);
             CloseInventory();
         });
+        UpdateSlots();
+
     }
 
     // Update is called once per frame
@@ -27,7 +44,17 @@ public class Inventory : MonoBehaviour
 
     void UpdateSlots()
     {
-        GameObject consumableItems = GameObject.Find("Consumables");
+        itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemConsumables2.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemConsumables3.transform.Find("Image").GetComponent<Image>().enabled = false;
+
+        itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemWeapon3.transform.Find("Image").GetComponent<Image>().enabled = false;
+
+        itemStory1.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemStory2.transform.Find("Image").GetComponent<Image>().enabled = false;
+        itemStory3.transform.Find("Image").GetComponent<Image>().enabled = false;
     }
 
     public void ViewInventory()
@@ -41,7 +68,6 @@ public class Inventory : MonoBehaviour
             OpenInventory();
         }
         UpdateSlots();
-        Debug.Log("Inventory showing");
     }
 
     public void CloseInventory()

@@ -165,7 +165,6 @@ public class PlayerControllerV2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("I pressed");
             Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
             GameObject inventoryCanvas = GameObject.Find("Canvas/InventoryCanvas");
             Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
