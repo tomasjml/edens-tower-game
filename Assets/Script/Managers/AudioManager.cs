@@ -24,8 +24,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
 
         // Instantiate AudioSource
-        Instantiate(this.audioSource);
-        DontDestroyOnLoad(this.audioSource);
+        Instantiate(audioSource);
+        DontDestroyOnLoad(audioSource);
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
@@ -42,11 +42,13 @@ public class AudioManager : MonoBehaviour
         while (true)
         {
             audioSource.clip = audioClipMenu;
+            audioSource.enabled = true;
+            Debug.Log("BackgroundMusic State: " + audioSource.isActiveAndEnabled);
 
             if (!audioSource.isPlaying)
             {
-                yield return new WaitForSeconds(audioSource.clip.length);
                 audioSource.Play();
+                yield return new WaitForSeconds(audioSource.clip.length);
             }
         }
     }
