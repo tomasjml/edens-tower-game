@@ -11,10 +11,10 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         inventoryChilds.SetActive(false);
-        Button button = (Button) inventoryChilds.GetComponent("Close Button");
-        Debug.Log(button.name);
+        Button button = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
         button.onClick.AddListener(() =>
         {
+            Debug.Log(button.name);
             CloseInventory();
         });
     }
