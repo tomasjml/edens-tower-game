@@ -21,7 +21,7 @@ public class LoadS : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Part 2");
+            SceneManager.LoadScene("Part 1");
         }
     }
 }
