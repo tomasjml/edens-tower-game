@@ -236,6 +236,9 @@ public class PlayerControllerV2 : MonoBehaviour
         if(collisionInfo.gameObject.tag == "Push"){
             pushing=true;
         }
+        else{
+            pushing=false;
+        }
         
        if(collisionInfo.collider.tag=="Die"){
             colPicas++;
