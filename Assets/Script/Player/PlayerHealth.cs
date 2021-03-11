@@ -70,11 +70,9 @@ public class PlayerHealth : MonoBehaviour
 		_animator.SetTrigger("IsDead");
 
 		yield return new WaitForSeconds(1f);
-
 		gameObject.SetActive(false);
 		GameManager.instance.EndGame();
-		if(_Actual_Scene != "")
-		SceneManager.LoadScene(_Actual_Scene);
+		
 	}
 	public int getCurrentHealth(){
 		return health;
