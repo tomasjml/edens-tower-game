@@ -150,7 +150,9 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
-        
+
+        saveData.playerData.inventory = loadData.playerData.inventory;
+        saveData.dictMarketItems = loadData.dictMarketItems;
 
         BeginGameManager();
         SceneManager.LoadScene(sceneName);
