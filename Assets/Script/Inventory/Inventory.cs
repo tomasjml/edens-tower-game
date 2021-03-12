@@ -214,10 +214,10 @@ public class Inventory : MonoBehaviour
             }
         });
 
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Magic Stone"), 100);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Tiara"), 1);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"), 1);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Potion"), 2);
+        // GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Magic Stone"), 100);
+        // GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Tiara"), 1);
+        // GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"), 1);
+        // GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Potion"), 2);
 
         UpdateSlots();
 
