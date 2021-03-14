@@ -8,12 +8,12 @@ public class PPEffect : MonoBehaviour
     
     public float limMax = 28f;
     public float limMin = 0f;
-    public Vector3 currentPos = new Vector3();
+    Vector3 currentPos = new Vector3();
     public GameObject _Plataforma;
 
     void Start()
     {
-        //currentPos = new Vector3(gameObject.transform.position.x,gameObject.transform.position.y);
+        currentPos = new Vector3(gameObject.transform.position.x ,gameObject.transform.position.y);
     }
 
     // Update is called once per frame
