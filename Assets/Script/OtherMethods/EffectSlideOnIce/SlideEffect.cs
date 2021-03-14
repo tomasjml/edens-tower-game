@@ -10,22 +10,11 @@ public class SlideEffect : MonoBehaviour
      *  En este script lo que se hace es aumentarle la gravedad al rigidbody del Player
      *  para que parezca que se esta resbalando.
      */
-
-    public GameObject _Player;
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            _Player.GetComponent<Rigidbody2D>().gravityScale = 80f;
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 80f;
         }
     }
 
@@ -33,7 +22,7 @@ public class SlideEffect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _Player.GetComponent<Rigidbody2D>().gravityScale = 3.5f;
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 3.5f;
         }
     }
 
