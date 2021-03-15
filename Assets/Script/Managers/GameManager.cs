@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public bool timerRunning;
     public float elapsedTime;
 
-
     // Game over Attributes
     public float restartDelay=2.5f;
     public bool gameEnded=false;
@@ -140,7 +139,7 @@ public class GameManager : MonoBehaviour
         SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
 
         string sceneName = loadData.playerData.sceneName;
-        Vector2 position = loadData.playerData.position;
+        Vector3 position = loadData.playerData.position;
 
         elapsedTime = (float)game["gameTimeInSeconds"];
         //Debug.Log(TimeSpan.FromSeconds(elapsedTime).ToString("HH ':'mm':'ss"));
@@ -150,15 +149,11 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
-        
+        saveData.playerData.position = loadData.playerData.position;
 
         BeginGameManager();
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
-
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        //player.transform.position = position;
         StartCoroutine(UpdateTimer());
     }
 

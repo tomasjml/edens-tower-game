@@ -48,6 +48,10 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void Awake()
     {
+        if (GameManager.instance && GameManager.instance.saveData.playerData.sceneName == SceneManager.GetActiveScene().name)
+        {
+            gameObject.transform.position = GameManager.instance.saveData.playerData.position;
+        }
         _body = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
