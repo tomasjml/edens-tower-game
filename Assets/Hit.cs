@@ -26,4 +26,14 @@ public class Hit : MonoBehaviour
                 collision.SendMessageUpwards("AddDamage", damage);
             }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Se esta dando");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Se dio");
+            collision.gameObject.SendMessageUpwards("AddDamage", damage);
+        }
+    }
 }

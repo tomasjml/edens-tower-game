@@ -9,7 +9,6 @@ public class PPEffect : MonoBehaviour
     public float limMax = 28f;
     public float limMin = 0f;
     Vector3 currentPos = new Vector3();
-    public GameObject _Plataforma;
 
     void Start()
     {
