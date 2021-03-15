@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SavePoint : MonoBehaviour
 {
     public GameObject _TriggerEffect;
+    public GameObject _HUD;
     public string _Scene;
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +21,7 @@ public class SavePoint : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene(_Scene);
+                    _HUD.SetActive(true);
                 }
                 
             }
