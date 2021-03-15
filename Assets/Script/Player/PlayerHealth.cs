@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
-	public string _Actual_Scene;
+	LoadS sc;
 
 	private void Awake()
 	{
@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = 0;
 			StartCoroutine("IsDead");
+			
 		}
 
 		Debug.Log("Player got damaged. His current health is " + health);

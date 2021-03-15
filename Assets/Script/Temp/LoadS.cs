@@ -5,21 +5,18 @@ using UnityEngine;
 
 public class LoadS : MonoBehaviour
 {
-
-    public string _Scene;
-    
-    
-    private void OnTriggerEnter2D(Collider2D collision)
+    public string _Sc;    
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             SceneManager.LoadScene(_Scene);
         }
-    }
+    }*/
 
     public void LoadSceneY()
     {
-        SceneManager.LoadScene(GetComponent<Scene>().name);
+        SceneManager.LoadScene("");
         gameObject.SetActive(false);
     }
 
