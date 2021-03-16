@@ -171,7 +171,8 @@ public class PlayerControllerV2 : MonoBehaviour
         {
             Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
             GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
-            Debug.Log("Le di 2 monedas");
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
         }
 
     }
