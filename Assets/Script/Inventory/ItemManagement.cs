@@ -116,8 +116,8 @@ public class ItemManagement : MonoBehaviour
     {
         itemsMarket = new List<Item>
         {
-            GetItemByTitle("Basic Potion"),
-            GetItemByTitle("Basic Bow")
+            GetItemByTitle(ItemAvailable.BasicPotion),
+            GetItemByTitle(ItemAvailable.BasicBow)
 
         };
     }

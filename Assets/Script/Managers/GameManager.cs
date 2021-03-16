@@ -201,14 +201,15 @@ public class GameManager : MonoBehaviour
     public void MarketBuyItem(string title, int quantity)
     {
         Item itemPurchased = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] -= itemPurchased.stats["Value"] * quantity;
         saveData.playerData.AddItemToInventory(itemPurchased, quantity);
     }
+
 
     public void MarketSellItem(string title, int quantity)
     {
         Item itemSold = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] += itemSold.stats["Value"] * quantity;
         saveData.playerData.RemoveItemToInventory(itemSold, quantity);
     }
 

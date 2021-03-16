@@ -61,7 +61,7 @@ public class FindingTiaraAndSword : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W) && veces==4){
             sword.gameObject.SetActive(false);
             _animation.SetTrigger("pickUpSword");
-            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword));
         }
     }
 }
