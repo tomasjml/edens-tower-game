@@ -49,10 +49,14 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+        if (GameManager.instance && GameManager.instance.saveData.playerData.sceneName.Equals(sceneName))
+        {
+            gameObject.transform.position = GameManager.instance.saveData.playerData.position;
+        }
+        _body = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()

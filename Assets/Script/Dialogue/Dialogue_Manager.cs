@@ -101,6 +101,7 @@ public class Dialogue_Manager : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     _Player.enableKeys(true);
+                    Destroy(instantiatedObject);
                     Destroy(_Trigger,0);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 }

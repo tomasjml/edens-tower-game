@@ -11,7 +11,7 @@ public class PlayerStats
     public int speed;
     public int luck;
     public int defense;
-    public Vector2 position;
+    public Vector3 position;
     public string sceneName;
     public ItemInventory inventory = new ItemInventory();
 
