@@ -15,7 +15,7 @@ public class MagicStoneAmount : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Destroy(_Magic_Stone);
-            Item stone = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            Item stone = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
             GameManager.instance.saveData.playerData.AddItemToInventory(stone,5);
         }
     }

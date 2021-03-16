@@ -152,6 +152,9 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = loadData.playerData.vitality;
         saveData.playerData.position = loadData.playerData.position;
 
+        saveData.playerData.inventory = loadData.playerData.inventory;
+        saveData.dictMarketItems = loadData.dictMarketItems;
+
         BeginGameManager();
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
@@ -195,14 +198,15 @@ public class GameManager : MonoBehaviour
     public void MarketBuyItem(string title, int quantity)
     {
         Item itemPurchased = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] -= itemPurchased.stats["Value"] * quantity;
         saveData.playerData.AddItemToInventory(itemPurchased, quantity);
     }
+
 
     public void MarketSellItem(string title, int quantity)
     {
         Item itemSold = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] += itemSold.stats["Value"] * quantity;
         saveData.playerData.RemoveItemToInventory(itemSold, quantity);
     }
 

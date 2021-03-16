@@ -17,7 +17,7 @@ public class PlayerStats
 
     public void AddItemToInventory(Item item)
     {
-        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon)
+        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon && item.type != Item.Type.Quest)
         {
             inventory[item] += 1;
         } else
@@ -28,7 +28,7 @@ public class PlayerStats
 
     public void AddItemToInventory(Item item, int quantity)
     {
-        if (inventory.ContainsKey(item))
+        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon && item.type != Item.Type.Quest)
         {
             inventory[item] += quantity;
         }

@@ -158,7 +158,7 @@ public class DialogManagerV2 : MonoBehaviour
                 foreach (GameObject c in TriggersDestroy){
                     Destroy(c, 0);
                 }
-                Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+                Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
                 GameManager.instance.saveData.playerData.AddItemToInventory(coin, 30);
             }
         }
