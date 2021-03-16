@@ -6,60 +6,68 @@ using UnityEngine;
 
 public class TaskLoader : MonoBehaviour
 {
+    public Vector3 startPosition;
     public GameObject[] tasks;
-    public Transform position1;
-    public Transform position2;
-    public Transform position0;
+    public Transform[] positions;
+    public GameObject[] triggers;
+
+    private GameObject player;
     private GameObject instantiatedObject0 = null;
     private GameObject instantiatedObject1 = null;
     private GameObject instantiatedObject2 = null;
     private string scene;
-    private bool complete = false;
 
+
+    private void Awake()
+    {
+        scene = SceneManager.GetActiveScene().name;
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Start is called before the first frame update
     void Start()
     {
-        scene = SceneManager.GetActiveScene().name;
-        if (scene.Equals("Dormitorio Luke"))
+        if(player && player.transform.position.x > startPosition.x)
         {
-            complete = true;
-        }
-        if (scene.Equals("Dormitorio Luke") || scene.Equals("Pasillo"))
-        {
+            foreach(GameObject t in triggers)
+            {
+                if(t.transform.position.x < player.transform.position.x)
+                {
+                    Destroy(t);
+                }
+            }
             try
             {
-                instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject0 = Instantiate(tasks[0], positions[0].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject1 = Instantiate(tasks[1], positions[1].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                instantiatedObject2 = Instantiate(tasks[2], positions[2].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
             }
-            catch (NullReferenceException)
+            catch (IndexOutOfRangeException)
             {
 
             }
-
         }
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!scene.Equals("Dormitorio Luke") && !scene.Equals("Pasillo"))
+        if (instantiatedObject0 && !instantiatedObject0.GetComponent<Animator>().GetBool("Appear"))
         {
-            if (instantiatedObject0)
-            {
-                try
-                {
+            try
+             {
                     instantiatedObject1.GetComponent<Animator>().SetBool("Appear", true);
                     instantiatedObject2.GetComponent<Animator>().SetBool("Appear", true);
                     instantiatedObject0.GetComponent<Animator>().SetBool("Appear", true);
-                }
-                catch (NullReferenceException)
-                {
+             }
+             catch (NullReferenceException)
+            {
 
-                }
             }
         }
-        if (complete == true)
+        
+        if (scene.Equals("Dormitorio Luke"))
         {
             instantiatedObject1.GetComponent<Animator>().SetTrigger("Complete");
         }
@@ -73,9 +81,9 @@ public class TaskLoader : MonoBehaviour
             {
                 try
                 {
-                    instantiatedObject0 = Instantiate(tasks[0], position0.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                    instantiatedObject1 = Instantiate(tasks[1], position1.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
-                    instantiatedObject2 = Instantiate(tasks[2], position2.position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                    instantiatedObject0 = Instantiate(tasks[0], positions[0].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                    instantiatedObject1 = Instantiate(tasks[1], positions[1].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
+                    instantiatedObject2 = Instantiate(tasks[2], positions[2].position, Quaternion.identity, GameObject.FindGameObjectWithTag("Task").transform) as GameObject;
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -83,6 +91,7 @@ public class TaskLoader : MonoBehaviour
                 }
             }
         }
+
     }
 
 }

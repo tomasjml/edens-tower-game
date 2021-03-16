@@ -38,6 +38,11 @@ public class MainMenu : MonoBehaviour
         GameManager.instance.NewGame();
     }
 
+    public void ResumeGame()
+    {
+        GameManager.instance.LoadRequest("One");
+    }
+
     public void LoadMenuButton()
     {
         Main_Menu.SetActive(false);

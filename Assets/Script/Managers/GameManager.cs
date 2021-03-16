@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     // Player Stats
     public SaveData saveData;
     private SaveAndLoad saveObject = null;
-    
 
     // Item Management
     public ItemManagement itemManagement;
@@ -133,6 +132,7 @@ public class GameManager : MonoBehaviour
         saveObject.LoadGame(slot);
     }
 
+
     public void LoadGame(JSONNode game)
     {
         string loadDataJson = game["saveData"];
@@ -144,6 +144,7 @@ public class GameManager : MonoBehaviour
         elapsedTime = (float)game["gameTimeInSeconds"];
         //Debug.Log(TimeSpan.FromSeconds(elapsedTime).ToString("HH ':'mm':'ss"));
 
+        saveData.playerData.sceneName = loadData.playerData.sceneName;
         saveData.playerData.defense = loadData.playerData.defense;
         saveData.playerData.speed = loadData.playerData.speed;
         saveData.playerData.strength = loadData.playerData.strength;
