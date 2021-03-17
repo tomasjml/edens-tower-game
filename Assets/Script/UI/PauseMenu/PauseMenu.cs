@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausePanel;
     public GameObject pauseBtns;
     public GameObject slotsBtns;
-    private bool gameIsPaused = false;
+    public static bool gameIsPaused = false;
     public Button slot1;
     public Button slot2;
     public Button slot3;
