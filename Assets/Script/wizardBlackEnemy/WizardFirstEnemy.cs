@@ -20,6 +20,7 @@ public class WizardFirstEnemy : MonoBehaviour
     private int cantVecesStandUp=0;
     public GameObject magicBall;
     public float launchForce;
+    public GameObject player;
 
 
     private void Awake()
@@ -27,6 +28,8 @@ public class WizardFirstEnemy : MonoBehaviour
         enemyTransform = this.GetComponent<Transform>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        target = player.transform; //Finds the player in any place of the map
+        
     }
     void Start()
     {   
@@ -44,10 +47,9 @@ public class WizardFirstEnemy : MonoBehaviour
     void Update()
     {
 
-        target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
         //Debug.Log("hi distance "+distance);
-        if(shouldAttack == false)
+        if(shouldAttack == false && player.activeSelf==true)
         {
             moving(distance);
         }
@@ -103,7 +105,7 @@ public class WizardFirstEnemy : MonoBehaviour
                 horizontalVelocity = horizontalVelocity * -1f;
             }
 
-            if (shouldAttack == false && distance <= attackingDistance) //If the enemy is not attacking and the player is in the trigger
+            if (shouldAttack == false && distance <= attackingDistance &&player!=null) //If the enemy is not attacking and the player is in the trigger
             {
                 Debug.Log(attackingDistance);
                 StartCoroutine(Attack()); //Attack
@@ -115,9 +117,7 @@ public class WizardFirstEnemy : MonoBehaviour
     public void flip() //Makes the enemy face the other way 
     {
         facingRight = !facingRight;
-        float localScaleX = transform.localScale.x;
-        localScaleX = localScaleX * -1f;
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        transform.Rotate(0f,180f,0f);
     }
 
     private IEnumerator Attack()
@@ -136,8 +136,16 @@ public class WizardFirstEnemy : MonoBehaviour
         speed = speedBackup;
     }
     void Shoot(){
-        GameObject ballIns= Instantiate(magicBall,transform.position,transform.rotation);
+        if(player.activeSelf==true){
+            GameObject ballIns= Instantiate(magicBall,transform.position,transform.rotation);
         //ballIns.GetComponent<Rigidbody2D>().AddForce(transform.right*launchForce);
-        ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal") * launchForce *-1, ballIns.GetComponent<Rigidbody2D>().velocity.y);
+        Debug.Log("en horizontal "+ Input.GetAxis("Horizontal"));
+        if(facingRight==true){
+            ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2(  launchForce , ballIns.GetComponent<Rigidbody2D>().velocity.y);
+
+        }else{
+            ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2( launchForce *-1, ballIns.GetComponent<Rigidbody2D>().velocity.y);
+            }
+        }
     }
 }

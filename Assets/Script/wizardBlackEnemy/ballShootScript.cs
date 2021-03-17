@@ -18,7 +18,6 @@ public class ballShootScript : MonoBehaviour
         TrackMovement();
     }
     void TrackMovement(){
-        Debug.Log("TRACKMOVMENT");
         Vector2 direction=rb.velocity;
         float angle=Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg;
         transform.rotation=Quaternion.AngleAxis(angle,Vector3.forward);
