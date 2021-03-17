@@ -16,7 +16,7 @@ public class UpdateHUD : MonoBehaviour
     void Start()
     {
         Debug.Log("AAAAAAAAAAAAAAAAAAA");
-        stonesAmount = GameManager.instance.saveData.playerData.getItemQuantity("Magic Stone");
+        stonesAmount = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
         _text.SetText(stonesAmount.ToString());
 
     }

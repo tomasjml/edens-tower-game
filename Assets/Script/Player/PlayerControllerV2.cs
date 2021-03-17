@@ -44,14 +44,19 @@ public class PlayerControllerV2 : MonoBehaviour
     //Attack
     private bool isAttacking;
     public GameObject espada;
+    public GameObject bow;
 
 
     void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+        if (GameManager.instance && GameManager.instance.saveData.playerData.sceneName.Equals(sceneName))
+        {
+            gameObject.transform.position = GameManager.instance.saveData.playerData.position;
+        }
+        _body = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -116,13 +121,13 @@ public class PlayerControllerV2 : MonoBehaviour
             flip();
         }
         //Esta saltando?
-        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
+        if(Input.GetKeyDown(KeyCode.Space) &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
             
         }
-        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
+        else if(Input.GetKeyDown(KeyCode.Space) && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
         {
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
@@ -146,7 +151,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
             
@@ -154,20 +159,13 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
         }
-        // Find out Time 
-/*        if (GameManager.instance.timerRunning)
-        {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Debug.Log("T pressed");
-                Debug.Log(GameManager.instance.elapsedTime);
-            }
-        }*/
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("I pressed");
             Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+            GameObject inventoryCanvas = GameObject.Find("InventoryCanvas");
+            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
+            inventory.ViewInventory();
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -175,9 +173,10 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
             GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
-            Debug.Log("Le di 2 monedas");
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
         }
 
     }
@@ -234,6 +233,9 @@ public class PlayerControllerV2 : MonoBehaviour
         
         if(collisionInfo.gameObject.tag == "Push"){
             pushing=true;
+        }
+        else{
+            pushing=false;
         }
         
        if(collisionInfo.collider.tag=="Die"){

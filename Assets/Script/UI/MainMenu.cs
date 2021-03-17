@@ -15,16 +15,40 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainMenuButton();
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
+        AudioManager.instance.PlayBackgroundMusic();
     }
 
     public void MainToLoadButton()
     {
         MenuButtons.SetActive(false);
         LoadButtons.SetActive(true);
-        
+    }
+
+    public void MainMenuButton()
+    {
+        // Show Main Menu, hide everything else.
+        Main_Menu.SetActive(true);
+        CreditsMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        LoadMenu.SetActive(false);
+    }
+
+    public void NewGame()
+    {
+        GameManager.instance.NewGame();
+    }
+
+    public void ResumeGame()
+    {
+        GameManager.instance.LoadRequest("One");
+    }
+
+    public void LoadMenuButton()
+    {
+        Main_Menu.SetActive(false);
+        LoadMenu.SetActive(true);
     }
 
     public void LoadToMainButton()
@@ -33,37 +57,16 @@ public class MainMenu : MonoBehaviour
         LoadButtons.SetActive(false);
     }
 
-    public void NewGame()
-    {
-        GameManager.instance.NewGame();
-    }
-
-    public void LoadMenuButton()
-    {
-        Main_Menu.SetActive(false);
-        LoadMenu.SetActive(true);
-        
-    }
-
-    public void MainMenuButton()
-    {
-        // Show Main Menu
-        Main_Menu.SetActive(true);
-        CreditsMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
-        LoadMenu.SetActive(false);
-    }
-
     public void CreditsButton()
     {
-        // Show Credits Menu
+        // Show Credits Menu, hide everything else.
         Main_Menu.SetActive(false);
         CreditsMenu.SetActive(true);
     }
 
     public void SettingsButton()
     {
-        // Show Credits Menu
+        // Show Settings Menu
         Main_Menu.SetActive(false);
         SettingsMenu.SetActive(true);
     }

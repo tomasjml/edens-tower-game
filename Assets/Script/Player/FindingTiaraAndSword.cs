@@ -44,7 +44,7 @@ public class FindingTiaraAndSword : MonoBehaviour
             
             tiara.gameObject.SetActive(false);
              _animation.SetTrigger("pickUpTiara");;
-            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Tiara"));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
         }
         if(veces==2 && transform.position.x>1.44 &&sword.gameObject.activeSelf==true){   
             playerMainScript.enableKeys(false);
@@ -61,7 +61,7 @@ public class FindingTiaraAndSword : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W) && veces==4){
             sword.gameObject.SetActive(false);
             _animation.SetTrigger("pickUpSword");
-            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword));
         }
     }
 }

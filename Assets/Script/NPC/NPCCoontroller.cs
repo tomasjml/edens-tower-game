@@ -59,7 +59,7 @@ public class NPCCoontroller : MonoBehaviour
             dialogueTrigger.TriggerDialogue();
             veces++;
         }
-        if(Input.GetKeyDown(KeyCode.W)){
+        if(Input.GetKeyDown(KeyCode.E)){
             dialogManag.DisplayNextSentence();
         }
         if(dialogManag.isDialogueialogueFinished()==true){
@@ -76,5 +76,21 @@ public class NPCCoontroller : MonoBehaviour
     }
 
 
+    private IEnumerator PatrolToTarget()
+    {
+        while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)
+        {
+           // _animator.SetBool("Idle", false);
+            Vector2 direction = _target.transform.position - transform.position;
+            float xDirection = direction.x;
 
+            transform.Translate(direction.normalized * 0.004f * Time.deltaTime);
+            //_animator.SetBool("isGrounded", _isGrounded);
+            yield return null;
+        }
+        transform.position = new Vector2(_target.transform.position.x, transform.position.y);
+        //_animator.SetBool("Idle", true);
+        yield return new WaitForSeconds(waitingTime);
+
+    }
 }

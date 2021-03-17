@@ -13,9 +13,9 @@ public class SaveAndLoad : MonoBehaviour
 
     public enum Slot {One, Two, Three, Four};
 
-    public Vector2 position;
+    private Vector3 position;
     private readonly string serviceURL = "http://161.35.251.140:8086/";
-    public GameObject player;
+    private GameObject player;
     public string username;
     public Slot slot;
 
@@ -146,7 +146,12 @@ public class SaveAndLoad : MonoBehaviour
             {
                 //tiempo
                 Text textTime = GameObject.Find("Slot1/Time").GetComponent<Text>();
-                textTime.text = game["gameTimeInSeconds"].Value;
+                string timeInSeconds = game["gameTimeInSeconds"].Value;
+                int totalSeconds = Convert.ToInt32(timeInSeconds);
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = (totalSeconds % 3600) % 60;
+                textTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
 
                 //lugar
                 string loadDataJson = game["saveData"];
@@ -170,7 +175,12 @@ public class SaveAndLoad : MonoBehaviour
 
                 //tiempo
                 Text textTime = GameObject.Find("Slot2/Time").GetComponent<Text>();
-                textTime.text = game["gameTimeInSeconds"].Value;
+                string timeInSeconds = game["gameTimeInSeconds"].Value;
+                int totalSeconds = Convert.ToInt32(timeInSeconds);
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = (totalSeconds % 3600) % 60;
+                textTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
 
                 //lugar
                 string loadDataJson = game["saveData"];
@@ -193,7 +203,12 @@ public class SaveAndLoad : MonoBehaviour
             {
                 //tiempo
                 Text textTime = GameObject.Find("Slot3/Time").GetComponent<Text>();
-                textTime.text = game["gameTimeInSeconds"].Value;
+                string timeInSeconds = game["gameTimeInSeconds"].Value;
+                int totalSeconds = Convert.ToInt32(timeInSeconds);
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = (totalSeconds % 3600) % 60;
+                textTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
 
                 //lugar
                 string loadDataJson = game["saveData"];
@@ -216,7 +231,12 @@ public class SaveAndLoad : MonoBehaviour
             {
                 //tiempo
                 Text textTime = GameObject.Find("Slot4/Time").GetComponent<Text>();
-                textTime.text = game["gameTimeInSeconds"].Value;
+                string timeInSeconds = game["gameTimeInSeconds"].Value;
+                int totalSeconds = Convert.ToInt32(timeInSeconds);
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = (totalSeconds % 3600) % 60;
+                textTime.text = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
 
                 //lugar
                 string loadDataJson = game["saveData"];
@@ -247,7 +267,7 @@ public class SaveAndLoad : MonoBehaviour
         WWWForm form = new WWWForm();
 
         form.AddField("autoSave", "true");
-        form.AddField("difficulty", "Easy");
+        form.AddField("difficulty", GameManager.instance.saveData.difficulty.ToString());
         form.AddField("fullScreen", "true");
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);

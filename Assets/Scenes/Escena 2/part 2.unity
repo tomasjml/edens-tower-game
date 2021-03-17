@@ -3368,11 +3368,11 @@ PrefabInstance:
       objectReference: {fileID: 1652536822}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.892747
+      value: -8.911417
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1825672
+      value: -1.1825615
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: orthographic size
@@ -4444,6 +4444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 3
+  _Actual_Scene: 
 --- !u!114 &1652536816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4678,6 +4679,7 @@ GameObject:
   - component: {fileID: 1781672538}
   - component: {fileID: 1781672540}
   - component: {fileID: 1781672539}
+  - component: {fileID: 1781672541}
   m_Layer: 0
   m_Name: Puerta (1)
   m_TagString: Untagged
@@ -4693,7 +4695,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781672537}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.76, y: -3.3788443, z: 335.52795}
+  m_LocalPosition: {x: 15.86, y: -3.3788443, z: 335.52795}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1854487474}
@@ -4709,7 +4711,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4724,12 +4726,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.3125, y: 3.28125}
-      - {x: -1, y: 3.03125}
-      - {x: -1, y: -3.28125}
-      - {x: 0.01975727, y: -2.927907}
-      - {x: -0.10714054, y: -0.5842557}
-      - {x: -0.20136547, y: 2.3154464}
+    - - {x: 0.490345, y: 2.8504546}
+      - {x: -0.3342247, y: 2.54171}
+      - {x: -0.27548027, y: -2.4196596}
+      - {x: 0.7051134, y: -2.1250615}
+      - {x: 0.55863285, y: -0.035970926}
+      - {x: 0.7189703, y: 2.4329357}
 --- !u!212 &1781672540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4781,6 +4783,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1781672541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781672537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d7051ef836fb343bc56ce344e50782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scene: Part 3
 --- !u!1 &1788414430
 GameObject:
   m_ObjectHideFlags: 0

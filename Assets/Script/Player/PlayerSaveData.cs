@@ -11,13 +11,13 @@ public class PlayerStats
     public int speed;
     public int luck;
     public int defense;
-    public Vector2 position;
+    public Vector3 position;
     public string sceneName;
     public ItemInventory inventory = new ItemInventory();
 
     public void AddItemToInventory(Item item)
     {
-        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon)
+        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon && item.type != Item.Type.Quest)
         {
             inventory[item] += 1;
         } else
@@ -28,7 +28,7 @@ public class PlayerStats
 
     public void AddItemToInventory(Item item, int quantity)
     {
-        if (inventory.ContainsKey(item))
+        if (inventory.ContainsKey(item) && item.type != Item.Type.Weapon && item.type != Item.Type.Quest)
         {
             inventory[item] += quantity;
         }
@@ -45,7 +45,7 @@ public class PlayerStats
             inventory.Remove(item);
         } else
         {
-            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+            Debug.LogError("ï¿½tem " + item.title + " not in Inventory");
         }
     }
 
@@ -65,21 +65,20 @@ public class PlayerStats
         }
         else
         {
-            Debug.LogError("Ïtem " + item.title + " not in Inventory");
+            Debug.LogError("ï¿½tem " + item.title + " not in Inventory");
         }
     }
 
-    public int getItemQuantity(string title)
+    public int ItemQuantityInInventory(string title)
     {
-        Item found = GameManager.instance.itemManagement.GetItemByTitle(title);
-        if (inventory.ContainsKey(found))
+        Item itemFound = GameManager.instance.itemManagement.GetItemByTitle(title);
+        if (inventory.ContainsKey(itemFound))
         {
-            return inventory[found];
+            return inventory[itemFound];
         }
         else
         {
             return 0;
         }
     }
-
 }

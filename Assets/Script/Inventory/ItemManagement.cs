@@ -5,6 +5,16 @@ using System.Linq;
 
 public class ItemManagement : MonoBehaviour
 {
+
+    public enum ItemAvailable
+    {
+        MagicStone,
+        Tiara,
+        BasicSword,
+        BasicBow,
+        BasicPotion
+    }
+
     public List<Item> items = new List<Item>();
     public List<Item> itemsMarket = new List<Item>();
     // Start is called before the first frame update
@@ -22,6 +32,32 @@ public class ItemManagement : MonoBehaviour
 
     public Item GetItemByTitle(string itemName)
     {
+        return items.Find(item => item.title == itemName);
+    }
+
+    public Item GetItemByTitle(ItemAvailable itemAvailable)
+    {
+        string itemName = "";
+        switch (itemAvailable)
+        {
+            case ItemAvailable.MagicStone:
+                itemName = "Magic Stone";
+                break;
+            case ItemAvailable.Tiara:
+                itemName = "Tiara";
+                break;
+            case ItemAvailable.BasicSword:
+                itemName = "Basic Sword";
+                break;
+            case ItemAvailable.BasicBow:
+                itemName = "Basic Bow";
+                break;
+            case ItemAvailable.BasicPotion:
+                itemName = "Basic Potion";
+                break;
+            default:
+                break;
+        }
         return items.Find(item => item.title == itemName);
     }
 
@@ -80,7 +116,9 @@ public class ItemManagement : MonoBehaviour
     {
         itemsMarket = new List<Item>
         {
-            GetItemByTitle("Basic Potion")
+            GetItemByTitle(ItemAvailable.BasicPotion),
+            GetItemByTitle(ItemAvailable.BasicBow)
+
         };
     }
 }

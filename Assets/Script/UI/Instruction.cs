@@ -11,18 +11,23 @@ public class Instruction : MonoBehaviour
     private float initial_position;
     private GameObject instantiatedObject;
 
-    private void Awake()
-    { 
-    }
-    // Start is called before the first frame update
-    void Start()
+    void DestroyO()
     {
-            instantiatedObject = Instantiate(first, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
-            initial_position = player.transform.position.x;    
+        DestroyImmediate(instantiatedObject, true);
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!instantiatedObject)
+        {
+            instantiatedObject = Instantiate(first, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
+            initial_position = player.transform.position.x;
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (Mathf.Abs((player.transform.position.x - initial_position)) > 0.05)
         {
@@ -32,12 +37,8 @@ public class Instruction : MonoBehaviour
             }
             Invoke("DestroyO", 1);
         }
-
     }
 
-    void DestroyO()
-    {
-        DestroyImmediate(instantiatedObject, true);
-    }
+
 
 }
