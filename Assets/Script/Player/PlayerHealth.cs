@@ -13,8 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
-	LoadS sc;
-
+	
 	private void Awake()
 	{
 		_renderer = GetComponent<SpriteRenderer>();
