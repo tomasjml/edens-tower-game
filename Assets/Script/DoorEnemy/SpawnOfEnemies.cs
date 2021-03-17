@@ -14,18 +14,18 @@ public class SpawnOfEnemies : MonoBehaviour
     private List<GameObject> aliveEnemies = new List<GameObject>();
     private int amount,all;
     public GameObject limit;
+    public GameObject player;
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(index==enemiesPrefabs.Length){
-            limit.SetActive(false);
-        }
+        
         if( allowInstantiate==true){
+            player.GetComponent<PlayerControllerV2>().EnableBow(false);
             amount=0;
             Vector2 pos=transform.position;
             while(amount<3 && index<enemiesPrefabs.Length){
@@ -54,9 +54,16 @@ public class SpawnOfEnemies : MonoBehaviour
             }else{
                 all++;
             }
+            Debug.Log("hihola "+all);
         }
-        if(all==3){
+        if(all%3==0 && all!=0){
             allowInstantiate=true;
         }
+        if(index==enemiesPrefabs.Length && all==6){
+            limit.SetActive(false);
+            allowInstantiate=false;
+            player.GetComponent<PlayerControllerV2>().EnableBow(true);
+        }
     }
+    
 }
