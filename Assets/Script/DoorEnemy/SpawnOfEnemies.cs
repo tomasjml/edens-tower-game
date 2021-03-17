@@ -10,6 +10,10 @@ public class SpawnOfEnemies : MonoBehaviour
     private bool allowInstantiate=true;
     private int index=0;
     private Rigidbody2D _rigidbody;
+    //private GameObject[] aliveEnemies;
+    private List<GameObject> aliveEnemies = new List<GameObject>();
+    private int amount,all;
+    public GameObject limit;
     void Start()
     {
         
@@ -18,27 +22,41 @@ public class SpawnOfEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(allEnemiesInThatPositionHaveDied==false && allowInstantiate==true){
-            int amount=0;
+        if(index==enemiesPrefabs.Length){
+            limit.SetActive(false);
+        }
+        if( allowInstantiate==true){
+            amount=0;
             Vector2 pos=transform.position;
             while(amount<3 && index<enemiesPrefabs.Length){
                 pos=transform.position;
                 GameObject skeleton= Instantiate(enemiesPrefabs[index],pos,Quaternion.identity);
-                skeleton.transform.Rotate(0f,180f,0f);
+                aliveEnemies.Insert(amount,skeleton);
+                skeleton.GetComponent<Enemy>().flip();
                 _rigidbody=skeleton.GetComponent<Rigidbody2D>();
-                //pos.x=pos.x+(amount*-2);
                 if(amount==0){
                     pos.x=0.1f;
                 }else if (amount==1){
                     pos.x*=(amount*-1f);
                 }else{
-                    pos.x*=(amount*-0.75f);
+                    pos.x*=(amount*-0.7f);
                 }
                 _rigidbody.velocity = new Vector2(pos.x, _rigidbody.velocity.y);
                 amount++;
             }
             index++;
             allowInstantiate=false;
+        }
+        all=0;
+        foreach (GameObject c in aliveEnemies){
+            if(c.activeSelf){
+                break;
+            }else{
+                all++;
+            }
+        }
+        if(all==3){
+            allowInstantiate=true;
         }
     }
 }
