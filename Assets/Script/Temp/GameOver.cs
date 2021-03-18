@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     public void LoadSceneY()
     {
         SceneManager.LoadScene(_Scene);
+        //GameManager.instance.LoadRequest("One");
         gameObject.SetActive(false);
     }
 
