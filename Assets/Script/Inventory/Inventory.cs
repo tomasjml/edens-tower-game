@@ -31,21 +31,28 @@ public class Inventory : MonoBehaviour
     public Text textNoItem;
     public GameObject itemSelected;
     public Button btnUseConsumable;
+    private GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         inventoryChilds.SetActive(false);
         itemSelected.SetActive(false);
+
         btnUseConsumable.enabled = false;
         btnUseConsumable.gameObject.SetActive(false);
+        btnUseConsumable.onClick.AddListener(() =>
+        {
+            player.GetComponent<PlayerHealth>().recoverHealth(selectedItem);
+        });
+
         Button closeButton = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
         closeButton.onClick.AddListener(() =>
         {
             CloseInventory();
         });
-
-
 
         itemConsumables1.onClick.AddListener(() =>
         {
@@ -54,6 +61,7 @@ public class Inventory : MonoBehaviour
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
+                selectedItem = basicPotion;
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
@@ -65,6 +73,7 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = true;
                 itemSelected.SetActive(false);
+                selectedItem = null;
             }
         });
 
@@ -75,6 +84,7 @@ public class Inventory : MonoBehaviour
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
+                selectedItem = basicPotion;
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
@@ -86,6 +96,7 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = true;
                 itemSelected.SetActive(false);
+                selectedItem = null;
             }
         });
 
@@ -96,6 +107,7 @@ public class Inventory : MonoBehaviour
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
+                selectedItem = basicPotion;
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
@@ -107,6 +119,7 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = true;
                 itemSelected.SetActive(false);
+                selectedItem = null;
             }
         });
 

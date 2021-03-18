@@ -72,7 +72,6 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		gameObject.SetActive(false);
 		GameManager.instance.EndGame();
-		
 	}
 	public int getCurrentHealth(){
 		return health;
@@ -80,4 +79,16 @@ public class PlayerHealth : MonoBehaviour
 	public int getOriginalHealth(){
 		return totalHealth;
 	}
+
+	public void recoverHealth(Item itemConsumable)
+    {
+		int recoveredHealth = health + itemConsumable.stats["Recovery"];
+		if(recoveredHealth >= totalHealth)
+        {
+			health = totalHealth;
+        } else
+        {
+			health = recoveredHealth;
+        }
+    }
 }
