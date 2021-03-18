@@ -5,6 +5,7 @@ using UnityEngine;
 public class LavaDrop : MonoBehaviour
 {
     Animator _anim;
+    bool p = false;
 
     private void Awake()
     {

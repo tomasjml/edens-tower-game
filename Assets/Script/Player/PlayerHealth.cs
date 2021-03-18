@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int totalHealth = 5;
+	int totalHealth;
 
 	private int health;
 
@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 	
 	private void Awake()
 	{
+		totalHealth = GameManager.instance.saveData.playerData.vitality;
+		//totalHealth = 10;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
 	}
