@@ -14,6 +14,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource asBackgroundMusicTowerEntry;
     public AudioSource asBackgroundMusicScene2;
     public AudioSource asBackgroundMusicExtra1;
+    public AudioSource asSoundEffectPlayerWalking;
+    public AudioSource asSoundEffectPlayerRunning;
+    public AudioSource asSoundEffectPlayerBasicSwordFire;
+    public AudioSource asSoundEffectPlayerBasicBowFire;
+    public AudioSource asSoundEffectPlayerGameOver;
+    public AudioSource asSoundEffectPlayerHurt1;
+    public AudioSource asSoundEffectPlayerHurt2;
 
     public enum BackgroundMusic
     {
@@ -23,6 +30,17 @@ public class AudioManager : MonoBehaviour
         BackgroundMusicTowerEntry,
         BackgroundMusicScene2,
         BackgroundMusicExtra1
+    }
+
+    public enum SoundEffect
+    {
+        PlayerWalking,
+        PlayerRunning,
+        PlayerBasicSwordFire,
+        PlayerBasicBowFire,
+        PlayerGameOver,
+        PlayerHurt1,
+        PlayerHurt2
     }
 
     void Awake()
@@ -49,7 +67,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     /*IEnumerator PlayingBackgroundMusic()
@@ -69,12 +87,12 @@ public class AudioManager : MonoBehaviour
         }
     }*/
 
-    public void PlayBackgroundMusic()
+    public void PlayBackgroundMusic(BackgroundMusic type)
     {
-        StartCoroutine(nameof(PlayingBackgroundMusic));
+        StartCoroutine(PlayingBackgroundMusic(type));
     }
 
-    public IEnumerator PlayingBackgroundMusic(BackgroundMusic type)
+    IEnumerator PlayingBackgroundMusic(BackgroundMusic type)
     {
         switch (type)
         {
@@ -95,6 +113,40 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
                 asBackgroundMusicExtra1.Play();
+                break;
+        }
+        yield return null;
+    }
+
+    public void PlaySoundEffect(SoundEffect type)
+    {
+        StartCoroutine(PlayingSoundEffect(type));
+    }
+
+    IEnumerator PlayingSoundEffect(SoundEffect type)
+    {
+        switch (type)
+        {
+            case SoundEffect.PlayerWalking:
+                asSoundEffectPlayerWalking.Play();
+                break;
+            case SoundEffect.PlayerRunning:
+                asSoundEffectPlayerRunning.Play();
+                break;
+            case SoundEffect.PlayerBasicSwordFire:
+                asSoundEffectPlayerBasicSwordFire.Play();
+                break;
+            case SoundEffect.PlayerBasicBowFire:
+                asSoundEffectPlayerBasicBowFire.Play();
+                break;
+            case SoundEffect.PlayerHurt1:
+                asSoundEffectPlayerHurt1.Play();
+                break;
+            case SoundEffect.PlayerHurt2:
+                asSoundEffectPlayerHurt2.Play();
+                break;
+            case SoundEffect.PlayerGameOver:
+                asSoundEffectPlayerGameOver.Play();
                 break;
         }
         yield return null;
