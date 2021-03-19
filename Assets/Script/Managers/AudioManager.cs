@@ -8,6 +8,22 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance = null;
     public AudioSource audioSource;
     public AudioClip audioClipMenu;
+    public AudioSource asbackgroundMusicMenu;
+    public AudioSource asBackgroundMusicHouse;
+    public AudioSource asBackgroundMusicJungle;
+    public AudioSource asBackgroundMusicTowerEntry;
+    public AudioSource asBackgroundMusicScene2;
+    public AudioSource asBackgroundMusicExtra1;
+
+    public enum BackgroundMusic
+    {
+        BackgroundMusicMenu,
+        BackgroundMusicHouse,
+        BackgroundMusicJungle,
+        BackgroundMusicTowerEntry,
+        BackgroundMusicScene2,
+        BackgroundMusicExtra1
+    }
 
     void Awake()
     {
@@ -36,7 +52,7 @@ public class AudioManager : MonoBehaviour
        
     }
 
-    IEnumerator BackgroundMusic()
+    /*IEnumerator PlayingBackgroundMusic()
     {
         // TODO while change to condition on menu for Background Music
         while (true)
@@ -51,10 +67,36 @@ public class AudioManager : MonoBehaviour
                 yield return new WaitForSeconds(audioSource.clip.length);
             }
         }
-    }
+    }*/
 
     public void PlayBackgroundMusic()
     {
-        StartCoroutine(nameof(BackgroundMusic));
+        StartCoroutine(nameof(PlayingBackgroundMusic));
+    }
+
+    public IEnumerator PlayingBackgroundMusic(BackgroundMusic type)
+    {
+        switch (type)
+        {
+            case BackgroundMusic.BackgroundMusicMenu:
+                asbackgroundMusicMenu.Play();
+                break;
+            case BackgroundMusic.BackgroundMusicHouse:
+                asBackgroundMusicHouse.Play();
+                break;
+            case BackgroundMusic.BackgroundMusicJungle:
+                asBackgroundMusicJungle.Play();
+                break;
+            case BackgroundMusic.BackgroundMusicTowerEntry:
+                asBackgroundMusicTowerEntry.Play();
+                break;
+            case BackgroundMusic.BackgroundMusicScene2:
+                asBackgroundMusicScene2.Play();
+                break;
+            case BackgroundMusic.BackgroundMusicExtra1:
+                asBackgroundMusicExtra1.Play();
+                break;
+        }
+        yield return null;
     }
 }
