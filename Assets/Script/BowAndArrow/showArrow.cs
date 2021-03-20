@@ -22,7 +22,7 @@ public class showArrow : MonoBehaviour
     }
     void Shoot(){
         GameObject arrowIns= Instantiate(Arrow,transform.position,transform.rotation);
-        arrowIns.GetComponent<Rigidbody2D>().AddForce(transform.right*lauchForce);
+        //arrowIns.GetComponent<ArrowScript>().ShootArrow(gameObject);
         
     }
 }

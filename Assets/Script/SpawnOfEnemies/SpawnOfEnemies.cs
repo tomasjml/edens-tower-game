@@ -6,7 +6,6 @@ public class SpawnOfEnemies : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] enemiesPrefabs;
-    private bool allEnemiesInThatPositionHaveDied=false;
     private bool allowInstantiate=true;
     private int index=0;
     private Rigidbody2D _rigidbody;
@@ -30,10 +29,12 @@ public class SpawnOfEnemies : MonoBehaviour
             Vector2 pos=transform.position;
             while(amount<3 && index<enemiesPrefabs.Length){
                 pos=transform.position;
+                pos.x-=(amount*1.2f);
                 GameObject skeleton= Instantiate(enemiesPrefabs[index],pos,Quaternion.identity);
                 aliveEnemies.Insert(amount,skeleton);
                 skeleton.GetComponent<Enemy>().flip();
                 _rigidbody=skeleton.GetComponent<Rigidbody2D>();
+                pos.x=transform.position.x;
                 if(amount==0){
                     pos.x=0.1f;
                 }else if (amount==1){
@@ -54,7 +55,7 @@ public class SpawnOfEnemies : MonoBehaviour
             }else{
                 all++;
             }
-            Debug.Log("hihola "+all);
+            
         }
         if(all%3==0 && all!=0){
             allowInstantiate=true;
