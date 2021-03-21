@@ -6,8 +6,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
-    public AudioSource audioSource;
-    public AudioClip audioClipMenu;
     public AudioSource asBGMMenu;
     public AudioSource asBGMHouse;
     public AudioSource asBGMJungle;
@@ -57,35 +55,9 @@ public class AudioManager : MonoBehaviour
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
 
-        // Instantiate AudioSource
-        Instantiate(audioSource);
-        DontDestroyOnLoad(audioSource);
-
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
     }
-
-    void Start()
-    {
-
-    }
-
-    /*IEnumerator PlayingBackgroundMusic()
-    {
-        // TODO while change to condition on menu for Background Music
-        while (true)
-        {
-            audioSource.clip = audioClipMenu;
-            audioSource.enabled = true;
-            Debug.Log("BackgroundMusic State: " + audioSource.isActiveAndEnabled);
-
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-                yield return new WaitForSeconds(audioSource.clip.length);
-            }
-        }
-    }*/
 
     public void PlayBackgroundMusic(BackgroundMusic type)
     {
