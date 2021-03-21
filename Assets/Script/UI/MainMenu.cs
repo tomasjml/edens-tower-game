@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
     {
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
+        AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicHouse);
         AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicMenu);
     }
 

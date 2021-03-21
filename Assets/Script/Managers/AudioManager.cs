@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource asSEPlayerGameOver;
     public AudioSource asSEPlayerHurt1;
     public AudioSource asSEPlayerHurt2;
+    private AudioSource[] allAudioSources;
+
 
     public enum BackgroundMusic
     {
@@ -57,6 +59,8 @@ public class AudioManager : MonoBehaviour
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
+
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
     }
 
     public void PlayBackgroundMusic(BackgroundMusic type)
@@ -69,22 +73,70 @@ public class AudioManager : MonoBehaviour
         switch (type)
         {
             case BackgroundMusic.BackgroundMusicMenu:
+                Instantiate(asBGMMenu);
                 asBGMMenu.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if(!audioSource.clip.Equals(asBGMMenu.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
+                Instantiate(asBGMHouse);
                 asBGMHouse.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if (!audioSource.clip.Equals(asBGMHouse.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
+                Instantiate(asBGMJungle);
                 asBGMJungle.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if (audioSource.clip.Equals(asBGMJungle.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
+                Instantiate(asBGMTowerEntry);
                 asBGMTowerEntry.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if (audioSource.clip.Equals(asBGMTowerEntry.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
+                Instantiate(asBGMScene2);
                 asBGMScene2.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if (audioSource.clip.Equals(asBGMScene2.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
+                Instantiate(asBGMExtra1);
                 asBGMExtra1.Play();
+                foreach (AudioSource audioSource in allAudioSources)
+                {
+                    if (audioSource.clip.Equals(asBGMExtra1.clip))
+                    {
+                        DestroyObject(audioSource);
+                    }
+                }
                 break;
         }
         yield return null;
