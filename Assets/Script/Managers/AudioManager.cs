@@ -74,6 +74,7 @@ public class AudioManager : MonoBehaviour
         {
             case BackgroundMusic.BackgroundMusicMenu:
                 Instantiate(asBGMMenu);
+                DontDestroyOnLoad(asBGMMenu);
                 asBGMMenu.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
@@ -85,6 +86,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
                 Instantiate(asBGMHouse);
+                DontDestroyOnLoad(asBGMHouse);
                 asBGMHouse.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
@@ -96,6 +98,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
                 Instantiate(asBGMJungle);
+                DontDestroyOnLoad(asBGMJungle);
                 asBGMJungle.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
@@ -107,6 +110,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
                 Instantiate(asBGMTowerEntry);
+                DontDestroyOnLoad(asBGMTowerEntry);
                 asBGMTowerEntry.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
@@ -118,6 +122,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
                 Instantiate(asBGMScene2);
+                DontDestroyOnLoad(asBGMScene2);
                 asBGMScene2.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
@@ -129,6 +134,7 @@ public class AudioManager : MonoBehaviour
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
                 Instantiate(asBGMExtra1);
+                DontDestroyOnLoad(asBGMExtra1);
                 asBGMExtra1.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
