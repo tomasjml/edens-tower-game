@@ -30,17 +30,22 @@ public class Inventory : MonoBehaviour
     private Item selectedItem;
     public Text textNoItem;
     public GameObject itemSelected;
+    public Button btnUseConsumable;
 
     // Start is called before the first frame update
     void Start()
     {
         inventoryChilds.SetActive(false);
         itemSelected.SetActive(false);
+        btnUseConsumable.enabled = false;
+        btnUseConsumable.gameObject.SetActive(false);
         Button closeButton = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
         closeButton.onClick.AddListener(() =>
         {
             CloseInventory();
         });
+
+
 
         itemConsumables1.onClick.AddListener(() =>
         {
@@ -48,11 +53,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                btnUseConsumable.enabled = true;
+                btnUseConsumable.gameObject.SetActive(true);
             }
             else
             {
@@ -67,11 +74,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                btnUseConsumable.enabled = true;
+                btnUseConsumable.gameObject.SetActive(true);
             }
             else
             {
@@ -86,11 +95,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+                Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicPotion.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicPotion.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicPotion.title).ToString();
+                btnUseConsumable.enabled = true;
+                btnUseConsumable.gameObject.SetActive(true);
             }
             else
             {
@@ -105,11 +116,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Sword");
+                Item basicSword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicSword.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicSword.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicSword.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -124,11 +137,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicBow = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
+                Item basicBow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicBow.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicBow.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -144,11 +159,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item basicBow = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
+                Item basicBow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = basicBow.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = basicBow.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(basicBow.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -163,11 +180,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
+                Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -182,11 +201,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
+                Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -201,11 +222,13 @@ public class Inventory : MonoBehaviour
             {
                 textNoItem.enabled = false;
                 itemSelected.SetActive(true);
-                Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
+                Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
                 itemSelected.transform.Find("Item Title").GetComponent<Text>().text = tiara.title;
                 itemSelected.transform.Find("Description").GetComponent<Text>().text = tiara.description;
                 itemSelected.transform.Find("Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(tiara.title).ToString();
+                btnUseConsumable.enabled = false;
+                btnUseConsumable.gameObject.SetActive(false);
             }
             else
             {
@@ -213,11 +236,6 @@ public class Inventory : MonoBehaviour
                 itemSelected.SetActive(false);
             }
         });
-
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Magic Stone"), 100);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Tiara"), 1);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Sword"), 1);
-        GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle("Basic Potion"), 2);
 
         UpdateSlots();
 
@@ -233,7 +251,7 @@ public class Inventory : MonoBehaviour
     {
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Potion") > 0)
         {
-            Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+            Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
             itemConsumables1.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
             itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemConsumables1.transform.Find("Text").GetComponent<Text>().enabled = false;
@@ -248,7 +266,7 @@ public class Inventory : MonoBehaviour
 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Sword");
+            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword);
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
@@ -262,7 +280,7 @@ public class Inventory : MonoBehaviour
         }
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
+            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
@@ -278,7 +296,7 @@ public class Inventory : MonoBehaviour
 
         if(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Tiara") > 0)
         {
-            Item tiara = GameManager.instance.itemManagement.GetItemByTitle("Tiara");
+            Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
             itemStory1.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
             itemStory1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemStory1.transform.Find("Text").GetComponent<Text>().enabled = false;

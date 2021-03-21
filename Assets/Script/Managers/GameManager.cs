@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public bool timerRunning;
     public float elapsedTime;
 
-
     // Game over Attributes
     public float restartDelay=2.5f;
     public bool gameEnded=false;
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
     // Player Stats
     public SaveData saveData;
     private SaveAndLoad saveObject = null;
-    
 
     // Item Management
     public ItemManagement itemManagement;
@@ -134,31 +132,32 @@ public class GameManager : MonoBehaviour
         saveObject.LoadGame(slot);
     }
 
+
     public void LoadGame(JSONNode game)
     {
         string loadDataJson = game["saveData"];
         SaveData loadData = JsonUtility.FromJson<SaveData>(loadDataJson);
 
         string sceneName = loadData.playerData.sceneName;
-        Vector2 position = loadData.playerData.position;
+        Vector3 position = loadData.playerData.position;
 
         elapsedTime = (float)game["gameTimeInSeconds"];
         //Debug.Log(TimeSpan.FromSeconds(elapsedTime).ToString("HH ':'mm':'ss"));
 
+        saveData.playerData.sceneName = loadData.playerData.sceneName;
         saveData.playerData.defense = loadData.playerData.defense;
         saveData.playerData.speed = loadData.playerData.speed;
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
-        
+        saveData.playerData.position = loadData.playerData.position;
+
+        saveData.playerData.inventory = loadData.playerData.inventory;
+        saveData.dictMarketItems = loadData.dictMarketItems;
 
         BeginGameManager();
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
-
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        //player.transform.position = position;
         StartCoroutine(UpdateTimer());
     }
 
@@ -199,14 +198,15 @@ public class GameManager : MonoBehaviour
     public void MarketBuyItem(string title, int quantity)
     {
         Item itemPurchased = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] -= itemPurchased.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] -= itemPurchased.stats["Value"] * quantity;
         saveData.playerData.AddItemToInventory(itemPurchased, quantity);
     }
+
 
     public void MarketSellItem(string title, int quantity)
     {
         Item itemSold = itemManagement.GetItemByTitle(title);
-        saveData.playerData.inventory[itemManagement.GetItemByTitle("Magic Stone")] += itemSold.stats["Value"] * quantity;
+        saveData.playerData.inventory[itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone)] += itemSold.stats["Value"] * quantity;
         saveData.playerData.RemoveItemToInventory(itemSold, quantity);
     }
 

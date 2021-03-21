@@ -49,10 +49,14 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+        if (GameManager.instance && GameManager.instance.saveData.playerData.sceneName.Equals(sceneName))
+        {
+            gameObject.transform.position = GameManager.instance.saveData.playerData.position;
+        }
+        _body = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -169,9 +173,10 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
             GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
-            Debug.Log("Le di 2 monedas");
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
         }
 
     }
