@@ -175,4 +175,12 @@ public class AudioManager : MonoBehaviour
         }
         yield return null;
     }
+
+    public void StopAllBackgroundMusic()
+    {
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            DestroyObject(audioSource); 
+        }
+    }
 }
