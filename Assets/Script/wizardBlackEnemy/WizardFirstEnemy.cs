@@ -21,6 +21,7 @@ public class WizardFirstEnemy : MonoBehaviour
     public GameObject magicBall;
     public float launchForce;
     public GameObject player;
+    public GameObject dialogCloud;
 
 
     private void Awake()
@@ -49,6 +50,11 @@ public class WizardFirstEnemy : MonoBehaviour
 
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
         //Debug.Log("hi distance "+distance);
+        if(dialogCloud.activeSelf){
+            Debug.Log("Nube ha sido actividada");
+            _rigidbody.velocity = Vector3.zero;
+            _animator.SetBool("idle", _rigidbody.velocity == Vector2.zero);
+        }else{
         if(shouldAttack == false && player.activeSelf==true)
         {
             moving(distance);
@@ -61,7 +67,7 @@ public class WizardFirstEnemy : MonoBehaviour
             //_animator.SetBool("testing",false);
             _animator.SetBool("idle", _rigidbody.velocity == Vector2.zero);
         }
-    }
+    }}
 
     private void LateUpdate() 
     {
@@ -107,7 +113,6 @@ public class WizardFirstEnemy : MonoBehaviour
 
             if (shouldAttack == false && distance <= attackingDistance &&player!=null) //If the enemy is not attacking and the player is in the trigger
             {
-                Debug.Log(attackingDistance);
                 StartCoroutine(Attack()); //Attack
             }
 
@@ -127,7 +132,7 @@ public class WizardFirstEnemy : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
-        Debug.Log("hey shoot");
+        
         _animator.SetTrigger("shoot");
         Shoot();
         yield return new WaitForSeconds(attackTime);
@@ -139,7 +144,7 @@ public class WizardFirstEnemy : MonoBehaviour
         if(player.activeSelf==true){
             GameObject ballIns= Instantiate(magicBall,transform.position,transform.rotation);
         //ballIns.GetComponent<Rigidbody2D>().AddForce(transform.right*launchForce);
-        Debug.Log("en horizontal "+ Input.GetAxis("Horizontal"));
+        
         if(facingRight==true){
             ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2(  launchForce , ballIns.GetComponent<Rigidbody2D>().velocity.y);
 
