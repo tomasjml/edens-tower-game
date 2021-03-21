@@ -8,19 +8,19 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance = null;
     public AudioSource audioSource;
     public AudioClip audioClipMenu;
-    public AudioSource asbackgroundMusicMenu;
-    public AudioSource asBackgroundMusicHouse;
-    public AudioSource asBackgroundMusicJungle;
-    public AudioSource asBackgroundMusicTowerEntry;
-    public AudioSource asBackgroundMusicScene2;
-    public AudioSource asBackgroundMusicExtra1;
-    public AudioSource asSoundEffectPlayerWalking;
-    public AudioSource asSoundEffectPlayerRunning;
-    public AudioSource asSoundEffectPlayerBasicSwordFire;
-    public AudioSource asSoundEffectPlayerBasicBowFire;
-    public AudioSource asSoundEffectPlayerGameOver;
-    public AudioSource asSoundEffectPlayerHurt1;
-    public AudioSource asSoundEffectPlayerHurt2;
+    public AudioSource asBGMMenu;
+    public AudioSource asBGMHouse;
+    public AudioSource asBGMJungle;
+    public AudioSource asBGMTowerEntry;
+    public AudioSource asBGMScene2;
+    public AudioSource asBGMExtra1;
+    public AudioSource asSEPlayerWalking;
+    public AudioSource asSEPlayerRunning;
+    public AudioSource asSEPlayerBasicSwordFire;
+    public AudioSource asSEPlayerBasicBowFire;
+    public AudioSource asSEPlayerGameOver;
+    public AudioSource asSEPlayerHurt1;
+    public AudioSource asSEPlayerHurt2;
 
     public enum BackgroundMusic
     {
@@ -97,22 +97,22 @@ public class AudioManager : MonoBehaviour
         switch (type)
         {
             case BackgroundMusic.BackgroundMusicMenu:
-                asbackgroundMusicMenu.Play();
+                asBGMMenu.Play();
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
-                asBackgroundMusicHouse.Play();
+                asBGMHouse.Play();
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
-                asBackgroundMusicJungle.Play();
+                asBGMJungle.Play();
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
-                asBackgroundMusicTowerEntry.Play();
+                asBGMTowerEntry.Play();
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
-                asBackgroundMusicScene2.Play();
+                asBGMScene2.Play();
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
-                asBackgroundMusicExtra1.Play();
+                asBGMExtra1.Play();
                 break;
         }
         yield return null;
@@ -128,25 +128,25 @@ public class AudioManager : MonoBehaviour
         switch (type)
         {
             case SoundEffect.PlayerWalking:
-                asSoundEffectPlayerWalking.Play();
+                asSEPlayerWalking.Play();
                 break;
             case SoundEffect.PlayerRunning:
-                asSoundEffectPlayerRunning.Play();
+                asSEPlayerRunning.Play();
                 break;
             case SoundEffect.PlayerBasicSwordFire:
-                asSoundEffectPlayerBasicSwordFire.Play();
+                asSEPlayerBasicSwordFire.Play();
                 break;
             case SoundEffect.PlayerBasicBowFire:
-                asSoundEffectPlayerBasicBowFire.Play();
+                asSEPlayerBasicBowFire.Play();
                 break;
             case SoundEffect.PlayerHurt1:
-                asSoundEffectPlayerHurt1.Play();
+                asSEPlayerHurt1.Play();
                 break;
             case SoundEffect.PlayerHurt2:
-                asSoundEffectPlayerHurt2.Play();
+                asSEPlayerHurt2.Play();
                 break;
             case SoundEffect.PlayerGameOver:
-                asSoundEffectPlayerGameOver.Play();
+                asSEPlayerGameOver.Play();
                 break;
         }
         yield return null;
