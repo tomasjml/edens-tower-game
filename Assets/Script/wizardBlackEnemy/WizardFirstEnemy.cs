@@ -22,6 +22,9 @@ public class WizardFirstEnemy : MonoBehaviour
     public float launchForce;
     public GameObject player;
     public GameObject dialogCloud;
+    float currentAngle,deltaY,deltaX;
+    Vector3 startingSpeed;
+    const float SCALAR_SPEED=10f;
 
 
     private void Awake()
@@ -30,6 +33,7 @@ public class WizardFirstEnemy : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         target = player.transform; //Finds the player in any place of the map
+        startingSpeed=new Vector3(SCALAR_SPEED,SCALAR_SPEED);
         
     }
     void Start()
@@ -48,6 +52,9 @@ public class WizardFirstEnemy : MonoBehaviour
     void Update()
     {
 
+        deltaY=player.transform.position.y - gameObject.transform.position.y;
+        deltaX=player.transform.position.x-gameObject.transform.position.x;
+        currentAngle=Mathf.Atan(deltaY/deltaX);
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
         //Debug.Log("hi distance "+distance);
         if(dialogCloud.activeSelf){
@@ -55,19 +62,19 @@ public class WizardFirstEnemy : MonoBehaviour
             _rigidbody.velocity = Vector3.zero;
             _animator.SetBool("idle", _rigidbody.velocity == Vector2.zero);
         }else{
-        if(shouldAttack == false && player.activeSelf==true)
-        {
-            moving(distance);
-        }
-        if(shouldStandUp==true &&cantVecesStandUp==0){
-            _animator.SetBool("testing",true);
-            cantVecesStandUp++;
-        }
-        if(cantVecesStandUp==1){
+            if(shouldAttack == false && player.activeSelf==true)
+            {
+                moving(distance);
+            }
+            if(shouldStandUp==true &&cantVecesStandUp==0){
+                _animator.SetBool("testing",true);
+                cantVecesStandUp++;
+            }
+            if(cantVecesStandUp==1){
             //_animator.SetBool("testing",false);
             _animator.SetBool("idle", _rigidbody.velocity == Vector2.zero);
+            }
         }
-    }
     
     }
 
@@ -78,6 +85,8 @@ public class WizardFirstEnemy : MonoBehaviour
 
     private void moving(float distance)
     {
+        
+        
 
         if (distance < 0) //If the distance is negative
         {
@@ -144,14 +153,12 @@ public class WizardFirstEnemy : MonoBehaviour
     }
     void Shoot(){
         if(player.activeSelf==true){
-            GameObject ballIns= Instantiate(magicBall,transform.position,transform.rotation);
-        //ballIns.GetComponent<Rigidbody2D>().AddForce(transform.right*launchForce);
+            GameObject ballIns=Instantiate(magicBall,transform.position,transform.rotation);
         
-        if(facingRight==true){
-            ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2(  launchForce , ballIns.GetComponent<Rigidbody2D>().velocity.y);
-
-        }else{
-            ballIns.GetComponent<Rigidbody2D>().velocity = new Vector2( launchForce *-1, ballIns.GetComponent<Rigidbody2D>().velocity.y);
+            if(facingRight==true){
+                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed,currentAngle);
+            }else{
+                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed,currentAngle);
             }
         }
     }

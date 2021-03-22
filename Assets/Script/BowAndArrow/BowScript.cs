@@ -26,6 +26,7 @@ public class BowScript : MonoBehaviour
         deltaY=userInput.y - gameObject.transform.position.y;
         deltaX=userInput.x-gameObject.transform.position.x;
         currentAngle=Mathf.Atan(deltaY/deltaX);
+        Debug.Log("current angle "+currentAngle);
 
         Vector2 mousePos= Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 bowPos= transform.position;
@@ -38,6 +39,5 @@ public class BowScript : MonoBehaviour
     }
     void FaceMouse(){
         transform.right=direction;
-
     }
 }
