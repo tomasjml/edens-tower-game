@@ -6,20 +6,21 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
-    public AudioSource asBGMMenu;
-    public AudioSource asBGMHouse;
-    public AudioSource asBGMJungle;
-    public AudioSource asBGMTowerEntry;
-    public AudioSource asBGMScene2;
-    public AudioSource asBGMExtra1;
-    public AudioSource asSEPlayerWalking;
-    public AudioSource asSEPlayerRunning;
-    public AudioSource asSEPlayerBasicSwordFire;
-    public AudioSource asSEPlayerBasicBowFire;
-    public AudioSource asSEPlayerGameOver;
-    public AudioSource asSEPlayerHurt1;
-    public AudioSource asSEPlayerHurt2;
-    private AudioSource[] allAudioSources;
+    public AudioSource asBGM;
+    public AudioSource asSE;
+    public AudioClip acBGMMenu;
+    public AudioClip acBGMHouse;
+    public AudioClip acBGMJungle;
+    public AudioClip acBGMTowerEntry;
+    public AudioClip acBGMScene2;
+    public AudioClip acBGMExtra1;
+    public AudioClip acSEPlayerWalking;
+    public AudioClip acSEPlayerRunning;
+    public AudioClip acSEPlayerBasicSwordFire;
+    public AudioClip acSEPlayerBasicBowFire;
+    public AudioClip acSEPlayerGameOver;
+    public AudioClip acSEPlayerHurt1;
+    public AudioClip acSEPlayerHurt2;
 
 
     public enum BackgroundMusic
@@ -60,7 +61,8 @@ public class AudioManager : MonoBehaviour
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
 
-        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        Instantiate(asBGM.gameObject);
+        DontDestroyOnLoad(asBGM.gameObject);
     }
 
     public void PlayBackgroundMusic(BackgroundMusic type)
@@ -73,76 +75,52 @@ public class AudioManager : MonoBehaviour
         switch (type)
         {
             case BackgroundMusic.BackgroundMusicMenu:
-                Instantiate(asBGMMenu);
-                DontDestroyOnLoad(asBGMMenu.gameObject);
-                asBGMMenu.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if(!audioSource.clip.Equals(asBGMMenu.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMMenu;
+                asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
-                Instantiate(asBGMHouse);
-                DontDestroyOnLoad(asBGMHouse);
-                asBGMHouse.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if (!audioSource.clip.Equals(asBGMHouse.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMHouse;
+                asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
-                Instantiate(asBGMJungle);
-                DontDestroyOnLoad(asBGMJungle);
-                asBGMJungle.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if (audioSource.clip.Equals(asBGMJungle.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMJungle;
+                asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
-                Instantiate(asBGMTowerEntry);
-                DontDestroyOnLoad(asBGMTowerEntry);
-                asBGMTowerEntry.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if (audioSource.clip.Equals(asBGMTowerEntry.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMTowerEntry;
+                asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
-                Instantiate(asBGMScene2);
-                DontDestroyOnLoad(asBGMScene2);
-                asBGMScene2.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if (audioSource.clip.Equals(asBGMScene2.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMScene2;
+                asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
-                Instantiate(asBGMExtra1);
-                DontDestroyOnLoad(asBGMExtra1);
-                asBGMExtra1.Play();
-                foreach (AudioSource audioSource in allAudioSources)
+                if (asBGM.isPlaying)
                 {
-                    if (audioSource.clip.Equals(asBGMExtra1.clip))
-                    {
-                        Destroy(audioSource);
-                    }
+                    asBGM.Stop();
                 }
+                asBGM.clip = acBGMExtra1;
+                asBGM.Play();
                 break;
         }
         yield return null;
@@ -158,25 +136,32 @@ public class AudioManager : MonoBehaviour
         switch (type)
         {
             case SoundEffect.PlayerWalking:
-                asSEPlayerWalking.Play();
+                asSE.clip = acSEPlayerWalking;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerRunning:
-                asSEPlayerRunning.Play();
+                asSE.clip = acSEPlayerRunning;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerBasicSwordFire:
-                asSEPlayerBasicSwordFire.Play();
+                asSE.clip = acSEPlayerBasicSwordFire;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerBasicBowFire:
-                asSEPlayerBasicBowFire.Play();
+                asSE.clip = acSEPlayerBasicBowFire;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerHurt1:
-                asSEPlayerHurt1.Play();
+                asSE.clip = acSEPlayerHurt1;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerHurt2:
-                asSEPlayerHurt2.Play();
+                asSE.clip = acSEPlayerHurt2;
+                asSE.Play();
                 break;
             case SoundEffect.PlayerGameOver:
-                asSEPlayerGameOver.Play();
+                asSE.clip = acSEPlayerGameOver;
+                asSE.Play();
                 break;
         }
         yield return null;
@@ -184,9 +169,6 @@ public class AudioManager : MonoBehaviour
 
     public void StopAllBackgroundMusic()
     {
-        foreach (AudioSource audioSource in allAudioSources)
-        {
-            DestroyObject(audioSource); 
-        }
+        asBGM.Stop();
     }
 }
