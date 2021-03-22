@@ -15,7 +15,7 @@ public class UpdateHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAA");
+        
         stonesAmount = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
         _text.SetText(stonesAmount.ToString());
 

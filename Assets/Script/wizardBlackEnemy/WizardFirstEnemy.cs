@@ -67,7 +67,9 @@ public class WizardFirstEnemy : MonoBehaviour
             //_animator.SetBool("testing",false);
             _animator.SetBool("idle", _rigidbody.velocity == Vector2.zero);
         }
-    }}
+    }
+    
+    }
 
     private void LateUpdate() 
     {
