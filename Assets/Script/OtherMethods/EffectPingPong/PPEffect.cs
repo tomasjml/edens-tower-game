@@ -9,6 +9,8 @@ public class PPEffect : MonoBehaviour
     public float limMax = 28f;
     public float limMin = 0f;
     Vector3 currentPos = new Vector3();
+    public bool _effectX;
+    public bool _effectY;
 
     void Start()
     {
@@ -18,7 +20,8 @@ public class PPEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentPos.x = limMin + Mathf.PingPong(Time.time * _speed, limMax);
+        if(_effectX == true) currentPos.x = limMin + Mathf.PingPong(Time.time * _speed, limMax);
+        if (_effectY == true) currentPos.y = limMin + Mathf.PingPong(Time.time * _speed, limMax);
         gameObject.transform.position = currentPos;
     }
 }
