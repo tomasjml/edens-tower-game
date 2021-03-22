@@ -74,13 +74,13 @@ public class AudioManager : MonoBehaviour
         {
             case BackgroundMusic.BackgroundMusicMenu:
                 Instantiate(asBGMMenu);
-                DontDestroyOnLoad(asBGMMenu);
+                DontDestroyOnLoad(asBGMMenu.gameObject);
                 asBGMMenu.Play();
                 foreach (AudioSource audioSource in allAudioSources)
                 {
                     if(!audioSource.clip.Equals(asBGMMenu.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
@@ -92,7 +92,7 @@ public class AudioManager : MonoBehaviour
                 {
                     if (!audioSource.clip.Equals(asBGMHouse.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
@@ -104,7 +104,7 @@ public class AudioManager : MonoBehaviour
                 {
                     if (audioSource.clip.Equals(asBGMJungle.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
@@ -116,7 +116,7 @@ public class AudioManager : MonoBehaviour
                 {
                     if (audioSource.clip.Equals(asBGMTowerEntry.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
@@ -128,7 +128,7 @@ public class AudioManager : MonoBehaviour
                 {
                     if (audioSource.clip.Equals(asBGMScene2.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
@@ -140,7 +140,7 @@ public class AudioManager : MonoBehaviour
                 {
                     if (audioSource.clip.Equals(asBGMExtra1.clip))
                     {
-                        DestroyObject(audioSource);
+                        Destroy(audioSource);
                     }
                 }
                 break;
