@@ -44,25 +44,24 @@ public class AudioManager : MonoBehaviour
         PlayerHurt2
     }
 
+    protected AudioManager() { }
+
     void Awake()
     {
         //Check if instance already exists
         if (instance == null)
-
+        {
             //if not, set instance to this
             instance = this;
-
+            //Sets this to not be destroyed when reloading scene
+            DontDestroyOnLoad(this.gameObject);
+        }
         //If instance already exists and it's not this:
         else if (instance != this)
-
+        {
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);
-
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
-
-        Instantiate(asBGM.gameObject);
-        DontDestroyOnLoad(asBGM.gameObject);
+            Destroy(this.gameObject);
+        }
     }
 
     public void PlayBackgroundMusic(BackgroundMusic type)
@@ -78,52 +77,60 @@ public class AudioManager : MonoBehaviour
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
+                    Destroy(asBGM);
                 }
                 asBGM.clip = acBGMMenu;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
+                    Destroy(asBGM);
                 }
                 asBGM.clip = acBGMHouse;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
-                if (asBGM.isPlaying)
-                {
-                    asBGM.Stop();
-                }
+                Destroy(asBGM);
                 asBGM.clip = acBGMJungle;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
+                    Destroy(asBGM);
                 }
                 asBGM.clip = acBGMTowerEntry;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
+                    Destroy(asBGM);
                 }
                 asBGM.clip = acBGMScene2;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
+                    Destroy(asBGM);
                 }
                 asBGM.clip = acBGMExtra1;
+                Instantiate(asBGM);
                 asBGM.Play();
                 break;
         }
-        yield return null;
+        yield return null; ;
     }
 
     public void PlaySoundEffect(SoundEffect type)
