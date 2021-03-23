@@ -100,6 +100,31 @@ public class PlayerHealth : MonoBehaviour
 		float alpha = 1f / totalHealth * (totalHealth - health);
 		GameObject.FindGameObjectWithTag("Mask").GetComponent<Image>().color = new Color(1, 1, 1, alpha);
 
+		bool finish = false;
+		int amount = totalHealth / 2;
+
+		int complete = 0, half = 0;
+
+		while(!finish)
+        {
+			if(amount - 2 > 0)
+            {
+				amount -= 2;
+				complete++;
+            }
+			else if(amount -1 > 0)
+            {
+				amount -= 1;
+				half++;
+				finish = true;
+            }
+        }
+
+		foreach(GameObject h in hearts)
+        {
+			
+        }
+
 
 
 
