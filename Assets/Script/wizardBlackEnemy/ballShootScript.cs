@@ -8,6 +8,7 @@ public class ballShootScript : MonoBehaviour
     Rigidbody2D rb;
     Vector3 _currentSpeed=new Vector3();
     Vector3 _deltaPos=new Vector3();
+    public GameObject player;
     bool  _shooted=true;
 
     void Start()
@@ -28,6 +29,7 @@ public class ballShootScript : MonoBehaviour
     }
     public void ShootBall(Vector3 startingSpeed, float shootingAngle){
         _currentSpeed=new Vector3(-1*startingSpeed.x*Mathf.Cos(shootingAngle),startingSpeed.y*Mathf.Sin(shootingAngle));
+        //rb.velocity = new Vector2(player.transform.position.x, rb.velocity.y);
         _shooted=true;
     }
     void OnCollisionEnter2D(Collision2D collisionInfo){
@@ -49,4 +51,4 @@ public class ballShootScript : MonoBehaviour
 
 		
 	}
-    }
+}
