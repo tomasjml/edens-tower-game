@@ -45,16 +45,17 @@ public class EnemyHealth : MonoBehaviour
 	{
 		_animator.SetTrigger("isDamaged");
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.7f);
 	}
 
 	private IEnumerator Died()
     {
 		_animator.SetTrigger("Died");
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(1f);
 
 		gameObject.SetActive(false);
+		//Destroy(gameObject,2f);
     }
 }
 

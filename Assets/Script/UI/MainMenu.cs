@@ -15,9 +15,9 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainMenuButton();
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
+        AudioManager.instance.PlayBackgroundMusic();
     }
 
     public void MainToLoadButton()
@@ -28,10 +28,13 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void LoadToMainButton()
+    public void MainMenuButton()
     {
-        MenuButtons.SetActive(true);
-        LoadButtons.SetActive(false);
+        // Show Main Menu, hide everything else.
+        Main_Menu.SetActive(true);
+        CreditsMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        LoadMenu.SetActive(false);
     }
 
     public void LoginMenuActive()
@@ -57,28 +60,24 @@ public class MainMenu : MonoBehaviour
     {
         Main_Menu.SetActive(false);
         LoadMenu.SetActive(true);
-        
     }
 
-    public void MainMenuButton()
+    public void LoadToMainButton()
     {
-        // Show Main Menu
-        Main_Menu.SetActive(true);
-        CreditsMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
-        LoadMenu.SetActive(false);
+        MenuButtons.SetActive(true);
+        LoadButtons.SetActive(false);
     }
 
     public void CreditsButton()
     {
-        // Show Credits Menu
+        // Show Credits Menu, hide everything else.
         Main_Menu.SetActive(false);
         CreditsMenu.SetActive(true);
     }
 
     public void SettingsButton()
     {
-        // Show Credits Menu
+        // Show Settings Menu
         Main_Menu.SetActive(false);
         SettingsMenu.SetActive(true);
     }

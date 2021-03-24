@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int totalHealth = 3;
+	public int totalHealth = 5;
 
 	private int health;
 
@@ -12,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
+	public string _Actual_Scene;
 
 	private void Awake()
 	{
@@ -70,5 +72,14 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		gameObject.SetActive(false);
+		GameManager.instance.EndGame();
+		if(_Actual_Scene != "")
+		SceneManager.LoadScene(_Actual_Scene);
+	}
+	public int getCurrentHealth(){
+		return health;
+	}
+	public int getOriginalHealth(){
+		return totalHealth;
 	}
 }

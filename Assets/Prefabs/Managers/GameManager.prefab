@@ -43,5 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a0ee7eb09d9d54888f732a0bd19980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerRunning: 0
+  elapsedTime: 0
   restartDelay: 2.5
   gameEnded: 0
+  saveData:
+    playerData:
+      vitality: 0
+      strength: 0
+      speed: 0
+      luck: 0
+      defense: 0
+      position: {x: 0, y: 0}
+      sceneName: 
+  itemManagement: {fileID: 5455547064278160170, guid: 2457b90701a30aa4ba791530fc71be7e, type: 3}

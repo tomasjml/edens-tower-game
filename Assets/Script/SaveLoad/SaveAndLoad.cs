@@ -128,11 +128,7 @@ public class SaveAndLoad : MonoBehaviour
 
         //Debug.Log(GETRequest.downloadHandler.text);
 
-
-
         JSONArray arrayGame = (JSONArray)JSON.Parse(GETRequest.downloadHandler.text);
-
-
 
         foreach(JSONNode game in arrayGame)
         {
@@ -261,7 +257,7 @@ public class SaveAndLoad : MonoBehaviour
         WWWForm form = new WWWForm();
 
         form.AddField("autoSave", "true");
-        form.AddField("difficulty", "Easy");
+        form.AddField("difficulty", GameManager.instance.saveData.difficulty.ToString());
         form.AddField("fullScreen", "true");
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);

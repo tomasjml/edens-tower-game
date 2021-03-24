@@ -28,8 +28,8 @@ public class PlayerControllerV2 : MonoBehaviour
     public int jumpsWanted;
     private bool isJumping=false;
 
-    public Transform pica;
-    public Transform vacio;
+    public Transform traps;
+    
     private GameObject _target;
     public float minX;
     public float maxX;
@@ -44,6 +44,7 @@ public class PlayerControllerV2 : MonoBehaviour
     //Attack
     private bool isAttacking;
     public GameObject espada;
+    public GameObject bow;
 
 
     void Awake()
@@ -116,13 +117,13 @@ public class PlayerControllerV2 : MonoBehaviour
             flip();
         }
         //Esta saltando?
-        if(Input.GetButtonDown("Jump") &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
+        if(Input.GetKeyDown(KeyCode.Space) &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
             
         }
-        else if(Input.GetButtonDown("Jump") && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
+        else if(Input.GetKeyDown(KeyCode.Space) && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
         {
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
@@ -147,21 +148,31 @@ public class PlayerControllerV2 : MonoBehaviour
         
 
         // Wanna Attack?
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
         {
             _movement = Vector2.zero;
+            
             _body.velocity = Vector2.zero;
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");
         }
-        // Find out Time 
-        if (GameManager.instance.timerRunning)
+
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Debug.Log("T pressed");
-                Debug.Log(GameManager.instance.elapsedTime);
-            }
+            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
+            GameObject inventoryCanvas = GameObject.Find("InventoryCanvas");
+            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
+            inventory.ViewInventory();
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
+            Debug.Log("Le di 2 monedas");
         }
 
     }
@@ -210,9 +221,17 @@ public class PlayerControllerV2 : MonoBehaviour
     }
     
     void OnCollisionEnter2D(Collision2D collisionInfo){
+
+        if (collisionInfo.collider.CompareTag("Chest"))
+        {
+            enableKeys(false);
+        }
         
-        if(collisionInfo.collider.gameObject.layer==9){
+        if(collisionInfo.gameObject.tag == "Push"){
             pushing=true;
+        }
+        else{
+            pushing=false;
         }
         
        if(collisionInfo.collider.tag=="Die"){
@@ -221,20 +240,23 @@ public class PlayerControllerV2 : MonoBehaviour
             enableKeys(false);
         }
         if(colPicas==1){
-          Physics2D.IgnoreCollision(pica.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-          Physics2D.IgnoreCollision(vacio.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            foreach(Collider2D c in GetComponents<Collider2D> ()) {
+                c.enabled = false;
+        }
           colPicas=0;
           //FindObjectOfType<GameManager>().endGame();
           GameManager.instance.EndGame();
         }
     }
+
     void OnCollisionExit2D(Collision2D collisionInfo)
     {
         if(collisionInfo.collider.gameObject.layer==9){
             pushing=false;
         }
-        
     }
+
+ 
 private IEnumerator PatrolToTarget()
     {
         while (Vector2.Distance(transform.position, _target.transform.position) > 0.05f)
