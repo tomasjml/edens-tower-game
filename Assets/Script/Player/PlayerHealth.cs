@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int totalHealth;
+	private int totalHealth;
 
 	public GameObject[] hearts;
 
