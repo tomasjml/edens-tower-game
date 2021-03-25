@@ -53,7 +53,6 @@ public class PlayerHealth : MonoBehaviour
 			health = 0;
 			StartCoroutine("IsDead");
 		}
-		updateHUD();
 		Debug.Log("Player got damaged. His current health is " + health);
 	}
 
@@ -66,7 +65,6 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = totalHealth;
 		}
-		updateHUD();
 		Debug.Log("Player got some life. His current health is " + health);
 	}
 
@@ -95,10 +93,5 @@ public class PlayerHealth : MonoBehaviour
 		return totalHealth;
 	}
 
-	private void updateHUD()
-    {
-		float alpha = 1f / totalHealth * (totalHealth - health);
-		GameObject.FindGameObjectWithTag("Mask").GetComponent<Image>().color = new Color(1, 1, 1, alpha);
-	}
 
 }

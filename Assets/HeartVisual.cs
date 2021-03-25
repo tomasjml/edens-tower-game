@@ -12,7 +12,7 @@ public class HeartVisual : MonoBehaviour
     private List<HeartImage> heartsImageList;
     private HeartLogic HSystem;
     private bool isHealing;
-
+    private static int total;
 
     private void Awake()
     {
@@ -23,11 +23,13 @@ public class HeartVisual : MonoBehaviour
         FunctionPeriodic.Create(HealingAnimatedPeriodic, .05f);
         if (GameManager.instance)
         {
-            HeartLogic HSystem = new HeartLogic(GameManager.instance.saveData.playerData.vitality/2);
+            total = GameManager.instance.saveData.playerData.vitality;
+            HeartLogic HSystem = new HeartLogic(GameManager.instance.saveData.playerData.vitality/4);
             SetHeartsHealthSystem(HSystem);
         }
         else
         {
+            total = 20;
             HeartLogic HSystem = new HeartLogic(5);
             SetHeartsHealthSystem(HSystem);
         }
@@ -87,6 +89,8 @@ public class HeartVisual : MonoBehaviour
             HeartLogic.Heart heart = heartList[i];
             hImage.setHeartFragment(heart.getFragmentAmount());
         }
+        float alpha = 1f / total * (total - GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().getCurrentHealth());
+        GameObject.FindGameObjectWithTag("Mask").GetComponent<Image>().color = new Color(1, 1, 1, alpha);
     }
 
     private void HealingAnimatedPeriodic()
