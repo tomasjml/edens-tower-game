@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public GameObject inventoryChilds;
+    public Color inventoryColor;
+
 
     // Buttons
     // Consumables
@@ -28,7 +30,6 @@ public class Inventory : MonoBehaviour
 
     // Current Item Selected
     private Item selectedItem;
-    public Text textNoItem;
     public GameObject itemSelected;
     public Button btnUseConsumable;
 
@@ -36,22 +37,23 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         inventoryChilds.SetActive(false);
+        if (inventoryColor != Color.black)
+        {
+            inventoryChilds.transform.Find("Background").GetComponent<Image>().color = inventoryColor;
+        }
         itemSelected.SetActive(false);
         btnUseConsumable.enabled = false;
         btnUseConsumable.gameObject.SetActive(false);
-        Button closeButton = inventoryChilds.transform.Find("Close Button").GetComponent<Button>();
+        Button closeButton = inventoryChilds.transform.Find("Exit Button").GetComponent<Button>();
         closeButton.onClick.AddListener(() =>
         {
             CloseInventory();
         });
 
-
-
         itemConsumables1.onClick.AddListener(() =>
         {
             if (itemConsumables1.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
@@ -63,7 +65,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
