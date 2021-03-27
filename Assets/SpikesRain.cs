@@ -8,7 +8,7 @@ public class SpikesRain : MonoBehaviour
     public GameObject _UniqueObject = null;
     float _lastTime = 0, _nextTime;
     Vector3 _startingPos = new Vector3(0, 0f);
-    const float  minx = 59f, maxx = 74f;
+    public float  minx = 59f, maxx = 74f;
     public float minTime = 0.2f, maxTime = 0.6f;
     int aux = 0;
     public bool _Random = false; 
@@ -27,7 +27,7 @@ public class SpikesRain : MonoBehaviour
             _nextTime = GetNextTime();
         }
         else
-        if (Time.time > _nextTime && aux < 30)
+        if (Time.time > _nextTime && aux < 100)
         {
             _startingPos.x = Random.Range(maxx, minx);
             Instantiate(_RandomObjects[Random.Range(0,2)], _startingPos, Quaternion.identity);
