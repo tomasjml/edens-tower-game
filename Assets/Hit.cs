@@ -20,8 +20,13 @@ public class Hit : MonoBehaviour
                 damage = 4;
                 break;
             case SaveData.Difficulty.Hell:
-                damage = GameManager.instance.saveData.playerData.vitality - 2;
+                damage = GameManager.instance.saveData.playerData.vitality - 4;
                 break;
+        }
+
+        if(!GameManager.instance)
+        {
+            damage = 1;
         }
     }
 
@@ -33,8 +38,12 @@ public class Hit : MonoBehaviour
             switch(gameObject.tag)
             {
                 case "Yunke":
-                    damage += 1;
+                    damage = 2;
                     break;
+                case "Lava":
+                    damage = 2;
+                    break;
+                
             }
             Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);

@@ -11,6 +11,7 @@ public class SpikesRain : MonoBehaviour
     public float  minx = 59f, maxx = 74f;
     public float minTime = 0.2f, maxTime = 0.6f;
     int aux = 0;
+    public int cantidadTrampas = 0;
     public bool _Random = false; 
     void Start()
     {
@@ -27,7 +28,7 @@ public class SpikesRain : MonoBehaviour
             _nextTime = GetNextTime();
         }
         else
-        if (Time.time > _nextTime && aux < 100)
+        if (Time.time > _nextTime && aux < cantidadTrampas)
         {
             _startingPos.x = Random.Range(maxx, minx);
             Instantiate(_RandomObjects[Random.Range(0,2)], _startingPos, Quaternion.identity);

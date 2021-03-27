@@ -15,10 +15,10 @@ public class LavaDrop : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            _anim.SetTrigger("splash");
-            Destroy(gameObject,0.3f);
+            Destroy(gameObject);
         }
         _anim.SetTrigger("splash");
+        Destroy(gameObject.GetComponent<PolygonCollider2D>());
         Destroy(gameObject, 0.3f);
     }
 }
