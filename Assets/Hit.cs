@@ -43,6 +43,9 @@ public class Hit : MonoBehaviour
                 case "Lava":
                     damage = 2;
                     break;
+                case "Escombro":
+                    damage = 4;
+                    break;
                 
             }
             Debug.Log("Se dio");
