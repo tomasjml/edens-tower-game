@@ -5,48 +5,37 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour
 {
     public GameObject[] _Enemies;
-    Transform[] padre;
-    int aux = 0, hordas = 0;
-    public int  cantHordas = 3;
+    public GameObject Muro;
 
+    public float min = 8f, max = 10f;
+
+    float nextTime;
+    int ido = 0;
+
+    private void Start()
+    {
+        nextTime = getNextTime();
+    }
     // Update is called once per frame
     void Update()
     {
-        padre = this.transform.GetComponentsInChildren<Transform>();
-        if(padre != null)
+        if (Time.time > nextTime && ido < 8)
         {
-            if( hordas == 0)
-            {
-                Invoke("Enemies", 0);
-                hordas++;
-            }
-                
-            if( hordas == 1)
-            {
-                Invoke("Enemies", 0);
-                Invoke("Enemies", 0.2f);
-                Invoke("Enemies", 0.4f);
-                hordas++;
-                }
+            Instantiate(_Enemies[Random.Range(0, 4)], gameObject.transform.position, Quaternion.identity);
+            nextTime = getNextTime();
+            ido++;
 
-            if(hordas >= 2 && hordas < cantHordas )
-            {
-                Invoke("Enemies", 0);
-                Invoke("Enemies", 0.2f);
-                Invoke("Enemies", 0.4f);
-                Invoke("Enemies", 0.6f);
-                Invoke("Enemies", 0.8f);
-                hordas++;
-            }
-            
         }
+
+        if (ido == 8)
+        {
+            Muro.SetActive(false);
+        }
+
     }
 
-    void Enemies()
+    float getNextTime()
     {
-        Instantiate(_Enemies[Random.Range(0, 4)], this.transform.position, Quaternion.identity);
-        
-        
+        return Time.time + Random.Range(min, max);
     }
-    
 }
