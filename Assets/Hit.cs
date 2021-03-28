@@ -52,4 +52,9 @@ public class Hit : MonoBehaviour
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.SendMessageUpwards("AddDamage", damage);
+    }
 }
