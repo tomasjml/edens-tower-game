@@ -17,4 +17,12 @@ public class DisappearObjects : MonoBehaviour
             _ObjetoDesaparecer.SetActive(false);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            _ObjetoDesaparecer.SetActive(false);
+        }
+    }
 }
