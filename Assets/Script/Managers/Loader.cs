@@ -20,9 +20,6 @@ public class Loader : MonoBehaviour
             Instantiate(audioManager);
         }
 
-        AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicMenu);
-
-
         //if(SaveAndLoad.instance == null)
         //{
         //  Instantiate(saveAndLoad);

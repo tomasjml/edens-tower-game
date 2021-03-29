@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class JungleSceneBGM : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Awake()
+    private void Start()
     {
         AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicJungle);
     }
+    
 }

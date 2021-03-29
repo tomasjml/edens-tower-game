@@ -13,6 +13,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip acBGMJungle;
     public AudioClip acBGMTowerEntry;
     public AudioClip acBGMScene2;
+    public AudioClip acBGMScene3;
+    public AudioClip acBGMScene4;
+    public AudioClip acBGMScene5;
+    public AudioClip acBGMScene6;
     public AudioClip acBGMExtra1;
     public AudioClip acSEPlayerWalking;
     public AudioClip acSEPlayerRunning;
@@ -30,6 +34,10 @@ public class AudioManager : MonoBehaviour
         BackgroundMusicJungle,
         BackgroundMusicTowerEntry,
         BackgroundMusicScene2,
+        BackgroundMusicScene3,
+        BackgroundMusicScene4,
+        BackgroundMusicScene5,
+        BackgroundMusicScene6,
         BackgroundMusicExtra1
     }
 
@@ -55,6 +63,12 @@ public class AudioManager : MonoBehaviour
             instance = this;
             //Sets this to not be destroyed when reloading scene
             DontDestroyOnLoad(this.gameObject);
+
+            Instantiate(this.asBGM);
+            DontDestroyOnLoad(this.asBGM);
+
+            Instantiate(this.asSE);
+            DontDestroyOnLoad(this.asSE);
         }
         //If instance already exists and it's not this:
         else if (instance != this)
@@ -77,56 +91,79 @@ public class AudioManager : MonoBehaviour
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
-                    Destroy(asBGM);
                 }
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Instantiate(asBGM);
+                }
+                asBGM.enabled = true;
+                asBGM.gameObject.SetActive(true);
                 asBGM.clip = acBGMMenu;
-                Instantiate(asBGM);
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicHouse:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
-                    Destroy(asBGM);
                 }
-                asBGM.clip = acBGMHouse;
-                Instantiate(asBGM);
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Destroy(asBGM);
+                    asBGM.clip = acBGMHouse;
+                    Instantiate(asBGM);
+                }
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicJungle:
-                Destroy(asBGM);
-                asBGM.clip = acBGMJungle;
-                Instantiate(asBGM);
+                if (asBGM.isPlaying)
+                {
+                    asBGM.Stop();
+                }
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Destroy(asBGM);
+                    asBGM.clip = acBGMJungle;
+                    Instantiate(asBGM);
+                }
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicTowerEntry:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
-                    Destroy(asBGM);
                 }
-                asBGM.clip = acBGMTowerEntry;
-                Instantiate(asBGM);
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Destroy(asBGM);
+                    asBGM.clip = acBGMTowerEntry;
+                    Instantiate(asBGM);
+                }
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicScene2:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
-                    Destroy(asBGM);
                 }
-                asBGM.clip = acBGMScene2;
-                Instantiate(asBGM);
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Destroy(asBGM);
+                    asBGM.clip = acBGMScene2;
+                    Instantiate(asBGM);
+                }
                 asBGM.Play();
                 break;
             case BackgroundMusic.BackgroundMusicExtra1:
                 if (asBGM.isPlaying)
                 {
                     asBGM.Stop();
-                    Destroy(asBGM);
                 }
-                asBGM.clip = acBGMExtra1;
-                Instantiate(asBGM);
+                if (!asBGM.isActiveAndEnabled)
+                {
+                    Destroy(asBGM);
+                    asBGM.clip = acBGMExtra1;
+                    Instantiate(asBGM);
+                }
                 asBGM.Play();
                 break;
         }
