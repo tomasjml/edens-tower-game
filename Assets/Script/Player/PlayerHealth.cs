@@ -9,15 +9,11 @@ public class PlayerHealth : MonoBehaviour
 {
 	private int totalHealth;
 
-	public GameObject[] hearts;
-
 	private int health;
 
 	private SpriteRenderer _renderer;
 
 	private Animator _animator;
-
-	public string _Actual_Scene;
 
 	private void Awake()
 	{

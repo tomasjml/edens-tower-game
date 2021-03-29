@@ -73,7 +73,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemConsumables2.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
@@ -85,7 +84,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -94,7 +92,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemConsumables3.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicPotion = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicPotion.icon;
@@ -106,7 +103,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -115,7 +111,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicSword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
@@ -127,7 +122,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -136,7 +130,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicBow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
@@ -148,7 +141,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -158,7 +150,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemWeapon3.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item basicBow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = basicBow.icon;
@@ -170,7 +161,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -179,7 +169,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemStory1.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
@@ -191,7 +180,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -200,7 +188,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemStory2.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
@@ -212,7 +199,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
@@ -221,7 +207,6 @@ public class Inventory : MonoBehaviour
         {
             if (itemStory3.transform.Find("Image").GetComponent<Image>().enabled)
             {
-                textNoItem.enabled = false;
                 itemSelected.SetActive(true);
                 Item tiara = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara);
                 itemSelected.transform.Find("Image").GetComponent<Image>().sprite = tiara.icon;
@@ -233,7 +218,6 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                textNoItem.enabled = true;
                 itemSelected.SetActive(false);
             }
         });
