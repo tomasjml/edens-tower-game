@@ -53,10 +53,12 @@ public class Dialogue_Manager : MonoBehaviour
             return;
         }
         activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
+        
         displayText.text = activeSentence;
 
         StopAllCoroutines();
         StartCoroutine(TypeTheSentence(activeSentence));
+        
     }
 
     IEnumerator TypeTheSentence(string sentence)
