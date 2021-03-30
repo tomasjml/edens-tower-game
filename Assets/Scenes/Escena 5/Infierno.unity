@@ -7852,6 +7852,7 @@ GameObject:
   - component: {fileID: 1170700291}
   - component: {fileID: 1170700290}
   - component: {fileID: 1170700292}
+  - component: {fileID: 1170700293}
   m_Layer: 0
   m_Name: Cabeza Lava
   m_TagString: Lava
@@ -7962,6 +7963,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b06c942c5f82fa40ba9440c7fdc7f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1170700293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170700288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78f0c29b5b4a0744a5e71d6c226e1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _TriggerEffect: {fileID: 1170700288}
+  _HUD: {fileID: 1275489733}
+  _Player: {fileID: 661970621}
 --- !u!1 &1190044298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8807763094987980446, guid: fcfe363f90917154f8d88527590c2243, type: 3}
@@ -8749,7 +8765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bba3df846076a04c94f6fdf4f50c716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Scene: PE
+  _Scene: Infierno
 --- !u!114 &1275489736
 MonoBehaviour:
   m_ObjectHideFlags: 0
