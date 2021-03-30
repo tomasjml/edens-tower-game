@@ -9,11 +9,6 @@ public class ShopManager : MonoBehaviour
 {
     private int gems;
     public Text gemText;
-    public int skill_Price;
-    public Text vitalityText;
-    public Text strengthText;
-    public Text speedText;
-
 
     // Start is called before the first frame update
     void Awake()
@@ -30,13 +25,12 @@ public class ShopManager : MonoBehaviour
     public void Buy()
     {
         GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.name);
+        Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
         
         gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
         int price = GameManager.instance.itemManagement.GetItemByTitle(item.title).stats["Value"];
         if (gems >= price)
         {
-            Debug.Log(item.title);
             GameManager.instance.MarketBuyItem(item.title, 1);
             Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
             gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
@@ -44,58 +38,35 @@ public class ShopManager : MonoBehaviour
         }
           
     }
-    
+
+    public void Sell()
+    {
+        GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
+
+        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+        GameManager.instance.MarketSellItem(item.title, 1);
+        gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
+        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+
+    }
+
     public void DisableButton()
     {
         GameObject ButtonRef = GameObject.FindGameObjectWithTag("Button").GetComponent<EventSystem>().currentSelectedGameObject;
         ButtonRef.SetActive(false);
     }
 
-    public void SkillUpVitatily()
+    public void CloseShop()
     {
-        if (gems >= skill_Price)
-        {
-            GameManager.instance.saveData.playerData.vitality += 1;
-        }
-    }
-    public void SkillDownVitality()
-    {
-        int skill_Quantity = GameManager.instance.saveData.playerData.vitality;
-        if(skill_Quantity > 0)
-        {
-            GameManager.instance.saveData.playerData.vitality -= 1;
-        }
+        Time.timeScale = 1f;
+        PauseMenu.gameIsPaused = false;
     }
 
-    public void SkillUpStrength()
+    public void OpenShop()
     {
-        if (gems >= skill_Price)
-        {
-            GameManager.instance.saveData.playerData.strength += 1;
-        }
-    }
-    public void SkillDownStrength()
-    {
-        int skill_Quantity = GameManager.instance.saveData.playerData.vitality;
-        if (skill_Quantity > 0)
-        {
-            GameManager.instance.saveData.playerData.strength -= 1;
-        }
-    }
-    public void SkillUpSpeed()
-    {
-        if (gems >= skill_Price)
-        {
-            GameManager.instance.saveData.playerData.speed += 1;
-        }
-    }
-    public void SkillDownSpeed()
-    {
-        int skill_Quantity = GameManager.instance.saveData.playerData.vitality;
-        if (skill_Quantity > 0)
-        {
-            GameManager.instance.saveData.playerData.speed -= 1;
-        }
+        Time.timeScale = 0f;
+        PauseMenu.gameIsPaused = true;
     }
 
 }
