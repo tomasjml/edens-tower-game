@@ -29,7 +29,7 @@ public class EnemyHit : MonoBehaviour
             damage = 1;
         }
     }
-	private void LateUpdate()
+	/*private void LateUpdate()
 	{
 		// Animator
 		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
@@ -41,7 +41,7 @@ public class EnemyHit : MonoBehaviour
 		{
 			_isAttacking = false;
 		}
-	}
+	}*/
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

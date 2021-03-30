@@ -6,7 +6,6 @@ public class Appear : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject _Object;
-    public GameObject _Enemy;
     private void Update()
     {
         
