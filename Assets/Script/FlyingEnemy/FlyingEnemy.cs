@@ -8,7 +8,7 @@ public class FlyingEnemy : MonoBehaviour
     private PlayerHealth playerHealthScript;
     private int currentHealth;
     private int originalHealth;
-    private  int pasado=0;
+    
     void Start()
     {
         playerHealthScript = GetComponent<PlayerHealth>();

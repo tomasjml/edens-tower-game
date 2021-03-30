@@ -29,6 +29,19 @@ public class EnemyHit : MonoBehaviour
             damage = 1;
         }
     }
+	private void LateUpdate()
+	{
+		// Animator
+		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+		{
+			_isAttacking = true;
+			
+		}
+		else
+		{
+			_isAttacking = false;
+		}
+	}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -71,11 +84,11 @@ public class EnemyHit : MonoBehaviour
                     damage = 4;
                     break;
 
-
             }
             Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
+            
         }
     }
 }
