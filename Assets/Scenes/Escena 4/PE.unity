@@ -382,13 +382,13 @@ GameObject:
   - component: {fileID: 22582799}
   - component: {fileID: 22582798}
   - component: {fileID: 22582802}
-  - component: {fileID: 22582805}
   - component: {fileID: 22582804}
   - component: {fileID: 22582803}
   - component: {fileID: 22582807}
-  m_Layer: 0
+  - component: {fileID: 22582805}
+  m_Layer: 9
   m_Name: knightBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -469,7 +469,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: f4235e161c74fb84fba622465c197a84, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -489,8 +489,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22582797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 242.44, y: -12.45, z: 0}
-  m_LocalScale: {x: 3.1290538, y: 3.028997, z: 2.9107478}
+  m_LocalPosition: {x: 243.09, y: -12.45, z: 0}
+  m_LocalScale: {x: 3.129054, y: 3.028997, z: 2.9107478}
   m_Children:
   - {fileID: 892755112}
   - {fileID: 1760558775}
@@ -551,15 +551,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 22582797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a48c610be35ca4585911f044a8bd73, type: 3}
+  m_Script: {fileID: 11500000, guid: 7001315826770ca42a20ccd469317733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   followingDistance: 10
-  attackingDistance: 2
+  attackingDistance: 3
   shouldAttack: 0
   aimingTime: 0.2
-  attackTime: 0.2
+  attackTime: 0.5
+  dialogCloud: {fileID: 1888512196}
 --- !u!114 &22582807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +568,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22582797}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab51f2fc795010747a0e94ebddcc77f3, type: 3}
   m_Name: 
@@ -2488,7 +2489,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261896636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff06ee9d7c4244945b8e4df6284550a4, type: 3}
   m_Name: 
@@ -8456,7 +8457,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15397246, y: -0.0013769865}
+  m_Offset: {x: -0.24589165, y: -0.0013769865}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8467,7 +8468,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22637627, y: 0.30369914}
+  m_Size: {x: 0.41021463, y: 0.30369914}
   m_EdgeRadius: 0
 --- !u!1 &911106492
 GameObject:
@@ -16831,8 +16832,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.14884011, y: -0.088330865}
-  m_Size: {x: 0.28295323, y: 0.5297985}
+  m_Offset: {x: -0.0046448535, y: -0.0883309}
+  m_Size: {x: 0.37331942, y: 0.62786764}
   m_Direction: 0
 --- !u!1 &1761053672
 GameObject:

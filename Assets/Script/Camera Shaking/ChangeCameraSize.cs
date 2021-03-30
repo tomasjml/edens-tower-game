@@ -20,6 +20,7 @@ public class ChangeCameraSize : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(player.transform.position.x);
         if (player.transform.position.x>positionX){
             Debug.Log("entotr ala positiojn");
             _cinemachineVirtualCamera.m_Lens.OrthographicSize = OrthopedicSizeWanted;
