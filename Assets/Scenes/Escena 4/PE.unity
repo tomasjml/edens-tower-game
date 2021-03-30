@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 22582805}
   - component: {fileID: 22582804}
   - component: {fileID: 22582803}
-  - component: {fileID: 22582806}
+  - component: {fileID: 22582807}
   m_Layer: 0
   m_Name: knightBoss
   m_TagString: Untagged
@@ -560,7 +560,7 @@ MonoBehaviour:
   shouldAttack: 0
   aimingTime: 0.2
   attackTime: 0.2
---- !u!114 &22582806
+--- !u!114 &22582807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -572,8 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab51f2fc795010747a0e94ebddcc77f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  character: {fileID: 0}
+  dialogCloud: {fileID: 1888512196}
 --- !u!1 &50152421
 GameObject:
   m_ObjectHideFlags: 0
@@ -16289,7 +16288,6 @@ GameObject:
   - component: {fileID: 1699987548}
   - component: {fileID: 1699987547}
   - component: {fileID: 1699987546}
-  - component: {fileID: 1699987549}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -16367,20 +16365,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1699987549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699987545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab51f2fc795010747a0e94ebddcc77f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 1888512196}
-  character: {fileID: 22582797}
 --- !u!1 &1701490562
 GameObject:
   m_ObjectHideFlags: 0
