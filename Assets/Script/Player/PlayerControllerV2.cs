@@ -104,7 +104,7 @@ public class PlayerControllerV2 : MonoBehaviour
         if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
             if(pushing==true){
                 pushingAnimation=true;
-               
+          
             }
             else{
                 pushingAnimation=false;
@@ -152,7 +152,8 @@ public class PlayerControllerV2 : MonoBehaviour
 
         // Wanna Attack?
         //if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false
+            && enableKey == true)
         {
             _movement = Vector2.zero;
             

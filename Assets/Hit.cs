@@ -47,8 +47,12 @@ public class Hit : MonoBehaviour
 
             }
             Debug.Log("Se dio");
-            collision.SendMessageUpwards("AddDamage", damage);
+            collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
         }
     }
+
+
+
+
 }

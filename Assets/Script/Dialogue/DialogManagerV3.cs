@@ -11,15 +11,14 @@ public class DialogManagerV3 : MonoBehaviour
     public Text displayText;
     public Text displayText2;
 
-    Queue<string> sentences; // listado de string
+    Queue<string> sentences;
     string activeSentence;
     public float typingString;
     AudioSource myAudio;
     public AudioClip speakSound;
     public GameObject dialoguePanel;
     public GameObject dialoguePanel2;
-    public GameObject _Trigger;
-    public GameObject[] TriggersDestroy;
+    public GameObject[] ObjectsDestroy;
 
     public PlayerControllerV2 _Player;
     public GameObject _bot;
@@ -131,7 +130,6 @@ public class DialogManagerV3 : MonoBehaviour
             onSite = false;
             dialoguePanel.SetActive(false);
             dialoguePanel2.SetActive(false);
-            _Trigger.SetActive(false);
 
         }
     }
@@ -139,11 +137,11 @@ public class DialogManagerV3 : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence && sentences.Count % 2 == 0 && onSite) // display == active es comparando para saber si ya el efecto de typing termino
+        if (Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence && sentences.Count % 2 == 0 && onSite)
         {
             DisplayNextSentence();
         }
-        if (Input.GetKeyDown(KeyCode.E) && displayText2.text == activeSentence && !(sentences.Count % 2 == 0) && onSite) // display == active es comparando para saber si ya el efecto de typing termino
+        if (Input.GetKeyDown(KeyCode.E) && displayText2.text == activeSentence && !(sentences.Count % 2 == 0) && onSite)
         {
             DisplayNextSentence();
         }
@@ -153,13 +151,10 @@ public class DialogManagerV3 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 _bot.SetActive(true);
-                Destroy(NPC);
                 _Player.enableKeys(true);
-                foreach (GameObject c in TriggersDestroy){
+                foreach (GameObject c in ObjectsDestroy){
                     Destroy(c, 0);
                 }
-                Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
-                GameManager.instance.saveData.playerData.AddItemToInventory(coin, 30);
             }
         }
     }
