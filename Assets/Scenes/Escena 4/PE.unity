@@ -489,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22582797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 244, y: -12.45, z: 0}
+  m_LocalPosition: {x: 235.36, y: -12.45, z: 0}
   m_LocalScale: {x: 3.042033, y: 2.9447582, z: 2.8297977}
   m_Children:
   - {fileID: 337554036}
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce13e722482083c438c6c4d9b039fab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 3
+  totalHealth: 2
 --- !u!114 &22582805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2870,6 +2870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337554036}
   - component: {fileID: 337554037}
+  - component: {fileID: 337554038}
   m_Layer: 8
   m_Name: AttackBox
   m_TagString: Untagged
@@ -2904,7 +2905,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0073131323, y: -0.07030622}
+  m_Offset: {x: -0.16394874, y: -0.059899405}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2915,8 +2916,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73953867, y: 0.23507513}
+  m_Size: {x: 0.35670668, y: 0.2142615}
   m_EdgeRadius: 0
+--- !u!114 &337554038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337554035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b06c942c5f82fa40ba9440c7fdc7f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &339455425
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,8 +8601,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024950547, y: -0.016035654}
-  m_Size: {x: 0.3694865, y: 0.5943104}
+  m_Offset: {x: 0.009839167, y: -0.030814834}
+  m_Size: {x: 0.39970937, y: 0.6238689}
   m_Direction: 0
 --- !u!1 &920317874
 GameObject:
@@ -19419,7 +19432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6679731038934590221, guid: eb5d289cbf2120f4fb4a53a70ccbb3ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6899407320601493299, guid: eb5d289cbf2120f4fb4a53a70ccbb3ca, type: 3}
       propertyPath: m_RootOrder
@@ -19439,7 +19452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6899407320601493299, guid: eb5d289cbf2120f4fb4a53a70ccbb3ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 238.85
+      value: 225.54
       objectReference: {fileID: 0}
     - target: {fileID: 6899407320601493299, guid: eb5d289cbf2120f4fb4a53a70ccbb3ca, type: 3}
       propertyPath: m_LocalPosition.y
