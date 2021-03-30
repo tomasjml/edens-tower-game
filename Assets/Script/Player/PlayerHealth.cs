@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = 0;
 			StartCoroutine("IsDead");
+			GameManager.instance.EndGame();
 		}
 		Debug.Log("Player got damaged. His current health is " + health);
 	}
