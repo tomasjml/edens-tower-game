@@ -19,6 +19,7 @@ public class EnemyHit : MonoBehaviour
 		if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
 		{
 			_isAttacking = true;
+			
 		}
 		else
 		{
@@ -34,13 +35,17 @@ public class EnemyHit : MonoBehaviour
 	{
 		if (_isAttacking)
 		{
+			
+			Debug.Log("isAttacking");
 			if (collision.gameObject.tag == "Player")
 			{
 				Debug.Log("Se dio");
 				collision.SendMessageUpwards("AddDamage", damage);
+				
 			}
 
 		}
 	}
+	
 }
 

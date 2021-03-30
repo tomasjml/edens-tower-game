@@ -59,7 +59,6 @@ public class KnightController : MonoBehaviour
     {
 
         if(dialogCloud.activeSelf){
-            Debug.Log("Nube ha sido actividada");
             _rigidbody.velocity = Vector3.zero;
             _animator.SetBool("Idle", _rigidbody.velocity == Vector2.zero);
             return;
@@ -101,6 +100,7 @@ public class KnightController : MonoBehaviour
             if (shouldAttack == false && distance <= attackingDistance) //If the enemy is not attacking and the player is in the trigger
             {
                 StartCoroutine(Attack()); //Attack
+                //_rigidbody.velocity = new Vector2(2, _rigidbody.velocity.y);
             }
 
             _rigidbody.velocity = new Vector2(horizontalVelocity, _rigidbody.velocity.y); //The enemy moves.
