@@ -70,6 +70,12 @@ public class Hit : MonoBehaviour
                 case "Escombro":
                     damage = 4;
                     break;
+                case "MegaSkeleton":
+                    damage = 4;
+                    break;
+                case "Skeleton":
+                    damage = 2;
+                    break;
 
 
             }

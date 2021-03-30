@@ -36,6 +36,20 @@ public class Enemy : MonoBehaviour
         {
             facingRight = true;
         }
+        
+        switch(gameObject.tag)
+        {
+            case "Skeleton":
+                _animator.speed = 0.8f;
+                break;
+            case "MiniSkeleton":
+                _animator.speed = 1f;
+                break;
+            case "MegaSkeleton":
+                _animator.speed = 0.6f;
+                break;
+        }
+        
     }
 
     void Update()

@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Awake()
 	{
-		_animator = GetComponent<Animator>();
+		_animator = GetComponentInParent<Animator>();
 	}
 
 	private void LateUpdate()
@@ -31,9 +31,8 @@ public class PlayerAttack : MonoBehaviour
 	{
 		if (_isAttacking)
 		{
-			if (collision.CompareTag("Enemy"))
+			if (collision.gameObject.layer == 9)
 			{
-				
 				collision.SendMessageUpwards("AddDamageEnemy", strength);
 				Debug.Log("Se esta enviando");
 			}
