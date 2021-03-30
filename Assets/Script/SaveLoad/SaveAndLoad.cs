@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System;
 using SimpleJSON;
+using static System.Linq.Enumerable;
 
 
 public class SaveAndLoad : MonoBehaviour
@@ -61,6 +62,46 @@ public class SaveAndLoad : MonoBehaviour
         StartCoroutine(DeleteRequest());
     }
 
+    public void LoadHighScoreList()
+    {
+        StartCoroutine(getHighScore());
+    }
+
+    IEnumerator getHighScore()
+    {
+        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "/users/highScore/");
+        yield return GETRequest.SendWebRequest();
+
+        if (GETRequest.result == UnityWebRequest.Result.ProtocolError || GETRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.Log(GETRequest.error);
+            yield break;
+        }
+        else
+        {
+            Debug.Log("Data Loaded");
+        }
+
+        Debug.Log(GETRequest.downloadHandler.text);
+
+        JSONArray arrayGame = (JSONArray)JSON.Parse(GETRequest.downloadHandler.text);
+
+        Dictionary<String, int> highscoreDict = new Dictionary<string, int>();
+
+        foreach (JSONNode game in arrayGame)
+        {
+            String username = game["User"].Value;
+            int highScore = Convert.ToInt32(game["Highscore"].Value);
+
+            highscoreDict.Add(username, highScore);
+        }
+
+        var myList = highscoreDict.ToList();
+
+        myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+
+        foreach (KeyValuePair<String, int> pair in myList) { Debug.Log(pair.Key + ": " + pair.Value); }
+    }
 
     //Load
     IEnumerator GetRequest(string slot)
