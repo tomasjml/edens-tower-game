@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
-    public Slider _slider;
-    void increase()
-    {
+    public Text label;
 
+    public void increase(float value)
+    {
+        GetComponent<Slider>().value += value;
+        value = GetComponent<Slider>().value * 100;
+        label.text = value.ToString();
     }
 
-    void decrease()
+    public void decrease(float value)
     {
-
+        GetComponent<Slider>().value -= value;
+        value = GetComponent<Slider>().value * 100;
+        label.text = value.ToString();
     }
 }
