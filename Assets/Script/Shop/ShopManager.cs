@@ -25,30 +25,34 @@ public class ShopManager : MonoBehaviour
     public void Buy()
     {
         GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
-        
-        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
-        int price = GameManager.instance.itemManagement.GetItemByTitle(item.title).stats["Value"];
-        if (gems >= price)
+        if (ButtonRef.GetComponentInChildren<Text>().enabled)
         {
-            GameManager.instance.MarketBuyItem(item.title, 1);
-            Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
-            gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
+            Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
+
             gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
-        }
-          
+            int price = GameManager.instance.itemManagement.GetItemByTitle(item.title).stats["Value"];
+            if (gems >= price)
+            {
+                GameManager.instance.MarketBuyItem(item.title, 1);
+                Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
+                gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
+                gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+            }
+        }  
     }
 
     public void Sell()
     {
         GameObject ButtonRef = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
+        if (ButtonRef.GetComponentInChildren<Text>().enabled)
+        {
+            Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
 
-        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
-        GameManager.instance.MarketSellItem(item.title, 1);
-        gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
-        gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
-
+            gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+            GameManager.instance.MarketSellItem(item.title, 1);
+            gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
+            gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+        }
     }
 
     public void DisableButton()

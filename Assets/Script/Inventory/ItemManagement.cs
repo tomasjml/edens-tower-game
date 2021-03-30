@@ -144,13 +144,13 @@ public class ItemManagement : MonoBehaviour
             new Item(9, "Blasting Stone", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
             new ItemStats
             {
-                {"Value",  30},
+                {"Value",  150},
                 {"Attack", 5 }
             }),
             new Item(4, "Huge Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
             new ItemStats
             {
-                {"Value",  30},
+                {"Value",  70},
                 {"Recovery", 40}
             })
         };
