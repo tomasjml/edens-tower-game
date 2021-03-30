@@ -89,7 +89,7 @@ public class ItemManagement : MonoBehaviour
             new ItemStats
             {
                 {"Value",  15},
-                {"Attact", 10 },
+                {"Attack", 10 },
                 {"Category", 1 },
                 {"Evolution", 1 }
             }),
@@ -97,7 +97,7 @@ public class ItemManagement : MonoBehaviour
             new ItemStats
             {
                 {"Value",  15},
-                {"Attact", 5 },
+                {"Attack", 5 },
                 {"Category", 2 },
                 {"Evolution", 1 }
             }),
@@ -108,6 +108,50 @@ public class ItemManagement : MonoBehaviour
             {
                 {"Value",  30},
                 {"Recovery", 10}
+            }),
+            new Item(5, "Killer Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower", 
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 10 },
+                {"Category", 1 },
+                {"Evolution", 2 }
+            }),
+            new Item(6, "Miracle Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 10 },
+                {"Category", 1 },
+                {"Evolution", 3 }
+            }),
+            new Item(7, "Killer Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 5 },
+                {"Category", 2 },
+                {"Evolution", 2 }
+            }),
+            new Item(8, "Miracle Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 5 },
+                {"Category", 2 },
+                {"Evolution", 3 }
+            }),
+            new Item(9, "Blasting Stone", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new ItemStats
+            {
+                {"Value",  30},
+                {"Attack", 5 }
+            }),
+            new Item(4, "Huge Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new ItemStats
+            {
+                {"Value",  30},
+                {"Recovery", 40}
             })
         };
     }
