@@ -49,7 +49,7 @@ public class Hit : MonoBehaviour
                 
                 
             }
-            Debug.Log("Se dio");
+            //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
         }
@@ -81,7 +81,7 @@ public class Hit : MonoBehaviour
                     break;
 
             }
-            Debug.Log("Se dio");
+            //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
         }
