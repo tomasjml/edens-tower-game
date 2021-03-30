@@ -108,6 +108,7 @@ public class Enemy : MonoBehaviour
 
             if (shouldAttack == false && distance <= attackingDistance) //If the enemy is not attacking and the player is in the trigger
             {
+                Debug.Log("Dique ataca");
                 StartCoroutine(Attack()); //Attack
             }
 
