@@ -57,6 +57,25 @@ public class Hit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.SendMessageUpwards("AddDamage", damage);
+        if (collision.CompareTag("Player"))
+        {
+            switch (gameObject.tag)
+            {
+                case "Yunke":
+                    damage = 2;
+                    break;
+                case "Lava":
+                    damage = 2;
+                    break;
+                case "Escombro":
+                    damage = 4;
+                    break;
+
+
+            }
+            Debug.Log("Se dio");
+            collision.gameObject.SendMessageUpwards("AddDamage", damage);
+            HeartVisual.HSystemStatic.Damage(damage);
+        }
     }
 }
