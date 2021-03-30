@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour
 	private void Awake()
 	{
 		//totalHealth = GameManager.instance.saveData.playerData.vitality;
-		totalHealth = 10;
+		totalHealth = 12;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
 	}
