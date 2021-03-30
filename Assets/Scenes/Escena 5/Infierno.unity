@@ -1268,9 +1268,10 @@ GameObject:
   - component: {fileID: 156353091}
   - component: {fileID: 156353090}
   - component: {fileID: 156353089}
-  m_Layer: 0
+  - component: {fileID: 156353092}
+  m_Layer: 9
   m_Name: AppBox
-  m_TagString: Untagged
+  m_TagString: BOSSInferno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1315,6 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Object: {fileID: 1244095833}
+  _Enemy: {fileID: 0}
 --- !u!61 &156353091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1328,7 +1330,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025558472, y: -0.006793022}
+  m_Offset: {x: 0.00019073486, y: -0.057516575}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1339,8 +1341,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4517212, y: 0.38160133}
+  m_Size: {x: 0.8744049, y: 0.64085484}
   m_EdgeRadius: 0
+--- !u!114 &156353092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156353087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794c6d5982ee34e4d963896aac2a8983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  babyEnemies: {fileID: 1946078427}
 --- !u!1 &158022748 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2597141317336932258, guid: 684fd386986b2094899826a90eb47946, type: 3}
@@ -7204,9 +7219,9 @@ GameObject:
   - component: {fileID: 1244095834}
   - component: {fileID: 1244095835}
   - component: {fileID: 1244095836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackBox
-  m_TagString: Untagged
+  m_TagString: BOSSInferno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7238,7 +7253,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025558472, y: -0.006793022}
+  m_Offset: {x: 0.004463196, y: -0.006793022}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7249,7 +7264,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4517212, y: 0.38160133}
+  m_Size: {x: 0.5174713, y: 0.25621605}
   m_EdgeRadius: 0
 --- !u!114 &1244095836
 MonoBehaviour:
@@ -7578,9 +7593,10 @@ GameObject:
   - component: {fileID: 1287823113}
   - component: {fileID: 1287823112}
   - component: {fileID: 1287823111}
-  m_Layer: 0
+  - component: {fileID: 1287823114}
+  m_Layer: 9
   m_Name: BOSS SKELETON
-  m_TagString: Untagged
+  m_TagString: BOSSInferno
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7649,6 +7665,7 @@ Transform:
   m_Children:
   - {fileID: 1244095834}
   - {fileID: 156353088}
+  - {fileID: 1946078428}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7685,10 +7702,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   followingDistance: 10
-  attackingDistance: 1
+  attackingDistance: 3
   shouldAttack: 0
-  aimingTime: 0.2
-  attackTime: 1
+  aimingTime: 1
+  attackTime: 2
 --- !u!50 &1287823112
 Rigidbody2D:
   serializedVersion: 4
@@ -7736,6 +7753,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6248474, y: 3.1509376}
   m_EdgeRadius: 0
+--- !u!114 &1287823114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287823107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce13e722482083c438c6c4d9b039fab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 30
 --- !u!1 &1290712354
 GameObject:
   m_ObjectHideFlags: 0
@@ -9690,6 +9720,8 @@ MonoBehaviour:
   - {fileID: 6552191365871017154, guid: 4a3214ec3f3e7a048b111a906ecdf685, type: 3}
   - {fileID: 6552191365871017154, guid: 10830f0c208c64740a1b50560bf6cce8, type: 3}
   Muro: {fileID: 45226467}
+  _Enemy: {fileID: 0}
+  _Random: 0
   min: 4
   max: 8
 --- !u!1 &1573690248
@@ -12823,6 +12855,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a0219e31e6d7e45b45656181af7f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1946078427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946078428}
+  - component: {fileID: 1946078429}
+  m_Layer: 9
+  m_Name: SpawnMinis
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1946078428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946078427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.67, y: -1.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1287823109}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946078429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946078427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16666a87d28843c46a00c3f7af6cac34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Enemies: []
+  Muro: {fileID: 0}
+  _Enemy: {fileID: 6552191365871017154, guid: 10830f0c208c64740a1b50560bf6cce8, type: 3}
+  _Random: 0
+  min: 3
+  max: 6
 --- !u!1 &1962011407
 GameObject:
   m_ObjectHideFlags: 0

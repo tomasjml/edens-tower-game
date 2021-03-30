@@ -57,5 +57,10 @@ public class EnemyHealth : MonoBehaviour
 		gameObject.SetActive(false);
 		//Destroy(gameObject,2f);
     }
+
+	public int getCurrentHealthEnemy()
+	{
+		return health;
+	}
 }
 

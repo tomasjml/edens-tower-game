@@ -76,7 +76,9 @@ public class Hit : MonoBehaviour
                 case "Skeleton":
                     damage = 2;
                     break;
-
+                case "BOSSInferno":
+                    damage = 2;
+                    break;
 
             }
             Debug.Log("Se dio");

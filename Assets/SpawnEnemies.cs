@@ -6,6 +6,9 @@ public class SpawnEnemies : MonoBehaviour
 {
     public GameObject[] _Enemies;
     public GameObject Muro;
+    public GameObject _Enemy;
+    public bool _Random = false;
+   
 
     public float min = 8f, max = 10f;
 
@@ -19,18 +22,32 @@ public class SpawnEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextTime && ido < 8)
+        if(_Random == true)
         {
-            Instantiate(_Enemies[Random.Range(0, 4)], gameObject.transform.position, Quaternion.identity);
-            nextTime = getNextTime();
-            ido++;
+            if (Time.time > nextTime && ido < 8)
+            {
+                Instantiate(_Enemies[Random.Range(0, 4)], gameObject.transform.position, Quaternion.identity);
+                nextTime = getNextTime();
+                ido++;
 
+            }
+
+            if (ido == 8)
+            {
+                Muro.SetActive(false);
+            }
         }
-
-        if (ido == 8)
+        else
         {
-            Muro.SetActive(false);
+            if (Time.time > nextTime && ido < 6)
+            {
+                Instantiate(_Enemy, gameObject.transform.position, Quaternion.identity);
+                nextTime = getNextTime();
+                ido++;
+
+            }
         }
+        
 
     }
 

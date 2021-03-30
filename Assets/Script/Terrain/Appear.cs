@@ -6,6 +6,11 @@ public class Appear : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject _Object;
+    public GameObject _Enemy;
+    private void Update()
+    {
+        
+    }
 
     private void OnTriggerExit2D(Collider2D other)
     {
