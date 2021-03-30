@@ -36,6 +36,7 @@ public class Shop : MonoBehaviour
         {
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Bow");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Killer Bow";
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
@@ -46,14 +47,15 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Bow");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Miracle Bow";
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
         else
         {
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemWeapon1Price.enabled = false;
 
         }
@@ -64,7 +66,8 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Sword");
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
@@ -73,14 +76,15 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Sword");
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
         else
         {
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemWeapon2Price.enabled = false;
         }
 
@@ -146,7 +150,8 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Basic Bow";
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
@@ -154,8 +159,9 @@ public class Shop : MonoBehaviour
         {
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Bow");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Killer Bow";
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
@@ -164,14 +170,15 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Bow");
             itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Miracle Bow";
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
         else
         {
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemWeapon1Price.enabled = false;
 
         }
@@ -182,7 +189,8 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Sword");
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
@@ -191,14 +199,15 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Sword");
             itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
             itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
 
         }
         else
         {
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemWeapon2Price.enabled = false;
         }
 
@@ -209,14 +218,13 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
             itemSell1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemSell1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().enabled = false;
-            itemSell1Price.text = basicSword.stats["Value"].ToString() + "g";
-
+            itemSell1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell1Price.enabled = true;
         }
         else
         {
             itemSell1.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemSell1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell1.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemSell1Price.enabled = false;
         }
 
@@ -226,14 +234,14 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Huge Potion");
             itemSell2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemSell2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell2.transform.Find("Text").GetComponent<Text>().enabled = false;
-            itemSell2Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemSell2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell2Price.enabled = true;
 
         }
         else
         {
             itemSell2.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemSell2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell2.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemSell2Price.enabled = false;
         }
 
@@ -242,14 +250,14 @@ public class Shop : MonoBehaviour
             Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Blasting Stone");
             itemSell3.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
             itemSell3.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell3.transform.Find("Text").GetComponent<Text>().enabled = false;
-            itemSell3Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemSell3.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell3Price.enabled = true;
 
         }
         else
         {
             itemSell3.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemSell3.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell3.transform.Find("Text").GetComponent<Text>().enabled = false;
             itemSell3Price.enabled = false;
 
         }
