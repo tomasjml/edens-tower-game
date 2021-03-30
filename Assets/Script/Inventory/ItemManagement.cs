@@ -12,7 +12,13 @@ public class ItemManagement : MonoBehaviour
         Tiara,
         BasicSword,
         BasicBow,
-        BasicPotion
+        BasicPotion,
+        KillerSword,
+        MiracleSword,
+        KillerBow,
+        MiracleBow,
+        BlastingStone,
+        HugePotion
     }
 
     public List<Item> items = new List<Item>();
@@ -54,6 +60,24 @@ public class ItemManagement : MonoBehaviour
                 break;
             case ItemAvailable.BasicPotion:
                 itemName = "Basic Potion";
+                break;
+            case ItemAvailable.KillerSword:
+                itemName = "Killer Sword";
+                break;
+            case ItemAvailable.KillerBow:
+                itemName = "Killer Bow";
+                break;
+            case ItemAvailable.MiracleSword:
+                itemName = "Miracle Sword";
+                break;
+            case ItemAvailable.MiracleBow:
+                itemName = "Miracle Bow";
+                break;
+            case ItemAvailable.BlastingStone:
+                itemName = "Blasting Stone";
+                break;
+            case ItemAvailable.HugePotion:
+                itemName = "Huge Potion";
                 break;
             default:
                 break;
@@ -161,8 +185,13 @@ public class ItemManagement : MonoBehaviour
         itemsMarket = new List<Item>
         {
             GetItemByTitle(ItemAvailable.BasicPotion),
-            GetItemByTitle(ItemAvailable.BasicBow)
-
+            GetItemByTitle(ItemAvailable.BasicBow),
+            GetItemByTitle(ItemAvailable.KillerSword),
+            GetItemByTitle(ItemAvailable.KillerBow),
+            GetItemByTitle(ItemAvailable.MiracleSword),
+            GetItemByTitle(ItemAvailable.MiracleBow),
+            GetItemByTitle(ItemAvailable.BlastingStone),
+            GetItemByTitle(ItemAvailable.HugePotion)
         };
     }
 }
