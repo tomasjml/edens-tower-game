@@ -13,7 +13,7 @@ public class FlyingEnemy : MonoBehaviour
     {
         playerHealthScript = GetComponent<PlayerHealth>();
         currentHealth=playerHealthScript.getCurrentHealth();
-        originalHealth=playerHealthScript.getOriginalHealth();
+       //originalHealth=playerHealthScript.getOriginalHealth();
     }
 
     // Update is called once per frame

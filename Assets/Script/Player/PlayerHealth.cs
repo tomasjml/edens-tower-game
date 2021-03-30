@@ -91,8 +91,8 @@ public class PlayerHealth : MonoBehaviour
 	public int getCurrentHealth(){
 		return health;
 	}
-	public int getOriginalHealth(){
-		return totalHealth;
+	public void setHealth(int hp){
+		health = hp;
 	}
 
 
