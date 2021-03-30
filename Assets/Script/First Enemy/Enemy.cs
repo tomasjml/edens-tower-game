@@ -55,12 +55,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
 
-        target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
+        if(GameObject.FindWithTag("Player")!=null){
+            target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
 
         if(shouldAttack == false)
         {
             moving(distance);
+        }
         }
     }
 

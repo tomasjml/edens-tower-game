@@ -279,5 +279,8 @@ private IEnumerator PatrolToTarget()
         yield return new WaitForSeconds(waitingTime);
 
     }
+    public void EnableBow(bool enable){
+        bow.SetActive(enable);
+    }
    
 }
