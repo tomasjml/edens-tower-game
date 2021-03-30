@@ -21,11 +21,10 @@ public class DialogManagerV3 : MonoBehaviour
     public GameObject[] ObjectsDestroy;
 
     public PlayerControllerV2 _Player;
-    public GameObject _bot;
     public GameObject NPC;
+    public GameObject Bot;
     public GameObject _InstructionPressE;
     public Transform _PositionPreesE;
-    public Animator Chest;
 
     private bool onSite = false;
 
@@ -115,7 +114,6 @@ public class DialogManagerV3 : MonoBehaviour
         {
             onSite = true;
             dialoguePanel.SetActive(true);
-            Chest.SetTrigger("Open");
             StartDialogue();
             _Player.enableKeys(false);
         }
@@ -148,9 +146,10 @@ public class DialogManagerV3 : MonoBehaviour
 
         if (sentences.Count == 0)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && onSite)
             {
-                _bot.SetActive(true);
+                NPC.SetActive(false);
+                Bot.SetActive(true);
                 _Player.enableKeys(true);
                 foreach (GameObject c in ObjectsDestroy){
                     Destroy(c, 0);

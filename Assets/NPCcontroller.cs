@@ -38,6 +38,7 @@ public class NPCcontroller: MonoBehaviour
             yield return null;
         }
         _animator.SetBool("Iddle", true);
+        Destroy(_target);
         transform.position = new Vector2(_target.transform.position.x, gameObject.transform.position.y);
         yield return null ;
     }
