@@ -7,6 +7,7 @@ using TMPro;
 
 public class Dialogue_ManagerV4 : MonoBehaviour
 {
+    private const char V = ' ';
     public Text displayText;
     public string advice;
     string activeSentence;
@@ -53,9 +54,7 @@ public class Dialogue_ManagerV4 : MonoBehaviour
             
             dialoguePanel.SetActive(true);
             DisplayNextSentence();
-            Invoke("end", 10);
-
-
+            Invoke("end", 3);
         }
         
     }
@@ -67,13 +66,7 @@ public class Dialogue_ManagerV4 : MonoBehaviour
 
     IEnumerator DeleteTheSentence(string sentence)
     {
-        displayText.text = advice;
-        char[] array = advice.ToCharArray();
-        for(int i = array.Length; i >= 0; i--)
-        {
-            array[i] = ' ';
-            displayText.text = array.ToString();
-        }
+        Destroy(dialoguePanel);
         yield return null;
     }
 

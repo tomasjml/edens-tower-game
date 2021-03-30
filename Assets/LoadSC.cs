@@ -10,7 +10,7 @@ public class LoadSC : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Part 2");
+            SceneManager.LoadScene(_Scene);
         }
     }
 
