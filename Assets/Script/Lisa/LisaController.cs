@@ -74,11 +74,5 @@ public class LisaController : MonoBehaviour
             _a.SetTrigger("Book");
         }
     }
-    void desactivate()
-    {
 
-        new WaitForSeconds(10);
-        this.gameObject.SetActive(false);
-        SceneManager.LoadScene("Context 2");
-    }
 }
