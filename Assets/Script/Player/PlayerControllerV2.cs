@@ -282,5 +282,10 @@ private IEnumerator PatrolToTarget()
     public void EnableBow(bool enable){
         bow.SetActive(enable);
     }
+
+    public bool Grounded()
+    {
+        return _isGrounded;
+    }
    
 }

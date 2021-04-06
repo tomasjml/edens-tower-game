@@ -9,7 +9,9 @@ public class SubKaos : MonoBehaviour
     // SPELL OBJECTS
     public GameObject _Spell;
     Vector3 startingPos = new Vector3(0f,0f);
+    float timePass = 0f;
     int cant = 0;
+    public bool isGrounded = true;
     // MOV ENEMY
     public float speed = 1f;
     private bool facingRight;
@@ -65,6 +67,7 @@ public class SubKaos : MonoBehaviour
         {
             target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
             float distance = target.transform.position.x - transform.position.x; //Gets their distance
+            isGrounded = GameObject.FindWithTag("Player").GetComponent<PlayerControllerV2>().Grounded();
 
             if (shouldAttack == false)
             {
@@ -88,7 +91,23 @@ public class SubKaos : MonoBehaviour
 
         if(distance < castDistance && distance > followingDistance)
         {
-            StartCoroutine(Cast());
+           
+            //StartCoroutine(Cast());
+            if (Time.time > timePass && isGrounded == true)
+            {
+                startingPos.x = GameObject.Find("Player").GetComponent<Transform>().position.x;
+                startingPos.y = GameObject.Find("Player").GetComponent<Transform>().position.y + 2;
+                _animator.SetTrigger("Cast");
+                if (cant < 1)
+                {
+                    Instantiate(_Spell, startingPos, Quaternion.identity);
+                    cant++;
+                    Destroy(GameObject.Find("Spell - daño(Clone)"),1.2f);
+                }
+                timePass = GetNextTime();
+                cant = 0;
+            }
+            
         }
 
         if (distance < followingDistance)
@@ -160,8 +179,11 @@ public class SubKaos : MonoBehaviour
             Instantiate(_Spell, startingPos, Quaternion.identity);
             cant++;
         }
-        cant = 0;
         yield return new WaitForSeconds(castTime);
-        
+    }
+
+    float GetNextTime()
+    {
+        return Time.time + 3f;
     }
 }

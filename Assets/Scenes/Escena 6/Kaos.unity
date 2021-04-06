@@ -4352,6 +4352,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &758931071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5833244689302945637, guid: a3e8b4ac4cf709648a0f78916e28dc08, type: 3}
+  m_PrefabInstance: {fileID: 5833244689362404117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &758931072
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758931071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.14577484, y: -0.21865654}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.75, y: 5.8125}
+    newSize: {x: 8.75, y: 5.8125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1698151, y: 1.0020027}
+  m_EdgeRadius: 0
 --- !u!1 &762744349
 GameObject:
   m_ObjectHideFlags: 0
@@ -12835,12 +12866,12 @@ MonoBehaviour:
   _Spell: {fileID: 5833244689302945637, guid: a3e8b4ac4cf709648a0f78916e28dc08, type: 3}
   speed: 1
   followingDistance: 6
-  castDistance: 10
+  castDistance: 20
   attackingDistance: 2
   shouldAttack: 0
   aimingTime: 0.4
   attackTime: 2
-  castTime: 2
+  castTime: 0.2
 --- !u!61 &1773661881
 BoxCollider2D:
   m_ObjectHideFlags: 0
