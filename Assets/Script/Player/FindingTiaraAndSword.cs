@@ -64,4 +64,7 @@ public class FindingTiaraAndSword : MonoBehaviour
             GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword));
         }
     }
+
+    
+
 }

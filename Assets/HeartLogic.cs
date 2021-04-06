@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartLogic: MonoBehaviour{
+public class HeartLogic{
 
     public const int MAX_FRAGMENTS = 4;
     public event EventHandler OnHealed;

@@ -9,15 +9,12 @@ public class PlayerHealth : MonoBehaviour
 {
 	private int totalHealth;
 
-	public GameObject[] hearts;
-
 	private int health;
 
 	private SpriteRenderer _renderer;
 
 	private Animator _animator;
 
-	
 	private void Awake()
 	{
 		//totalHealth = GameManager.instance.saveData.playerData.vitality;
