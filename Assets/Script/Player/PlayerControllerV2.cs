@@ -173,6 +173,10 @@ public class PlayerControllerV2 : MonoBehaviour
         {
             Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("Current Health: " + gameObject.GetComponent<PlayerHealth>().getCurrentHealth().ToString());
+        }
         if (Input.GetKeyDown(KeyCode.C))
         {
             Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
