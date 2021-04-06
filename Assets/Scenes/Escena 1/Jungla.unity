@@ -4227,7 +4227,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 400992137}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 85a4e00c096c8654c94f4723c3701095, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4250,17 +4250,17 @@ PolygonCollider2D:
       - {x: 0.75, y: 0.44}
       - {x: 0.63, y: 0.61}
       - {x: 0.51, y: 0.64}
-      - {x: 0.56807053, y: 0.5222795}
-      - {x: 0.60161877, y: 0.56364715}
-      - {x: 0.49935764, y: 0.56115466}
-      - {x: 0.29532117, y: 0.6020664}
-      - {x: 0.16886704, y: 0.43264386}
-      - {x: -0.47663167, y: 0.41787183}
-      - {x: -0.6888928, y: 0.5799084}
-      - {x: 0.12776226, y: 0.45127618}
-      - {x: -0.34064236, y: 0.289574}
-      - {x: -0.727274, y: 0.5410332}
-      - {x: -0.38660827, y: 0.5018236}
+      - {x: 0.42, y: 0.66999996}
+      - {x: 0.47, y: 0.79999995}
+      - {x: 0.45, y: 0.96}
+      - {x: 0.32, y: 1.06}
+      - {x: 0.21, y: 1.09}
+      - {x: -0.089999996, y: 1.09}
+      - {x: -0.22, y: 1.06}
+      - {x: -0.29999998, y: 1.02}
+      - {x: -0.39, y: 0.90999997}
+      - {x: -0.39, y: 0.77}
+      - {x: -0.51, y: 0.62}
       - {x: -0.63, y: 0.59}
       - {x: -0.68, y: 0.57}
       - {x: -0.71999997, y: 0.53999996}
@@ -4279,24 +4279,20 @@ PolygonCollider2D:
       - {x: 0.95, y: -1.06}
       - {x: 1.02, y: -1}
       - {x: 1.09, y: -0.88}
-    - - {x: 0.51922065, y: 0.6247194}
-      - {x: 0.5195187, y: 1.10775}
-      - {x: 0.049143206, y: 1.0527067}
-      - {x: -0.4799015, y: 1.1377025}
-      - {x: -0.475157, y: 0.5679048}
-      - {x: -0.115811795, y: 0.54841924}
-      - {x: -0.06935763, y: 0.46978703}
-      - {x: 0.14629759, y: 0.32468042}
-      - {x: 0.17693996, y: 0.39115465}
-      - {x: 0.21161878, y: 0.4624009}
-      - {x: 0.30565524, y: 0.45501488}
-      - {x: 0.352107, y: 0.44455907}
-      - {x: 0.33565524, y: 0.43364722}
-      - {x: 0.22693995, y: 0.5122795}
-      - {x: 0.1858094, y: 0.48750746}
-      - {x: 0.011772925, y: 0.5022795}
-      - {x: 0.067584716, y: 0.42580527}
-      - {x: -0.020642355, y: 0.43319127}
+    - - {x: -0.08, y: 0.71999997}
+      - {x: -0.049999997, y: 0.77}
+      - {x: -0.02, y: 0.78}
+      - {x: -0.01, y: 0.78999996}
+      - {x: 0.07, y: 0.78999996}
+      - {x: 0.08, y: 0.78}
+      - {x: 0.099999994, y: 0.78}
+      - {x: 0.13, y: 0.74}
+      - {x: 0.13, y: 0.66999996}
+      - {x: 0.12, y: 0.65999997}
+      - {x: 0.12, y: 0.65}
+      - {x: 0.02, y: 0.65}
+      - {x: 0.01, y: 0.64}
+      - {x: -0.07, y: 0.64}
 --- !u!50 &400992141
 Rigidbody2D:
   serializedVersion: 4
@@ -4309,7 +4305,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.25
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 20
@@ -5565,7 +5561,8 @@ GameObject:
   m_Component:
   - component: {fileID: 603178119}
   - component: {fileID: 603178118}
-  m_Layer: 8
+  - component: {fileID: 603178120}
+  m_Layer: 0
   m_Name: jungle tileset_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5637,6 +5634,94 @@ Transform:
   m_Father: {fileID: 1169303726}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &603178120
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603178117}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.12, y: 1.12}
+    newSize: {x: 1.12, y: 1.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.06, y: -0.29}
+      - {x: 0, y: -0.26}
+      - {x: 0.049999997, y: -0.26}
+      - {x: 0.06, y: -0.52}
+      - {x: 0.07, y: -0.56}
+      - {x: 0.25, y: -0.56}
+      - {x: 0.26, y: -0.55}
+      - {x: 0.26, y: -0.29}
+      - {x: 0.32, y: -0.26}
+      - {x: 0.37, y: -0.26}
+      - {x: 0.44, y: -0.26999998}
+      - {x: 0.48999998, y: -0.26999998}
+      - {x: 0.53, y: -0.26}
+      - {x: 0.56, y: -0.24}
+      - {x: 0.56, y: -0.08}
+      - {x: 0.53, y: -0.049999997}
+      - {x: 0.47, y: -0.049999997}
+      - {x: 0.28, y: -0.06}
+      - {x: 0.26999998, y: 0.03}
+      - {x: 0.25, y: 0.049999997}
+      - {x: 0.37, y: 0.06}
+      - {x: 0.44, y: 0.049999997}
+      - {x: 0.48999998, y: 0.049999997}
+      - {x: 0.53, y: 0.06}
+      - {x: 0.56, y: 0.08}
+      - {x: 0.56, y: 0.24}
+      - {x: 0.53, y: 0.26999998}
+      - {x: 0.47, y: 0.26999998}
+      - {x: 0.28, y: 0.26}
+      - {x: 0.26999998, y: 0.35}
+      - {x: 0.26, y: 0.53}
+      - {x: 0.25, y: 0.56}
+      - {x: 0.08, y: 0.56}
+      - {x: 0.06, y: 0.53999996}
+      - {x: 0.06, y: 0.32999998}
+      - {x: 0.04, y: 0.26}
+      - {x: -0.04, y: 0.26}
+      - {x: -0.049999997, y: 0.35}
+      - {x: -0.06, y: 0.53}
+      - {x: -0.07, y: 0.56}
+      - {x: -0.24, y: 0.56}
+      - {x: -0.26, y: 0.53999996}
+      - {x: -0.26, y: 0.32999998}
+      - {x: -0.25, y: 0.26999998}
+      - {x: -0.28, y: 0.26}
+      - {x: -0.52, y: 0.26}
+      - {x: -0.56, y: 0.24}
+      - {x: -0.56, y: 0.07}
+      - {x: -0.52, y: 0.06}
+      - {x: -0.26999998, y: 0.06}
+      - {x: -0.25, y: -0.049999997}
+      - {x: -0.28, y: -0.06}
+      - {x: -0.52, y: -0.06}
+      - {x: -0.56, y: -0.08}
+      - {x: -0.56, y: -0.25}
+      - {x: -0.52, y: -0.26}
+      - {x: -0.26999998, y: -0.26}
+      - {x: -0.26, y: -0.38}
+      - {x: -0.26, y: -0.52}
+      - {x: -0.25, y: -0.56}
+      - {x: -0.07, y: -0.56}
+      - {x: -0.06, y: -0.55}
+      - {x: -0.049999997, y: -0.42999998}
 --- !u!1 &612478323
 GameObject:
   m_ObjectHideFlags: 0
@@ -7105,8 +7190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcf8aca6043d2440b8586ac8b00d1da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1489890386}
   HUD: {fileID: 2053029013}
   pausePanel: {fileID: 1681802441}
+  Dialogs: {fileID: 0}
   pauseBtns: {fileID: 1575262170}
   slotsBtns: {fileID: 1412954203}
   slot1: {fileID: 988095499}
@@ -7223,7 +7310,8 @@ GameObject:
   m_Component:
   - component: {fileID: 815167064}
   - component: {fileID: 815167063}
-  m_Layer: 8
+  - component: {fileID: 815167065}
+  m_Layer: 0
   m_Name: jungle tileset_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7295,6 +7383,32 @@ Transform:
   m_Father: {fileID: 1169303726}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &815167065
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815167062}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.96, y: 0.96}
+    newSize: {x: 0.96, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.96, y: 0.96}
+  m_EdgeRadius: 0
 --- !u!1 &846149146
 GameObject:
   m_ObjectHideFlags: 0
@@ -11872,13 +11986,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454974348}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.51, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0029701171, w: 0.9999956}
+  m_LocalPosition: {x: 7.510001, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1729022144}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.34}
 --- !u!212 &1454974350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12105,7 +12219,7 @@ GameObject:
   - component: {fileID: 1485084010}
   - component: {fileID: 1485084011}
   - component: {fileID: 1485084012}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: jungle tileset_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12190,7 +12304,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010361016, y: -0.019048959}
+  m_Offset: {x: 0.010361016, y: -0.06076187}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -12201,8 +12315,13 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75165045, y: 0.838098}
+  m_Size: {x: 0.75165045, y: 0.9215238}
   m_EdgeRadius: 0
+--- !u!1 &1489890386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9132203323589162042, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
+  m_PrefabInstance: {fileID: 1794999561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1492437246
 GameObject:
   m_ObjectHideFlags: 0
@@ -14962,6 +15081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
+  audioManager: {fileID: 0}
   saveAndLoad: {fileID: 0}
 --- !u!1 &1853317570
 GameObject:

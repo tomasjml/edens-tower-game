@@ -1,31 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SavePoint : MonoBehaviour
 {
-    Vector3 _PointSave;
-    // Update is called once per frame
-    private void Awake()
-    {
-       
-    }
-    void Update()
-    {
-        
-    }
+    public GameObject _TriggerEffect;
+    public GameObject _HUD;
+    public GameObject _Player;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if(other.CompareTag("Player"))
+        if (_Player.GetComponent<PlayerHealth>().getCurrentHealth() == 0)
         {
-            _PointSave = other.transform.position;
-            Debug.Log(_PointSave);
+            _HUD.SetActive(true);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(gameObject.CompareTag("Trap"))
+        {
+            if(collision.gameObject.CompareTag("Player"))
+            {
+                if (collision.gameObject.GetComponent<PlayerHealth>().getCurrentHealth() > 0)
+                {
+                    collision.gameObject.transform.position = _TriggerEffect.transform.position;
+                }
+            }  
         }
     }
 
-    public Vector3 GetLastPosition()
-    {
-        return _PointSave;
-    }
 }
