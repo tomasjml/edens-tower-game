@@ -24,7 +24,7 @@ public class HeartVisual : MonoBehaviour
         if (GameManager.instance)
         {
             total = GameManager.instance.saveData.playerData.vitality;
-            HeartLogic HSystem = new HeartLogic(GameManager.instance.saveData.playerData.vitality/4);
+            HeartLogic HSystem = new HeartLogic(total/2);
             SetHeartsHealthSystem(HSystem);
         }
         else
@@ -121,7 +121,7 @@ public class HeartVisual : MonoBehaviour
     private HeartImage CreateHeartImage(Vector2 anchor)
     {
         GameObject heartObject = new GameObject("Heart", typeof(Image));
-        heartObject.transform.parent = transform;
+        heartObject.transform.SetParent(transform);
         heartObject.transform.localPosition = Vector3.zero;
 
         heartObject.GetComponent<RectTransform>().anchoredPosition = anchor;

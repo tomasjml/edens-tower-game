@@ -36,17 +36,33 @@ public class Enemy : MonoBehaviour
         {
             facingRight = true;
         }
+        
+        switch(gameObject.tag)
+        {
+            case "Skeleton":
+                _animator.speed = 0.8f;
+                break;
+            case "MiniSkeleton":
+                _animator.speed = 1f;
+                break;
+            case "MegaSkeleton":
+                _animator.speed = 0.6f;
+                break;
+        }
+        
     }
 
     void Update()
     {
 
-        target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
+        if(GameObject.FindWithTag("Player")!=null){
+            target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
         float distance = target.transform.position.x - transform.position.x; //Gets their distance
 
         if(shouldAttack == false)
         {
             moving(distance);
+        }
         }
     }
 

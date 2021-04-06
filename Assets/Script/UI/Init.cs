@@ -7,6 +7,7 @@ using UnityEngine;
 public class Init : MonoBehaviour
 {
     public GameObject text;
+    public GameObject instruction;
     [SerializeField] string scene;
 
 
@@ -14,8 +15,9 @@ public class Init : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-                text.SetActive(false);
-                SceneManager.LoadScene(scene);      
+            text.SetActive(false);
+            instruction.SetActive(false);
+            SceneManager.LoadScene(scene);      
         }
 
     }

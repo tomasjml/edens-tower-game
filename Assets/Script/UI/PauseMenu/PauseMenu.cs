@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject player;
     public GameObject HUD;
     public GameObject pausePanel;
+    public GameObject Dialogs;
     public GameObject pauseBtns;
     public GameObject slotsBtns;
     public static bool gameIsPaused = false;
@@ -41,14 +43,24 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        player.GetComponent<PlayerControllerV2>().enabled = true;
         HUD.SetActive(true);
         pausePanel.SetActive(false);
+        if (Dialogs)
+        {
+            Dialogs.SetActive(true);
+        }
         Time.timeScale = 1f;
     }
 
     public void Pause()
     {
+        player.GetComponent<PlayerControllerV2>().enabled = false;
         HUD.SetActive(false);
+        if (Dialogs)
+        {
+            Dialogs.SetActive(false);
+        }
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
     }

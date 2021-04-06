@@ -11,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
 	private SpriteRenderer _renderer;
 	private Animator _animator;
 
+	public UnityEngine.UI.Image barraRoja;
+
 
 	private void Awake()
 	{
@@ -22,8 +24,16 @@ public class EnemyHealth : MonoBehaviour
 	{
 		health = totalHealth;
 	}
+    private void FixedUpdate()
+    {
+		actualizarDisplay(); 
+    }
 
-	public void AddDamageEnemy(int amount)
+	void actualizarDisplay()
+    {
+		barraRoja.fillAmount = (float)health / totalHealth;
+	}
+    public void AddDamageEnemy(int amount)
 	{
 		health = health - amount;
 
@@ -57,5 +67,15 @@ public class EnemyHealth : MonoBehaviour
 		gameObject.SetActive(false);
 		//Destroy(gameObject,2f);
     }
+
+	public int getCurrentHealthEnemy()
+	{
+		return health;
+	}
+
+	public int totalHealthEnemy()
+	{
+		return health;
+	}
 }
 
