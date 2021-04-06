@@ -16,4 +16,12 @@ public class AppearObject : MonoBehaviour
             _ObjetoAparecer.SetActive(true);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            _ObjetoAparecer.SetActive(true);
+        }
+    }
 }

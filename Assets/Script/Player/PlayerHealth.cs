@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-	public int totalHealth = 5;
+	private int totalHealth;
 
 	private int health;
 
@@ -13,17 +15,27 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
-	public string _Actual_Scene;
-
 	private void Awake()
 	{
+		//totalHealth = GameManager.instance.saveData.playerData.vitality;
+		totalHealth = 12;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
 	}
 
 	void Start()
 	{
-		health = totalHealth;
+        if (GameManager.instance)
+        {
+			health = GameManager.instance.saveData.playerData.vitality;
+			totalHealth = health;
+        }
+        else
+        {
+			health = 20;
+			totalHealth = health;
+		}
+
 	}
 
 	public void AddDamage(int amount)
@@ -38,8 +50,8 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = 0;
 			StartCoroutine("IsDead");
+			
 		}
-
 		Debug.Log("Player got damaged. His current health is " + health);
 	}
 
@@ -52,7 +64,6 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = totalHealth;
 		}
-
 		Debug.Log("Player got some life. His current health is " + health);
 	}
 
@@ -70,16 +81,16 @@ public class PlayerHealth : MonoBehaviour
 		_animator.SetTrigger("IsDead");
 
 		yield return new WaitForSeconds(1f);
-
 		gameObject.SetActive(false);
 		GameManager.instance.EndGame();
-		if(_Actual_Scene != "")
-		SceneManager.LoadScene(_Actual_Scene);
+		
 	}
 	public int getCurrentHealth(){
 		return health;
 	}
-	public int getOriginalHealth(){
-		return totalHealth;
+	public void setHealth(int hp){
+		health = hp;
 	}
+
+
 }

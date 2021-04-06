@@ -14,10 +14,10 @@ public class SaveAndLoad : MonoBehaviour
 
     public enum Slot {One, Two, Three, Four};
 
-    public Vector2 position;
+    private Vector3 position;
     private readonly string serviceURL = "http://161.35.251.140:8086/";
-    public GameObject player;
-    private string username = "";
+    private GameObject player;
+    public string username;
     public Slot slot;
 
     public Button slot1;

@@ -21,7 +21,7 @@ public class Dialogue_Manager : MonoBehaviour
     public Transform _PositionPreesE;
 
     private GameObject instantiatedObject;
-
+   
     void Awake()
     {
         
@@ -52,11 +52,14 @@ public class Dialogue_Manager : MonoBehaviour
             displayText.text = activeSentence;
             return;
         }
+        
         activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
+        
         displayText.text = activeSentence;
 
         StopAllCoroutines();
         StartCoroutine(TypeTheSentence(activeSentence));
+        
     }
 
     IEnumerator TypeTheSentence(string sentence)
@@ -101,6 +104,7 @@ public class Dialogue_Manager : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.E))
                 {
                     _Player.enableKeys(true);
+                    Destroy(instantiatedObject);
                     Destroy(_Trigger,0);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 }

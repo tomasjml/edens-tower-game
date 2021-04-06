@@ -49,10 +49,14 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void Awake()
     {
-        _body = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
+        if (GameManager.instance && GameManager.instance.saveData.playerData.sceneName.Equals(sceneName))
+        {
+            gameObject.transform.position = GameManager.instance.saveData.playerData.position;
+        }
+        _body = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -100,7 +104,7 @@ public class PlayerControllerV2 : MonoBehaviour
         if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
             if(pushing==true){
                 pushingAnimation=true;
-               
+          
             }
             else{
                 pushingAnimation=false;
@@ -148,7 +152,9 @@ public class PlayerControllerV2 : MonoBehaviour
         
 
         // Wanna Attack?
-        if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        //if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false
+            && enableKey == true)
         {
             _movement = Vector2.zero;
             
@@ -170,9 +176,10 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Item coin = GameManager.instance.itemManagement.GetItemByTitle("Magic Stone");
+            Item coin = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
             GameManager.instance.saveData.playerData.AddItemToInventory(coin, 2);
-            Debug.Log("Le di 2 monedas");
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicPotion));
+            GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
         }
 
     }
@@ -273,6 +280,9 @@ private IEnumerator PatrolToTarget()
         _animator.SetBool("Idle", true);
         yield return new WaitForSeconds(waitingTime);
 
+    }
+    public void EnableBow(bool enable){
+        bow.SetActive(enable);
     }
    
 }
