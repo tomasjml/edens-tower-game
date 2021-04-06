@@ -151,7 +151,8 @@ public class PlayerControllerV2 : MonoBehaviour
         }
 
         // Wanna Attack?
-        if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        //if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false)
         {
             _movement = Vector2.zero;
             
@@ -277,6 +278,9 @@ private IEnumerator PatrolToTarget()
         _animator.SetBool("Idle", true);
         yield return new WaitForSeconds(waitingTime);
 
+    }
+    public void EnableBow(bool enable){
+        bow.SetActive(enable);
     }
    
 }

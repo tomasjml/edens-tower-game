@@ -17,10 +17,11 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 
-	public string _Actual_Scene;
-
+	
 	private void Awake()
 	{
+		//totalHealth = GameManager.instance.saveData.playerData.vitality;
+		totalHealth = 12;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
 	}
@@ -52,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
 		{
 			health = 0;
 			StartCoroutine("IsDead");
+			
 		}
 		Debug.Log("Player got damaged. His current health is " + health);
 	}
@@ -89,8 +91,8 @@ public class PlayerHealth : MonoBehaviour
 	public int getCurrentHealth(){
 		return health;
 	}
-	public int getOriginalHealth(){
-		return totalHealth;
+	public void setHealth(int hp){
+		health = hp;
 	}
 
 
