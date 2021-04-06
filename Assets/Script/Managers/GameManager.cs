@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
         timerRunning = false;
     }
 
-    public void NewGame()
+    public void NewGame(SaveData.Difficulty diff)
     {
         // Initial Stats 
         saveData.playerData.strength = 1;
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = 20;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
-        saveData.difficulty = SaveData.Difficulty.Easy;
+        saveData.difficulty = diff;
         StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");

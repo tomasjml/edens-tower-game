@@ -11,19 +11,17 @@ public class MainMenu : MonoBehaviour
     public GameObject LoadMenu;
     public GameObject MenuButtons;
     public GameObject Background;
+    public GameObject DifficultyButtons;
+
+    SaveData.Difficulty _diff;
 
     // Start is called before the first frame update
     void Start()
     {
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
+        MainMenuButton();
         AudioManager.instance.PlayBackgroundMusic();
-    }
-
-    public void MainToLoadButton()
-    {
-        MenuButtons.SetActive(false);
-        LoadButtons.SetActive(true);
     }
 
     public void MainMenuButton()
@@ -37,7 +35,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.instance.NewGame();
+        GameManager.instance.NewGame(_diff);
     }
 
     public void ResumeGame()
@@ -51,10 +49,23 @@ public class MainMenu : MonoBehaviour
         LoadMenu.SetActive(true);
     }
 
+    public void MainToLoadButton()
+    {
+        MenuButtons.SetActive(false);
+        LoadButtons.SetActive(true);
+        DifficultyButtons.SetActive(false);
+    }
+
     public void LoadToMainButton()
     {
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
+    }
+
+    public void difficultyButton()
+    {
+        LoadButtons.SetActive(false);
+        DifficultyButtons.SetActive(true);
     }
 
     public void CreditsButton()
@@ -69,6 +80,27 @@ public class MainMenu : MonoBehaviour
         // Show Settings Menu
         Main_Menu.SetActive(false);
         SettingsMenu.SetActive(true);
+    }
+
+    public void setDiff(int diff)
+    {
+        switch (diff)
+        {
+            case 1:
+                _diff = SaveData.Difficulty.Easy;
+                break;
+            case 2:
+                _diff = SaveData.Difficulty.Normal;
+                break;
+            case 3:
+                _diff = SaveData.Difficulty.Hard;
+                break;
+            case 4:
+                _diff = SaveData.Difficulty.Hell;
+                break;
+            default:
+                break;
+        }
     }
 
     public void QuitButton()
