@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+	[Header("Vida del Enemigo")]
 	public int totalHealth = 3;
 
 	private int health;
-
+	private int bHealth;
 	private SpriteRenderer _renderer;
 	private Animator _animator;
 
 	[Header("Barra de Vida")]
-	public UnityEngine.UI.Image barraRoja;
 	public Transform healthBar; // Barra Roja
 	public GameObject healthBarObject;
 
@@ -30,27 +30,20 @@ public class EnemyHealth : MonoBehaviour
 		health = totalHealth;
 		healthBarScale = healthBar.localScale;
 		healthPercent = healthBarScale.x / health;
-		healthBarObject.SetActive(false);
+		
 	}
 	void UpdateHealthBar()
     {
 		healthBarScale.x = healthPercent * health;
 		healthBar.localScale = healthBarScale;
     }
-    private void FixedUpdate()
-    {
-		actualizarDisplay(); 
-    }
 
-	void actualizarDisplay()
-    {
-		barraRoja.fillAmount = (float)health / totalHealth;
-	}
     public void AddDamageEnemy(int amount)
 	{
-		healthBarObject.SetActive(true);
+		
 		health = health - amount;
 		UpdateHealthBar();
+		
 
 		// Visual Feedback
 		StartCoroutine("VisualFeedback");

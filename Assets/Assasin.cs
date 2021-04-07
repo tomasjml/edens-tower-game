@@ -122,8 +122,8 @@ public class Assasin : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        /*_animator.SetTrigger("Ambush");
-        yield return new WaitForSeconds(0);*/
+        _animator.SetTrigger("Ambush");
+        yield return new WaitForSeconds(0);
         float speedBackup = speed;
         speed = 0f;
         shouldAttack = true;
