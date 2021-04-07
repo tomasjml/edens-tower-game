@@ -21,8 +21,6 @@ public class SubKaos : MonoBehaviour
     public bool shouldAttack = false;
     public float aimingTime = 0.2f;
     public float attackTime = 1.3f;
-    public float castTime = 1f;
-
     private Rigidbody2D _rigidbody;
     Animator _animator;
 
@@ -168,20 +166,6 @@ public class SubKaos : MonoBehaviour
         shouldAttack = false;
         speed = speedBackup;
     }
-
-    private IEnumerator Cast()
-    {
-        startingPos.x = GameObject.Find("Player").GetComponent<Transform>().position.x;
-        startingPos.y = GameObject.Find("Player").GetComponent<Transform>().position.y +3;
-        _animator.SetTrigger("Cast");
-        if(cant < 1)
-        {
-            Instantiate(_Spell, startingPos, Quaternion.identity);
-            cant++;
-        }
-        yield return new WaitForSeconds(castTime);
-    }
-
     float GetNextTime()
     {
         return Time.time + 3f;
