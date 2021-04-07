@@ -138,7 +138,7 @@ public class KaosScript : MonoBehaviour
 
         yield return new WaitForSeconds(aimingTime);
         
-        _animator.SetTrigger("shoot");
+        _animator.SetTrigger("IsAttacking");
         Shoot();
         yield return new WaitForSeconds(attackTime);
 
