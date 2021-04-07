@@ -7,7 +7,7 @@ public class KaosObjects : MonoBehaviour
     [Header("Twisted Zone")]
     public GameObject _Player;
     public GameObject TP_Site;
-
+    int cant = 0;
     int hp;
     public GameObject Fase_1;
     public GameObject deadObject;
@@ -18,8 +18,13 @@ public class KaosObjects : MonoBehaviour
 
         if(hp <= 10 && gameObject.CompareTag("Twisted"))
         {
-            _Player.transform.position = TP_Site.transform.position;
-            Fase_1.SetActive(true);
+            if(cant < 1)
+            {
+                _Player.transform.position = TP_Site.transform.position;
+                Fase_1.SetActive(true);
+                cant++;
+            }
+            
         }
         else
         if(hp <=10)
