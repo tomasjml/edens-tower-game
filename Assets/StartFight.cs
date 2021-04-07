@@ -13,7 +13,7 @@ public class StartFight : MonoBehaviour
             limit.SetActive(true);
             GameObject.FindGameObjectWithTag("Camera").SetActive(false);
             _camaraSystem.SetActive(true);
-            
+            gameObject.GetComponent<DialogManagerV4>().StartDialogue();
         }
 
     }
