@@ -44,6 +44,7 @@ public class ballShootScript : MonoBehaviour
         {
             _currentSpeed = new Vector3( startingSpeed.x * Mathf.Cos(shootingAngle), startingSpeed.y * Mathf.Sin(shootingAngle));
         }
+        Debug.Log("pos player "+player.transform.position.x);
         
         //rb.velocity = new Vector2(player.transform.position.x, rb.velocity.y);
         _shooted =true;
