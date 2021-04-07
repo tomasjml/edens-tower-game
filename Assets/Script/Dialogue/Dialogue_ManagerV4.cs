@@ -8,6 +8,7 @@ using TMPro;
 public class Dialogue_ManagerV4 : MonoBehaviour
 {
     private const char V = ' ';
+    public GameObject Health;
     public Text displayText;
     public string advice;
     string activeSentence;
@@ -54,6 +55,7 @@ public class Dialogue_ManagerV4 : MonoBehaviour
             
             dialoguePanel.SetActive(true);
             DisplayNextSentence();
+            Health.SetActive(true);
             Invoke("end", 3);
         }
         

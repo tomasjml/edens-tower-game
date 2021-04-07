@@ -99,8 +99,8 @@ public class Dialogue_ManagerV5 : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     gameObject.GetComponent<PickingUp>().addItem();
-                    Destroy(_Trigger, 0);
                     _Player.enableKeys(true);
+                    Destroy(_Trigger, 0);
                 }
             }
 
@@ -113,6 +113,7 @@ public class Dialogue_ManagerV5 : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
             _Trigger.SetActive(false);
+            _Player.enableKeys(true);
 
         }
     }
