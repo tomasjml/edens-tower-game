@@ -10,10 +10,6 @@ public class ballShootScript : MonoBehaviour
     Vector3 _deltaPos=new Vector3();
     public GameObject player;
     bool  _shooted=true;
-    Transform target;
-    Transform kaos;
-    float distance = 0;
-    public GameObject wizardEvil;
 
     void Start()
     {
@@ -22,13 +18,8 @@ public class ballShootScript : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-
-        //target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
-        target=player.transform;
-        kaos=wizardEvil.transform;
-        //kaos = GameObject.Find("Kaos").transform;
-        distance = target.transform.position.x - transform.position.x; //Gets their distance
-        if (!_shooted){
+        
+        if(!_shooted){
             return;
         }
         
@@ -37,17 +28,9 @@ public class ballShootScript : MonoBehaviour
         _currentSpeed+=Physics.gravity*Time.deltaTime;
     }
     public void ShootBall(Vector3 startingSpeed, float shootingAngle){
-        if (player.transform.position.x > wizardEvil.transform.position.x) //If the distance is negative
-        {
-            _currentSpeed = new Vector3(-1f *startingSpeed.x * Mathf.Cos(shootingAngle), startingSpeed.y * Mathf.Sin(shootingAngle));
-        }else 
-        {
-            _currentSpeed = new Vector3( startingSpeed.x * Mathf.Cos(shootingAngle), startingSpeed.y * Mathf.Sin(shootingAngle));
-        }
-        Debug.Log("pos player "+player.transform.position.x);
-        
+        _currentSpeed=new Vector3(-1*startingSpeed.x*Mathf.Cos(shootingAngle),startingSpeed.y*Mathf.Sin(shootingAngle));
         //rb.velocity = new Vector2(player.transform.position.x, rb.velocity.y);
-        _shooted =true;
+        _shooted=true;
     }
     void OnCollisionEnter2D(Collision2D collisionInfo){
         if(collisionInfo.collider.gameObject.layer == LayerMask.NameToLayer("Ground")){
