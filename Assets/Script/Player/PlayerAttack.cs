@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
 			if (collision.gameObject.layer == 9)
 			{
 				_renderer = collision.GetComponent<SpriteRenderer>();
-				if(collision.CompareTag("BOSSInferno"))
+				if(collision.CompareTag("BOSSInferno") || collision.CompareTag("Kaos") || collision.CompareTag("Twisted"))
                 {
 					StartCoroutine(VisualFeedback());
 				}

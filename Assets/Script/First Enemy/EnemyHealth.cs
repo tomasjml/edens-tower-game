@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+	[Header("Vida del Enemigo")]
 	public int totalHealth = 3;
 
 	private int health;
-
+	private int bHealth;
 	private SpriteRenderer _renderer;
 	private Animator _animator;
 
-	public UnityEngine.UI.Image barraRoja;
+	[Header("Barra de Vida")]
+	public Transform healthBar; // Barra Roja
+	public GameObject healthBarObject;
 
+	private Vector3 healthBarScale;	//Tamaño de la barra
+	private float healthPercent;	//Porciento de la vida
 
 	private void Awake()
 	{
@@ -23,19 +28,22 @@ public class EnemyHealth : MonoBehaviour
 	void Start()
 	{
 		health = totalHealth;
+		healthBarScale = healthBar.localScale;
+		healthPercent = healthBarScale.x / health;
+		
 	}
-    private void FixedUpdate()
+	void UpdateHealthBar()
     {
-		actualizarDisplay(); 
+		healthBarScale.x = healthPercent * health;
+		healthBar.localScale = healthBarScale;
     }
 
-	void actualizarDisplay()
-    {
-		barraRoja.fillAmount = (float)health / totalHealth;
-	}
     public void AddDamageEnemy(int amount)
 	{
+		
 		health = health - amount;
+		UpdateHealthBar();
+		
 
 		// Visual Feedback
 		StartCoroutine("VisualFeedback");
@@ -49,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
 		}
 
 		Debug.Log("Enemy got damaged. His current health is " + health);
+		
 	}
 
 	private IEnumerator VisualFeedback()
