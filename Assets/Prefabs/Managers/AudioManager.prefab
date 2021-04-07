@@ -44,8 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b44dccaec378d4dabeb1739bc0201d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 7735675056069357698, guid: 3443fd77d437f844ca69dd42f2164d95, type: 3}
-  audioClipMenu: {fileID: 8300000, guid: db23fd01b56182e489bc2cffe4e61eb7, type: 3}
+  asBGM: {fileID: 5719267938208896995, guid: 3d80a23db62758d4caf7b0a2a80eb797, type: 3}
+  asSE: {fileID: 3545217404662200638, guid: 8586bea1225950041a0e891cf6a87149, type: 3}
+  acBGMMenu: {fileID: 8300000, guid: 18c7ee0ea9d426d4fa8269368e233ad2, type: 3}
+  acBGMHouse: {fileID: 8300000, guid: cc477da07a0e95340a4e0638d3853865, type: 3}
+  acBGMJungle: {fileID: 8300000, guid: 41c30371244903d41809b05d726bd536, type: 3}
+  acBGMTowerEntry: {fileID: 8300000, guid: 6dc4be81296344087a45172d7ba5e06f, type: 3}
+  acBGMScene2: {fileID: 8300000, guid: 6dc4be81296344087a45172d7ba5e06f, type: 3}
+  acBGMScene3: {fileID: 8300000, guid: b4ec07a8ad460814290d71f625893a37, type: 3}
+  acBGMScene4: {fileID: 8300000, guid: cc477da07a0e95340a4e0638d3853865, type: 3}
+  acBGMScene5: {fileID: 8300000, guid: ab1d6c8284aac433f950f27ea2253c15, type: 3}
+  acBGMScene6: {fileID: 8300000, guid: 049abaaa0b6350b4181c080313e27ec1, type: 3}
+  acBGMExtra1: {fileID: 8300000, guid: ab1d6c8284aac433f950f27ea2253c15, type: 3}
+  acSEPlayerWalking: {fileID: 0}
+  acSEPlayerRunning: {fileID: 0}
+  acSEPlayerBasicSwordFire: {fileID: 0}
+  acSEPlayerBasicBowFire: {fileID: 0}
+  acSEPlayerGameOver: {fileID: 0}
+  acSEPlayerHurt1: {fileID: 0}
+  acSEPlayerHurt2: {fileID: 0}
 --- !u!81 &1332272378976155475
 AudioListener:
   m_ObjectHideFlags: 0
@@ -53,4 +70,4 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8754458834768934681}
-  m_Enabled: 0
+  m_Enabled: 1
