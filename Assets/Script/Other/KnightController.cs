@@ -17,6 +17,7 @@ public class KnightController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     Animator _animator;
     public GameObject dialogCloud;
+    public GameObject storyFinished;
 
 
     private void Awake()
@@ -58,8 +59,9 @@ public class KnightController : MonoBehaviour
     private void moving(float distance)
     {
 
-        if(dialogCloud.activeSelf){
+        if(dialogCloud.activeSelf ||(dialogCloud.activeSelf==false &&storyFinished.activeSelf==false)){
             _rigidbody.velocity = Vector3.zero;
+            storyFinished.SetActive(false);
             _animator.SetBool("Idle", _rigidbody.velocity == Vector2.zero);
             return;
         }

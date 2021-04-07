@@ -21,6 +21,7 @@ public class Dialogue_Manager : MonoBehaviour
     public Transform _PositionPreesE;
 
     private GameObject instantiatedObject;
+    public GameObject storyFinished;
    
     void Awake()
     {
@@ -92,11 +93,18 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            Debug.Log("mira esto mojona "+sentences.Count);
+            if(sentences.Count!=1&&Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
-                DisplayNextSentence();  
+                DisplayNextSentence();
+                //storyFinished.SetActive(false);  
             }
-
+            if(sentences.Count==1 && storyFinished.activeSelf){
+                dialoguePanel.SetActive(true);
+                DisplayNextSentence(); 
+            }else if(sentences.Count==1&& storyFinished.activeSelf==false){
+                dialoguePanel.SetActive(false);
+            }
 
             if(sentences.Count == 0)
             {
