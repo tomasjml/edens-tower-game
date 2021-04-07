@@ -29,27 +29,13 @@ public class FasesKaosTp : MonoBehaviour
                 _Player.transform.position = _FaseTP.transform.position;
                 _CameraOFF.SetActive(false);
                 _CameraON.SetActive(true);
+                Destroy(_FaseTP);
+                
 
             }
         }
     }
-   /* private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(_KaosFase.GetComponent<BossHealth>().getCurrentHealthEnemy() <= 0 )
-        {
-            if(collision.gameObject.CompareTag("Player"))
-            {
-                time = getNextTime();
-                if(Time.time > time)
-                {
-                    _Player.transform.position = _FaseTP.transform.position;
-                    _CameraOFF.SetActive(false);
-                    _CameraON.SetActive(true);
-                }
-            }
-        }
-    }*/
-
+ 
     float getNextTime()
     {
         return Time.time + 5f;
