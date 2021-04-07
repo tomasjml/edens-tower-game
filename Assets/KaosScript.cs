@@ -63,21 +63,15 @@ public class KaosScript : MonoBehaviour
 
     void Update()
     {
-        deltaY = player.transform.position.y - gameObject.transform.position.y;
-        deltaX = player.transform.position.x - gameObject.transform.position.x;
-        currentAngle = Mathf.Atan(deltaY / deltaX);
-
-
-        if (GameObject.FindWithTag("Player") != null)
-        {
-            target = GameObject.FindWithTag("Player").transform; //Finds the player in any place of the map
-            float distance = target.transform.position.x - transform.position.x; //Gets their distance
-
-            if (shouldAttack == false)
-            {
-                moving(distance);
-            }
+        deltaY=player.transform.position.y - gameObject.transform.position.y;
+        deltaX=player.transform.position.x-gameObject.transform.position.x;
+        currentAngle=Mathf.Atan(deltaY/deltaX);
+        float distance = target.transform.position.x - transform.position.x; //Gets their distance
+        
+        if(shouldAttack == false && player.activeSelf==true){
+            moving(distance);
         }
+            
     }
 
     private void LateUpdate()
@@ -115,14 +109,14 @@ public class KaosScript : MonoBehaviour
                 }
             }
 
-            float horizontalVelocity = speed;
+            float horizontalVelocity = speed; 
 
             if (facingRight == false) //If the enemy is facing left we have to change the speed to face left
             {
                 horizontalVelocity = horizontalVelocity * -1f;
             }
 
-            if (shouldAttack == false && distance <= attackingDistance) //If the enemy is not attacking and the player is in the trigger
+            if (shouldAttack == false && distance <= attackingDistance &&player!=null) //If the enemy is not attacking and the player is in the trigger
             {
                 StartCoroutine(Attack()); //Attack
             }
@@ -133,9 +127,7 @@ public class KaosScript : MonoBehaviour
     public void flip() //Makes the enemy face the other way 
     {
         facingRight = !facingRight;
-        float localScaleX = transform.localScale.x;
-        localScaleX = localScaleX * -1f;
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
+        transform.Rotate(0f,180f,0f);
     }
 
     private IEnumerator Attack()
@@ -145,8 +137,9 @@ public class KaosScript : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
-        _animator.SetTrigger("IsAttacking");
-        Invoke("Shoot", 0.5f);
+        
+        _animator.SetTrigger("shoot");
+        Shoot();
         yield return new WaitForSeconds(attackTime);
 
         shouldAttack = false;
@@ -154,17 +147,13 @@ public class KaosScript : MonoBehaviour
     }
     void Shoot()
     {
-        if (player.activeSelf == true)
-        {
-            GameObject ballIns = Instantiate(magicBall, transform.position, transform.rotation);
-
-            if (facingRight == true)
-            {
-                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed, currentAngle);
-            }
-            else
-            {
-                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed, currentAngle);
+        if(player.activeSelf==true){
+            GameObject ballIns=Instantiate(magicBall,transform.position,transform.rotation);
+        
+            if(facingRight==true){
+                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed,currentAngle);
+            }else{
+                ballIns.GetComponent<ballShootScript>().ShootBall(startingSpeed,currentAngle);
             }
         }
     }
