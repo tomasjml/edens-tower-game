@@ -15,7 +15,7 @@ public class DialogKaosEden : MonoBehaviour
     public float typingString;
     public GameObject dialoguePanel;
     public GameObject dialoguePanel2;
-    private int cant=0;
+    
     private Animator _animator;
     public GameObject Eden;
     public  GameObject firstPartFinished;

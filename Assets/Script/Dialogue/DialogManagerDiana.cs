@@ -16,7 +16,7 @@ public class DialogManagerDiana : MonoBehaviour
     public GameObject dialoguePanel;
    
     private int cant=0;
-    private bool onSite = false;
+    
     public GameObject startEdenScene;
 
     void Awake()
@@ -80,7 +80,7 @@ public class DialogManagerDiana : MonoBehaviour
     {
         if (other.CompareTag("camStory"))
         {
-            onSite = true;
+            
             dialoguePanel.SetActive(true);
            
             StartDialogue();

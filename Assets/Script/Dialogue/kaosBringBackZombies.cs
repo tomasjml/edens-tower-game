@@ -16,7 +16,6 @@ public class kaosBringBackZombies : MonoBehaviour
     public GameObject dialoguePanel;
    
     private int cant=0;
-    private bool onSite = false;
     public GameObject startEdenScene;
     public bool storyFinished;
     public GameObject story;
@@ -83,7 +82,7 @@ public class kaosBringBackZombies : MonoBehaviour
     {
         if (other.CompareTag("Kaos"))
         {
-            onSite = true;
+            
             dialoguePanel.SetActive(true);
            
             StartDialogue();
