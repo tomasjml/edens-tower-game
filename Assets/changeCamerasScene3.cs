@@ -13,11 +13,13 @@ public class changeCamerasScene3 : MonoBehaviour
     Queue<string> sentences;
     public Dialogue dialogue;
     public Text displayText;
+    public Text displayText2;
    // listado de string
     string activeSentence;
     public float typingString;
    
     public GameObject dialoguePanel;
+    public GameObject dialoguePanel2;
     
     public GameObject _InstructionPressE;
     public Transform _PositionPreesE;
@@ -26,6 +28,7 @@ public class changeCamerasScene3 : MonoBehaviour
     private int cant=0;
     public GameObject otherDialog;
     public GameObject book;
+    public GameObject finishThis;
     void Start()
     {
         sentences = new Queue<string>();
@@ -44,16 +47,29 @@ public class changeCamerasScene3 : MonoBehaviour
 
     void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
+         if (sentences.Count == 0)
         {
+            dialoguePanel.SetActive(true);
             displayText.text = activeSentence;
             return;
         }
-        
-        activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
-        
-        displayText.text = activeSentence;
-
+        else
+        {
+            if (sentences.Count % 2 == 0)
+            {
+                dialoguePanel2.SetActive(true);
+                dialoguePanel.SetActive(true);
+                activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
+                displayText.text = activeSentence;
+            }
+            else
+            {
+                dialoguePanel.SetActive(true);
+                dialoguePanel2.SetActive(true);
+                activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
+                displayText2.text = activeSentence;
+            }
+        }
         StopAllCoroutines();
         StartCoroutine(TypeTheSentence(activeSentence));
         
@@ -61,12 +77,27 @@ public class changeCamerasScene3 : MonoBehaviour
 
     IEnumerator TypeTheSentence(string sentence)
     {
-        displayText.text = "";
-
-        foreach( char letter in sentence.ToCharArray()) // toCharArray rompe la sentence en caracter y asi podemos hacer la anim de escribir letter por letter
+        if (sentences.Count % 2 == 1)
         {
-            displayText.text += letter;
-            
+            displayText.text = "";
+        }
+        else
+        {
+            displayText2.text = "";
+        }
+
+        foreach (char letter in sentence.ToCharArray()) // toCharArray rompe la sentence en caracter y asi podemos hacer la anim de escribir letter por letter
+        {
+            if (sentences.Count % 2 == 1)
+            {
+                displayText.text += letter;
+                
+            }
+            else
+            {
+                displayText2.text += letter;
+                
+            }
             yield return new WaitForSeconds(typingString);
         }
     }
@@ -74,39 +105,46 @@ public class changeCamerasScene3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(activateBookCamera==null || activateBookCamera.activeSelf==false){
+        if((activateBookCamera==null || activateBookCamera.activeSelf==false) &&finishThis.activeSelf==false){
             bookCamera.SetActive(true);
             playerCamera.SetActive(false);
             otherDialog.SetActive(false);
             book.SetActive(true);
         }
+        if(finishThis.activeSelf){
+            bookCamera.SetActive(false);
+            playerCamera.SetActive(true);
+        }
         if(bookCamera.activeSelf&& cant==0){
             dialoguePanel.SetActive(true);
+            //dialoguePanel2.SetActive(true);
             StartDialogue();
            
             instantiatedObject = Instantiate(_InstructionPressE,_PositionPreesE.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
             cant++;
         }
         if(cant>0){
-            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            Debug.Log("sentences count"+sentences.Count);
+            if (sentences.Count!=1&&displayText.text == activeSentence && sentences.Count % 2 == 1 ) // display == active es comparando para saber si ya el efecto de typing termino
             {
-                DisplayNextSentence();  
+                DisplayNextSentence();
             }
-
-
-            if(sentences.Count == 0)
-            {
-                Debug.Log("Presione E para terminar.");
-                if(Input.GetKeyDown(KeyCode.E))
+        if ( sentences.Count!=1&&displayText2.text == activeSentence && !(sentences.Count % 2 == 1) ) // display == active es comparando para saber si ya el efecto de typing termino
+        {
+            DisplayNextSentence();
+        }
+        if(sentences.Count==1){
+             if(Input.GetKeyDown(KeyCode.E))
                 {
-                    
+                     Debug.Log("Presione E para terminar.");
                     Destroy(instantiatedObject);
+                    finishThis.SetActive(true);
                     activateBookCamera.SetActive(true);
                     dialoguePanel.SetActive(false);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 }
-                 
-            }
+        }
+        
         }
     }
 }
