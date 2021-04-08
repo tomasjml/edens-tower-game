@@ -6,6 +6,7 @@ public class ActiveTP : MonoBehaviour
 {
     [Header("Enemigo")]
     public GameObject _Kaos;
+    public GameObject _BarraVKaos;
     [Header("TP")]
     public GameObject _TP;
 
@@ -17,6 +18,7 @@ public class ActiveTP : MonoBehaviour
         if(_Kaos.GetComponent<BossHealth>().getCurrentHealthEnemy() <= 0)
         {
             _TP.SetActive(true);
+            _BarraVKaos.SetActive(false);
         }
     }
 }
