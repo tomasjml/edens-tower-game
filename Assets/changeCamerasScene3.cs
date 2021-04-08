@@ -114,6 +114,9 @@ public class changeCamerasScene3 : MonoBehaviour
         if(finishThis.activeSelf){
             bookCamera.SetActive(false);
             playerCamera.SetActive(true);
+            dialoguePanel.SetActive(false);
+            dialoguePanel2.SetActive(false);
+            
         }
         if(bookCamera.activeSelf&& cant==0){
             dialoguePanel.SetActive(true);
@@ -141,6 +144,7 @@ public class changeCamerasScene3 : MonoBehaviour
                     finishThis.SetActive(true);
                     activateBookCamera.SetActive(true);
                     dialoguePanel.SetActive(false);
+                    dialoguePanel2.SetActive(false);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 }
         }

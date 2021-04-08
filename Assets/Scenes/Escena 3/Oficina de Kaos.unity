@@ -1225,6 +1225,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &100159196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100159197}
+  m_Layer: 5
+  m_Name: PositionPressEDiana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &100159197
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100159196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1048376410}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -12, y: 365}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &103431713
 GameObject:
   m_ObjectHideFlags: 0
@@ -9894,6 +9929,7 @@ RectTransform:
   - {fileID: 598916226}
   - {fileID: 586366485}
   - {fileID: 565478110}
+  - {fileID: 100159197}
   m_Father: {fileID: 1040597626}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17500,7 +17536,7 @@ MonoBehaviour:
   dialoguePanel: {fileID: 586366484}
   dialoguePanel2: {fileID: 565478109}
   _InstructionPressE: {fileID: 7648170740385801630, guid: 9078ecdd66fd9534bb7326654e970971, type: 3}
-  _PositionPreesE: {fileID: 702992995}
+  _PositionPreesE: {fileID: 100159197}
   otherDialog: {fileID: 598916225}
   book: {fileID: 66499444}
   finishThis: {fileID: 383914470}
