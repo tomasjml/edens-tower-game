@@ -13,6 +13,7 @@ public class PlayerStats
     public int luck;
     public int defense;
     public int score;
+    public int tempScore; 
     public Vector3 position;
     public string sceneName;
     public ItemInventory inventory = new ItemInventory();
@@ -82,5 +83,17 @@ public class PlayerStats
         {
             return 0;
         }
+    }
+
+    public void AddPoints(int amount)
+    {
+
+        tempScore += (int)amount;
+    }
+
+    public void AddScore()
+    {
+        score += (int)tempScore;
+        tempScore = 0;
     }
 }
