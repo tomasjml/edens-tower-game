@@ -105,6 +105,8 @@ public class HeartVisual : MonoBehaviour
     {
         if (isHealing)
         {
+            float alpha = 1f / total * (total - GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().getCurrentHealth());
+            GameObject.FindGameObjectWithTag("Mask").GetComponent<Image>().color = new Color(1, 1, 1, alpha);
             bool fullyHealed = true;
             List<HeartLogic.Heart> heartList = HSystem.getHeartList();
             for (int i = 0; i < heartsImageList.Count; i++)

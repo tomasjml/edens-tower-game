@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca34b80a1dbe0a40816f040773a4d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Scene: 
+  _Scene: Part 1
 --- !u!1 &387293812
 GameObject:
   m_ObjectHideFlags: 0
@@ -4228,6 +4228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4ca5670d11c9c4e9e804d975040420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  limitD: {fileID: 1401939091}
+  limitA: {fileID: 1198789869}
+  Camera: {fileID: 2014439286}
 --- !u!1 &1159172704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4604,7 +4607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1198789870
 Transform:
   m_ObjectHideFlags: 0
@@ -5726,7 +5729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6117,8 +6120,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449832803}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.272419, y: 3.0803633, z: 0.24170256}
-  m_LocalScale: {x: 8.450683, y: 8.450683, z: 8.450683}
+  m_LocalPosition: {x: -6.272419, y: 3.053, z: 0.24170256}
+  m_LocalScale: {x: 8.450683, y: 8.495472, z: 8.450683}
   m_Children: []
   m_Father: {fileID: 1563749575}
   m_RootOrder: 3
@@ -6920,7 +6923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133448, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.60690725
+      value: 1.1269072
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133448, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9410,6 +9413,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2014439286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8807763094987980446, guid: fcfe363f90917154f8d88527590c2243, type: 3}
+  m_PrefabInstance: {fileID: 1471531837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2026716065
 GameObject:
   m_ObjectHideFlags: 0
