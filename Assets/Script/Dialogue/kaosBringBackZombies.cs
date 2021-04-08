@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class DialogManagerDiana : MonoBehaviour
+public class kaosBringBackZombies : MonoBehaviour
 {
     public Dialogue dialogue;
     public Text displayText;
@@ -78,7 +78,7 @@ public class DialogManagerDiana : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("camStory"))
+        if (other.CompareTag("Kaos"))
         {
             onSite = true;
             dialoguePanel.SetActive(true);
