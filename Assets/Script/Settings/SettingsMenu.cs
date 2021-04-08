@@ -14,12 +14,18 @@ public class SettingsMenu : MonoBehaviour
     public Slider seSlidder;
     public Toggle autoSaveToggle;
     public Toggle _fullscreen;
+    public Toggle gammaToggle;
+    public Slider gammaSlider;
 
     public void Start()
     {
         bgmToggle.onValueChanged.AddListener((value) =>
         {
             GameManager.instance.saveData.bgmEnabled = value;
+        });
+        gammaSlider.onValueChanged.AddListener((value) =>
+        {
+            RenderSettings.ambientLight = new Color(value, value, value, value);
         });
     }
 

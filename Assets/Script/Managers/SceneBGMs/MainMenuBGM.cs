@@ -14,8 +14,11 @@ public class MainMenuBGM : MonoBehaviour
 
     private void Update()
     {
-            float volume = settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value;
-            bool isOn = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
-            AudioManager.instance.asBGM.volume = (isOn == false ? 0f : volume);
+        // if (AudioManager.instance.asBGM)
+        //{
+        //    float volume = settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value;
+        //    bool isOn = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
+        //    AudioManager.instance.asBGM.volume = (isOn == false ? 0f : volume);
+        //}
     }
 }
