@@ -24,7 +24,7 @@ public class HeartVisual : MonoBehaviour
         if (GameManager.instance)
         {
             total = GameManager.instance.saveData.playerData.vitality;
-            HeartLogic HSystem = new HeartLogic(total/2);
+            HeartLogic HSystem = new HeartLogic(total/4);
             HSystem.Damage(total - GameManager.instance.saveData.playerData.currentVitality);
             SetHeartsHealthSystem(HSystem);
         }
@@ -34,9 +34,6 @@ public class HeartVisual : MonoBehaviour
             HeartLogic HSystem = new HeartLogic(5);
             SetHeartsHealthSystem(HSystem);
         }
-        
-
-
     }
 
     public void SetHeartsHealthSystem(HeartLogic h)
