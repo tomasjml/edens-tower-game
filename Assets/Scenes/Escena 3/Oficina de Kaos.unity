@@ -1518,7 +1518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 432, y: -148}
+  m_AnchoredPosition: {x: 343, y: -148}
   m_SizeDelta: {x: 114.0586, y: 180.6825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &162941118
@@ -6589,7 +6589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &690546454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7585,7 +7585,7 @@ MonoBehaviour:
   shouldStandUp: 1
   magicBall: {fileID: 2147922260515855873, guid: 083b1456e5ff8074e9a97bcf3d66cca1, type: 3}
   launchForce: 5
-  player: {fileID: 0}
+  player: {fileID: 1741712881}
   dialogCloud: {fileID: 162941116}
 --- !u!61 &784259699
 BoxCollider2D:
@@ -9914,6 +9914,36 @@ Transform:
   m_Father: {fileID: 1348298806}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1109370168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109370169}
+  m_Layer: 0
+  m_Name: Bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109370169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109370168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1741712882}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112417504
 GameObject:
   m_ObjectHideFlags: 0
@@ -10106,7 +10136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153761221}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: -1.1852928, y: -2.238599, z: 26.332142}
+  m_LocalPosition: {x: -1.16, y: -2.238599, z: 26.332142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1149065307}
@@ -11263,7 +11293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!68 &1230698922
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -11393,11 +11423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.802429
+      value: -7.3186674
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3329117
+      value: 2.3360052
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11649,7 +11679,7 @@ MonoBehaviour:
   - {fileID: 5069384681828560702, guid: e3a2b3eed3792b049850aebe1966293b, type: 3}
   limit: {fileID: 1742224186}
   firstLimit: {fileID: 1230698921}
-  player: {fileID: 0}
+  player: {fileID: 1741712881}
 --- !u!1 &1241041677
 GameObject:
   m_ObjectHideFlags: 0
@@ -13809,7 +13839,7 @@ MonoBehaviour:
   speakSound: {fileID: 0}
   dialoguePanel: {fileID: 162941116}
   _Trigger: {fileID: 1541527277}
-  _Player: {fileID: 0}
+  _Player: {fileID: 1741712894}
   _InstructionPressE: {fileID: 7648170740385801630, guid: 9078ecdd66fd9534bb7326654e970971, type: 3}
   _PositionPreesE: {fileID: 702992995}
 --- !u!61 &1541527280
@@ -15696,7 +15726,7 @@ PrefabInstance:
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: bow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1109370168}
     - target: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: maxX
       value: 90
@@ -15889,6 +15919,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.8438797, y: -0.08581829}
   m_Size: {x: 0.81466675, y: 1.6728497}
   m_Direction: 0
+--- !u!114 &1741712894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4416244652494208409, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
+  m_PrefabInstance: {fileID: 1741712880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741712881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64563da6a79a9f43a4eae2dc0ca2131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742224186
 GameObject:
   m_ObjectHideFlags: 0
@@ -15905,7 +15946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!68 &1742224187
 EdgeCollider2D:
   m_ObjectHideFlags: 0
