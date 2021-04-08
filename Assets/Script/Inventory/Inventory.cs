@@ -50,9 +50,7 @@ public class Inventory : MonoBehaviour
         btnUseConsumable.gameObject.SetActive(false);
         btnUseConsumable.onClick.AddListener(() =>
         {
-            player.GetComponent<PlayerHealth>().recoverHealth(selectedItem);
-            GameManager.instance.saveData.playerData.RemoveItemToInventory(selectedItem, 1);
-            UpdateSlots();
+
             if(GameManager.instance.saveData.playerData.ItemQuantityInInventory(selectedItem.title) == 0)
             {
                 itemSelected.SetActive(false);
@@ -60,6 +58,9 @@ public class Inventory : MonoBehaviour
             }
             itemSelected.transform.Find("Item Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(selectedItem.title).ToString();
             CloseInventory();
+            GameManager.instance.saveData.playerData.RemoveItemToInventory(selectedItem, 1);
+            player.GetComponent<PlayerHealth>().recoverHealth(selectedItem);
+            
         });
 
         Button closeButton = inventoryChilds.transform.Find("Exit Button").GetComponent<Button>();
