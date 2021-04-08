@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class changeCamerasScene3 : MonoBehaviour
 {
@@ -8,9 +10,65 @@ public class changeCamerasScene3 : MonoBehaviour
     public GameObject activateBookCamera;
     public GameObject bookCamera;
     public GameObject playerCamera;
+    Queue<string> sentences;
+    public Dialogue dialogue;
+    public Text displayText;
+   // listado de string
+    string activeSentence;
+    public float typingString;
+   
+    public GameObject dialoguePanel;
+    
+    public GameObject _InstructionPressE;
+    public Transform _PositionPreesE;
+
+    private GameObject instantiatedObject;
+    private int cant=0;
+    public GameObject otherDialog;
+    public GameObject book;
     void Start()
     {
+        sentences = new Queue<string>();
+    }
+    void StartDialogue()
+    {
+        sentences.Clear(); //borra el listado para empezar desde 0.
+
+        foreach( string sentence in dialogue.sentenceList) //buscar todas las sentences de ese listado y asi una a una se añadan al queue.
+        {
+            sentences.Enqueue(sentence); //toma la oración y la añade al queue para ser presentada.
+
+        }
+        DisplayNextSentence();
+    }
+
+    void DisplayNextSentence()
+    {
+        if(sentences.Count == 0)
+        {
+            displayText.text = activeSentence;
+            return;
+        }
         
+        activeSentence = sentences.Dequeue(); // saca la oracion del listado y la pasa al activeSentence
+        
+        displayText.text = activeSentence;
+
+        StopAllCoroutines();
+        StartCoroutine(TypeTheSentence(activeSentence));
+        
+    }
+
+    IEnumerator TypeTheSentence(string sentence)
+    {
+        displayText.text = "";
+
+        foreach( char letter in sentence.ToCharArray()) // toCharArray rompe la sentence en caracter y asi podemos hacer la anim de escribir letter por letter
+        {
+            displayText.text += letter;
+            
+            yield return new WaitForSeconds(typingString);
+        }
     }
 
     // Update is called once per frame
@@ -19,6 +77,36 @@ public class changeCamerasScene3 : MonoBehaviour
         if(activateBookCamera==null || activateBookCamera.activeSelf==false){
             bookCamera.SetActive(true);
             playerCamera.SetActive(false);
+            otherDialog.SetActive(false);
+            book.SetActive(true);
+        }
+        if(bookCamera.activeSelf&& cant==0){
+            dialoguePanel.SetActive(true);
+            StartDialogue();
+           
+            instantiatedObject = Instantiate(_InstructionPressE,_PositionPreesE.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
+            cant++;
+        }
+        if(cant>0){
+            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            {
+                DisplayNextSentence();  
+            }
+
+
+            if(sentences.Count == 0)
+            {
+                Debug.Log("Presione E para terminar.");
+                if(Input.GetKeyDown(KeyCode.E))
+                {
+                    
+                    Destroy(instantiatedObject);
+                    activateBookCamera.SetActive(true);
+                    dialoguePanel.SetActive(false);
+                    instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                }
+                 
+            }
         }
     }
 }
