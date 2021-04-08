@@ -35,7 +35,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public float maxX;
     public float waitingTime = 2f;
     private bool pushing;
-    private bool pushingAnimation;
+    
     private bool isGrounded;
     private bool enableKey;
     Scene currentScene;
@@ -65,7 +65,7 @@ public class PlayerControllerV2 : MonoBehaviour
         colPicas=0;
         UpdateTarget();
         pushing=false;
-        pushingAnimation=false;
+        
         enableKey=true;     
     }
     private void UpdateTarget()
@@ -101,16 +101,7 @@ public class PlayerControllerV2 : MonoBehaviour
         
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
         
-        if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
-            if(pushing==true){
-                pushingAnimation=true;
-          
-            }
-            else{
-                pushingAnimation=false;
-               
-            }
-        }
+        
         if (!atacking&&enableKey==true){
             _movement = new Vector2(horizontalInput, 0f);
         }
@@ -193,7 +184,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private void LateUpdate()
     {
         _animator.SetBool("isGrounded", _isGrounded);
-        _animator.SetBool("isPushing", pushingAnimation);
+        _animator.SetBool("isPushing", pushing);
 
         // Animator
         if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
@@ -232,7 +223,8 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         
         if(collisionInfo.gameObject.tag == "Push"){
-            pushing=true;
+            if((Input.GetAxisRaw("Horizontal")>0f || Input.GetAxisRaw("Horizontal")<0f) &&enableKey==true){
+            pushing=true;}
         }
         else{
             pushing=false;
@@ -255,7 +247,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collisionInfo)
     {
-        if(collisionInfo.collider.gameObject.layer==9){
+        if(collisionInfo.gameObject.CompareTag("Push")){
             pushing=false;
         }
     }

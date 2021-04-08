@@ -9,9 +9,12 @@ public class Friction : MonoBehaviour
     private Vector3 deltapos = new Vector3();
     private Vector3 Currentspeed = new Vector3();
     private float mass;
+    private Animator animator;
+    public GameObject player;
     private void Start()
     {
         mass = gameObject.GetComponent<Rigidbody2D>().mass;
+        animator = player.gameObject.GetComponent<Animator>();
     }
     private float getFrictionForce()
     {
@@ -19,7 +22,15 @@ public class Friction : MonoBehaviour
         friction = frictionCoeficent * getNormalForce();
         return friction;
     } 
+    void Update(){
+       
+        if(animator.GetBool("isPushing")==true){
+            deltapos.x = (Currentspeed.x * Time.deltaTime + getAcceleration() * Mathf.Pow(Time.deltaTime, 2)) / 2;
+            gameObject.transform.Translate(deltapos);
+            Currentspeed += new Vector3(getAcceleration() * Time.deltaTime, 0, 0);
 
+        }
+    }
 
     private float getNormalForce()
     {
@@ -34,17 +45,6 @@ public class Friction : MonoBehaviour
         float acceleration = 0;
         acceleration = getFrictionForce()/ mass;
         return acceleration;
-    }
-
-    private void OnCollitionStay2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<Animator>().SetBool("isPushing",true);
-            deltapos.x = (Currentspeed.x * Time.deltaTime + getAcceleration() * Mathf.Pow(Time.deltaTime, 2)) / 2;
-            gameObject.transform.Translate(deltapos);
-            Currentspeed += new Vector3(getAcceleration() * Time.deltaTime, 0, 0);
-        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
