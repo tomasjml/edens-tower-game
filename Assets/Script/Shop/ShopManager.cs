@@ -49,10 +49,11 @@ public class ShopManager : MonoBehaviour
             if (gems >= price)
             {
                 GameManager.instance.MarketBuyItem(item.title, 1);
-                updateStore();
                 Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone"));
                 gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
                 gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+                updateBow();
+                updateSword();
             }
         }  
     }
@@ -63,11 +64,12 @@ public class ShopManager : MonoBehaviour
         if (ButtonRef.GetComponentInChildren<Text>().enabled)
         {
             Item item = GameManager.instance.itemManagement.GetItemByTitle(ButtonRef.GetComponentInChildren<Text>().text);
-            updateStore();
             gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
             GameManager.instance.MarketSellItem(item.title, 1);
             gemText.text = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone").ToString();
             gems = GameManager.instance.saveData.playerData.ItemQuantityInInventory("Magic Stone");
+            updateBow();
+            updateSword();
         }
     }
 
@@ -108,9 +110,10 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        updateStore();
+        updateBow();
+        updateSword();
     }
-    public void updateStore()
+    public void updateBow()
     {
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") < 1)
         {
@@ -153,35 +156,7 @@ public class ShopManager : MonoBehaviour
 
         }
 
-        //Start of the Sword Slot
-        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") >= 1)
-        {
-            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerSword);
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
-            itemWeapon2Price.enabled = true;
-
-        }
-        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Sword") >= 1)
-        {
-            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleSword);
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
-            itemWeapon2Price.enabled = true;
-
-        }
-        else
-        {
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
-            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
-            itemWeapon2Price.enabled = false;
-        }
+        
 
 
         //Start of the sell slots
@@ -239,4 +214,37 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-}
+    public void updateSword()
+    {
+        //Start of the Sword Slot
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") >= 1)
+        {
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
+
+        }
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Sword") >= 1)
+        {
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
+
+        }
+        else
+        {
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = false;
+            itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = false;
+            itemWeapon2Price.enabled = false;
+        }
+    }
+
+ }

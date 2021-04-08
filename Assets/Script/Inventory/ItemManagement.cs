@@ -130,51 +130,51 @@ public class ItemManagement : MonoBehaviour
             new Item(4, "Basic Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery of 1 Heart",
             new ItemStats
             {
-                {"Value",  30},
+                {"Value",  10},
                 {"Recovery", 4}
             }),
-            new Item(5, "Killer Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower", 
+            new Item(5, "Killer Sword", Item.Type.Weapon, "The second Sword", 
             new ItemStats
             {
-                {"Value",  15},
+                {"Value",  30},
                 {"Attack", 10 },
                 {"Category", 1 },
                 {"Evolution", 2 }
             }),
-            new Item(6, "Miracle Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower",
+            new Item(6, "Miracle Sword", Item.Type.Weapon, "The third Sword",
             new ItemStats
             {
-                {"Value",  15},
+                {"Value",  45},
                 {"Attack", 10 },
                 {"Category", 1 },
                 {"Evolution", 3 }
             }),
-            new Item(7, "Killer Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new Item(7, "Killer Bow", Item.Type.Weapon, "The second Bow",
             new ItemStats
             {
-                {"Value",  15},
+                {"Value",  30},
                 {"Attack", 5 },
                 {"Category", 2 },
                 {"Evolution", 2 }
             }),
-            new Item(8, "Miracle Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new Item(8, "Miracle Bow", Item.Type.Weapon, "The third Bow",
             new ItemStats
             {
-                {"Value",  15},
+                {"Value",  45},
                 {"Attack", 5 },
                 {"Category", 2 },
                 {"Evolution", 3 }
             }),
-            new Item(9, "Blasting Stone", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new Item(9, "Blasting Stone", Item.Type.Consumables, "A certain type of magical stone",
             new ItemStats
             {
                 {"Value",  150},
                 {"Attack", 5 }
             }),
-            new Item(4, "Huge Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new Item(4, "Huge Potion", Item.Type.Consumables, "The \"Go to \" option for Big recovery",
             new ItemStats
             {
-                {"Value",  70},
+                {"Value",  30},
                 {"Recovery", 40}
             })
         };
