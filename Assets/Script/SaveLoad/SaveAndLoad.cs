@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System;
 using SimpleJSON;
+using static System.Linq.Enumerable;
 
 
 public class SaveAndLoad : MonoBehaviour
@@ -26,30 +27,16 @@ public class SaveAndLoad : MonoBehaviour
     //public static SaveAndLoad instance;
 
 
-    //void Awake()
-    //{
-      //if (instance == null)
-
-           //instance = this;
-
-      //else if (instance != this)
-
-          //Destroy(gameObject);
-
-      // DontDestroyOnLoad(gameObject);
-
-
-      // DontDestroyOnLoad(player);
-    //}
-
 
     public void LoadGame(string slot)
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetRequest(slot));
     }
 
     public void LoadUserGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetGamesRequest());
     }
 
@@ -61,6 +48,8 @@ public class SaveAndLoad : MonoBehaviour
         GameManager.instance.saveData.playerData.position = position;
         GameManager.instance.saveData.playerData.sceneName = SceneManager.GetActiveScene().name;
         string jsonSaveData = JsonUtility.ToJson(GameManager.instance.saveData);
+        username = GameManager.instance.user;
+
 
         StartCoroutine(postRequest(jsonSaveData, slot));
     }
@@ -68,9 +57,50 @@ public class SaveAndLoad : MonoBehaviour
 
     public void DeleteGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(DeleteRequest());
     }
 
+    public void LoadHighScoreList()
+    {
+        StartCoroutine(getHighScore());
+    }
+
+    IEnumerator getHighScore()
+    {
+        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "/users/highScore/");
+        yield return GETRequest.SendWebRequest();
+
+        if (GETRequest.result == UnityWebRequest.Result.ProtocolError || GETRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.Log(GETRequest.error);
+            yield break;
+        }
+        else
+        {
+            Debug.Log("Data Loaded");
+        }
+
+        Debug.Log(GETRequest.downloadHandler.text);
+
+        JSONArray arrayGame = (JSONArray)JSON.Parse(GETRequest.downloadHandler.text);
+
+        Dictionary<String, int> highscoreDict = new Dictionary<string, int>();
+
+        foreach (JSONNode game in arrayGame)
+        {
+            String username = game["User"].Value;
+            int highScore = Convert.ToInt32(game["Highscore"].Value);
+
+            highscoreDict.Add(username, highScore);
+        }
+
+        var myList = highscoreDict.ToList();
+
+        myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+
+        foreach (KeyValuePair<String, int> pair in myList) { Debug.Log(pair.Key + ": " + pair.Value); }
+    }
 
     //Load
     IEnumerator GetRequest(string slot)
@@ -122,6 +152,7 @@ public class SaveAndLoad : MonoBehaviour
     //Load User Games
     IEnumerator GetGamesRequest()
     {
+        Debug.Log("UsernameGames " + GameManager.instance.user);
         UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/username?username=" + username);
         yield return GETRequest.SendWebRequest();
 

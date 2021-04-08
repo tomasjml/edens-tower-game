@@ -149,6 +149,7 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
+        
 
         // Wanna Attack?
         //if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)

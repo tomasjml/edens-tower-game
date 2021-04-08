@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject MenuButtons;
     public GameObject Background;
     public GameObject DifficultyButtons;
+    public GameObject LoginMenu;
 
     SaveData.Difficulty _diff;
 
@@ -22,6 +23,14 @@ public class MainMenu : MonoBehaviour
         LoadButtons.SetActive(false);
     }
 
+    public void MainToLoadButton()
+    {
+        MenuButtons.SetActive(false);
+        LoadButtons.SetActive(true);
+        LoginMenu.SetActive(false);
+        
+    }
+
     public void MainMenuButton()
     {
         // Show Main Menu, hide everything else.
@@ -30,6 +39,20 @@ public class MainMenu : MonoBehaviour
         SettingsMenu.SetActive(false);
         LoadMenu.SetActive(false);
     }
+
+    public void LoginMenuActive()
+    {
+        LoginMenu.SetActive(true);
+        LoadButtons.SetActive(false);
+        MenuButtons.SetActive(false);
+    }
+
+    public void LoginMenuBack()
+    {
+        LoginMenu.SetActive(false);
+        MenuButtons.SetActive(true);
+    }
+
 
     public void NewGame()
     {
