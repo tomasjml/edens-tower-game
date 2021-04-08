@@ -5,14 +5,8 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     int damage = 1;
-    [Header("Sonido del Hit al Player")]
-    public AudioClip _Hit;
-    private AudioSource hitSFX;
 
-    private void Start()
-    {
-        hitSFX = GetComponentInParent<AudioSource>();
-    }
+
     private void Awake()
     {
         switch (GameManager.instance.saveData.difficulty)

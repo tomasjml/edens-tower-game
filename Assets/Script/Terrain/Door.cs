@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    [Header("FX Puerta")]
+    private AudioSource fxDoor;
+    public AudioClip _OpenDoor;
+    public AudioClip _CloseDoor;
     [SerializeField] private string nextLevel;
     private BoxCollider2D _collider;
     private Animator _animator;
@@ -17,6 +21,7 @@ public class Door : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
+        fxDoor = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -28,6 +33,7 @@ public class Door : MonoBehaviour
         if (CompareTag("Door"))
         {
             _animator.SetBool("IsOpened", true);
+            fxDoor.PlayOneShot(_OpenDoor,0.5f);
             instantiatedObject = Instantiate(_ImagePress,_ImagePosition.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform) as GameObject;
 
         }
@@ -47,6 +53,7 @@ public class Door : MonoBehaviour
         if (CompareTag("Door"))
         {
             _animator.SetBool("IsOpened", false);
+            fxDoor.PlayOneShot(_CloseDoor,0.5f);
             instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
             Invoke("DestroyO", 1);
         }
