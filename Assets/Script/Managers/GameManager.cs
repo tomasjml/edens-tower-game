@@ -157,6 +157,10 @@ public class GameManager : MonoBehaviour
         saveData.playerData.position = loadData.playerData.position;
         saveData.bgmEnabled = loadData.bgmEnabled;
         saveData.bgmLvl = loadData.bgmLvl;
+        saveData.sfxEnabled = loadData.sfxEnabled;
+        saveData.sfxLvl = loadData.sfxLvl;
+        saveData.gammalvl = loadData.gammalvl;
+        saveData.autoSave = loadData.autoSave;
         saveData.playerData.inventory = loadData.playerData.inventory;
         saveData.dictMarketItems = loadData.dictMarketItems;
 

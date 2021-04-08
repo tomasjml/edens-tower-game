@@ -2879,7 +2879,7 @@ MonoBehaviour:
   m_MinValue: 0.05
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4089,6 +4089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188d708ed02754b4f86f92cdd7d5acb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 0}
 --- !u!102 &600550053
 TextMesh:
   serializedVersion: 3
@@ -6039,7 +6040,7 @@ GameObject:
   - component: {fileID: 836764053}
   m_Layer: 5
   m_Name: Settings Screen
-  m_TagString: Untagged
+  m_TagString: Settings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6084,8 +6085,6 @@ MonoBehaviour:
   Highscores: {fileID: 1830656230}
   bgmToggle: {fileID: 412285218}
   bgmSlidder: {fileID: 399089905}
-  bgmIncrease: {fileID: 1955065309}
-  bgmDecrease: {fileID: 904748884}
 --- !u!1 &838637474
 GameObject:
   m_ObjectHideFlags: 0

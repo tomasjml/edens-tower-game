@@ -265,17 +265,17 @@ public class SaveAndLoad : MonoBehaviour
     {
         WWWForm form = new WWWForm();
 
-        form.AddField("autoSave", "true");
+        form.AddField("autoSave", GameManager.instance.saveData.autoSave.ToString());
         form.AddField("difficulty", GameManager.instance.saveData.difficulty.ToString());
         form.AddField("fullScreen", "true");
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
-        form.AddField("gammaLvl", 6);
+        form.AddField("gammaLvl", GameManager.instance.saveData.gammalvl);
         form.AddField("musicEnabled", GameManager.instance.saveData.bgmEnabled.ToString());
         form.AddField("musicLvl", GameManager.instance.saveData.bgmLvl);
         form.AddField("saveData", jsonSaveData);
         form.AddField("saveSlotstr", slot);
-        form.AddField("sfxEnabled", "true");
-        form.AddField("sfxLvl", 100);
+        form.AddField("sfxEnabled", GameManager.instance.saveData.sfxEnabled.ToString());
+        form.AddField("sfxLvl", GameManager.instance.saveData.sfxLvl);
         form.AddField("defense", (int) GameManager.instance.saveData.playerData.defense);
         form.AddField("speed", (int) GameManager.instance.saveData.playerData.speed);
         form.AddField("strength", (int) GameManager.instance.saveData.playerData.strength);
