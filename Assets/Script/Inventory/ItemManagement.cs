@@ -103,11 +103,11 @@ public class ItemManagement : MonoBehaviour
             }),
             // Consumables items stats: 
             // Type: Category = 
-            new Item(4, "Basic Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new Item(4, "Basic Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery of 1 Heart",
             new ItemStats
             {
                 {"Value",  30},
-                {"Recovery", 10}
+                {"Recovery", 5}
             })
         };
     }

@@ -6,8 +6,7 @@ public class Loader : MonoBehaviour
 {
     public GameObject gameManager;
     public GameObject audioManager;
-    public SaveAndLoad saveAndLoad;
-
+ 
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,10 +20,9 @@ public class Loader : MonoBehaviour
             Instantiate(audioManager);
         }
 
-
         //if(SaveAndLoad.instance == null)
         //{
-          //  Instantiate(saveAndLoad);
+        //  Instantiate(saveAndLoad);
         //}
     }
 }

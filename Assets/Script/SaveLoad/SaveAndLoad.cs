@@ -10,7 +10,6 @@ using SimpleJSON;
 
 public class SaveAndLoad : MonoBehaviour
 {
-
     public enum Slot {One, Two, Three, Four};
 
     private Vector3 position;
