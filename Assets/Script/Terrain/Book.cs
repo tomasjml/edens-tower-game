@@ -9,10 +9,13 @@ public class Book : MonoBehaviour
     public GameObject fakeLuke;
     public float time;
     public Animator _animator;
+    private AudioSource fxBook;
+    public AudioClip book;
+    int cant = 0;
 
     void Start()
     {
-        
+        fxBook = GetComponent<AudioSource>();
     }
     
      private void OnTriggerEnter2D(Collider2D other)
@@ -29,7 +32,12 @@ public class Book : MonoBehaviour
         {
             
             other.gameObject.GetComponent<Animator>().SetTrigger("Vanish");
-            
+            if(cant < 1)
+            {
+                fxBook.PlayOneShot(book, 0.5f);
+                cant = 0;
+            }
+
             _animator.GetComponent<Animator>().SetTrigger("Flotando");
             _animator.GetComponent<Animator>().SetTrigger("Closing");
             Invoke("changeScene",time);

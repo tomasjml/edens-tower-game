@@ -25,6 +25,11 @@ public class KaosScript : MonoBehaviour
     Vector3 startingSpeed;
     const float SCALAR_SPEED = 10f;
 
+    [Header("FX Kaos Mago")]
+    private AudioSource fxKaos;
+    public AudioClip attack;
+    
+
 
     private void Awake()
     {
@@ -33,6 +38,7 @@ public class KaosScript : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         target = player.transform; //Finds the player in any place of the map
         startingSpeed = new Vector3(SCALAR_SPEED, SCALAR_SPEED);
+        fxKaos = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -137,7 +143,7 @@ public class KaosScript : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
-        
+        fxKaos.PlayOneShot(attack);
         _animator.SetTrigger("IsAttacking");
         Shoot();
         yield return new WaitForSeconds(attackTime);

@@ -38,6 +38,10 @@ public class EnemyHealth : MonoBehaviour
 		healthBarScale.x = healthPercent * health;
 		healthBar.localScale = healthBarScale;
     }
+    private void Update()
+    {
+		UpdateHealthBar();
+	}
 
     public void AddDamageEnemy(int amount)
 	{
@@ -47,12 +51,13 @@ public class EnemyHealth : MonoBehaviour
 		
 
 		// Visual Feedback
-		StartCoroutine("VisualFeedback");
+		//StartCoroutine("VisualFeedback");
 		Debug.Log("Se esta recibiendo");
 
 		// Game  Over
 		if (health <= 0)
 		{
+			
 			health = 0;
 			StartCoroutine("Died");
 		}
@@ -87,5 +92,6 @@ public class EnemyHealth : MonoBehaviour
 	{
 		return health;
 	}
+	
 }
 

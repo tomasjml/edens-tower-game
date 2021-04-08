@@ -6,6 +6,7 @@ public class Hit : MonoBehaviour
 {
     int damage = 1;
 
+
     private void Awake()
     {
         switch (GameManager.instance.saveData.difficulty)
@@ -35,7 +36,8 @@ public class Hit : MonoBehaviour
         Debug.Log("Se esta dando");
         if (collision.gameObject.CompareTag("Player"))
         {
-            switch(gameObject.tag)
+           // hitSFX.PlayOneShot(_Hit);
+            switch (gameObject.tag)
             {
                 case "Yunke":
                     damage = 2;
@@ -52,6 +54,7 @@ public class Hit : MonoBehaviour
             //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
+            //hitSFX.PlayOneShot(_Hit);
         }
     }
 
@@ -59,6 +62,7 @@ public class Hit : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+          
             switch (gameObject.tag)
             {
                 case "Yunke":
@@ -84,6 +88,9 @@ public class Hit : MonoBehaviour
             //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
+            //hitSFX.PlayOneShot(_Hit);
         }
     }
+
+
 }

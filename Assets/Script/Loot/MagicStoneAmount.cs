@@ -1,28 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class MagicStoneAmount : MonoBehaviour
 {
     // Start is called before the first frame update
+    [Header("FX Coin")]
+    private AudioSource fxCoin;
+    public AudioClip coin;
     public GameObject _Magic_Stone;
 
-    Unity.Mathematics.Random r = new Unity.Mathematics.Random();
+    private void Start()
+    {
+        fxCoin = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            Destroy(_Magic_Stone);
+            fxCoin.PlayOneShot(coin);
+            Destroy(gameObject, 0.3f);
             Item stone = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MagicStone);
-            GameManager.instance.saveData.playerData.AddItemToInventory(stone,5);
+            GameManager.instance.saveData.playerData.AddItemToInventory(stone,Random.Range(5,20));
+            Debug.Log("Sumado");
         }
     }
 
-    private int Ran2m()
-    {
-        int random = r.NextInt(15);
-        return random;
-    }
+
+    
+
+    
 }

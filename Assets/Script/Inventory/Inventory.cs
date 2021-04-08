@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
             itemSelected.transform.Find("Item Quantity").GetComponent<Text>().text = "Quantity: " + GameManager.instance.saveData.playerData.ItemQuantityInInventory(selectedItem.title).ToString();
             CloseInventory();
             GameManager.instance.saveData.playerData.RemoveItemToInventory(selectedItem, 1);
-            player.GetComponent<PlayerHealth>().recoverHealth(selectedItem);
+            //player.GetComponent<PlayerHealth>().recoverHealth(selectedItem);
             
         });
 

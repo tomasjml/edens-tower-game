@@ -6,6 +6,10 @@ public class Assasin : MonoBehaviour
 {
     Transform target;
     Transform enemyTransform;
+    [Header("FX Kaos Mago")]
+    private AudioSource fxKaos;
+    public AudioClip attack;
+    [Header("------------")]
     public float speed = 1f;
     private bool facingRight;
     public float followingDistance = 1f;
@@ -24,6 +28,7 @@ public class Assasin : MonoBehaviour
         enemyTransform = this.GetComponent<Transform>();
         _animator = this.GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        fxKaos = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -122,12 +127,13 @@ public class Assasin : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        _animator.SetTrigger("Ambush");
-        yield return new WaitForSeconds(0);
+       /* _animator.SetTrigger("Ambush");
+        yield return new WaitForSeconds(0);*/
         float speedBackup = speed;
         speed = 0f;
         shouldAttack = true;
         yield return new WaitForSeconds(aimingTime);
+        Invoke("Kaos", 0.5f);
         _animator.SetTrigger("IsAttacking");
         yield return new WaitForSeconds(attackTime);
 
@@ -135,5 +141,9 @@ public class Assasin : MonoBehaviour
         speed = speedBackup;
     }
 
+    void Kaos()
+    {
+        fxKaos.PlayOneShot(attack);
+    }
     
 }

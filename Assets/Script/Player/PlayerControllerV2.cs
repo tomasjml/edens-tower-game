@@ -46,6 +46,13 @@ public class PlayerControllerV2 : MonoBehaviour
     public GameObject espada;
     public GameObject bow;
 
+    [Header("Efectos de sonido")]
+    private AudioSource playerSFX;
+    public AudioClip _Walk;
+    public AudioClip _Jump;
+    public AudioClip _Attack;
+
+
 
     void Awake()
     {
@@ -65,8 +72,8 @@ public class PlayerControllerV2 : MonoBehaviour
         colPicas=0;
         UpdateTarget();
         pushing=false;
-        
-        enableKey=true;     
+        playerSFX = GetComponent<AudioSource>();
+        enableKey =true;     
     }
     private void UpdateTarget()
     {
@@ -113,6 +120,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         //Esta saltando?
         if(Input.GetKeyDown(KeyCode.Space) &&  veces==0 && _isGrounded==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo"))){
+            playerSFX.PlayOneShot(_Jump);
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
             isJumping=true;
             veces++;
@@ -120,6 +128,7 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Space) && veces<jumpsWanted &isJumping==true&&enableKey==true && !(sceneName.Equals("Sala") || sceneName.Equals("Pasillo")))
         {
+            playerSFX.PlayOneShot(_Jump);
             _body.AddForce(Vector2.up *jumpForce, ForceMode2D.Impulse);
            veces++;
         }
@@ -147,8 +156,8 @@ public class PlayerControllerV2 : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false
             && enableKey == true)
         {
+            playerSFX.PlayOneShot(_Attack);
             _movement = Vector2.zero;
-            
             _body.velocity = Vector2.zero;
             _animator.SetBool("Idle", false);
             _animator.SetTrigger("Attack");

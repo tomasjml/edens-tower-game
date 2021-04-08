@@ -21,7 +21,7 @@ public class SpikesRain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_Random == false && Time.time > _nextTime && aux < cantidadTrampas)
+        if(_Random == false && Time.time > _nextTime && aux < cantidadTrampas && _UniqueObject.tag != "Lava")
         {
             
             _startingPos.y = gameObject.transform.position.y;
@@ -32,10 +32,15 @@ public class SpikesRain : MonoBehaviour
             aux++;
         }
         else
-        if (Time.time > _nextTime && aux < cantidadTrampas)
+        if (Time.time > _nextTime && aux < cantidadTrampas && _Random == true)
         {
             _startingPos.x = Random.Range(maxx, minx);
             Instantiate(_RandomObjects[Random.Range(0,2)], _startingPos, Quaternion.identity);
+            _nextTime = GetNextTime();
+            aux++;
+        }else if(_Random == false && Time.time > _nextTime && aux < cantidadTrampas && _UniqueObject.tag == "Lava")
+        {
+            Instantiate(_UniqueObject, gameObject.transform.position, Quaternion.identity);
             _nextTime = GetNextTime();
             aux++;
         }

@@ -19,6 +19,7 @@ public class Dialogue_Manager : MonoBehaviour
     public PlayerControllerV2 _Player;
     public GameObject _InstructionPressE;
     public Transform _PositionPreesE;
+    int cant = 0;
 
     private GameObject instantiatedObject;
    
@@ -60,6 +61,7 @@ public class Dialogue_Manager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(TypeTheSentence(activeSentence));
         
+
     }
 
     IEnumerator TypeTheSentence(string sentence)
@@ -69,8 +71,13 @@ public class Dialogue_Manager : MonoBehaviour
         foreach( char letter in sentence.ToCharArray()) // toCharArray rompe la sentence en caracter y asi podemos hacer la anim de escribir letter por letter
         {
             displayText.text += letter;
-            myAudio.PlayOneShot(speakSound);
             yield return new WaitForSeconds(typingString);
+            if(cant < 1)
+            {
+                myAudio.PlayOneShot(speakSound,0.5f);
+                cant++;
+            }
+            
         }
     }
 
@@ -94,7 +101,8 @@ public class Dialogue_Manager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
-                DisplayNextSentence();  
+                DisplayNextSentence();
+                cant = 0;
             }
 
 
