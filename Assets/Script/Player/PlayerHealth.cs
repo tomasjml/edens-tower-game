@@ -9,15 +9,12 @@ public class PlayerHealth : MonoBehaviour
 {
 	private int totalHealth;
 
-	public GameObject[] hearts;
-
 	private int health;
 
 	private SpriteRenderer _renderer;
 
 	private Animator _animator;
 
-	
 	private void Awake()
 	{
 		//totalHealth = GameManager.instance.saveData.playerData.vitality;
@@ -62,6 +59,8 @@ public class PlayerHealth : MonoBehaviour
 	{
 		health = health + amount;
 
+		StartCoroutine("VisualFeedback");
+
 		// Max health
 		if (health > totalHealth)
 		{
@@ -86,7 +85,6 @@ public class PlayerHealth : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		gameObject.SetActive(false);
 		GameManager.instance.EndGame();
-		
 	}
 	public int getCurrentHealth(){
 		return health;
@@ -95,5 +93,11 @@ public class PlayerHealth : MonoBehaviour
 		health = hp;
 	}
 
+	public void recoverHealth(Item itemConsumable)
+    {
+		int healboost = itemConsumable.stats["Recovery"];
+		GameObject.Find("Health").GetComponent<HeartVisual>().heal(healboost);
+		AddHealth(healboost);
 
+	}
 }

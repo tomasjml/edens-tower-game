@@ -10,6 +10,7 @@ using SimpleJSON;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public string user;
 
     // Timer Attributes
     private TimeSpan timePlaying;
@@ -34,18 +35,20 @@ public class GameManager : MonoBehaviour
     {
         //Check if instance already exists
         if (instance == null)
-
+        {
             //if not, set instance to this
             instance = this;
 
+            //Sets this to not be destroyed when reloading scene
+            DontDestroyOnLoad(gameObject);
+        }
+
         //If instance already exists and it's not this:
         else if (instance != this)
-
+        {
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
-
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
+        }
 
         // item build
         Instantiate(itemManagement);
@@ -106,16 +109,19 @@ public class GameManager : MonoBehaviour
         timerRunning = false;
     }
 
-    public void NewGame()
+    public void NewGame(SaveData.Difficulty diff, GameObject settingsMenu)
     {
         // Initial Stats 
         saveData.playerData.strength = 1;
         saveData.playerData.luck = 1;
         saveData.playerData.speed = 1;
         saveData.playerData.vitality = 20;
+        saveData.playerData.currentVitality = 20;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
-        saveData.difficulty = SaveData.Difficulty.Easy;
+        saveData.difficulty = diff;
+        saveData.bgmEnabled = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
+        saveData.bgmLvl = (int)(settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value * 100f);
         StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");
@@ -150,8 +156,10 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
+        saveData.playerData.currentVitality = loadData.playerData.currentVitality;
         saveData.playerData.position = loadData.playerData.position;
-
+        saveData.bgmEnabled = loadData.bgmEnabled;
+        saveData.bgmLvl = loadData.bgmLvl;
         saveData.playerData.inventory = loadData.playerData.inventory;
         saveData.dictMarketItems = loadData.dictMarketItems;
 

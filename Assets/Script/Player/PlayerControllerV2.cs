@@ -35,7 +35,7 @@ public class PlayerControllerV2 : MonoBehaviour
     public float maxX;
     public float waitingTime = 2f;
     private bool pushing;
-    private bool pushingAnimation;
+    
     private bool isGrounded;
     private bool enableKey;
     Scene currentScene;
@@ -65,7 +65,7 @@ public class PlayerControllerV2 : MonoBehaviour
         colPicas=0;
         UpdateTarget();
         pushing=false;
-        pushingAnimation=false;
+        
         enableKey=true;     
     }
     private void UpdateTarget()
@@ -101,16 +101,7 @@ public class PlayerControllerV2 : MonoBehaviour
         
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckBaridus, groundedLayers);
         
-        if((horizontalInput>0f || horizontalInput<0f) &&enableKey==true){
-            if(pushing==true){
-                pushingAnimation=true;
-               
-            }
-            else{
-                pushingAnimation=false;
-               
-            }
-        }
+        
         if (!atacking&&enableKey==true){
             _movement = new Vector2(horizontalInput, 0f);
         }
@@ -149,10 +140,12 @@ public class PlayerControllerV2 : MonoBehaviour
                SceneManager.LoadScene("Castillo");
            }
         }
+        
 
         // Wanna Attack?
         //if (bow.activeSelf==false && Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false && espada.activeSelf == false)
-        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false)
+        if (Input.GetButtonDown("Fire1") && _isGrounded == true && isAttacking == false
+            && enableKey == true)
         {
             _movement = Vector2.zero;
             
@@ -161,16 +154,13 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetTrigger("Attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
-            GameObject inventoryCanvas = GameObject.Find("InventoryCanvas");
-            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
-            inventory.ViewInventory();
-        }
         if (Input.GetKeyDown(KeyCode.U))
         {
             Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("Current Health: " + gameObject.GetComponent<PlayerHealth>().getCurrentHealth().ToString());
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -194,7 +184,7 @@ public class PlayerControllerV2 : MonoBehaviour
     private void LateUpdate()
     {
         _animator.SetBool("isGrounded", _isGrounded);
-        _animator.SetBool("isPushing", pushingAnimation);
+        _animator.SetBool("isPushing", pushing);
 
         // Animator
         if (_animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
@@ -233,7 +223,8 @@ public class PlayerControllerV2 : MonoBehaviour
         }
         
         if(collisionInfo.gameObject.tag == "Push"){
-            pushing=true;
+            if((Input.GetAxisRaw("Horizontal")>0f || Input.GetAxisRaw("Horizontal")<0f) &&enableKey==true){
+            pushing=true;}
         }
         else{
             pushing=false;
@@ -256,7 +247,7 @@ public class PlayerControllerV2 : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collisionInfo)
     {
-        if(collisionInfo.collider.gameObject.layer==9){
+        if(collisionInfo.gameObject.CompareTag("Push")){
             pushing=false;
         }
     }
@@ -281,6 +272,11 @@ private IEnumerator PatrolToTarget()
     }
     public void EnableBow(bool enable){
         bow.SetActive(enable);
+    }
+
+    public bool Grounded()
+    {
+        return _isGrounded;
     }
    
 }

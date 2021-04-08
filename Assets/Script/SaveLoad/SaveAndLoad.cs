@@ -6,11 +6,11 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System;
 using SimpleJSON;
+using static System.Linq.Enumerable;
 
 
 public class SaveAndLoad : MonoBehaviour
 {
-
     public enum Slot {One, Two, Three, Four};
 
     private Vector3 position;
@@ -27,30 +27,16 @@ public class SaveAndLoad : MonoBehaviour
     //public static SaveAndLoad instance;
 
 
-    //void Awake()
-    //{
-      //if (instance == null)
-
-           //instance = this;
-
-      //else if (instance != this)
-
-          //Destroy(gameObject);
-
-      // DontDestroyOnLoad(gameObject);
-
-
-      // DontDestroyOnLoad(player);
-    //}
-
 
     public void LoadGame(string slot)
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetRequest(slot));
     }
 
     public void LoadUserGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(GetGamesRequest());
     }
 
@@ -62,6 +48,8 @@ public class SaveAndLoad : MonoBehaviour
         GameManager.instance.saveData.playerData.position = position;
         GameManager.instance.saveData.playerData.sceneName = SceneManager.GetActiveScene().name;
         string jsonSaveData = JsonUtility.ToJson(GameManager.instance.saveData);
+        username = GameManager.instance.user;
+
 
         StartCoroutine(postRequest(jsonSaveData, slot));
     }
@@ -69,9 +57,111 @@ public class SaveAndLoad : MonoBehaviour
 
     public void DeleteGame()
     {
+        username = GameManager.instance.user;
         StartCoroutine(DeleteRequest());
     }
 
+    public void LoadHighScoreList()
+    {
+        StartCoroutine(getHighScore());
+    }
+
+    IEnumerator getHighScore()
+    {
+        UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "/users/highScore/");
+        yield return GETRequest.SendWebRequest();
+
+        if (GETRequest.result == UnityWebRequest.Result.ProtocolError || GETRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.Log(GETRequest.error);
+            yield break;
+        }
+        else
+        {
+            Debug.Log("Data Loaded");
+        }
+
+        Debug.Log(GETRequest.downloadHandler.text);
+
+        JSONArray arrayGame = (JSONArray)JSON.Parse(GETRequest.downloadHandler.text);
+
+        Dictionary<String, int> highscoreDict = new Dictionary<string, int>();
+
+        foreach (JSONNode game in arrayGame)
+        {
+            String username = game["User"].Value;
+            int highScore = Convert.ToInt32(game["Highscore"].Value);
+
+            highscoreDict.Add(username, highScore);
+        }
+
+        var myList = highscoreDict.ToList();
+
+        myList.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+
+        foreach (KeyValuePair<String, int> pair in myList) { Debug.Log(pair.Key + ": " + pair.Value); }
+
+        //1er lugar
+        Text text_1Username = GameObject.Find("Positions/1st/Username").GetComponent<Text>();
+        text_1Username.text = myList[0].Key;
+        Text text_1Score = GameObject.Find("Positions/1st/Score").GetComponent<Text>();
+        text_1Score.text = myList[0].Value.ToString();
+
+        //2do lugar
+        Text text_2Username = GameObject.Find("Positions/2nd/Username").GetComponent<Text>();
+        text_2Username.text = myList[1].Key;
+        Text text_2Score = GameObject.Find("Positions/2nd/Score").GetComponent<Text>();
+        text_2Score.text = myList[1].Value.ToString();
+
+        //3er lugar
+        Text text_3Username = GameObject.Find("Positions/3rd/Username").GetComponent<Text>();
+        text_3Username.text = myList[2].Key;
+        Text text_3Score = GameObject.Find("Positions/3rd/Score").GetComponent<Text>();
+        text_3Score.text = myList[2].Value.ToString();
+
+        //4to lugar
+        Text text_4Username = GameObject.Find("Positions/4th/Username").GetComponent<Text>();
+        text_4Username.text = myList[3].Key;
+        Text text_4Score = GameObject.Find("Positions/4th/Score").GetComponent<Text>();
+        text_4Score.text = myList[3].Value.ToString();
+
+        //5to lugar
+        Text text_5Username = GameObject.Find("Positions/5th/Username").GetComponent<Text>();
+        text_5Username.text = myList[4].Key;
+        Text text_5Score = GameObject.Find("Positions/5th/Score").GetComponent<Text>();
+        text_5Score.text = myList[4].Value.ToString();
+
+        //6to lugar
+        Text text_6Username = GameObject.Find("Positions/6th/Username").GetComponent<Text>();
+        text_6Username.text = myList[5].Key;
+        Text text_6Score = GameObject.Find("Positions/6th/Score").GetComponent<Text>();
+        text_6Score.text = myList[5].Value.ToString();
+
+        //7mo lugar
+        Text text_7Username = GameObject.Find("Positions/7th/Username").GetComponent<Text>();
+        text_7Username.text = myList[6].Key;
+        Text text_7Score = GameObject.Find("Positions/7th/Score").GetComponent<Text>();
+        text_7Score.text = myList[6].Value.ToString();
+
+        //8vo lugar
+        Text text_8Username = GameObject.Find("Positions/8th/Username").GetComponent<Text>();
+        text_8Username.text = myList[7].Key;
+        Text text_8Score = GameObject.Find("Positions/8th/Score").GetComponent<Text>();
+        text_8Score.text = myList[7].Value.ToString();
+
+        //9no lugar
+        Text text_9Username = GameObject.Find("Positions/9th/Username").GetComponent<Text>();
+        text_9Username.text = myList[8].Key;
+        Text text_9Score = GameObject.Find("Positions/9th/Score").GetComponent<Text>();
+        text_9Score.text = myList[8].Value.ToString();
+
+        //10mo lugar
+        Text text_10Username = GameObject.Find("Positions/10th/Username").GetComponent<Text>();
+        text_10Username.text = myList[9].Key;
+        Text text_10Score = GameObject.Find("Positions/10th/Score").GetComponent<Text>();
+        text_10Score.text = myList[9].Value.ToString();
+
+    }
 
     //Load
     IEnumerator GetRequest(string slot)
@@ -123,6 +213,7 @@ public class SaveAndLoad : MonoBehaviour
     //Load User Games
     IEnumerator GetGamesRequest()
     {
+        Debug.Log("UsernameGames " + GameManager.instance.user);
         UnityWebRequest GETRequest = UnityWebRequest.Get(serviceURL + "games/username?username=" + username);
         yield return GETRequest.SendWebRequest();
 
@@ -271,8 +362,8 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("fullScreen", "true");
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);
-        form.AddField("musicEnabled", "true");
-        form.AddField("musicLvl", 100);
+        form.AddField("musicEnabled", GameManager.instance.saveData.bgmEnabled.ToString());
+        form.AddField("musicLvl", GameManager.instance.saveData.bgmLvl);
         form.AddField("saveData", jsonSaveData);
         form.AddField("saveSlotstr", slot);
         form.AddField("sfxEnabled", "true");

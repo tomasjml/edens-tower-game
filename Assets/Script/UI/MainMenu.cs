@@ -11,19 +11,25 @@ public class MainMenu : MonoBehaviour
     public GameObject LoadMenu;
     public GameObject MenuButtons;
     public GameObject Background;
+    public GameObject DifficultyButtons;
+    public GameObject LoginMenu;
+
+    SaveData.Difficulty _diff;
 
     // Start is called before the first frame update
     void Start()
     {
         MenuButtons.SetActive(true);
         LoadButtons.SetActive(false);
-        AudioManager.instance.PlayBackgroundMusic();
     }
 
     public void MainToLoadButton()
     {
         MenuButtons.SetActive(false);
         LoadButtons.SetActive(true);
+        LoginMenu.SetActive(false);
+        DifficultyButtons.SetActive(false);
+
     }
 
     public void MainMenuButton()
@@ -35,9 +41,24 @@ public class MainMenu : MonoBehaviour
         LoadMenu.SetActive(false);
     }
 
+    public void LoginMenuActive()
+    {
+        LoginMenu.SetActive(true);
+        LoadButtons.SetActive(false);
+        MenuButtons.SetActive(false);
+    }
+
+    public void LoginMenuBack()
+    {
+        LoginMenu.SetActive(false);
+        MenuButtons.SetActive(true);
+    }
+
+
     public void NewGame()
     {
-        GameManager.instance.NewGame();
+        GameManager.instance.NewGame(_diff, SettingsMenu);
+
     }
 
     public void ResumeGame()
@@ -57,6 +78,12 @@ public class MainMenu : MonoBehaviour
         LoadButtons.SetActive(false);
     }
 
+    public void difficultyButton()
+    {
+        LoadButtons.SetActive(false);
+        DifficultyButtons.SetActive(true);
+    }
+
     public void CreditsButton()
     {
         // Show Credits Menu, hide everything else.
@@ -69,6 +96,27 @@ public class MainMenu : MonoBehaviour
         // Show Settings Menu
         Main_Menu.SetActive(false);
         SettingsMenu.SetActive(true);
+    }
+
+    public void setDiff(int diff)
+    {
+        switch (diff)
+        {
+            case 1:
+                _diff = SaveData.Difficulty.Easy;
+                break;
+            case 2:
+                _diff = SaveData.Difficulty.Normal;
+                break;
+            case 3:
+                _diff = SaveData.Difficulty.Hard;
+                break;
+            case 4:
+                _diff = SaveData.Difficulty.Hell;
+                break;
+            default:
+                break;
+        }
     }
 
     public void QuitButton()

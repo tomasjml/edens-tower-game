@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject HUD;
+    public GameObject player;
     public GameObject pausePanel;
     public GameObject pauseBtns;
     public GameObject slotsBtns;
@@ -20,35 +20,32 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
     }
-    // Update is called once per frame
-    void Update()
+
+    public void ViewPause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (pausePanel.activeSelf)
         {
-            if (!gameIsPaused)
-            {
-                gameIsPaused = true;
-                Pause();
-            }
-            else if (gameIsPaused)
-            {
-                gameIsPaused = false;
-                Resume();      
-            }
-            
+            gameIsPaused = false;
+            Resume();
+        }
+        else
+        {
+            gameIsPaused = true;
+            Pause();
         }
     }
 
     public void Resume()
     {
-        HUD.SetActive(true);
+        GameObject.Find("UIController").GetComponent<UIController>().setHud();
+        player.GetComponent<PlayerControllerV2>().enabled = true;
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
     }
 
     public void Pause()
     {
-        HUD.SetActive(false);
+        player.GetComponent<PlayerControllerV2>().enabled = false;
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
     }

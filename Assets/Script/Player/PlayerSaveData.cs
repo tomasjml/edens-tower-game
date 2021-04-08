@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats
 {
     public int vitality;
+    public int currentVitality;
     public int strength;
     public int speed;
     public int luck;

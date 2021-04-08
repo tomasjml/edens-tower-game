@@ -24,7 +24,8 @@ public class HeartVisual : MonoBehaviour
         if (GameManager.instance)
         {
             total = GameManager.instance.saveData.playerData.vitality;
-            HeartLogic HSystem = new HeartLogic(GameManager.instance.saveData.playerData.vitality/4);
+            HeartLogic HSystem = new HeartLogic(total/4);
+            HSystem.Damage(total - (GameManager.instance.saveData.playerData.currentVitality));
             SetHeartsHealthSystem(HSystem);
         }
         else
@@ -33,10 +34,17 @@ public class HeartVisual : MonoBehaviour
             HeartLogic HSystem = new HeartLogic(5);
             SetHeartsHealthSystem(HSystem);
         }
-        
-
-
     }
+
+    public void damage(int amount)
+    {
+        HSystemStatic.Damage(amount);
+    }
+    public void heal(int amount)
+    {
+        HSystemStatic.Heal(amount);
+    }
+
 
     public void SetHeartsHealthSystem(HeartLogic h)
     {
@@ -97,6 +105,8 @@ public class HeartVisual : MonoBehaviour
     {
         if (isHealing)
         {
+            float alpha = 1f / total * (total - GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().getCurrentHealth());
+            GameObject.FindGameObjectWithTag("Mask").GetComponent<Image>().color = new Color(1, 1, 1, alpha);
             bool fullyHealed = true;
             List<HeartLogic.Heart> heartList = HSystem.getHeartList();
             for (int i = 0; i < heartsImageList.Count; i++)
@@ -121,7 +131,7 @@ public class HeartVisual : MonoBehaviour
     private HeartImage CreateHeartImage(Vector2 anchor)
     {
         GameObject heartObject = new GameObject("Heart", typeof(Image));
-        heartObject.transform.parent = transform;
+        heartObject.transform.SetParent(transform);
         heartObject.transform.localPosition = Vector3.zero;
 
         heartObject.GetComponent<RectTransform>().anchoredPosition = anchor;

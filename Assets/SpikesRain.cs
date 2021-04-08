@@ -21,11 +21,15 @@ public class SpikesRain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_Random == false && Time.time > _nextTime)
+        if(_Random == false && Time.time > _nextTime && aux < cantidadTrampas)
         {
-            _startingPos = gameObject.transform.position;
+            
+            _startingPos.y = gameObject.transform.position.y;
+            _startingPos.z = 0;
+            _startingPos.x = GameObject.Find("Player").GetComponent<Transform>().position.x;
             Instantiate(_UniqueObject, _startingPos, Quaternion.identity);
             _nextTime = GetNextTime();
+            aux++;
         }
         else
         if (Time.time > _nextTime && aux < cantidadTrampas)
