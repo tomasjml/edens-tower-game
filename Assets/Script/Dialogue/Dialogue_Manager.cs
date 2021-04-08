@@ -21,7 +21,6 @@ public class Dialogue_Manager : MonoBehaviour
     public Transform _PositionPreesE;
 
     private GameObject instantiatedObject;
-    public GameObject storyFinished;
    
     void Awake()
     {
@@ -93,28 +92,22 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-            if(sentences.Count!=1&&Input.GetKeyDown(KeyCode.E) ) // display == active es comparando para saber si ya el efecto de typing termino
+            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
-                DisplayNextSentence();
-                //storyFinished.SetActive(false);  
+                DisplayNextSentence();  
             }
-            if(sentences.Count==1 && storyFinished.activeSelf){
-                dialoguePanel.SetActive(true);
-                DisplayNextSentence(); 
-                Debug.Log("DISPLAY NEXT SENTENCE");
-            }else if(sentences.Count==1&& storyFinished.activeSelf==false){
-                dialoguePanel.SetActive(false);
-            }
+
 
             if(sentences.Count == 0)
             {
                 Debug.Log("Presione E para terminar.");
                 if(Input.GetKeyDown(KeyCode.E))
-                {storyFinished.SetActive(true);
+                {
                     _Player.enableKeys(true);
                     Destroy(instantiatedObject);
                     Destroy(_Trigger,0);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
+                    gameObject.SetActive(false);
                 }
                  
             }
@@ -128,6 +121,8 @@ public class Dialogue_Manager : MonoBehaviour
         {
             dialoguePanel.SetActive(false);    
             _Trigger.SetActive(false);
+
+            gameObject.SetActive(false);
             
         }
     }

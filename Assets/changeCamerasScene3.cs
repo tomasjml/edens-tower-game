@@ -139,7 +139,7 @@ public class changeCamerasScene3 : MonoBehaviour
         if(sentences.Count==1){
              if(Input.GetKeyDown(KeyCode.E))
                 {
-                     Debug.Log("Presione E para terminar.");
+                    Debug.Log("Presione E para terminar.");
                     Destroy(instantiatedObject);
                     finishThis.SetActive(true);
                     activateBookCamera.SetActive(true);
