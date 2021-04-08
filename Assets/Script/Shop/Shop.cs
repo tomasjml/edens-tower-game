@@ -22,34 +22,37 @@ public class Shop : MonoBehaviour
     void Start()
     {
         //Start of the bow slot 
-        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") <  1)
+        if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") < 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Basic Bow";
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Killer Bow";
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Bow") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Miracle Bow";
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else
@@ -63,22 +66,24 @@ public class Shop : MonoBehaviour
         //Start of the Sword Slot
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Sword");
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
 
         }
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Sword") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Sword");
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
 
         }
         else
@@ -92,11 +97,11 @@ public class Shop : MonoBehaviour
         //Start of the sell slots
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Potion") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
-            itemSell1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+            itemSell1.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
             itemSell1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell1Price.text = item.stats["Value"].ToString() + "g";
             itemSell1Price.enabled = true;
         }
         else
@@ -109,11 +114,11 @@ public class Shop : MonoBehaviour
 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Huge Potion") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Huge Potion");
-            itemSell2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Huge Potion");
+            itemSell2.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
             itemSell2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell2Price.text = item.stats["Value"].ToString() + "g";
             itemSell2Price.enabled = true;
 
         }
@@ -126,11 +131,12 @@ public class Shop : MonoBehaviour
 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Blasting Stone") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Blasting Stone");
-            itemSell3.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Blasting Stone");
+            itemSell3.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell3.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
+            itemSell1.transform.Find("Text").GetComponent<Text>().text = item.stats["Value"].ToString() + "g";
             itemSell3.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell3Price.text = item.stats["Value"].ToString() + "g";
             itemSell3Price.enabled = true;
 
         }
@@ -150,32 +156,35 @@ public class Shop : MonoBehaviour
         //Start of the bow slot 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") < 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Basic Bow";
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Killer Bow";
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Bow") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Bow");
-            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleBow);
+            itemWeapon1.transform.Find("Image").GetComponent<Image>().sprite = Bow.icon;
             itemWeapon1.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon1.transform.Find("Text").GetComponent<Text>().text = "Miracle Bow";
             itemWeapon1.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon1Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon1Price.text = Bow.stats["Value"].ToString() + "g";
+            itemWeapon1Price.enabled = true;
 
         }
         else
@@ -189,22 +198,24 @@ public class Shop : MonoBehaviour
         //Start of the Sword Slot
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Sword") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Killer Sword");
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.KillerSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Killer Sword";
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
 
         }
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Killer Sword") >= 1)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Miracle Sword");
-            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item Sword = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.MiracleSword);
+            itemWeapon2.transform.Find("Image").GetComponent<Image>().sprite = Sword.icon;
             itemWeapon2.transform.Find("Image").GetComponent<Image>().enabled = true;
             itemWeapon2.transform.Find("Text").GetComponent<Text>().text = "Miracle Sword";
             itemWeapon2.transform.Find("Text").GetComponent<Text>().enabled = true;
-            itemWeapon2Price.text = basicSword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.text = Sword.stats["Value"].ToString() + "g";
+            itemWeapon2Price.enabled = true;
 
         }
         else
@@ -218,11 +229,11 @@ public class Shop : MonoBehaviour
         //Start of the sell slots
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Potion") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
-            itemSell1.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Basic Potion");
+            itemSell1.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell1.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
             itemSell1.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell1Price.text = item.stats["Value"].ToString() + "g";
             itemSell1Price.enabled = true;
         }
         else
@@ -235,11 +246,11 @@ public class Shop : MonoBehaviour
 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Huge Potion") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Huge Potion");
-            itemSell2.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Huge Potion");
+            itemSell2.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell2.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
             itemSell2.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell2Price.text = item.stats["Value"].ToString() + "g";
             itemSell2Price.enabled = true;
 
         }
@@ -252,11 +263,12 @@ public class Shop : MonoBehaviour
 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Blasting Stone") > 0)
         {
-            Item basicSword = GameManager.instance.itemManagement.GetItemByTitle("Blasting Stone");
-            itemSell3.transform.Find("Image").GetComponent<Image>().sprite = basicSword.icon;
+            Item item = GameManager.instance.itemManagement.GetItemByTitle("Blasting Stone");
+            itemSell3.transform.Find("Image").GetComponent<Image>().sprite = item.icon;
             itemSell3.transform.Find("Image").GetComponent<Image>().enabled = true;
-            itemSell1.transform.Find("Text").GetComponent<Text>().text = basicSword.stats["Value"].ToString() + "g";
+            itemSell1.transform.Find("Text").GetComponent<Text>().text = item.stats["Value"].ToString() + "g";
             itemSell3.transform.Find("Text").GetComponent<Text>().enabled = true;
+            itemSell3Price.text = item.stats["Value"].ToString() + "g";
             itemSell3Price.enabled = true;
 
         }
