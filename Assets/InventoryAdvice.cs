@@ -13,6 +13,7 @@ public class InventoryAdvice : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             instanciatedObject = Instantiate(instruction, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform);
+            GameObject.FindGameObjectWithTag("Pause").GetComponent<Inventory>().enabled = true;
         }
     }
 
