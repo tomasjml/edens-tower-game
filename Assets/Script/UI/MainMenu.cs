@@ -28,7 +28,8 @@ public class MainMenu : MonoBehaviour
         MenuButtons.SetActive(false);
         LoadButtons.SetActive(true);
         LoginMenu.SetActive(false);
-        
+        DifficultyButtons.SetActive(false);
+
     }
 
     public void MainMenuButton()
@@ -68,13 +69,6 @@ public class MainMenu : MonoBehaviour
     {
         Main_Menu.SetActive(false);
         LoadMenu.SetActive(true);
-    }
-
-    public void MainToLoadButton()
-    {
-        MenuButtons.SetActive(false);
-        LoadButtons.SetActive(true);
-        DifficultyButtons.SetActive(false);
     }
 
     public void LoadToMainButton()
