@@ -8,6 +8,16 @@ public class SettingsMenu : MonoBehaviour
     public GameObject generalSettings;
     public GameObject MusicRoom;
     public GameObject Highscores;
+    public Toggle bgmToggle;
+    public Slider bgmSlidder;
+
+    public void Start()
+    {
+        bgmToggle.onValueChanged.AddListener((value) =>
+        {
+            GameManager.instance.saveData.bgmEnabled = value;
+        });
+    }
 
     public enum _Resolution
     {

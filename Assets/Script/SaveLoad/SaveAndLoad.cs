@@ -362,8 +362,8 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("fullScreen", "true");
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);
-        form.AddField("musicEnabled", "true");
-        form.AddField("musicLvl", 100);
+        form.AddField("musicEnabled", GameManager.instance.saveData.bgmEnabled.ToString());
+        form.AddField("musicLvl", GameManager.instance.saveData.bgmLvl);
         form.AddField("saveData", jsonSaveData);
         form.AddField("saveSlotstr", slot);
         form.AddField("sfxEnabled", "true");
