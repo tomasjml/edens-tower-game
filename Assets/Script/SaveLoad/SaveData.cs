@@ -14,7 +14,8 @@ public class SaveData
     public ItemInventory dictMarketItems;
     public bool bgmEnabled;
     public int bgmLvl;
-
+    public bool seEnabled;
+    public int seLvl;
     // Game Difficulty
     public Difficulty difficulty;
 }

@@ -10,6 +10,8 @@ public class SettingsMenu : MonoBehaviour
     public GameObject Highscores;
     public Toggle bgmToggle;
     public Slider bgmSlidder;
+    public Toggle seToggle;
+    public Slider seSlidder;
 
     public void Start()
     {
@@ -46,14 +48,28 @@ public class SettingsMenu : MonoBehaviour
             generalSettings.SetActive(true);
         }
     }
+
+    public void BGMToggle()
+    {
+        GameManager.instance.saveData.bgmEnabled = bgmToggle.isOn;
+    }
+
     public void BGMChange()
     {
-        
+        GameManager.instance.saveData.bgmLvl = (int)(bgmSlidder.value * 100);
+    }
+
+    public void SEToggle()
+    {
+        GameManager.instance.saveData.seEnabled = seToggle.isOn;
     }
 
     public void SEChange()
     {
-
+        GameManager.instance.saveData.seLvl = (int)(seSlidder.value * 100);
+        Debug.Log("seSlidder.value" + seSlidder.value.ToString());
+        Debug.Log("GameManager.instance.saveData.seLvl" + GameManager.instance.saveData.seLvl.ToString());
+        Debug.Log("AudioManager.instance.asSE.volume" + AudioManager.instance.asSE.volume.ToString());
     }
 
     public void FullscreeenToggle()
@@ -68,8 +84,22 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void resolutionChange()
+    public void resolutionChange(int res)
     {
-
+        switch (res)
+        {
+            case 1:
+                Screen.SetResolution(1024, 768, Screen.fullScreen);
+                break;
+            case 2:
+                Screen.SetResolution(1280, 1024, Screen.fullScreen);
+                break;
+            case 3:
+                Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                break;
+            case 4:
+                Screen.SetResolution(3840, 2160, Screen.fullScreen);
+                break;
+        }
     }
 }

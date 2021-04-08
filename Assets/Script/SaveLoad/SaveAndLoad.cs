@@ -366,8 +366,8 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("musicLvl", GameManager.instance.saveData.bgmLvl);
         form.AddField("saveData", jsonSaveData);
         form.AddField("saveSlotstr", slot);
-        form.AddField("sfxEnabled", "true");
-        form.AddField("sfxLvl", 100);
+        form.AddField("sfxEnabled", GameManager.instance.saveData.seEnabled.ToString());
+        form.AddField("sfxLvl", GameManager.instance.saveData.seLvl);
         form.AddField("defense", (int) GameManager.instance.saveData.playerData.defense);
         form.AddField("speed", (int) GameManager.instance.saveData.playerData.speed);
         form.AddField("strength", (int) GameManager.instance.saveData.playerData.strength);
