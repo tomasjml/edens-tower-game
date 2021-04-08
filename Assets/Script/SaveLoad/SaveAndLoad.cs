@@ -373,6 +373,7 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("strength", (int) GameManager.instance.saveData.playerData.strength);
         form.AddField("luck", (int) GameManager.instance.saveData.playerData.luck);
         form.AddField("vitality", (int)GameManager.instance.saveData.playerData.vitality);
+        GameManager.instance.saveData.playerData.AddScore();
         form.AddField("highScore", (int)GameManager.instance.saveData.playerData.score);
         form.AddField("totalDeaths", 0);
         form.AddField("totalKills", 0);
