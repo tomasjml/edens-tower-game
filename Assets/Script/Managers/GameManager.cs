@@ -121,6 +121,10 @@ public class GameManager : MonoBehaviour
         saveData.difficulty = diff;
         saveData.bgmEnabled = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
         saveData.bgmLvl = (int)(settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value * 100f);
+        saveData.seEnabled = settingsMenu.GetComponent<SettingsMenu>().seToggle.isOn;
+        saveData.seLvl = (int)(settingsMenu.GetComponent<SettingsMenu>().seSlidder.value * 100f);
+        saveData.Fullscreen = settingsMenu.GetComponent<SettingsMenu>()._fullscreen.isOn;
+        saveData.autoSave = settingsMenu.GetComponent<SettingsMenu>().autoSaveToggle.isOn;
         StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");
@@ -158,6 +162,10 @@ public class GameManager : MonoBehaviour
         saveData.playerData.position = loadData.playerData.position;
         saveData.bgmEnabled = loadData.bgmEnabled;
         saveData.bgmLvl = loadData.bgmLvl;
+        saveData.seEnabled = loadData.seEnabled;
+        saveData.seLvl = loadData.seLvl;
+        saveData.autoSave = loadData.autoSave;
+        saveData.Fullscreen = loadData.Fullscreen;
         saveData.playerData.inventory = loadData.playerData.inventory;
         saveData.dictMarketItems = loadData.dictMarketItems;
 

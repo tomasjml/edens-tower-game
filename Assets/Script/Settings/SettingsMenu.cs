@@ -12,6 +12,8 @@ public class SettingsMenu : MonoBehaviour
     public Slider bgmSlidder;
     public Toggle seToggle;
     public Slider seSlidder;
+    public Toggle autoSaveToggle;
+    public Toggle _fullscreen;
 
     public void Start()
     {
@@ -67,13 +69,11 @@ public class SettingsMenu : MonoBehaviour
     public void SEChange()
     {
         GameManager.instance.saveData.seLvl = (int)(seSlidder.value * 100);
-        Debug.Log("seSlidder.value" + seSlidder.value.ToString());
-        Debug.Log("GameManager.instance.saveData.seLvl" + GameManager.instance.saveData.seLvl.ToString());
-        Debug.Log("AudioManager.instance.asSE.volume" + AudioManager.instance.asSE.volume.ToString());
     }
 
     public void FullscreeenToggle()
     {
+        GameManager.instance.saveData.Fullscreen = _fullscreen.isOn;
         if (Screen.fullScreenMode.Equals(FullScreenMode.ExclusiveFullScreen))
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
@@ -101,5 +101,10 @@ public class SettingsMenu : MonoBehaviour
                 Screen.SetResolution(3840, 2160, Screen.fullScreen);
                 break;
         }
+    }
+
+    public void autosaveToggle()
+    {
+        GameManager.instance.saveData.autoSave = autoSaveToggle.isOn;
     }
 }

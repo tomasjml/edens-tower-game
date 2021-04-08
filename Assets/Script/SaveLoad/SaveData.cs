@@ -16,6 +16,8 @@ public class SaveData
     public int bgmLvl;
     public bool seEnabled;
     public int seLvl;
+    public bool autoSave;
+    public bool Fullscreen;
     // Game Difficulty
     public Difficulty difficulty;
 }

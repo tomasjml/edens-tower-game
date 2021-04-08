@@ -357,9 +357,9 @@ public class SaveAndLoad : MonoBehaviour
     {
         WWWForm form = new WWWForm();
 
-        form.AddField("autoSave", "true");
+        form.AddField("autoSave", GameManager.instance.saveData.autoSave.ToString());
         form.AddField("difficulty", GameManager.instance.saveData.difficulty.ToString());
-        form.AddField("fullScreen", "true");
+        form.AddField("fullScreen", GameManager.instance.saveData.Fullscreen.ToString());
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
         form.AddField("gammaLvl", 6);
         form.AddField("musicEnabled", GameManager.instance.saveData.bgmEnabled.ToString());
@@ -389,7 +389,7 @@ public class SaveAndLoad : MonoBehaviour
             Debug.Log("Form upload complete!");
         }
 
-
+        yield break;
     }
 
     //Delete
