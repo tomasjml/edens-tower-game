@@ -107,7 +107,7 @@ public class ItemManagement : MonoBehaviour
             new ItemStats
             {
                 {"Value",  30},
-                {"Recovery", 5}
+                {"Recovery", 4}
             })
         };
     }
