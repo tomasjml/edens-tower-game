@@ -162,13 +162,6 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetTrigger("Attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
-            GameObject inventoryCanvas = GameObject.Find("Canvas");
-            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
-            inventory.ViewInventory();
-        }
         if (Input.GetKeyDown(KeyCode.U))
         {
             Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);

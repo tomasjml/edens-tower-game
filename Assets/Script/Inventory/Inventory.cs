@@ -250,7 +250,12 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateSlots();
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GameObject inventoryCanvas = GameObject.Find("Canvas");
+            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
+            inventory.ViewInventory();
+        }
     }
 
     void UpdateSlots()
