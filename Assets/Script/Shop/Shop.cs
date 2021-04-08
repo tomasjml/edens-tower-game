@@ -148,12 +148,11 @@ public class Shop : MonoBehaviour
 
         }
 
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void updateStore()
     {
-        //Start of the bow slot 
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Bow") < 1)
         {
             Item Bow = GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicBow);
@@ -280,4 +279,5 @@ public class Shop : MonoBehaviour
 
         }
     }
+
 }
