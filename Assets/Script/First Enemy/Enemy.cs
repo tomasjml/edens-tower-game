@@ -140,11 +140,12 @@ public class Enemy : MonoBehaviour
         {
             Invoke("AudioP", 1f);
         }
-        else
+        else 
         {
             Invoke("AudioP", 0.3f);
         }
-        
+       
+         
         _animator.SetTrigger("IsAttacking");
         yield return new WaitForSeconds(attackTime);
 

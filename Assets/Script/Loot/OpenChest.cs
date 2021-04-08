@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class OpenChest : MonoBehaviour
 {
+    [Header("Sonido Cofre")]
+    private AudioSource fxChest;
+    public AudioClip _openCh;
+    [Header("------------")]
     public Transform _PositionPressE;
     public GameObject _InstructionPressE;
     public GameObject _Magic_Stone;
@@ -15,6 +19,7 @@ public class OpenChest : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        fxChest = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +41,7 @@ public class OpenChest : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E))
             {
                 animator.SetTrigger("OpenChest");
+                fxChest.PlayOneShot(_openCh);
                 instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                 _Magic_Stone.SetActive(true);
                 _Magic_Stone.GetComponent<Animator>().SetTrigger("isOpen");
