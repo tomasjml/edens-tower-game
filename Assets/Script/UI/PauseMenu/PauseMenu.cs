@@ -19,6 +19,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+
     }
 
     public void ViewPause()

@@ -57,7 +57,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.instance.NewGame(_diff, SettingsMenu);
+        GameManager.instance.NewGame(_diff, gameObject);
 
     }
 
