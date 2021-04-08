@@ -12,6 +12,8 @@ public class SaveData
     }
     public PlayerStats playerData = new PlayerStats();
     public ItemInventory dictMarketItems;
+    public bool bgmEnabled;
+    public int bgmLvl;
 
     // Game Difficulty
     public Difficulty difficulty;
