@@ -12,7 +12,13 @@ public class ItemManagement : MonoBehaviour
         Tiara,
         BasicSword,
         BasicBow,
-        BasicPotion
+        BasicPotion,
+        KillerSword,
+        MiracleSword,
+        KillerBow,
+        MiracleBow,
+        BlastingStone,
+        HugePotion
     }
 
     public List<Item> items = new List<Item>();
@@ -55,6 +61,24 @@ public class ItemManagement : MonoBehaviour
             case ItemAvailable.BasicPotion:
                 itemName = "Basic Potion";
                 break;
+            case ItemAvailable.KillerSword:
+                itemName = "Killer Sword";
+                break;
+            case ItemAvailable.KillerBow:
+                itemName = "Killer Bow";
+                break;
+            case ItemAvailable.MiracleSword:
+                itemName = "Miracle Sword";
+                break;
+            case ItemAvailable.MiracleBow:
+                itemName = "Miracle Bow";
+                break;
+            case ItemAvailable.BlastingStone:
+                itemName = "Blasting Stone";
+                break;
+            case ItemAvailable.HugePotion:
+                itemName = "Huge Potion";
+                break;
             default:
                 break;
         }
@@ -89,7 +113,7 @@ public class ItemManagement : MonoBehaviour
             new ItemStats
             {
                 {"Value",  15},
-                {"Attact", 10 },
+                {"Attack", 10 },
                 {"Category", 1 },
                 {"Evolution", 1 }
             }),
@@ -97,7 +121,7 @@ public class ItemManagement : MonoBehaviour
             new ItemStats
             {
                 {"Value",  15},
-                {"Attact", 5 },
+                {"Attack", 5 },
                 {"Category", 2 },
                 {"Evolution", 1 }
             }),
@@ -108,6 +132,50 @@ public class ItemManagement : MonoBehaviour
             {
                 {"Value",  30},
                 {"Recovery", 4}
+            }),
+            new Item(5, "Killer Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower", 
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 10 },
+                {"Category", 1 },
+                {"Evolution", 2 }
+            }),
+            new Item(6, "Miracle Sword", Item.Type.Weapon, "The Sword picked up in Front of the Tower",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 10 },
+                {"Category", 1 },
+                {"Evolution", 3 }
+            }),
+            new Item(7, "Killer Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 5 },
+                {"Category", 2 },
+                {"Evolution", 2 }
+            }),
+            new Item(8, "Miracle Bow", Item.Type.Weapon, "The Bow first sold in the Market",
+            new ItemStats
+            {
+                {"Value",  15},
+                {"Attack", 5 },
+                {"Category", 2 },
+                {"Evolution", 3 }
+            }),
+            new Item(9, "Blasting Stone", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new ItemStats
+            {
+                {"Value",  150},
+                {"Attack", 5 }
+            }),
+            new Item(4, "Huge Potion", Item.Type.Consumables, "The \"Go to \" option for Cheap recovery",
+            new ItemStats
+            {
+                {"Value",  70},
+                {"Recovery", 40}
             })
         };
     }
@@ -117,8 +185,13 @@ public class ItemManagement : MonoBehaviour
         itemsMarket = new List<Item>
         {
             GetItemByTitle(ItemAvailable.BasicPotion),
-            GetItemByTitle(ItemAvailable.BasicBow)
-
+            GetItemByTitle(ItemAvailable.BasicBow),
+            GetItemByTitle(ItemAvailable.KillerSword),
+            GetItemByTitle(ItemAvailable.KillerBow),
+            GetItemByTitle(ItemAvailable.MiracleSword),
+            GetItemByTitle(ItemAvailable.MiracleBow),
+            GetItemByTitle(ItemAvailable.BlastingStone),
+            GetItemByTitle(ItemAvailable.HugePotion)
         };
     }
 }

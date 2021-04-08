@@ -17,7 +17,8 @@ public class StoreFirstTime : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         canvas.gameObject.SetActive(true);
-        //player.SendMessageUpwards("enableKeys", false);
+        Time.timeScale = 0f;
+        PauseMenu.gameIsPaused = true;
     }
     // Update is called once per frame
     void Update()
