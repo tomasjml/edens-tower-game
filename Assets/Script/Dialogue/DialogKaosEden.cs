@@ -19,8 +19,7 @@ public class DialogKaosEden : MonoBehaviour
     private Animator _animator;
     public GameObject Eden;
     public  GameObject firstPartFinished;
-    //public GameObject _InstructionPressE;
-    //public Transform _PositionPreesE;
+    private int cantTrigger=0;
     
 
     private bool onSite = false;
@@ -69,11 +68,10 @@ public class DialogKaosEden : MonoBehaviour
                 displayText2.text = activeSentence;
             }
         }
-        if(sentences.Count==0)
+        else
         {
             dialoguePanel.SetActive(true);
             displayText.text = activeSentence;
-            Debug.Log("hey hoes");
             firstPartFinished.SetActive(true);
             return;
         }
@@ -113,9 +111,14 @@ public class DialogKaosEden : MonoBehaviour
     {
         if(other.CompareTag("Kaos")){
             onSite=true;
-            dialoguePanel.SetActive(true);
+            
            
-            StartDialogue();
+           if(cantTrigger==0){
+               dialoguePanel.SetActive(true);
+               StartDialogue();
+               cantTrigger++;
+           }
+            
         }
         
 
@@ -128,7 +131,6 @@ public class DialogKaosEden : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && sentences.Count != 0 && onSite) // display == active es comparando para saber si ya el efecto de typing termino
         {
             DisplayNextSentence();
-            //Debug.Log("sentence "+sentences.Count);
             if(sentences.Count==2){
                 _animator.SetBool("almostDead",true);
             }
@@ -143,6 +145,9 @@ public class DialogKaosEden : MonoBehaviour
             {
                 dialoguePanel2.SetActive(false);
                 dialoguePanel.SetActive(false);
+                if(onSite==true){
+                    firstPartFinished.SetActive(true);
+                }
                 
             }
         }
