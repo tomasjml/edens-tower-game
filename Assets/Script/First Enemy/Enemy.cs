@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     public bool shouldAttack = false;
     public float aimingTime = 0.2f;
     public float attackTime = 1.3f;
+    [Header("FX Enemigos")]
+    private AudioSource fxEnemy;
+    public AudioClip attack;
+    
 
     private Rigidbody2D _rigidbody;
     Animator _animator;
@@ -24,6 +28,7 @@ public class Enemy : MonoBehaviour
         enemyTransform = this.GetComponent<Transform>();
         _animator = this.GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        fxEnemy = GetComponent<AudioSource>();
     }
     void Start()
     {   
@@ -131,10 +136,27 @@ public class Enemy : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
+        /*switch (gameObject.tag)
+        {
+            case "Skeleton":
+                
+                break;
+            case "MiniSkeleton":
+                
+                break;
+            case "MegaSkeleton":
+                
+                break;
+        }*/
+        Invoke("AudioP", 1f);
         _animator.SetTrigger("IsAttacking");
         yield return new WaitForSeconds(attackTime);
 
         shouldAttack = false;
         speed = speedBackup;
+    }
+    private void AudioP()
+    {
+        fxEnemy.PlayOneShot(attack);
     }
 }

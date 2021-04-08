@@ -5,8 +5,14 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     int damage = 1;
-    public bool isDamaged = false;
+    [Header("Sonido del Hit al Player")]
+    public AudioClip _Hit;
+    private AudioSource hitSFX;
 
+    private void Start()
+    {
+        hitSFX = GetComponentInParent<AudioSource>();
+    }
     private void Awake()
     {
         switch (GameManager.instance.saveData.difficulty)
@@ -36,6 +42,7 @@ public class Hit : MonoBehaviour
         Debug.Log("Se esta dando");
         if (collision.gameObject.CompareTag("Player"))
         {
+           // hitSFX.PlayOneShot(_Hit);
             switch (gameObject.tag)
             {
                 case "Yunke":
@@ -53,6 +60,7 @@ public class Hit : MonoBehaviour
             //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
+            //hitSFX.PlayOneShot(_Hit);
         }
     }
 
@@ -60,6 +68,7 @@ public class Hit : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+          
             switch (gameObject.tag)
             {
                 case "Yunke":
@@ -85,11 +94,9 @@ public class Hit : MonoBehaviour
             //Debug.Log("Se dio");
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
+            //hitSFX.PlayOneShot(_Hit);
         }
     }
 
-    public bool Damaged()
-    {
-        return isDamaged;
-    }
+
 }

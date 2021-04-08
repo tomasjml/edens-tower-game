@@ -8,7 +8,10 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
 	private int totalHealth;
-
+	[Header("FX Vida")]
+	private AudioSource fxHealth;
+	public AudioClip _RegHP;
+	public AudioClip _Hit;
 	public GameObject[] hearts;
 
 	private int health;
@@ -17,10 +20,8 @@ public class PlayerHealth : MonoBehaviour
 
 	private Animator _animator;
 	float timePass = 0f;
-	float timePassLife = 0f;
-
-	bool medió = false;
 	int cant = 0;
+	
 
 	
 	private void Awake()
@@ -29,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
 		//totalHealth = 20;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
+		fxHealth = GetComponent<AudioSource>();
 	}
 
 	void Start()
@@ -68,6 +70,7 @@ public class PlayerHealth : MonoBehaviour
 								if (totalHealth - 4 > health)
 								{
 									health += 1;
+									fxHealth.PlayOneShot(_RegHP);
 								}
 								cant = 0;
 								break;
@@ -75,6 +78,7 @@ public class PlayerHealth : MonoBehaviour
 								if (totalHealth - 8 > health)
 								{
 									health += 1;
+									fxHealth.PlayOneShot(_RegHP);
 								}
 								cant = 0;
 								break;
@@ -82,6 +86,7 @@ public class PlayerHealth : MonoBehaviour
 								if (totalHealth - 12 > health)
 								{
 									health += 1;
+									fxHealth.PlayOneShot(_RegHP);
 								}
 								cant = 0;
 								break;
@@ -89,6 +94,7 @@ public class PlayerHealth : MonoBehaviour
 								if (totalHealth - 16 > health)
 								{
 									health += 1;
+									fxHealth.PlayOneShot(_RegHP);
 								}
 								cant = 0;
 								break;
@@ -96,7 +102,8 @@ public class PlayerHealth : MonoBehaviour
 					}else if(totalHealth - 4 > health)
                     {
 						health += 1;
-                    }
+						fxHealth.PlayOneShot(_RegHP);
+					}
 					cant = 0;
 					
 					Debug.Log("Vida despues de regenerarse " + health);
@@ -115,6 +122,7 @@ public class PlayerHealth : MonoBehaviour
 		health = health - amount;
 
 		// Visual Feedback
+		fxHealth.PlayOneShot(_Hit);
 		StartCoroutine("VisualFeedback");
 
 		// Game  Over

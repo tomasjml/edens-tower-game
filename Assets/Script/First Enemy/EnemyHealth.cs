@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
 		
 
 		// Visual Feedback
-		StartCoroutine("VisualFeedback");
+		//StartCoroutine("VisualFeedback");
 		Debug.Log("Se esta recibiendo");
 
 		// Game  Over
