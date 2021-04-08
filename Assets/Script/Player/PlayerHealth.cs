@@ -93,13 +93,7 @@ public class PlayerHealth : MonoBehaviour
 
 	public void recoverHealth(Item itemConsumable)
     {
-		int recoveredHealth = health + itemConsumable.stats["Recovery"];
-		if(recoveredHealth >= totalHealth)
-        {
-			health = totalHealth;
-        } else
-        {
-			health = recoveredHealth;
-        }
+		int healboost = itemConsumable.stats["Recovery"];
+		GameObject.Find("Health").GetComponent<HeartVisual>().
     }
 }
