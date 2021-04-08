@@ -166,6 +166,7 @@ public class GameManager : MonoBehaviour
         saveData.seLvl = loadData.seLvl;
         saveData.autoSave = loadData.autoSave;
         saveData.Fullscreen = loadData.Fullscreen;
+        saveData.gammalvl = loadData.gammalvl;
         saveData.playerData.inventory = loadData.playerData.inventory;
         saveData.dictMarketItems = loadData.dictMarketItems;
 

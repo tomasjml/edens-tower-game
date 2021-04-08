@@ -80,11 +80,14 @@ public class AudioManager : MonoBehaviour
 
     public void Update()
     {
-        asBGM.enabled = GameManager.instance.saveData.bgmEnabled;
-        asBGM.volume = GameManager.instance.saveData.bgmLvl * 0.01f;
-
-        asSE.enabled = GameManager.instance.saveData.seEnabled;
-        asSE.volume = GameManager.instance.saveData.seLvl * 0.01f;
+        if (GameManager.instance)
+        {
+            asBGM.enabled = GameManager.instance.saveData.bgmEnabled;
+            asBGM.volume = GameManager.instance.saveData.bgmLvl * 0.01f;
+            asSE.enabled = GameManager.instance.saveData.seEnabled;
+            asSE.volume = GameManager.instance.saveData.seLvl * 0.01f;
+        }
+        
     }
 
     public void PlayBackgroundMusic(BackgroundMusic type)

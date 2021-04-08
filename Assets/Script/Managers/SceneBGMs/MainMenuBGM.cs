@@ -10,6 +10,15 @@ public class MainMenuBGM : MonoBehaviour
     void Start()
     {
         AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicMenu);
-        AudioManager.instance.asBGM.volume = settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value;
+    }
+
+    private void Update()
+    {
+        if (AudioManager.instance)
+        {
+            float volume = settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value;
+            bool isOn = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
+            AudioManager.instance.asBGM.volume = (isOn == false ? 0f : volume);
+        }
     }
 }

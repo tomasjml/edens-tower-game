@@ -361,7 +361,7 @@ public class SaveAndLoad : MonoBehaviour
         form.AddField("difficulty", GameManager.instance.saveData.difficulty.ToString());
         form.AddField("fullScreen", GameManager.instance.saveData.Fullscreen.ToString());
         form.AddField("gameTimeInSeconds", (int) GameManager.instance.elapsedTime);
-        form.AddField("gammaLvl", 6);
+        form.AddField("gammaLvl", GameManager.instance.saveData.gammalvl);
         form.AddField("musicEnabled", GameManager.instance.saveData.bgmEnabled.ToString());
         form.AddField("musicLvl", GameManager.instance.saveData.bgmLvl);
         form.AddField("saveData", jsonSaveData);
