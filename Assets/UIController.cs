@@ -6,6 +6,15 @@ public class UIController : MonoBehaviour
 {
     private GameObject canvas;
     public GameObject[] UIComponents;
+    private static bool isShoping = false;
+
+    public void setShoping()
+    {
+        if (isShoping)
+            isShoping = false;
+        if (!isShoping)
+            isShoping = true;
+    }
 
     private void Awake()
     {
@@ -35,6 +44,13 @@ public class UIController : MonoBehaviour
                 pause.ViewPause();
             }
         }
+        if(Input.GetKeyDown(KeyCode.T) && isShoping)
+        {
+            SetInterface("ShopUI");
+            ShopManager shop = (ShopManager)canvas.GetComponent(typeof(ShopManager));
+            shop.ViewShop();
+        }
+
 
     }
 

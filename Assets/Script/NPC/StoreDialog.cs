@@ -11,7 +11,7 @@ public class StoreDialog : MonoBehaviour
     public string[] sentences;
     private int index;
     public Canvas canvas;
-    public Canvas store;
+    public GameObject store;
     public GameObject player;
 
     private void Start()
@@ -43,7 +43,6 @@ public class StoreDialog : MonoBehaviour
             textDisplay.text = "";
             canvas.gameObject.SetActive(false);
             store.gameObject.SetActive(true);
-            //player.SendMessageUpwards("enableKeys", true);
         }
     }
 }
