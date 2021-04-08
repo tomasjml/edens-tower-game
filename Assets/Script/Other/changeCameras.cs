@@ -10,6 +10,7 @@ public class changeCameras : MonoBehaviour
     public GameObject player;
     private Rigidbody2D _rigidbody;
     private bool onSite=false;
+    public GameObject firstPartOver;
     int cant=0;
     void Start()
     {
@@ -21,20 +22,25 @@ public class changeCameras : MonoBehaviour
     {
         
         //if (player.gameObject.GetComponent<Rigidbody2D>().velocity==Vector3.zero){
-            if(Input.GetKeyDown(KeyCode.E) && cant<3 &&onSite==true){
+            if(Input.GetKeyDown(KeyCode.E) && cant<4 &&onSite==true){
                 cant++;
             }
-            if(cant>=3){
+            if(cant==4 && firstPartOver.activeSelf==false){
                 playerCamera.SetActive(false);
                 storyCamera.SetActive(true);
                 if(storyCamera.transform.position.x<278){
                     _rigidbody.velocity = new Vector2(4f, _rigidbody.velocity.y);
                 }
-                else{
+                else {
                     _rigidbody.velocity = Vector3.zero;
                 }
-                
             }
+            if(firstPartOver.activeSelf&& storyCamera.transform.position.x<309){
+                    _rigidbody.velocity = new Vector2(4f, _rigidbody.velocity.y);
+                }else if(firstPartOver.activeSelf&& storyCamera.transform.position.x>=309){
+                    _rigidbody.velocity = Vector3.zero;
+                }
+            
        // }
     }
     void OnTriggerEnter2D(Collider2D other){

@@ -93,7 +93,6 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-            Debug.Log("mira esto mojona "+sentences.Count);
             if(sentences.Count!=1&&Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
             {
                 DisplayNextSentence();

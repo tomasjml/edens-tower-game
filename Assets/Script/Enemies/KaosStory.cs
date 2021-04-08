@@ -26,7 +26,7 @@ public class KaosStory : MonoBehaviour
         if(startRoom.activeSelf){
             if(transform.position.x>267.4){
                
-                _rigidbody.velocity = new Vector2(-2f, _rigidbody.velocity.y);
+                _rigidbody.velocity = new Vector2(-2.5f, _rigidbody.velocity.y);
             }
             
         }

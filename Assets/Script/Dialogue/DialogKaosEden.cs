@@ -18,6 +18,7 @@ public class DialogKaosEden : MonoBehaviour
     private int cant=0;
     private Animator _animator;
     public GameObject Eden;
+    public  GameObject firstPartFinished;
     //public GameObject _InstructionPressE;
     //public Transform _PositionPreesE;
     
@@ -50,13 +51,8 @@ public class DialogKaosEden : MonoBehaviour
     void DisplayNextSentence()
     {
 
-        if (sentences.Count == 0)
-        {
-            dialoguePanel.SetActive(true);
-            displayText.text = activeSentence;
-            return;
-        }
-        else
+        
+        if(sentences.Count!=0)
         {
             if (sentences.Count % 2 != 0)
             {
@@ -73,6 +69,15 @@ public class DialogKaosEden : MonoBehaviour
                 displayText2.text = activeSentence;
             }
         }
+        if(sentences.Count==0)
+        {
+            dialoguePanel.SetActive(true);
+            displayText.text = activeSentence;
+            Debug.Log("hey hoes");
+            firstPartFinished.SetActive(true);
+            return;
+        }
+
         StopAllCoroutines();
         StartCoroutine(TypeTheSentence(activeSentence));
     }
@@ -138,6 +143,7 @@ public class DialogKaosEden : MonoBehaviour
             {
                 dialoguePanel2.SetActive(false);
                 dialoguePanel.SetActive(false);
+                
             }
         }
     }
