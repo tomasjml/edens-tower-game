@@ -8,6 +8,24 @@ public class SettingsMenu : MonoBehaviour
     public GameObject generalSettings;
     public GameObject MusicRoom;
     public GameObject Highscores;
+    public Toggle bgmToggle;
+    public Slider bgmSlidder;
+
+    public void Start()
+    {
+        bgmToggle.onValueChanged.AddListener((value) =>
+        {
+            GameManager.instance.saveData.bgmEnabled = value;
+        });
+    }
+
+    public enum _Resolution
+    {
+        _1024x768,
+        _1280x1024,
+        _1920x1080,
+        _3840x2160
+    }
 
     public void changeSection(int section)
     {
@@ -28,9 +46,14 @@ public class SettingsMenu : MonoBehaviour
             generalSettings.SetActive(true);
         }
     }
-    public void audioChange(float volume)
+    public void BGMChange()
     {
         
+    }
+
+    public void SEChange()
+    {
+
     }
 
     public void FullscreeenToggle()
@@ -45,4 +68,8 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+    public void resolutionChange()
+    {
+
+    }
 }

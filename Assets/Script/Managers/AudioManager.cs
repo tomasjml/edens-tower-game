@@ -78,6 +78,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        asBGM.enabled = GameManager.instance.saveData.bgmEnabled;
+        asBGM.volume = GameManager.instance.saveData.bgmLvl * 0.01f;
+    }
+
     public void PlayBackgroundMusic(BackgroundMusic type)
     {
         StartCoroutine(PlayingBackgroundMusic(type));

@@ -10,6 +10,7 @@ using SimpleJSON;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    public string user;
 
     // Timer Attributes
     private TimeSpan timePlaying;
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
         timerRunning = false;
     }
 
-    public void NewGame(SaveData.Difficulty diff)
+    public void NewGame(SaveData.Difficulty diff, GameObject settingsMenu)
     {
         // Initial Stats 
         saveData.playerData.strength = 1;
@@ -119,6 +120,8 @@ public class GameManager : MonoBehaviour
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
         saveData.difficulty = diff;
+        saveData.bgmEnabled = settingsMenu.GetComponent<SettingsMenu>().bgmToggle.isOn;
+        saveData.bgmLvl = (int)(settingsMenu.GetComponent<SettingsMenu>().bgmSlidder.value * 100f);
         StartCoroutine(UpdateTimer());
         BeginGameManager();
         SceneManager.LoadScene("Context");
@@ -155,7 +158,8 @@ public class GameManager : MonoBehaviour
         saveData.playerData.vitality = loadData.playerData.vitality;
         saveData.playerData.currentVitality = loadData.playerData.currentVitality;
         saveData.playerData.position = loadData.playerData.position;
-
+        saveData.bgmEnabled = loadData.bgmEnabled;
+        saveData.bgmLvl = loadData.bgmLvl;
         saveData.playerData.inventory = loadData.playerData.inventory;
         saveData.dictMarketItems = loadData.dictMarketItems;
 
