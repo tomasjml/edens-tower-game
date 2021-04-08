@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryAdvice : MonoBehaviour
 {
+    
     public GameObject instruction;
     public Transform position;
     private GameObject instanciatedObject;
@@ -26,12 +27,15 @@ public class InventoryAdvice : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.I) && instanciatedObject)
+        if (other.CompareTag("Player"))
         {
-            Destroy(instanciatedObject);
-            Destroy(gameObject);
+            if (instanciatedObject)
+            {
+                Destroy(instanciatedObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

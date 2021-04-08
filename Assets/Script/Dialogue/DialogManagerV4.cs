@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
-
+using System;
 
 public class DialogManagerV4 : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class DialogManagerV4 : MonoBehaviour
     string activeSentence;
     public float typingString;
     public GameObject dialoguePanel;
-
+    public bool timepassed = false;
 
     private bool onSite = false;
 
@@ -34,6 +33,7 @@ public class DialogManagerV4 : MonoBehaviour
 
     public void StartDialogue()
     {
+        gameObject.GetComponent<PlayerActivate>().deactivate();
         sentences.Clear(); //borra el listado para empezar desde 0.
         dialoguePanel.SetActive(true);
         foreach (string sentence in dialogue.sentenceList) //buscar todas las sentences de ese listado y asi una a una se añadan al queue.
@@ -73,22 +73,26 @@ public class DialogManagerV4 : MonoBehaviour
 
     private void Update()
     {
-
         if (displayText.text == activeSentence)
         {
             DisplayNextSentence();
         }
 
-        if (sentences.Count == 0 && displayText.text != " ")
+        if (displayText.text == "                 ")
         {
+            GameObject.FindGameObjectWithTag("MiniSkeleton").GetComponent<Enemy>().enabled = true;
+            startTime(4);
             if (!instanciated)
             {
-                instanciated = Instantiate(instruction, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform);
+                if (timepassed)
+                {
+                    gameObject.GetComponent<PlayerActivate>().activate();
+                    instanciated = Instantiate(instruction, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform);
+                }
+
             }
         }
-
-
-        if(instanciated && Input.GetButtonDown("Fire1"))
+        if (instanciated && Input.GetButtonDown("Fire1"))
         {
             instanciated.GetComponent<Animator>().SetTrigger("Vanish");
             Destroy(instanciated, 1);
@@ -96,5 +100,12 @@ public class DialogManagerV4 : MonoBehaviour
         }
     }
 
-
+    private void startTime(int v)
+    {
+        Invoke("Void", v);
+    }
+    private void Void()
+    {
+        timepassed = true;
+    }
 }

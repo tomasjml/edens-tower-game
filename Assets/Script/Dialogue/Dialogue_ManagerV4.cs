@@ -68,8 +68,16 @@ public class Dialogue_ManagerV4 : MonoBehaviour
 
     IEnumerator DeleteTheSentence(string sentence)
     {
-        Destroy(dialoguePanel);
+        dialoguePanel.SetActive(false);
         yield return null;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            dialoguePanel.SetActive(false);
+        }
     }
 
 

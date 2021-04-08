@@ -59,6 +59,8 @@ public class PlayerHealth : MonoBehaviour
 	{
 		health = health + amount;
 
+		StartCoroutine("VisualFeedback");
+
 		// Max health
 		if (health > totalHealth)
 		{
@@ -95,5 +97,7 @@ public class PlayerHealth : MonoBehaviour
     {
 		int healboost = itemConsumable.stats["Recovery"];
 		GameObject.Find("Health").GetComponent<HeartVisual>().heal(healboost);
-    }
+		AddHealth(healboost);
+
+	}
 }

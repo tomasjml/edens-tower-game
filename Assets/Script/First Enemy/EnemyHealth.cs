@@ -7,7 +7,8 @@ public class EnemyHealth : MonoBehaviour
 	[Header("Vida del Enemigo")]
 	public int totalHealth = 3;
 
-	private int health;
+	[Header("NO TOCAR")]
+	public  int health;
 	private int bHealth;
 	private SpriteRenderer _renderer;
 	private Animator _animator;
