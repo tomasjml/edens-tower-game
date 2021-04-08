@@ -1055,7 +1055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &222167178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0abc990085109b945ae32c8c155ab80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instruction: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
+  instruction: {fileID: 6216458578245512183, guid: 31bcfab85e35f6d449383b976ff4ae2c, type: 3}
   position: {fileID: 1047689712}
 --- !u!61 &458208091
 BoxCollider2D:
@@ -5674,7 +5674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.76
+      value: 46.84
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 3433afd1c63462b4d8404f868a0b7419, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6677,7 +6677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133448, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.292904
+      value: 25.787096
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095251133448, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6713,11 +6713,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.755806
+      value: 25.78729
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1228746
+      value: 1.1099023
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7697,12 +7697,15 @@ MonoBehaviour:
     - 'You will need to fight difficult enemies
 
       during your course in the
-      tower.'
-    - Let's fight that skeleton.
-  displayText: {fileID: 0}
-  typingString: 0
-  dialoguePanel: {fileID: 0}
-  ObjectsDestroy: []
+      tower.      '
+    - '                      '
+    - 'Let''s fight that skeleton.      '
+    - '                 '
+  displayText: {fileID: 1203957228}
+  instruction: {fileID: 5746072406931826943, guid: 66610094b79662b4f976121058f05536, type: 3}
+  position: {fileID: 1047689712}
+  typingString: 0.05
+  dialoguePanel: {fileID: 222167177}
 --- !u!1 &1825760821
 GameObject:
   m_ObjectHideFlags: 0

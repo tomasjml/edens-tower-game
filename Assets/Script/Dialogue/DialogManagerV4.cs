@@ -9,12 +9,15 @@ public class DialogManagerV4 : MonoBehaviour
 {
     public Dialogue dialogue;
     public Text displayText;
+    public GameObject instruction;
+    public Transform position;
+
+    private GameObject instanciated;
 
     Queue<string> sentences;
     string activeSentence;
     public float typingString;
     public GameObject dialoguePanel;
-    public GameObject[] ObjectsDestroy;
 
 
     private bool onSite = false;
@@ -71,19 +74,25 @@ public class DialogManagerV4 : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence && onSite)
+        if (displayText.text == activeSentence)
         {
             DisplayNextSentence();
         }
 
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && displayText.text != " ")
         {
-            if (Input.GetKeyDown(KeyCode.E) && onSite)
+            if (!instanciated)
             {
-                foreach (GameObject c in ObjectsDestroy){
-                    Destroy(c, 0);
-                }
+                instanciated = Instantiate(instruction, position.position, Quaternion.identity, GameObject.FindGameObjectWithTag("HUD").transform);
             }
+        }
+
+
+        if(instanciated && Input.GetButtonDown("Fire1"))
+        {
+            instanciated.GetComponent<Animator>().SetTrigger("Vanish");
+            Destroy(instanciated, 1);
+            Destroy(gameObject, 1);
         }
     }
 
