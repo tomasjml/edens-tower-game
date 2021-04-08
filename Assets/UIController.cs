@@ -8,13 +8,11 @@ public class UIController : MonoBehaviour
     public GameObject[] UIComponents;
     private static bool isShoping = false;
 
-    public void setShoping()
+    public void setShoping(bool cond)
     {
-        if (isShoping)
-            isShoping = false;
-        if (!isShoping)
-            isShoping = true;
+        isShoping = cond;
     }
+
 
     private void Awake()
     {
@@ -28,8 +26,10 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            Debug.Log(GameManager.instance.saveData.playerData.ItemQuantityInInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara).title));
             if (canvas.GetComponent<Inventory>().enabled)
             {
+                
                 SetInterface("InventoryUI");
                 Inventory inventory = (Inventory)canvas.GetComponent(typeof(Inventory));
                 inventory.ViewInventory();

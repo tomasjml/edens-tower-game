@@ -10,6 +10,7 @@ public class DialogManagerV5 : MonoBehaviour
     public Dialogue dialogue;
     public Text displayText;
     public Text displayText2;
+    public GameObject ShopArea;
 
     Queue<string> sentences;
     string activeSentence;
@@ -134,8 +135,9 @@ public class DialogManagerV5 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && onSite)
             {
-                GameObject.Find("UIController").GetComponent<UIController>().setShoping();
                 _Player.enableKeys(true);
+                GameObject.Find("UIController").GetComponent<UIController>().setShoping(true);
+                ShopArea.SetActive(true);
                 Destroy(gameObject);
             }
         }

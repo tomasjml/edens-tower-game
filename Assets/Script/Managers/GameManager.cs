@@ -161,6 +161,13 @@ public class GameManager : MonoBehaviour
         saveData.bgmEnabled = loadData.bgmEnabled;
         saveData.bgmLvl = loadData.bgmLvl;
         saveData.playerData.inventory = loadData.playerData.inventory;
+        foreach(Item key in saveData.playerData.inventory.Keys)
+        {
+            Debug.Log(key.title);
+        }
+
+
+
         saveData.dictMarketItems = loadData.dictMarketItems;
 
         BeginGameManager();

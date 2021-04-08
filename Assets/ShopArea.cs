@@ -8,13 +8,15 @@ public class ShopArea : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        GameObject.Find("UIController").GetComponent<UIController>().setShoping();
+        if(other.CompareTag("Player"))
+        GameObject.Find("UIController").GetComponent<UIController>().setShoping(true);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject.Find("UIController").GetComponent<UIController>().setShoping();
+        if (other.CompareTag("Player"))
+        GameObject.Find("UIController").GetComponent<UIController>().setShoping(false);
     }
 }

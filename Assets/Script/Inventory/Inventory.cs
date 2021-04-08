@@ -323,7 +323,6 @@ public class Inventory : MonoBehaviour
         {
             OpenInventory();
         }
-        UpdateSlots();
     }
 
     public void CloseInventory()
@@ -336,6 +335,7 @@ public class Inventory : MonoBehaviour
 
     public void OpenInventory()
     {
+        UpdateSlots();
         inventoryChilds.SetActive(true);
         Time.timeScale = 0f;
         PauseMenu.gameIsPaused = true;
