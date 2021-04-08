@@ -101,6 +101,7 @@ public class Dialogue_Manager : MonoBehaviour
             if(sentences.Count==1 && storyFinished.activeSelf){
                 dialoguePanel.SetActive(true);
                 DisplayNextSentence(); 
+                Debug.Log("DISPLAY NEXT SENTENCE");
             }else if(sentences.Count==1&& storyFinished.activeSelf==false){
                 dialoguePanel.SetActive(false);
             }
@@ -110,6 +111,7 @@ public class Dialogue_Manager : MonoBehaviour
                 Debug.Log("Presione E para terminar.");
                 if(Input.GetKeyDown(KeyCode.E))
                 {
+                    storyFinished.SetActive(true);
                     _Player.enableKeys(true);
                     Destroy(instantiatedObject);
                     Destroy(_Trigger,0);

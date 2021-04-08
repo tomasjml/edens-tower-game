@@ -4187,7 +4187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -78}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &308287943
@@ -6334,7 +6334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 394, y: 297}
+  m_AnchoredPosition: {x: -101, y: 459}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &457168586
@@ -9344,11 +9344,11 @@ PrefabInstance:
       objectReference: {fileID: 261896637}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.164169
+      value: -43.60756
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3375664
+      value: -1.4737225
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9356,7 +9356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8807763096401397296, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
@@ -9621,11 +9621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.002426
+      value: 25.230698
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6275673
+      value: -1.7637234
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706564, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9633,7 +9633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8807763095816706565, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8807763096401397296, guid: fcfe363f90917154f8d88527590c2243, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
@@ -15882,8 +15882,8 @@ MonoBehaviour:
   dialogue:
     name: diana
     sentenceList:
-    - "But Eden was extremely sick. Kaos tried to cure her with \nevery potion and
-      magic posible. Nothing worked. \nHe lost her. He was devastated."
+    - "But Eden was extremely sick. Kaos tried to cure her with every potion  \nand
+      magic posible. Nothing worked. He lost her. He was devastated."
   displayText: {fileID: 2071334096}
   typingString: 0.01
   dialoguePanel: {fileID: 304013605}
@@ -19581,12 +19581,14 @@ MonoBehaviour:
   dialogue:
     name: 
     sentenceList:
-    - "I' create an army of monsters!\nI'll bring back monsters until i \nget my
-      sweet Eden back!"
+    - "I'll create an army of monsters \nuntil i get my sweet Eden back!\nSo raise,
+      and fight for me!"
   displayText: {fileID: 1639719615}
   typingString: 0
   dialoguePanel: {fileID: 1563296541}
   startEdenScene: {fileID: 1899459640}
+  storyFinished: 0
+  story: {fileID: 0}
 --- !u!4 &1315041136
 Transform:
   m_ObjectHideFlags: 0
@@ -20246,7 +20248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -617703005736529837, guid: 12f6a9aff8270da4f817306ac180a5ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -24870,8 +24872,8 @@ MonoBehaviour:
       her!'
     - "You would never understand.\nKaos himself, was a father \nonce."
     - "Her name was Eden.  She \nbrought light into this \ntower..."
-    - 
-    - 
+    - So fight me and die!
+    - So fight me and die!
   displayText: {fileID: 1890252505}
   typingString: 0.05
   speakSound: {fileID: 0}
@@ -27589,6 +27591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1899459641}
+  - component: {fileID: 1899459642}
   m_Layer: 0
   m_Name: zombiesWakeUp
   m_TagString: Untagged
@@ -27610,6 +27613,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899459642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899459640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e188ddbb05526fe49a2fe4fa252ab2f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombie: {fileID: 3408718494589744559, guid: 8f463b9e40f35b94c8cb67035b520a96, type: 3}
+  graveOne: {fileID: 1908139171}
+  graveTwo: {fileID: 1707164743}
+  storyFinished: {fileID: 975744407}
 --- !u!1 &1908139171
 GameObject:
   m_ObjectHideFlags: 0
@@ -28096,10 +28115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77dfc8b4403a85c499e85f34ea256eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 541124039}
+  playerCamera: {fileID: 692426980}
   storyCamera: {fileID: 1325667243}
   player: {fileID: 261896636}
   firstPartOver: {fileID: 341086845}
+  storyFinished: {fileID: 975744407}
+  objectKaosBringBack: {fileID: 1315041134}
 --- !u!4 &1938380945
 Transform:
   m_ObjectHideFlags: 0
@@ -29800,7 +29821,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -617703005736529837, guid: 12f6a9aff8270da4f817306ac180a5ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -30197,7 +30218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -866, y: -284}
+  m_AnchoredPosition: {x: -866, y: -307}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071334096
@@ -30222,7 +30243,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: a47b8bbc5a984f14da298b4eaa064746, type: 3}
-    m_FontSize: 70
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

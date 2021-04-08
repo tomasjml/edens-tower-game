@@ -18,6 +18,9 @@ public class kaosBringBackZombies : MonoBehaviour
     private int cant=0;
     private bool onSite = false;
     public GameObject startEdenScene;
+    public bool storyFinished;
+    public GameObject story;
+    
 
     void Awake()
     {
@@ -109,9 +112,12 @@ public class kaosBringBackZombies : MonoBehaviour
             {
                 
                 dialoguePanel.SetActive(false);
-                
-                
+                storyFinished=true;
+                story.SetActive(true);
             }
         }
+    }
+    public bool getStoryFinished(){
+        return storyFinished;
     }
 }
