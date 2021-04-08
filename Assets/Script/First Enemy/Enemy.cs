@@ -136,19 +136,15 @@ public class Enemy : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
-        /*switch (gameObject.tag)
+        if(gameObject.tag != "Twisted")
         {
-            case "Skeleton":
-                
-                break;
-            case "MiniSkeleton":
-                
-                break;
-            case "MegaSkeleton":
-                
-                break;
-        }*/
-        Invoke("AudioP", 1f);
+            Invoke("AudioP", 1f);
+        }
+        else
+        {
+            Invoke("AudioP", 0.3f);
+        }
+        
         _animator.SetTrigger("IsAttacking");
         yield return new WaitForSeconds(attackTime);
 

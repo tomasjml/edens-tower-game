@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SubKaos : MonoBehaviour
 {
+    [Header("FX Subdito")]
+    private AudioSource fxSub;
+    public AudioClip spellFX;
+    public AudioClip attackFX;
     Transform target;
     Transform enemyTransform;
     // SPELL OBJECTS
@@ -30,6 +34,7 @@ public class SubKaos : MonoBehaviour
         enemyTransform = this.GetComponent<Transform>();
         _animator = this.GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        fxSub = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -95,6 +100,7 @@ public class SubKaos : MonoBehaviour
             {
                 startingPos.x = GameObject.Find("Player").GetComponent<Transform>().position.x;
                 startingPos.y = GameObject.Find("Player").GetComponent<Transform>().position.y + 2;
+                fxSub.PlayOneShot(spellFX);
                 _animator.SetTrigger("Cast");
                 if (cant < 1)
                 {
@@ -160,6 +166,7 @@ public class SubKaos : MonoBehaviour
         shouldAttack = true;
 
         yield return new WaitForSeconds(aimingTime);
+        Invoke("Subdito", 0.3f);
         _animator.SetTrigger("IsAttacking");
         yield return new WaitForSeconds(attackTime);
 
@@ -169,5 +176,9 @@ public class SubKaos : MonoBehaviour
     float GetNextTime()
     {
         return Time.time + 3f;
+    }
+    void Subdito()
+    {
+        fxSub.PlayOneShot(attackFX);
     }
 }
