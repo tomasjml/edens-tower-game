@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.luck = 1;
         saveData.playerData.speed = 1;
         saveData.playerData.vitality = 20;
+        saveData.playerData.currentVitality = 20;
         saveData.playerData.defense = 1;
         elapsedTime = 0f;
         saveData.difficulty = diff;
@@ -152,6 +153,7 @@ public class GameManager : MonoBehaviour
         saveData.playerData.strength = loadData.playerData.strength;
         saveData.playerData.luck = loadData.playerData.luck;
         saveData.playerData.vitality = loadData.playerData.vitality;
+        saveData.playerData.currentVitality = loadData.playerData.currentVitality;
         saveData.playerData.position = loadData.playerData.position;
 
         saveData.playerData.inventory = loadData.playerData.inventory;

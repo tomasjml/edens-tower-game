@@ -17,6 +17,7 @@ public class LisaController : MonoBehaviour
     private bool enter = false;
     private GameObject _target;
 
+
     private void Awake()
     {
         _a = GetComponent<Animator>();        
@@ -26,6 +27,7 @@ public class LisaController : MonoBehaviour
     {
         UpdateTarget();
         StartCoroutine("PatrolToTarget");
+
     }
 
     private void UpdateTarget()

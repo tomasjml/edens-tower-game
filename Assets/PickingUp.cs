@@ -21,6 +21,7 @@ public class PickingUp : MonoBehaviour
             Destroy(ob);
             _player_animator.SetTrigger("pickUpTiara");
             GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.Tiara));
+
         }
         if (ob.CompareTag("Sword"))
         {
@@ -29,4 +30,5 @@ public class PickingUp : MonoBehaviour
             GameManager.instance.saveData.playerData.AddItemToInventory(GameManager.instance.itemManagement.GetItemByTitle(ItemManagement.ItemAvailable.BasicSword));
         }
     }
+    
 }

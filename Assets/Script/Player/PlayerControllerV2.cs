@@ -162,13 +162,6 @@ public class PlayerControllerV2 : MonoBehaviour
             _animator.SetTrigger("Attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log(GameManager.instance.saveData.playerData.inventory.Count);
-            GameObject inventoryCanvas = GameObject.Find("InventoryCanvas");
-            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
-            inventory.ViewInventory();
-        }
         if (Input.GetKeyDown(KeyCode.U))
         {
             Debug.Log(GameManager.instance.itemManagement.GetTitlesOfItems().Count);
@@ -286,6 +279,11 @@ private IEnumerator PatrolToTarget()
     }
     public void EnableBow(bool enable){
         bow.SetActive(enable);
+    }
+
+    public bool Grounded()
+    {
+        return _isGrounded;
     }
    
 }
