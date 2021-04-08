@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameOver : MonoBehaviour
 {
     public string _Scene;
+    public int usableScore = 0;
 
     public void LoadSceneY()
     {
@@ -19,4 +20,5 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
         gameObject.SetActive(false);
     }
+
 }

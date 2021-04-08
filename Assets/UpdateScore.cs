@@ -6,6 +6,7 @@ using TMPro;
 public class UpdateScore : MonoBehaviour
 {
     private int scoreAmount = 0;
+    private int tempScoreAmount = 0;
     private TextMeshProUGUI _text;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,7 @@ public class UpdateScore : MonoBehaviour
     void Update()
     {
         scoreAmount = GameManager.instance.saveData.playerData.score;
-        _text.SetText("Score:  " + scoreAmount.ToString());
+        tempScoreAmount = GameManager.instance.saveData.playerData.tempScore;
+        _text.SetText("Score:  " + (scoreAmount + tempScoreAmount).ToString());
     }
 }
