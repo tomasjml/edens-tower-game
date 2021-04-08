@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     int damage = 1;
+    public bool isDamaged = false;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Hit : MonoBehaviour
         Debug.Log("Se esta dando");
         if (collision.gameObject.CompareTag("Player"))
         {
-            switch(gameObject.tag)
+            switch (gameObject.tag)
             {
                 case "Yunke":
                     damage = 2;
@@ -85,5 +86,10 @@ public class Hit : MonoBehaviour
             collision.gameObject.SendMessageUpwards("AddDamage", damage);
             HeartVisual.HSystemStatic.Damage(damage);
         }
+    }
+
+    public bool Damaged()
+    {
+        return isDamaged;
     }
 }

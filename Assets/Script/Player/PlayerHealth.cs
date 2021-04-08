@@ -16,12 +16,17 @@ public class PlayerHealth : MonoBehaviour
 	private SpriteRenderer _renderer;
 
 	private Animator _animator;
+	float timePass = 0f;
+	float timePassLife = 0f;
+
+	bool medió = false;
+	int cant = 0;
 
 	
 	private void Awake()
 	{
 		//totalHealth = GameManager.instance.saveData.playerData.vitality;
-		totalHealth = 12;
+		//totalHealth = 20;
 		_renderer = GetComponent<SpriteRenderer>();
 		_animator = GetComponent<Animator>();
 	}
@@ -40,8 +45,72 @@ public class PlayerHealth : MonoBehaviour
 		}
 
 	}
+    private void Update()
+    {
 
-	public void AddDamage(int amount)
+		if (health < totalHealth)
+		{
+			//Debug.Log("La vida es " + health + "de " + totalHealth + "posibles.");
+			if (Time.time > timePass)
+			{
+				if(cant < 1)
+                {
+					timePass = timeRegenerate();
+					cant++;
+                }
+                else
+                {
+					if (GameManager.instance == true)
+					{
+						switch (GameManager.instance.saveData.difficulty)
+						{
+							case SaveData.Difficulty.Easy:
+								if (totalHealth - 4 > health)
+								{
+									health += 1;
+								}
+								cant = 0;
+								break;
+							case SaveData.Difficulty.Normal:
+								if (totalHealth - 8 > health)
+								{
+									health += 1;
+								}
+								cant = 0;
+								break;
+							case SaveData.Difficulty.Hard:
+								if (totalHealth - 12 > health)
+								{
+									health += 1;
+								}
+								cant = 0;
+								break;
+							case SaveData.Difficulty.Hell:
+								if (totalHealth - 16 > health)
+								{
+									health += 1;
+								}
+								cant = 0;
+								break;
+						}
+					}else if(totalHealth - 4 > health)
+                    {
+						health += 1;
+                    }
+					cant = 0;
+					
+					Debug.Log("Vida despues de regenerarse " + health);
+				}
+				
+				
+			}
+		}
+
+		
+		
+	}
+
+    public void AddDamage(int amount)
 	{
 		health = health - amount;
 
@@ -93,7 +162,16 @@ public class PlayerHealth : MonoBehaviour
 	}
 	public void setHealth(int hp){
 		health = hp;
+		Debug.Log(health);
 	}
 
+	public int getTotalHealth()
+    {
+		return totalHealth;
+    }
 
+	float timeRegenerate()
+	{
+		return Time.time + 10f;
+	}
 }

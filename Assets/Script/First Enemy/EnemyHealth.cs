@@ -37,6 +37,10 @@ public class EnemyHealth : MonoBehaviour
 		healthBarScale.x = healthPercent * health;
 		healthBar.localScale = healthBarScale;
     }
+    private void Update()
+    {
+        
+    }
 
     public void AddDamageEnemy(int amount)
 	{
@@ -52,6 +56,17 @@ public class EnemyHealth : MonoBehaviour
 		// Game  Over
 		if (health <= 0)
 		{
+			switch(GameManager.instance.saveData.difficulty)
+            {
+				case SaveData.Difficulty.Easy:
+					break;
+				case SaveData.Difficulty.Normal:
+					break;
+				case SaveData.Difficulty.Hard:
+					break;
+				case SaveData.Difficulty.Hell:
+					break;
+			}
 			health = 0;
 			StartCoroutine("Died");
 		}
@@ -86,5 +101,6 @@ public class EnemyHealth : MonoBehaviour
 	{
 		return health;
 	}
+	
 }
 
