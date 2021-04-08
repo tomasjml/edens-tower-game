@@ -113,4 +113,41 @@ public class SettingsMenu : MonoBehaviour
     {
         GameManager.instance.saveData.autoSave = autoSaveToggle.isOn;
     }
+
+    public void musicroomBGM(int song)
+    {
+        switch (song)
+        {
+            case 0:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicMenu);
+                break;
+            case 1:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicHouse);
+                break;
+            case 2:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicJungle);
+                break;
+            case 3:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicTowerEntry);
+                break;
+            case 4:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicScene2);
+                break;
+            case 5:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicScene3);
+                break;
+            case 6:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicScene4);
+                break;
+            case 7:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicScene5);
+                break;
+            case 8:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicScene6);
+                break;
+            case 9:
+                AudioManager.instance.PlayBackgroundMusic(AudioManager.BackgroundMusic.BackgroundMusicExtra1);
+                break;
+        }
+    }
 }
