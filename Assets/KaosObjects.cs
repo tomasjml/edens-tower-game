@@ -16,7 +16,7 @@ public class KaosObjects : MonoBehaviour
     {
         hp = GetComponent<BossHealth>().getCurrentHealthEnemy();
 
-        if(hp <= 10 && gameObject.CompareTag("Twisted"))
+        if(hp <= 10 && (gameObject.CompareTag("Twisted") || gameObject.CompareTag("Kaos")))
         {
             if(cant < 1)
             {
