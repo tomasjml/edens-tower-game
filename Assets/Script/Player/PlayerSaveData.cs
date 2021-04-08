@@ -82,4 +82,9 @@ public class PlayerStats
             return 0;
         }
     }
+
+    public void AddPoints(int amount)
+    {
+        score += (int)amount;
+    }
 }

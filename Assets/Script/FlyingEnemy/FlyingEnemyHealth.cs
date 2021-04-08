@@ -35,6 +35,21 @@ public class FlyingEnemyHealth : MonoBehaviour
 		// Game  Over
 		if (health <= 0)
 		{
+			switch (GameManager.instance.saveData.difficulty)
+			{
+				case SaveData.Difficulty.Easy:
+					GameManager.instance.saveData.playerData.AddPoints(5);
+					break;
+				case SaveData.Difficulty.Normal:
+					GameManager.instance.saveData.playerData.AddPoints(10);
+					break;
+				case SaveData.Difficulty.Hard:
+					GameManager.instance.saveData.playerData.AddPoints(15);
+					break;
+				case SaveData.Difficulty.Hell:
+					GameManager.instance.saveData.playerData.AddPoints(20);
+					break;
+			}
 			health = 0;
 			StartCoroutine("Died");
 		}
