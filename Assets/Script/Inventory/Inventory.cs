@@ -247,17 +247,6 @@ public class Inventory : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            GameObject inventoryCanvas = GameObject.Find("Canvas");
-            Inventory inventory = (Inventory)inventoryCanvas.GetComponent(typeof(Inventory));
-            inventory.ViewInventory();
-        }
-    }
-
     void UpdateSlots()
     {
         if (GameManager.instance.saveData.playerData.ItemQuantityInInventory("Basic Potion") > 0)
@@ -338,6 +327,7 @@ public class Inventory : MonoBehaviour
 
     public void CloseInventory()
     {
+        GameObject.Find("UIController").GetComponent<UIController>().setHud();
         inventoryChilds.SetActive(false);
         Time.timeScale = 1f;
         PauseMenu.gameIsPaused = false;
