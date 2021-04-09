@@ -74,7 +74,7 @@ public class Dialogue_Manager : MonoBehaviour
             yield return new WaitForSeconds(typingString);
             if(cant < 1)
             {
-                myAudio.PlayOneShot(speakSound,0.5f);
+                myAudio.PlayOneShot(speakSound,0.1f);
                 cant++;
             }
             
@@ -99,7 +99,7 @@ public class Dialogue_Manager : MonoBehaviour
     {
         if( other.CompareTag("Player") )
         {
-            if(Input.GetKeyDown(KeyCode.E) && displayText.text == activeSentence) // display == active es comparando para saber si ya el efecto de typing termino
+            if(Input.GetKeyDown(KeyCode.E) ) // display == active es comparando para saber si ya el efecto de typing termino
             {
                 DisplayNextSentence();
                 cant = 0;
@@ -116,6 +116,7 @@ public class Dialogue_Manager : MonoBehaviour
                     Destroy(_Trigger,0);
                     instantiatedObject.GetComponent<Animator>().SetTrigger("Vanish");
                     gameObject.SetActive(false);
+                    dialoguePanel.SetActive(false);
                 }
                  
             }

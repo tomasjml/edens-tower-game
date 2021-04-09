@@ -27,10 +27,10 @@ public class changeCameras : MonoBehaviour
         
         //if (player.gameObject.GetComponent<Rigidbody2D>().velocity==Vector3.zero){
             finished=objectKaosBringBack.gameObject.GetComponent<kaosBringBackZombies>().getStoryFinished();
-            if(Input.GetKeyDown(KeyCode.E) && cant<3 &&onSite==true){
+            if(Input.GetKeyDown(KeyCode.E) && cant<4 &&onSite==true){
                 cant++;
             }
-            if(cant==3 && firstPartOver.activeSelf==false){
+            if(cant==4 && firstPartOver.activeSelf==false){
                 playerCamera.SetActive(false);
                 storyCamera.SetActive(true);
                 
@@ -39,7 +39,7 @@ public class changeCameras : MonoBehaviour
                 }
                 else {
                     _rigidbody.velocity = Vector3.zero;
-                    if(cant==3){
+                    if(cant==4){
                         cant++;
                     }
                 }
@@ -50,7 +50,7 @@ public class changeCameras : MonoBehaviour
                     _rigidbody.velocity = Vector3.zero;
                 }
                 //Debug.Log("cant y story "+cant+storyFinished.activeSelf);
-            if(finished==true&& cant>3){
+            if(finished==true&& cant>4){
                 playerCamera.SetActive(true);
                 storyCamera.SetActive(false);
                 
