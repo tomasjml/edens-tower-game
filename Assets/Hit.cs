@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hit : MonoBehaviour
 {
     int damage = 1;
+    int cant = 0;
 
 
     private void Awake()
@@ -51,9 +52,13 @@ public class Hit : MonoBehaviour
                 
                 
             }
-            //Debug.Log("Se dio");
-            collision.gameObject.SendMessageUpwards("AddDamage", damage);
-            HeartVisual.HSystemStatic.Damage(damage);
+            if (cant < 1)
+            {
+                collision.gameObject.SendMessageUpwards("AddDamage", damage);
+                HeartVisual.HSystemStatic.Damage(damage);
+                cant++;
+                Invoke("CantRestart", 0.5f);
+            }
             //hitSFX.PlayOneShot(_Hit);
         }
     }
@@ -86,10 +91,21 @@ public class Hit : MonoBehaviour
 
             }
             //Debug.Log("Se dio");
-            collision.gameObject.SendMessageUpwards("AddDamage", damage);
-            HeartVisual.HSystemStatic.Damage(damage);
+            if(cant < 1)
+            {
+                collision.gameObject.SendMessageUpwards("AddDamage", damage);
+                HeartVisual.HSystemStatic.Damage(damage);
+                cant++;
+                Invoke("CantRestart", 0.5f);
+            }
+            
             //hitSFX.PlayOneShot(_Hit);
         }
+    }
+
+    void CantRestart()
+    {
+        cant = 0;
     }
 
 
