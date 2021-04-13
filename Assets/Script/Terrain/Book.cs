@@ -35,7 +35,7 @@ public class Book : MonoBehaviour
             if(cant < 1)
             {
                 fxBook.PlayOneShot(book, 0.5f);
-                cant = 0;
+                cant++;
             }
 
             _animator.GetComponent<Animator>().SetTrigger("Flotando");

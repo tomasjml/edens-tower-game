@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3706347}
   - component: {fileID: 3706349}
-  - component: {fileID: 3706348}
+  - component: {fileID: 3706350}
   m_Layer: 0
   m_Name: Trigger 1
   m_TagString: Untagged
@@ -155,35 +155,6 @@ Transform:
   m_Father: {fileID: 1865781200}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3706348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3706346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70079097c9971934385de45d8bc70786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Luke
-    sentenceList:
-    - "What happened HERE!!? \nSUCH A MESS!"
-    - 'LISA! Come here
-
-      at once!'
-    - "Your mother would've \nturned crazy after\nseeing this!"
-    - 
-  displayText: {fileID: 1058805378}
-  typingString: 0.05
-  speakSound: {fileID: 0}
-  dialoguePanel: {fileID: 336489672}
-  _Trigger: {fileID: 3706346}
-  _Player: {fileID: 739987077}
-  _InstructionPressE: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
-  _PositionPreesE: {fileID: 1820871553}
 --- !u!61 &3706349
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -210,6 +181,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3706350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64d00ad654f4c24c941d3e020e98484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Luke
+    sentenceList:
+    - "What happened HERE!!? \nSUCH A MESS!"
+    - 'LISA! Come here
+
+      at once!'
+    - "Your mother would've \nturned crazy after\nseeing this!"
+    - 
+  displayText: {fileID: 1058805378}
+  typingString: 0.05
+  dialoguePanel: {fileID: 336489672}
+  _Trigger: {fileID: 3706346}
+  _Player: {fileID: 739987077}
+  _InstructionPressE: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
+  _PositionPreesE: {fileID: 1820871553}
 --- !u!1001 &14968264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2672,7 +2671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449043286}
   - component: {fileID: 449043288}
-  - component: {fileID: 449043287}
+  - component: {fileID: 449043289}
   m_Layer: 0
   m_Name: Trigger 2
   m_TagString: Untagged
@@ -2694,30 +2693,6 @@ Transform:
   m_Father: {fileID: 1865781200}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &449043287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449043285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70079097c9971934385de45d8bc70786, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Luke
-    sentenceList:
-    - Where is that girl?
-  displayText: {fileID: 1245104820}
-  typingString: 0.05
-  speakSound: {fileID: 0}
-  dialoguePanel: {fileID: 330776999}
-  _Trigger: {fileID: 449043285}
-  _Player: {fileID: 739987077}
-  _InstructionPressE: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
-  _PositionPreesE: {fileID: 1820871553}
 --- !u!61 &449043288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2744,6 +2719,29 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &449043289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449043285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64d00ad654f4c24c941d3e020e98484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Luke
+    sentenceList:
+    - Where is that girl?
+  displayText: {fileID: 1245104820}
+  typingString: 0.05
+  dialoguePanel: {fileID: 330776999}
+  _Trigger: {fileID: 449043285}
+  _Player: {fileID: 739987077}
+  _InstructionPressE: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
+  _PositionPreesE: {fileID: 1820871553}
 --- !u!1 &469239295
 GameObject:
   m_ObjectHideFlags: 0
@@ -5324,7 +5322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 597815278}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.18143, y: -1.0146705, z: -4.4750357}
+  m_LocalPosition: {x: -26.422688, y: -1.0146705, z: -4.4750357}
   m_LocalScale: {x: 1, y: 1.9125, z: 1}
   m_Children: []
   m_Father: {fileID: 1878619859}
@@ -5429,7 +5427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
   audioManager: {fileID: 0}
-  saveAndLoad: {fileID: 0}
 --- !u!1 &642901530
 GameObject:
   m_ObjectHideFlags: 0
@@ -6415,7 +6412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 755c0932623817d47b9f6f3c1a44bcf7, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9132203323589162045, guid: 755c0932623817d47b9f6f3c1a44bcf7, type: 3}
       propertyPath: m_LocalScale.x
@@ -6743,7 +6740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &958629935
 PrefabInstance:
@@ -7465,7 +7462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcf8aca6043d2440b8586ac8b00d1da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HUD: {fileID: 1055618575}
+  player: {fileID: 0}
   pausePanel: {fileID: 401087135}
   pauseBtns: {fileID: 346575100}
   slotsBtns: {fileID: 31610312}

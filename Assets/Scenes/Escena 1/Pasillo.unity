@@ -2636,7 +2636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6887177691644398850, guid: 632e23d8ef5472645ac015200f51b453, type: 3}
   audioManager: {fileID: 0}
-  saveAndLoad: {fileID: 0}
 --- !u!1 &556807157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2848,9 +2847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  HUD: {fileID: 576456300}
   pausePanel: {fileID: 812760277}
-  Dialogs: {fileID: 0}
   pauseBtns: {fileID: 1945046713}
   slotsBtns: {fileID: 1781905329}
   slot1: {fileID: 1306656519}
@@ -6533,6 +6530,7 @@ GameObject:
   - component: {fileID: 1902105258}
   - component: {fileID: 1902105257}
   - component: {fileID: 1902105259}
+  - component: {fileID: 1902105261}
   m_Layer: 0
   m_Name: Trigger1
   m_TagString: Trigger
@@ -6618,6 +6616,30 @@ RectTransform:
   m_AnchoredPosition: {x: -3.2386, y: -2.3267}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1902105261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902105256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64d00ad654f4c24c941d3e020e98484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: NPC
+    sentenceList:
+    - Hi, Lisa!
+    - 
+  displayText: {fileID: 676480594}
+  typingString: 0.05
+  dialoguePanel: {fileID: 784414189}
+  _Trigger: {fileID: 1902105256}
+  _Player: {fileID: 1901765746}
+  _InstructionPressE: {fileID: 7648170740385801630, guid: 77dc32dbb24197f42af55d53c417c5a0, type: 3}
+  _PositionPreesE: {fileID: 1202219955}
 --- !u!1 &1904089105
 GameObject:
   m_ObjectHideFlags: 0
