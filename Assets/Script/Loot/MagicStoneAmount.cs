@@ -27,19 +27,19 @@ public class MagicStoneAmount : MonoBehaviour
             {
                 case SaveData.Difficulty.Easy:
                     GameManager.instance.saveData.playerData.AddPoints(5);
-                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, Random.Range(5, 20));
+                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, 10);
                     break;
                 case SaveData.Difficulty.Normal:
                     GameManager.instance.saveData.playerData.AddPoints(10);
-                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, Random.Range(5, 20));
+                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, 10);
                     break;
                 case SaveData.Difficulty.Hard:
                     GameManager.instance.saveData.playerData.AddPoints(15);
-                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, Random.Range(5, 20));
+                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, 10);
                     break;
                 case SaveData.Difficulty.Hell:
                     GameManager.instance.saveData.playerData.AddPoints(20);
-                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, Random.Range(5, 20));
+                    GameManager.instance.saveData.playerData.AddItemToInventory(stone, 10);
                     break;
             }
             

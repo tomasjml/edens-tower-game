@@ -9,7 +9,7 @@ public class DestroyWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_Enemy.GetComponent<EnemyHealth>().getCurrentHealthEnemy() == 0)
+        if(_Enemy.GetComponent<BossHealth>().getCurrentHealthEnemy() <= 0)
         {
             Destroy(gameObject);
         }
